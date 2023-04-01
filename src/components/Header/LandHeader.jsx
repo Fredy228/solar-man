@@ -12,6 +12,7 @@ export const LandHeader = () => {
   };
 
   useEffect(() => {
+    screenResize();
     window.addEventListener('resize', screenResize);
     return () => {
       window.removeEventListener('resize', screenResize);

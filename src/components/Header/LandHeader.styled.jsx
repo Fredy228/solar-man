@@ -5,6 +5,7 @@ export const HeaderInner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 `;
 export const Logo = styled.div`
   svg {
@@ -44,8 +45,6 @@ export const MenuSpan = styled.span`
 
   :after {
     left: 0;
-    /* top: 7px; */
-    /* opacity: 1; */
     top: ${p => (p.show ? '0' : '7px')};
     transform: ${p => (p.show ? 'rotate(90deg)' : 'rotate(0deg)')};
   }
