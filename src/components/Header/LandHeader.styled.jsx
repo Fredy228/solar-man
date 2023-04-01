@@ -6,81 +6,53 @@ export const HeaderInner = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-export const Logo = styled.div``;
-export const Nav = styled.nav`
-  color: ${({ theme: { color } }) => color.white};
-`;
-export const NavList = styled.ul`
-  display: flex;
-  background-color: ${({ theme: { color } }) => color.main};
-  border-radius: 50px;
-  padding: 5px 5px;
-`;
-export const NavItem = styled.li`
-  padding: 15px;
-  border-radius: 50px;
-  transition: background-color 300ms linear;
-  cursor: pointer;
-
-  :not(:last-child) {
-    margin-right: 15px;
-  }
-  :hover {
-    background-color: ${({ theme: { color } }) => color.second};
+export const Logo = styled.div`
+  svg {
+    height: 50px;
+    width: auto;
   }
 `;
-export const NavText = styled.p`
-  font-size: 16px;
-`;
-export const ContactList = styled.ul`
+export const Burger = styled.div`
+  width: 25px;
+  height: 25px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-`;
-export const ContactItem = styled.li`
-  display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 5px 10px;
-  border-radius: 50px;
+  align-items: center;
   cursor: pointer;
-  transition: opacity 300ms linear;
+`;
+export const MenuSpan = styled.span`
+  width: 20px;
+  height: 2px;
+  background-color: #000;
   position: relative;
-  overflow: hidden;
-  z-index: 99;
+  transition-timing-function: ease;
+  transition-duration: 250ms;
+  transition-property: opacity, transform;
+  transform: ${p => (p.show ? 'rotate(45deg)' : 'rotate(0deg)')};
 
-  :first-child {
-    background-color: ${({ theme: { color } }) => color.second};
-  }
-  :last-child {
-    background-color: ${({ theme: { color } }) => color.additional};
-  }
+  :after,
   :before {
     content: '';
+    background-color: #000;
+    width: 20px;
+    height: 2px;
     position: absolute;
-    z-index: 100;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 50px;
-    transition: width 750ms ease;
-  }
-  :hover:before {
-    width: 100%;
+    transition-timing-function: ease;
+    transition-duration: 250ms;
+    transition-property: opacity, transform;
   }
 
-  svg {
-    stroke: ${({ theme: { color } }) => color.white};
-    margin-right: 5px;
-    z-index: 101;
+  :after {
+    left: 0;
+    /* top: 7px; */
+    /* opacity: 1; */
+    top: ${p => (p.show ? '0' : '7px')};
+    transform: ${p => (p.show ? 'rotate(90deg)' : 'rotate(0deg)')};
   }
-`;
-export const ContactLink = styled.a`
-  text-decoration: none;
-  font-size: 16px;
-  z-index: 101;
-  color: ${({ theme: { color } }) => color.white};
+
+  :before {
+    left: 0;
+    bottom: 7px;
+    opacity: ${p => (p.show ? '0' : '1')};
+  }
 `;

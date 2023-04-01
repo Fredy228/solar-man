@@ -1,56 +1,40 @@
+import { HeaderInner, Logo, MenuSpan, Burger } from './LandHeader.styled';
+import { Navigation } from './Navigation/Navigation';
+import { Contacts } from './Contacts/Contacts';
 import { Icon } from 'components/Icon/Icon';
-import {
-  HeaderInner,
-  Logo,
-  Nav,
-  NavList,
-  NavItem,
-  NavText,
-  ContactList,
-  ContactItem,
-  ContactLink,
-} from './LandHeader.styled';
+import { useEffect, useState } from 'react';
 
 export const LandHeader = () => {
+  const [screenWidth, setScreenWidth] = useState(null);
+  const [showBurger, setShowBurger] = useState(false);
+  const screenResize = () => {
+    setScreenWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', screenResize);
+    return () => {
+      window.removeEventListener('resize', screenResize);
+    };
+  }, []);
+
   return (
     <HeaderInner>
       <Logo>
-        <Icon
-          name={'icon-logo'}
-          width="auto"
-          height="50"
-          viewBox="0 0 82 32"
-          fill="#000"
-        />
+        <Icon name={'icon-logo'} viewBox="0 0 82 32" />
       </Logo>
 
-      <Nav>
-        <NavList>
-          <NavItem>
-            <NavText>Головна</NavText>
-          </NavItem>
-          <NavItem>
-            <NavText>Про нас</NavText>
-          </NavItem>
-          <NavItem>
-            <NavText>Готові рішення</NavText>
-          </NavItem>
-          <NavItem>
-            <NavText>Наші проекти</NavText>
-          </NavItem>
-        </NavList>
-      </Nav>
+      {screenWidth <= 1000 ? (
+        <Burger onClick={() => setShowBurger(!showBurger)}>
+          <MenuSpan show={showBurger}></MenuSpan>
+        </Burger>
+      ) : (
+        <>
+          <Navigation />
 
-      <ContactList>
-        <ContactItem>
-          <Icon name={'icon-phone'} width="20" height="20" fill="#fff" />
-          <ContactLink href="#">099 583 34 45</ContactLink>
-        </ContactItem>
-        <ContactItem>
-          <Icon name={'icon-email'} width="20" height="20" fill="#fff" />
-          <ContactLink href="#">solar.man@gmail.com</ContactLink>
-        </ContactItem>
-      </ContactList>
+          <Contacts />
+        </>
+      )}
     </HeaderInner>
   );
 };
