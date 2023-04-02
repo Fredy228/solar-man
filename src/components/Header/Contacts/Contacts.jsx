@@ -6,11 +6,13 @@ export const Contacts = () => {
     <ContactList>
       <ContactItem>
         <Icon name={'icon-phone'} />
-        <ContactLink href="#">068 055 44 88</ContactLink>
+        <ContactLink href="tel:+380680554488">068 055 44 88</ContactLink>
       </ContactItem>
       <ContactItem>
         <Icon name={'icon-email'} />
-        <ContactLink href="#">solarmanua@gmail.com</ContactLink>
+        <ContactLink href="mailto:solarmanua@gmail.com">
+          solarmanua@gmail.com
+        </ContactLink>
       </ContactItem>
     </ContactList>
   );

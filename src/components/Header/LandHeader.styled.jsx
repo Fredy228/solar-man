@@ -84,6 +84,5 @@ export const NavBox = styled.div`
     justify-content: flex-start;
     align-items: center;
     transform: translateX(${p => (p.show ? '0' : '120%')});
-    opacity: ${p => (p.show ? '1' : '0')};
   }
 `;
