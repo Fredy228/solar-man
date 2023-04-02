@@ -99,11 +99,9 @@ input{
     border: none;
 }
 
-img {
+/* img {
     display: block;
-    width: 100%;
-    height: auto;
-}
+} */
 
 button {
     border: none;

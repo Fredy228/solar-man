@@ -67,6 +67,7 @@ export const MenuSpan = styled.span`
 `;
 
 export const NavBox = styled.div`
+  z-index: 1000;
   display: flex;
   flex: 1;
   justify-content: flex-end;

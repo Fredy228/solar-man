@@ -23,5 +23,5 @@ export const Container = styled.div`
 
 export const Frontier = styled.div`
   margin: 0 auto;
-  max-width: 2000px;
+  max-width: 1250px;
 `;
