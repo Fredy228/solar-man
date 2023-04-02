@@ -1,10 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ContactList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: 100%;
+
+  @media screen and (max-width: 1000px) {
+    justify-content: flex-start;
+    height: auto;
+    margin-bottom: 15px;
+  }
 `;
 export const ContactItem = styled.li`
   display: flex;
@@ -47,16 +53,12 @@ export const ContactItem = styled.li`
     stroke: ${({ theme: { color } }) => color.white};
     margin-right: 5px;
     z-index: 101;
+    width: 20px;
+    height: 20px;
+  }
 
-    @media screen and (min-width: 1000px) {
-      width: 20px;
-      height: 20px;
-    }
-
-    @media screen and (min-width: 1200px) {
-      width: 20px;
-      height: 20px;
-    }
+  @media screen and (max-width: 1000px) {
+    margin-bottom: 10px;
   }
 `;
 export const ContactLink = styled.a`

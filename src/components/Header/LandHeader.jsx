@@ -1,41 +1,57 @@
-import { HeaderInner, Logo, MenuSpan, Burger } from './LandHeader.styled';
+import { useRef, useState, useEffect } from 'react';
+import {
+  HeaderInner,
+  Logo,
+  MenuSpan,
+  Burger,
+  NavBox,
+} from './LandHeader.styled';
 import { Navigation } from './Navigation/Navigation';
 import { Contacts } from './Contacts/Contacts';
 import { Icon } from 'components/Icon/Icon';
-import { useEffect, useState } from 'react';
+import { Social } from 'components/Social/Social';
 
 export const LandHeader = () => {
-  const [screenWidth, setScreenWidth] = useState(null);
   const [showBurger, setShowBurger] = useState(false);
-  const screenResize = () => {
-    setScreenWidth(window.innerWidth);
-  };
+  const headerRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
 
   useEffect(() => {
-    screenResize();
-    window.addEventListener('resize', screenResize);
+    const refHeader = headerRef.current;
+    const resizeObserver = new ResizeObserver(entries => {
+      for (let entry of entries) {
+        if (entry.target === refHeader) {
+          setHeaderHeight(entry.contentRect.height);
+        }
+      }
+    });
+
+    if (refHeader) {
+      resizeObserver.observe(refHeader);
+    }
+
     return () => {
-      window.removeEventListener('resize', screenResize);
+      if (refHeader) {
+        resizeObserver.unobserve(refHeader);
+      }
     };
   }, []);
 
   return (
-    <HeaderInner>
+    <HeaderInner ref={headerRef}>
       <Logo>
         <Icon name={'icon-logo'} viewBox="0 0 82 32" />
       </Logo>
 
-      {screenWidth <= 1000 ? (
-        <Burger onClick={() => setShowBurger(!showBurger)}>
-          <MenuSpan show={showBurger}></MenuSpan>
-        </Burger>
-      ) : (
-        <>
-          <Navigation />
+      <Burger onClick={() => setShowBurger(!showBurger)}>
+        <MenuSpan show={showBurger}></MenuSpan>
+      </Burger>
 
-          <Contacts />
-        </>
-      )}
+      <NavBox headerHeight={headerHeight} show={showBurger}>
+        <Navigation />
+        <Contacts />
+        <Social />
+      </NavBox>
     </HeaderInner>
   );
 };

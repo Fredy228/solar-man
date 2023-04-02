@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
 export const HeaderInner = styled.div`
-  height: 70px;
+  height: 80px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   position: relative;
+  @media screen and (max-width: 1000px) {
+    justify-content: space-between;
+    height: 70px;
+  }
+  @media screen and (max-width: 768px) {
+    justify-content: space-between;
+    height: 60px;
+  }
 `;
 export const Logo = styled.div`
   svg {
@@ -20,6 +27,9 @@ export const Burger = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  @media screen and (min-width: 1000px) {
+    display: none;
+  }
 `;
 export const MenuSpan = styled.span`
   width: 20px;
@@ -53,5 +63,27 @@ export const MenuSpan = styled.span`
     left: 0;
     bottom: 7px;
     opacity: ${p => (p.show ? '0' : '1')};
+  }
+`;
+
+export const NavBox = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  height: 100%;
+  transition: transform 350ms ease;
+
+  @media screen and (max-width: 1000px) {
+    position: fixed;
+    width: 100%;
+    height: calc(100% - ${p => p.headerHeight}px - 10px);
+    bottom: 0;
+    left: 0;
+    background-color: ${({ theme: { color } }) => color.menuBg};
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transform: translateX(${p => (p.show ? '0' : '120%')});
+    opacity: ${p => (p.show ? '1' : '0')};
   }
 `;

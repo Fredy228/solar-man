@@ -1,31 +1,60 @@
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
   color: ${({ theme: { color } }) => color.white};
+
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    flex: none;
+  }
 `;
 
 export const NavList = styled.ul`
   display: flex;
   background-color: ${({ theme: { color } }) => color.main};
   border-radius: 50px;
-  padding: 5px 5px;
+  padding: 5px;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 30px;
+    padding: 20px 5px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin: 15px;
+  }
 `;
 
 export const NavItem = styled.li`
   border-radius: 50px;
   transition: background-color 300ms linear;
   cursor: pointer;
-
-  :not(:last-child) {
-    margin-right: 15px;
-  }
+  padding: 7px 12px;
 
   :hover {
     background-color: ${({ theme: { color } }) => color.second};
   }
 
+  @media screen and (max-width: 1000px) {
+    :not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+
   @media screen and (min-width: 1000px) {
     padding: 10px;
+    :not(:last-child) {
+      margin-right: 15px;
+    }
   }
 
   @media screen and (min-width: 1200px) {
@@ -35,4 +64,7 @@ export const NavItem = styled.li`
 
 export const NavText = styled.p`
   font-size: 16px;
+  @media screen and (max-width: 1000px) {
+    font-size: 18px;
+  }
 `;
