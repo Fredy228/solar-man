@@ -74,15 +74,11 @@ export const OverlayIntro = styled.div`
 `;
 
 export const NameCardIntro = styled.div`
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  transform: translate(-50%, 0);
   display: flex;
-  width: 200px;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding: 15px 5px;
 
   svg {
     width: 25px;
@@ -90,14 +86,20 @@ export const NameCardIntro = styled.div`
     fill: ${({ theme: { color } }) => color.white};
     margin-bottom: 10px;
   }
+  @media screen and (max-width: 1000px) {
+    flex-direction: row;
+    justify-content: center;
+    text-align: start;
+  }
 `;
 
 export const TextOverlay = styled.p`
   color: ${({ theme: { color } }) => color.white};
-  max-width: 200px;
+  max-width: 180px;
   font-size: 18px;
   font-weight: bold;
   @media screen and (max-width: 1000px) {
     font-size: 16px;
+    padding-left: 5px;
   }
 `;
