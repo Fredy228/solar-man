@@ -24,14 +24,10 @@ export const Landing = () => {
   const enterCurrentCard = e => {
     const currentCard = e.currentTarget;
     currentCard.style.flex = '2';
-    // currentCard.style.height = 'auto';
-    // currentCard.style.width = '100%';
   };
   const leaveCurrentCard = e => {
     const currentCard = e.currentTarget;
     currentCard.style.flex = '1';
-    //     currentCard.style.height = '100%';
-    //     currentCard.style.width = 'auto';
   };
 
   return (

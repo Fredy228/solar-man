@@ -12,7 +12,18 @@ export const Intro = styled.section`
 
 export const CardsIntro = styled.div`
   display: flex;
-  height: 400px;
+  height: 420px;
+
+  @media screen and (max-width: 1000px) {
+    height: 335px;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    max-width: 430px;
+    margin: 0 auto;
+    height: 430px;
+  }
 `;
 
 export const CardIntro = styled.div`
@@ -24,14 +35,21 @@ export const CardIntro = styled.div`
   transition: flex 350ms ease;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+  }
 `;
 
 export const IntroImg = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
+
+  @media screen and (max-width: 768px) {
+    height: auto;
+  }
 `;
 
 export const OverlayIntro = styled.div`
@@ -40,16 +58,28 @@ export const OverlayIntro = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   background-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 1),
     rgba(0, 0, 0, 0) 40%
   );
-  padding: 15px;
+  @media screen and (max-width: 768px) {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0) 60%
+    );
+  }
 `;
 
 export const NameCardIntro = styled.div`
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translate(-50%, 0);
   display: flex;
+  width: 200px;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -65,4 +95,9 @@ export const NameCardIntro = styled.div`
 export const TextOverlay = styled.p`
   color: ${({ theme: { color } }) => color.white};
   max-width: 200px;
+  font-size: 18px;
+  font-weight: bold;
+  @media screen and (max-width: 1000px) {
+    font-size: 16px;
+  }
 `;
