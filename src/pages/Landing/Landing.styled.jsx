@@ -35,10 +35,10 @@ export const CardIntro = styled.div`
   transition: flex 350ms ease;
   display: flex;
   justify-content: center;
-  align-items: center;
   cursor: pointer;
 
   @media screen and (max-width: 768px) {
+    align-items: center;
   }
 `;
 
