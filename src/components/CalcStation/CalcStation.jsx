@@ -9,11 +9,12 @@ import {
   ItemResult,
   TextResult,
   ButtonGetCall,
-  SliderTriggerImg,
+  // SliderTriggerImg,
   OutputSlider,
   Sun,
 } from './CalcStation.styled';
 import { Icon } from 'components/Icon/Icon';
+// import ico from '../../img/ico.svg';
 import { Range, getTrackBackground } from 'react-range';
 import { useState } from 'react';
 
@@ -77,14 +78,17 @@ export const CalcStaion = () => {
                 height: '42px',
                 width: '42px',
                 borderRadius: '42px',
-                backgroundColor: '#FFF',
+                backgroundColor: '#FC7300',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 outline: 'none',
               }}
             >
-              <SliderTriggerImg name="icon-light-flash" />
+              <Icon
+                name="icon-light-flash"
+                style={{ width: '42px', height: '42px' }}
+              />
             </div>
           )}
         />
