@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import { Icon } from 'components/Icon/Icon';
 
 export const StationInner = styled.div`
   padding: 50px 0;
@@ -47,11 +46,6 @@ export const SliderBox = styled.div`
   justify-content: 'center';
   flex-wrap: 'wrap';
 `;
-
-// export const SliderTriggerImg = styled(Icon)`
-//   width: 42px;
-//   height: 42px;
-// `;
 
 export const OutputSlider = styled.output`
   margin-top: 30px;

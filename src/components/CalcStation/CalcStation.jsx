@@ -9,7 +9,6 @@ import {
   ItemResult,
   TextResult,
   ButtonGetCall,
-  // SliderTriggerImg,
   OutputSlider,
   Sun,
 } from './CalcStation.styled';
