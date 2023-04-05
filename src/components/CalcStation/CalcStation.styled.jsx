@@ -3,6 +3,7 @@ import { Icon } from 'components/Icon/Icon';
 
 export const StationInner = styled.div`
   padding: 50px 0;
+  position: relative;
 `;
 
 export const SectionTitle = styled.h2`
@@ -21,6 +22,10 @@ export const SectionTitle = styled.h2`
     height: 3px;
     background-color: ${({ theme: { color } }) => color.second};
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 export const TitleSpan = styled.span`
@@ -30,6 +35,9 @@ export const TitleSpan = styled.span`
 export const SetctionText = styled.p`
   text-align: center;
   font-size: 18px;
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 export const SliderBox = styled.div`
@@ -46,7 +54,8 @@ export const SliderTriggerImg = styled(Icon)`
 `;
 
 export const OutputSlider = styled.output`
-  margin-top: '30px';
+  margin-top: 30px;
+  font-weight: bold;
 `;
 
 export const StationImg = styled.img`
@@ -66,6 +75,12 @@ export const ListResult = styled.ul`
   margin: 20px auto;
   max-width: 500px;
   justify-content: space-between;
+
+  @media screen and (max-width: 510px) {
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 10px 30px;
+  }
 `;
 
 export const ItemResult = styled.li`
@@ -73,6 +88,12 @@ export const ItemResult = styled.li`
   background-color: ${({ theme: { color } }) => color.second};
   border-radius: 50px;
   text-align: center;
+
+  @media screen and (max-width: 510px) {
+    :not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
 `;
 
 export const TextResult = styled.p`
@@ -103,6 +124,59 @@ export const ButtonGetCall = styled.button`
   :hover {
     background-color: ${({ theme: { color } }) => color.second};
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
-export const Sun = styled.span``;
+export const Sun = styled.span`
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #fc710064;
+  top: 50px;
+  left: 10px;
+
+  @media screen and (max-width: 1000px) {
+    width: 100px;
+    height: 100px;
+    left: -50px;
+  }
+
+  @media screen and (max-width: 510px) {
+    display: none;
+  }
+
+  :before,
+  :after {
+    content: '';
+    background-color: #fc710064;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  :before {
+    width: 150px;
+    height: 150px;
+
+    @media screen and (max-width: 1000px) {
+      width: 130px;
+      height: 130px;
+    }
+  }
+
+  :after {
+    width: 70px;
+    height: 70px;
+
+    @media screen and (max-width: 1000px) {
+      width: 50px;
+      height: 50px;
+    }
+  }
+`;

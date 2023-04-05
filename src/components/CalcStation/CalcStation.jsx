@@ -30,6 +30,7 @@ export const CalcStaion = () => {
         <br /> прибутковості станції
       </SectionTitle>
       <SetctionText>Оберіть потрібну потужність</SetctionText>
+      <Sun></Sun>
       <SliderBox>
         <Range
           values={value}
@@ -43,7 +44,7 @@ export const CalcStaion = () => {
               onTouchStart={props.onTouchStart}
               style={{
                 ...props.style,
-                height: '36px',
+                height: '42px',
                 display: 'flex',
                 width: '100%',
               }}
@@ -87,7 +88,7 @@ export const CalcStaion = () => {
             </div>
           )}
         />
-        <OutputSlider id="output">{`${value[0].toFixed(1)} кВт`}</OutputSlider>
+        <OutputSlider id="output">{`${value[0]} кВт`}</OutputSlider>
       </SliderBox>
       <picture>
         <source type="image/webp" srcSet={stationImgWebp} />
