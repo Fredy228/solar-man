@@ -14,7 +14,6 @@ import {
   Sun,
 } from './CalcStation.styled';
 import { Icon } from 'components/Icon/Icon';
-// import ico from '../../img/ico.svg';
 import { Range, getTrackBackground } from 'react-range';
 import { useState } from 'react';
 
@@ -78,17 +77,14 @@ export const CalcStaion = () => {
                 height: '42px',
                 width: '42px',
                 borderRadius: '42px',
-                backgroundColor: '#FC7300',
+                backgroundColor: '#fff',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 outline: 'none',
               }}
             >
-              <Icon
-                name="icon-light-flash"
-                style={{ width: '42px', height: '42px' }}
-              />
+              <Icon name="icon-light-flash" width={'42px'} height={'42px'} />
             </div>
           )}
         />
