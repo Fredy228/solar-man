@@ -18,11 +18,12 @@ export const LandHeader = ({ fnHeigth }) => {
 
   const showMenu = () => {
     setShowBurger(!showBurger);
-    if (!showBurger) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.classList.toggle('no-scroll');
+    // if (!showBurger) {
+    //   document.body.style.overflow = 'hidden';
+    // } else {
+    //   document.body.style.overflow = '';
+    // }
   };
 
   useEffect(() => {

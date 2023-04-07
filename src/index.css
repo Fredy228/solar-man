@@ -123,6 +123,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body.no-scroll {
+  overflow: hidden; /* запретить скролл */
+  position: fixed; /* зафиксировать позицию */
+  width: 100%; /* задать ширину */
+  height: 100%;
+  bottom: 0;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
