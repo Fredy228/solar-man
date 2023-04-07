@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/solar-man/static/css/main.e302ad5c.css",
+    "main.css": "/solar-man/static/css/main.8470c8d2.css",
     "main.js": "/solar-man/static/js/main.d6d6e36f.js",
     "static/media/home.jpg": "/solar-man/static/media/home.e0ca6af958aa66782b90.jpg",
     "static/media/company.jpg": "/solar-man/static/media/company.6a869d1a2bc1f3a0894a.jpg",
@@ -42,11 +42,11 @@
     "static/media/montserrat-v25-cyrillic_latin-500.woff2": "/solar-man/static/media/montserrat-v25-cyrillic_latin-500.6bba3d8aaab8fe428846.woff2",
     "static/media/montserrat-v25-cyrillic_latin-regular.woff2": "/solar-man/static/media/montserrat-v25-cyrillic_latin-regular.62c0f043622de8dcd791.woff2",
     "index.html": "/solar-man/index.html",
-    "main.e302ad5c.css.map": "/solar-man/static/css/main.e302ad5c.css.map",
+    "main.8470c8d2.css.map": "/solar-man/static/css/main.8470c8d2.css.map",
     "main.d6d6e36f.js.map": "/solar-man/static/js/main.d6d6e36f.js.map"
   },
   "entrypoints": [
-    "static/css/main.e302ad5c.css",
+    "static/css/main.8470c8d2.css",
     "static/js/main.d6d6e36f.js"
   ]
 }
