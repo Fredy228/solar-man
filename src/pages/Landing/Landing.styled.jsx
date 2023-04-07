@@ -2,9 +2,17 @@ import styled from 'styled-components';
 
 export const Header = styled.header`
   padding: 5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: ${({ theme: { color } }) => color.white};
+  width: 100%;
 `;
 
-export const Main = styled.main``;
+export const Main = styled.main`
+  margin-top: ${p => p.heightHeader + 10}px;
+`;
 
 export const Intro = styled.section`
   width: 100%;

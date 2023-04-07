@@ -4,17 +4,23 @@ import { LandHeader } from 'components/Header/LandHeader';
 import { Intro } from 'components/Intro/Intro';
 import { Container, Frontier } from 'pages/Common.styled';
 import { Header, Main } from './Landing.styled';
+import { useState } from 'react';
 
 export const Landing = () => {
+  const [heightHeader, setHeightHeader] = useState(0);
+
+  const getHeightHeader = height => {
+    setHeightHeader(height);
+  };
   return (
     <>
       <Header>
         <Container>
-          <LandHeader />
+          <LandHeader fnHeigth={getHeightHeader} />
         </Container>
       </Header>
 
-      <Main>
+      <Main heightHeader={heightHeader}>
         {/* Into */}
         <Frontier>
           <Intro />
