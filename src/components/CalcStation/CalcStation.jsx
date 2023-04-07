@@ -14,13 +14,28 @@ import {
 } from './CalcStation.styled';
 import { Icon } from 'components/Icon/Icon';
 import { Range, getTrackBackground } from 'react-range';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import stationImgPng from '../../img/calcStation/solar-panels.png';
 import stationImgWebp from '../../img/calcStation/solar-panels.webp';
 
 export const CalcStaion = () => {
-  const [value, setValue] = useState([5]);
+  const [valueRange, setValueRange] = useState([10]);
+
+  const [profit, setProfit] = useState(0);
+  const [income, setIncome] = useState(0);
+  const [payback, setPayback] = useState(0);
+  const [stationCost, setStationCost] = useState(0);
+
+  useEffect(() => {
+    const incomeStaion = valueRange[0] * 212.5;
+    const costStation = valueRange[0] * 760;
+
+    setPayback(costStation / incomeStaion);
+    setIncome(incomeStaion);
+    setStationCost(costStation);
+    setProfit((incomeStaion / costStation) * 100);
+  }, [valueRange]);
 
   return (
     <StationInner>
@@ -32,11 +47,11 @@ export const CalcStaion = () => {
       <Sun></Sun>
       <SliderBox>
         <Range
-          values={value}
+          values={valueRange}
           step={1}
-          min={1}
+          min={5}
           max={30}
-          onChange={values => setValue(values)}
+          onChange={values => setValueRange(values)}
           renderTrack={({ props, children }) => (
             <div
               onMouseDown={props.onMouseDown}
@@ -56,9 +71,9 @@ export const CalcStaion = () => {
                   borderRadius: '10px',
                   border: '2px solid #00425A',
                   background: getTrackBackground({
-                    values: value,
+                    values: valueRange,
                     colors: ['#FC7300', 'transparent'],
-                    min: 1,
+                    min: 5,
                     max: 30,
                   }),
                   alignSelf: 'center',
@@ -87,7 +102,7 @@ export const CalcStaion = () => {
             </div>
           )}
         />
-        <OutputSlider id="output">{`${value[0]} кВт`}</OutputSlider>
+        <OutputSlider id="output">{`${valueRange[0]} кВт`}</OutputSlider>
       </SliderBox>
       <picture>
         <source type="image/webp" srcSet={stationImgWebp} />
@@ -97,20 +112,26 @@ export const CalcStaion = () => {
       <ListResult>
         <ItemResult>
           <TextResult>
-            Річний дохід
-            <br /> <b>2778$</b>
-          </TextResult>
-        </ItemResult>
-        <ItemResult>
-          <TextResult>
-            Окупність
-            <br /> <b>2.46</b>
+            Вартість станції
+            <br /> <b>{stationCost}$</b>
           </TextResult>
         </ItemResult>
         <ItemResult>
           <TextResult>
             Прибудковість
-            <br /> <b>56.7%</b>
+            <br /> <b>{profit.toFixed(2)}%</b>
+          </TextResult>
+        </ItemResult>
+        <ItemResult>
+          <TextResult>
+            Річний дохід
+            <br /> <b>{income}$</b>
+          </TextResult>
+        </ItemResult>
+        <ItemResult>
+          <TextResult>
+            Окупність
+            <br /> <b>{payback.toFixed(2)}p</b>
           </TextResult>
         </ItemResult>
       </ListResult>

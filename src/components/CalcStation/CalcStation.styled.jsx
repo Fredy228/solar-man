@@ -56,6 +56,7 @@ export const StationImg = styled.img`
   margin: 0 auto;
   height: auto;
   width: 100%;
+
   @media screen and (min-width: 1200px) {
     width: 1000px;
   }
@@ -67,13 +68,16 @@ export const ListResult = styled.ul`
   padding: 5px;
   border-radius: 50px;
   margin: 20px auto;
-  max-width: 500px;
+  max-width: 700px;
   justify-content: space-between;
 
-  @media screen and (max-width: 510px) {
-    flex-direction: column;
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
     border-radius: 20px;
-    padding: 10px 30px;
+    justify-content: center;
+    max-width: 500px;
+    padding: 10px 30px 0 30px;
+    gap: 10px;
   }
 `;
 
@@ -83,10 +87,9 @@ export const ItemResult = styled.li`
   border-radius: 50px;
   text-align: center;
 
-  @media screen and (max-width: 510px) {
-    :not(:last-child) {
-      margin-bottom: 10px;
-    }
+  @media screen and (max-width: 768px) {
+    min-width: 180px;
+    margin-bottom: 10px;
   }
 `;
 
