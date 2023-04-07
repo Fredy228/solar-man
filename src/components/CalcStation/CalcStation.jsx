@@ -28,7 +28,8 @@ export const CalcStaion = () => {
   const [stationCost, setStationCost] = useState(0);
 
   useEffect(() => {
-    const incomeStaion = valueRange[0] * 212.5;
+    const k = 1 + ((1.4 - 1) * (valueRange[0] - 5)) / (30 - 5);
+    const incomeStaion = valueRange[0] * k * 1000 * 0.17;
     const costStation = valueRange[0] * 760;
 
     setPayback(costStation / incomeStaion);
@@ -125,7 +126,7 @@ export const CalcStaion = () => {
         <ItemResult>
           <TextResult>
             Річний дохід
-            <br /> <b>{income}$</b>
+            <br /> <b>{income.toFixed(2)}$</b>
           </TextResult>
         </ItemResult>
         <ItemResult>
