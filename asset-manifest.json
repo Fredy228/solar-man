@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/solar-man/static/css/main.8470c8d2.css",
-    "main.js": "/solar-man/static/js/main.299eb92c.js",
+    "main.css": "/solar-man/static/css/main.52e679ed.css",
+    "main.js": "/solar-man/static/js/main.6c571d39.js",
     "static/media/home.jpg": "/solar-man/static/media/home.e0ca6af958aa66782b90.jpg",
     "static/media/company.jpg": "/solar-man/static/media/company.6a869d1a2bc1f3a0894a.jpg",
     "static/media/home.webp": "/solar-man/static/media/home.8811f5128684d8a4a2e9.webp",
@@ -16,6 +16,7 @@
     "static/media/montserrat-v25-cyrillic_latin-700.svg": "/solar-man/static/media/montserrat-v25-cyrillic_latin-700.2305b86407b28348a63d.svg",
     "static/media/montserrat-v25-cyrillic_latin-500.svg": "/solar-man/static/media/montserrat-v25-cyrillic_latin-500.5d6f0e09e83ecf8f5f85.svg",
     "static/media/montserrat-v25-cyrillic_latin-regular.svg": "/solar-man/static/media/montserrat-v25-cyrillic_latin-regular.fb712f9dbd935ed0cd7c.svg",
+    "static/media/solution-2.jpg": "/solar-man/static/media/solution-2.609d2e19530e6c239da6.jpg",
     "static/media/montserrat-v25-cyrillic_latin-500italic.ttf": "/solar-man/static/media/montserrat-v25-cyrillic_latin-500italic.82d3148ba4f5ad4f5205.ttf",
     "static/media/montserrat-v25-cyrillic_latin-700italic.ttf": "/solar-man/static/media/montserrat-v25-cyrillic_latin-700italic.8fcf310aaf656dd0d135.ttf",
     "static/media/montserrat-v25-cyrillic_latin-italic.ttf": "/solar-man/static/media/montserrat-v25-cyrillic_latin-italic.4113faa1d21c7eed7880.ttf",
@@ -34,19 +35,20 @@
     "static/media/montserrat-v25-cyrillic_latin-700.eot": "/solar-man/static/media/montserrat-v25-cyrillic_latin-700.8dfb70dc472feab899dc.eot",
     "static/media/montserrat-v25-cyrillic_latin-500.eot": "/solar-man/static/media/montserrat-v25-cyrillic_latin-500.83fd96562b3bc8405cf6.eot",
     "static/media/montserrat-v25-cyrillic_latin-regular.eot": "/solar-man/static/media/montserrat-v25-cyrillic_latin-regular.d05e9cce802e881f4352.eot",
-    "static/media/ico.svg": "/solar-man/static/media/ico.e7bb67ecdc916276c131ba90e682c644.svg",
+    "static/media/ico.svg": "/solar-man/static/media/ico.d15cbc236d7cf0429565c045b1016fc5.svg",
     "static/media/montserrat-v25-cyrillic_latin-700italic.woff2": "/solar-man/static/media/montserrat-v25-cyrillic_latin-700italic.13ff4dc9050130c336a0.woff2",
     "static/media/montserrat-v25-cyrillic_latin-500italic.woff2": "/solar-man/static/media/montserrat-v25-cyrillic_latin-500italic.d5bcb04b3a796dee9a6a.woff2",
     "static/media/montserrat-v25-cyrillic_latin-italic.woff2": "/solar-man/static/media/montserrat-v25-cyrillic_latin-italic.38fe8b3b51e7b9cb5cef.woff2",
     "static/media/montserrat-v25-cyrillic_latin-700.woff2": "/solar-man/static/media/montserrat-v25-cyrillic_latin-700.31b571dccdbaed783d32.woff2",
     "static/media/montserrat-v25-cyrillic_latin-500.woff2": "/solar-man/static/media/montserrat-v25-cyrillic_latin-500.6bba3d8aaab8fe428846.woff2",
     "static/media/montserrat-v25-cyrillic_latin-regular.woff2": "/solar-man/static/media/montserrat-v25-cyrillic_latin-regular.62c0f043622de8dcd791.woff2",
+    "static/media/solution-1.webp": "/solar-man/static/media/solution-1.f3d731d11a1e24d44fc7.webp",
     "index.html": "/solar-man/index.html",
-    "main.8470c8d2.css.map": "/solar-man/static/css/main.8470c8d2.css.map",
-    "main.299eb92c.js.map": "/solar-man/static/js/main.299eb92c.js.map"
+    "main.52e679ed.css.map": "/solar-man/static/css/main.52e679ed.css.map",
+    "main.6c571d39.js.map": "/solar-man/static/js/main.6c571d39.js.map"
   },
   "entrypoints": [
-    "static/css/main.8470c8d2.css",
-    "static/js/main.299eb92c.js"
+    "static/css/main.52e679ed.css",
+    "static/js/main.6c571d39.js"
   ]
 }
