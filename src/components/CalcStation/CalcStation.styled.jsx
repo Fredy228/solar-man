@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const StationInner = styled.div`
   padding: 50px 0;
   position: relative;
+
+  @media screen and (max-width: 1000px) {
+    padding: 25px 0;
+  }
 `;
 
 export const SectionTitle = styled.h2`

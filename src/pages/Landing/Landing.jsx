@@ -1,9 +1,11 @@
+import { useState, useEffect } from 'react';
+
 import { CalcStaion } from 'components/CalcStation/CalcStation';
 import { LandHeader } from 'components/Header/LandHeader';
 import { Intro } from 'components/Intro/Intro';
 import { Container, Frontier } from 'pages/Common.styled';
 import { Header, Main } from './Landing.styled';
-import { useState, useEffect } from 'react';
+import { Solution } from 'components/Solution/Solution';
 
 export const Landing = () => {
   const [heightHeader, setHeightHeader] = useState(0);
@@ -34,7 +36,6 @@ export const Landing = () => {
       </Header>
 
       <Main heightHeader={heightHeader}>
-        {/* Into */}
         <Frontier>
           <Intro />
         </Frontier>
@@ -42,6 +43,12 @@ export const Landing = () => {
         <Container>
           <CalcStaion />
         </Container>
+
+        <Frontier color={'main'}>
+          <Container>
+            <Solution />
+          </Container>
+        </Frontier>
       </Main>
     </>
   );

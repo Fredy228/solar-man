@@ -4,9 +4,9 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 0 20px;
 
-  @media screen and (min-width: 320px) {
+  /* @media screen and (min-width: 320px) {
     min-width: 320px;
-  }
+  } */
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
@@ -24,4 +24,14 @@ export const Container = styled.div`
 export const Frontier = styled.div`
   margin: 0 auto;
   max-width: 1250px;
+  background-color: ${({ color, theme }) => {
+    switch (color) {
+      case 'main':
+        return theme.color.main;
+      case 'second':
+        return theme.color.second;
+      default:
+        return theme.color.white;
+    }
+  }};
 `;
