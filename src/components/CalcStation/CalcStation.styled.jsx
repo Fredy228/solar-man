@@ -123,7 +123,7 @@ export const ButtonGetCall = styled.button`
   }
 
   :hover {
-    background-color: ${({ theme: { color } }) => color.second};
+    background-color: ${({ theme: { color } }) => color.main};
   }
 
   @media screen and (max-width: 768px) {

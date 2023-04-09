@@ -115,10 +115,16 @@ export const Title = styled.p`
 `;
 
 export const BuyBtn = styled.button`
-  padding: 5px 20px;
+  padding: 7px 25px;
   font-size: 18px;
   background-color: ${({ theme }) => theme.color.second};
   color: ${({ theme }) => theme.color.white};
   border-radius: 50px;
   margin-bottom: 20px;
+  cursor: pointer;
+  transition: background-color 350ms ease;
+
+  :hover {
+    background-color: ${({ theme }) => theme.color.additional};
+  }
 `;
