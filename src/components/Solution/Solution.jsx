@@ -59,7 +59,7 @@ export const Solution = () => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_1} />
               <source type="image/jpg" srcSet={imgJpg_1} />
-              <Img src={imgJpg_1} loading="lazy" />
+              <Img src={imgJpg_1} loading="lazy" width="500" height="500" />
             </picture>
             <Title>
               Акумуляторна система живлення Victron Energy Quattro 5 кВА
@@ -72,7 +72,7 @@ export const Solution = () => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_1} />
               <source type="image/jpg" srcSet={imgJpg_1} />
-              <Img src={imgJpg_1} loading="lazy" />
+              <Img src={imgJpg_1} loading="lazy" width="500" height="500" />
             </picture>
             <Title>
               Акумуляторна система живлення Victron Energy Quattro 5 кВА
@@ -85,7 +85,7 @@ export const Solution = () => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_1} />
               <source type="image/jpg" srcSet={imgJpg_1} />
-              <Img src={imgJpg_1} loading="lazy" />
+              <Img src={imgJpg_1} loading="lazy" width="500" height="500" />
             </picture>
             <Title>
               Акумуляторна система живлення Victron Energy Quattro 5 кВА
@@ -98,7 +98,7 @@ export const Solution = () => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_1} />
               <source type="image/jpg" srcSet={imgJpg_1} />
-              <Img src={imgJpg_1} loading="lazy" />
+              <Img src={imgJpg_1} loading="lazy" width="500" height="500" />
             </picture>
             <Title>
               Акумуляторна система живлення Victron Energy Quattro 5 кВА
@@ -111,7 +111,7 @@ export const Solution = () => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_1} />
               <source type="image/jpg" srcSet={imgJpg_1} />
-              <Img src={imgJpg_1} loading="lazy" />
+              <Img src={imgJpg_1} loading="lazy" width="500" height="500" />
             </picture>
             <Title>
               Акумуляторна система живлення Victron Energy Quattro 5 кВА

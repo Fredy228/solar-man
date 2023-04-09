@@ -23,7 +23,7 @@ export const Container = styled.div`
 
 export const Frontier = styled.div`
   margin: 0 auto;
-  max-width: 1250px;
+  width: 100%;
   background-color: ${({ color, theme }) => {
     switch (color) {
       case 'main':
