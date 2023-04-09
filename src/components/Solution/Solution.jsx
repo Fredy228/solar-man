@@ -47,6 +47,7 @@ export const Solution = () => {
         navigation={{
           prevEl: '.swiper-button-prev',
           nextEl: '.swiper-button-next',
+          disabledClass: 'my-disabled-class',
         }}
         slidesPerView={slideView}
         spaceBetween={20}

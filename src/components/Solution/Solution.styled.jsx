@@ -21,6 +21,11 @@ export const CustomNavigation = styled.div`
     background-color: #fff;
     cursor: pointer;
   }
+  & .swiper-button-prev.my-disabled-class,
+  & .swiper-button-next.my-disabled-class {
+    opacity: 0.7;
+    cursor: initial;
+  }
 
   & .swiper-button-prev {
     margin-right: 15px;
@@ -34,6 +39,13 @@ export const CustomNavigation = styled.div`
   & .swiper-button-next:hover {
     svg {
       fill: ${({ theme }) => theme.color.additional};
+    }
+  }
+
+  & .swiper-button-prev.my-disabled-class:hover,
+  & .swiper-button-next.my-disabled-class:hover {
+    svg {
+      fill: ${({ theme }) => theme.color.second};
     }
   }
 `;
