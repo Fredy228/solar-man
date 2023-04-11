@@ -1,14 +1,26 @@
 {
   "files": {
     "main.css": "/solar-man/static/css/main.89e2bd2d.css",
-    "main.js": "/solar-man/static/js/main.57c729df.js",
+    "main.js": "/solar-man/static/js/main.128d70d1.js",
     "static/media/home.jpg": "/solar-man/static/media/home.e0ca6af958aa66782b90.jpg",
     "static/media/company.jpg": "/solar-man/static/media/company.6a869d1a2bc1f3a0894a.jpg",
     "static/media/home.webp": "/solar-man/static/media/home.8811f5128684d8a4a2e9.webp",
     "static/media/store.jpg": "/solar-man/static/media/store.eb79689472c850f37a83.jpg",
     "static/media/company.webp": "/solar-man/static/media/company.58eae9039fc30444f40f.webp",
+    "static/media/portf-3.jpg": "/solar-man/static/media/portf-3.4482643e7c5341ca4148.jpg",
+    "static/media/portf-1.jpg": "/solar-man/static/media/portf-1.4b848332e4ae0e091f25.jpg",
+    "static/media/portf-3.webp": "/solar-man/static/media/portf-3.3cae34a261023506834e.webp",
+    "static/media/portf-5.jpg": "/solar-man/static/media/portf-5.55a4b00a0b31faf4cc2f.jpg",
+    "static/media/portf-6.jpg": "/solar-man/static/media/portf-6.f575e49167d16b42c8bd.jpg",
+    "static/media/portf-2.jpg": "/solar-man/static/media/portf-2.53ff6d6c574809ebb67f.jpg",
     "static/media/store.webp": "/solar-man/static/media/store.68b9a6e8285fcb9a5736.webp",
+    "static/media/portf-4.jpg": "/solar-man/static/media/portf-4.de64cd9d1e1eb94f912b.jpg",
+    "static/media/portf-1.webp": "/solar-man/static/media/portf-1.14fd880aadcb12491c91.webp",
+    "static/media/portf-5.webp": "/solar-man/static/media/portf-5.5b8527395c617949c82b.webp",
+    "static/media/portf-6.webp": "/solar-man/static/media/portf-6.dd28cea06170462ca812.webp",
+    "static/media/portf-2.webp": "/solar-man/static/media/portf-2.1e8fe212d0ceff6b0d76.webp",
     "static/media/solar-panels.png": "/solar-man/static/media/solar-panels.cc030b4273cc9f55ec68.png",
+    "static/media/portf-4.webp": "/solar-man/static/media/portf-4.0437f81bca08470d68f8.webp",
     "static/media/solar-panels.webp": "/solar-man/static/media/solar-panels.2e35091427e7ecf4678d.webp",
     "static/media/montserrat-v25-cyrillic_latin-700italic.svg": "/solar-man/static/media/montserrat-v25-cyrillic_latin-700italic.5445bce4bb5a688d9a9a.svg",
     "static/media/montserrat-v25-cyrillic_latin-500italic.svg": "/solar-man/static/media/montserrat-v25-cyrillic_latin-500italic.3a2dc388bad4673effa8.svg",
@@ -67,10 +79,10 @@
     "static/media/team-2.webp": "/solar-man/static/media/team-2.e8f2f569bbc3380085b4.webp",
     "index.html": "/solar-man/index.html",
     "main.89e2bd2d.css.map": "/solar-man/static/css/main.89e2bd2d.css.map",
-    "main.57c729df.js.map": "/solar-man/static/js/main.57c729df.js.map"
+    "main.128d70d1.js.map": "/solar-man/static/js/main.128d70d1.js.map"
   },
   "entrypoints": [
     "static/css/main.89e2bd2d.css",
-    "static/js/main.57c729df.js"
+    "static/js/main.128d70d1.js"
   ]
 }
