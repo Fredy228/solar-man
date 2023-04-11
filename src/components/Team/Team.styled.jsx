@@ -96,8 +96,7 @@ export const TeamItemInner = styled.div`
   }
 
   :hover::after {
-    bottom: 55px;
-    width: 100px;
+    bottom: 15px;
   }
 `;
 

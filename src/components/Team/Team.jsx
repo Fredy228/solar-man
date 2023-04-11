@@ -15,6 +15,10 @@ import {
 
 import teamImg_1 from '../../img/team/team-1.jpg';
 import teamWebp_1 from '../../img/team/team-1.webp';
+import teamImg_2 from '../../img/team/team-2.jpg';
+import teamWebp_2 from '../../img/team/team-2.webp';
+import teamImg_3 from '../../img/team/team-3.jpg';
+import teamWebp_3 from '../../img/team/team-3.webp';
 
 export const Team = () => {
   return (
@@ -30,19 +34,19 @@ export const Team = () => {
         <TeamItem>
           <TeamItemInner>
             <picture>
-              <source type="image/webp" srcSet={teamWebp_1} />
-              <source type="image/jpg" srcSet={teamImg_1} />
+              <source type="image/webp" srcSet={teamWebp_2} />
+              <source type="image/jpg" srcSet={teamImg_2} />
               <TeamImg
-                src={teamImg_1}
+                src={teamImg_2}
                 loading="lazy"
                 width="270"
                 height="280"
               />
             </picture>
-            <TeamName>Павел Рогожа</TeamName>
+            <TeamName>Анатолій Віговський</TeamName>
             <TeamRole>
-              <Icon name="icon-engineer" />
-              <TeamRoleText>Інженер</TeamRoleText>
+              <Icon name="icon-manager" />
+              <TeamRoleText>Менеджер з продажу</TeamRoleText>
             </TeamRole>
           </TeamItemInner>
         </TeamItem>
@@ -68,19 +72,19 @@ export const Team = () => {
         <TeamItem>
           <TeamItemInner>
             <picture>
-              <source type="image/webp" srcSet={teamWebp_1} />
-              <source type="image/jpg" srcSet={teamImg_1} />
+              <source type="image/webp" srcSet={teamWebp_3} />
+              <source type="image/jpg" srcSet={teamImg_3} />
               <TeamImg
-                src={teamImg_1}
+                src={teamImg_3}
                 loading="lazy"
                 width="270"
                 height="280"
               />
             </picture>
-            <TeamName>Павел Рогожа</TeamName>
+            <TeamName>Малаевский Максим</TeamName>
             <TeamRole>
               <Icon name="icon-engineer" />
-              <TeamRoleText>Інженер</TeamRoleText>
+              <TeamRoleText>Головний бригадир</TeamRoleText>
             </TeamRole>
           </TeamItemInner>
         </TeamItem>
