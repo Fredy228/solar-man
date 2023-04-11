@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import {
+  Header,
   HeaderInner,
   Logo,
   MenuSpan,
@@ -10,11 +11,26 @@ import { Navigation } from './Navigation/Navigation';
 import { Contacts } from './Contacts/Contacts';
 import { Icon } from 'components/Icon/Icon';
 import { Social } from 'components/Social/Social';
+import { Container } from 'pages/Common.styled';
 
 export const LandHeader = ({ fnHeigth }) => {
   const [showBurger, setShowBurger] = useState(false);
-  const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const headerRef = useRef(null);
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const showMenu = () => {
     setShowBurger(!showBurger);
@@ -44,20 +60,24 @@ export const LandHeader = ({ fnHeigth }) => {
   }, [fnHeigth]);
 
   return (
-    <HeaderInner ref={headerRef}>
-      <Logo>
-        <Icon name={'icon-logo'} viewBox="0 0 82 32" />
-      </Logo>
+    <Header scroll={scrollPosition} show={showBurger}>
+      <Container>
+        <HeaderInner ref={headerRef}>
+          <Logo>
+            <Icon name={'icon-logo'} viewBox="0 0 82 32" />
+          </Logo>
 
-      <Burger onClick={showMenu}>
-        <MenuSpan show={showBurger}></MenuSpan>
-      </Burger>
+          <Burger onClick={showMenu}>
+            <MenuSpan show={showBurger}></MenuSpan>
+          </Burger>
 
-      <NavBox headerHeight={headerHeight} show={showBurger}>
-        <Navigation />
-        <Contacts />
-        <Social />
-      </NavBox>
-    </HeaderInner>
+          <NavBox headerHeight={headerHeight} show={showBurger}>
+            <Navigation />
+            <Contacts />
+            <Social />
+          </NavBox>
+        </HeaderInner>
+      </Container>
+    </Header>
   );
 };

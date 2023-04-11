@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StationInner = styled.div`
+export const StationInner = styled.section`
   padding: 50px 0;
   position: relative;
 
@@ -49,6 +49,9 @@ export const SliderBox = styled.div`
   display: 'flex';
   justify-content: 'center';
   flex-wrap: 'wrap';
+  @media screen and (max-width: 768px) {
+    padding: 0 25px;
+  }
 `;
 
 export const OutputSlider = styled.output`

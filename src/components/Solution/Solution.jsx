@@ -33,7 +33,7 @@ export const Solution = () => {
     if (widthScreen > 768) {
       setSlideView(3);
     }
-    if (widthScreen <= 430) {
+    if (widthScreen <= 500) {
       setSlideView(1);
     }
   }, [widthScreen]);

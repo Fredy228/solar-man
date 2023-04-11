@@ -50,7 +50,7 @@ export const CustomNavigation = styled.div`
   }
 `;
 
-export const SolutionInner = styled.div`
+export const SolutionInner = styled.section`
   padding: 50px 0;
   position: relative;
 
@@ -101,6 +101,7 @@ export const Slide = styled.div`
 
 export const Img = styled.img`
   width: 100%;
+  padding: 0 25px;
 `;
 
 export const Title = styled.p`
