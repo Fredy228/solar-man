@@ -1,4 +1,4 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/react';
 import { FreeMode, Navigation } from 'swiper';
 
 import 'swiper/css';
