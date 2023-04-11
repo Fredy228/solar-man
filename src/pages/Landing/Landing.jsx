@@ -7,6 +7,7 @@ import { Container, Frontier } from 'pages/Common.styled';
 import { Main } from './Landing.styled';
 import { Solution } from 'components/Solution/Solution';
 import { Team } from 'components/Team/Team';
+import { Portfolio } from 'components/Portfolio/Portfolio';
 
 export const Landing = () => {
   const [heightHeader, setHeightHeader] = useState(0);
@@ -36,6 +37,12 @@ export const Landing = () => {
         <Container>
           <Team />
         </Container>
+
+        <Frontier color={'main'}>
+          <Container>
+            <Portfolio />
+          </Container>
+        </Frontier>
       </Main>
     </>
   );
