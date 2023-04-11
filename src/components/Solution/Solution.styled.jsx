@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import { SwiperSlide } from 'swiper/react';
+
+export const SwiperSlideS = styled(SwiperSlide)`
+  height: auto;
+`;
 
 export const CustomNavigation = styled.div`
   display: flex;
@@ -95,8 +100,8 @@ export const Slide = styled.div`
   padding: 5px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 export const Img = styled.img`
@@ -107,20 +112,8 @@ export const Img = styled.img`
 export const Title = styled.p`
   text-align: center;
   font-size: 18px;
-  margin: 10px 0 30px 0;
+  margin: 10px 0 65px 0;
   position: relative;
-
-  :after {
-    position: absolute;
-    content: '';
-    width: 50px;
-    height: 3px;
-    border-radius: 3px;
-    background-color: ${({ theme }) => theme.color.additional};
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
 
   @media screen and (max-width: 1000px) {
     font-size: 16px;
@@ -128,6 +121,10 @@ export const Title = styled.p`
 `;
 
 export const BuyBtn = styled.button`
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 7px 25px;
   font-size: 18px;
   background-color: ${({ theme }) => theme.color.second};
@@ -136,6 +133,18 @@ export const BuyBtn = styled.button`
   margin-bottom: 20px;
   cursor: pointer;
   transition: background-color 350ms ease;
+
+  :after {
+    position: absolute;
+    content: '';
+    width: 50px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: ${({ theme }) => theme.color.additional};
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
   :hover {
     background-color: ${({ theme }) => theme.color.additional};

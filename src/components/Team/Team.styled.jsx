@@ -13,6 +13,10 @@ export const SectionTitle = styled.h2`
   font-size: 28px;
   position: relative;
   margin-bottom: 30px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 
   :after {
     content: '';
@@ -37,6 +41,10 @@ export const TitleSpan = styled.span`
 export const SetctionText = styled.p`
   text-align: center;
   font-size: 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   @media screen and (max-width: 768px) {
     font-size: 16px;
   }
@@ -104,6 +112,10 @@ export const TeamImg = styled.img`
   max-width: 270px;
   border-radius: 20px;
   margin-bottom: 15px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 `;
 
 export const TeamName = styled.p`

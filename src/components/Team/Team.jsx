@@ -64,8 +64,8 @@ export const Team = () => {
             </picture>
             <TeamName>Павел Рогожа</TeamName>
             <TeamRole>
-              <Icon name="icon-engineer" />
-              <TeamRoleText>Інженер</TeamRoleText>
+              <Icon name="icon-leader" />
+              <TeamRoleText>Управляючий</TeamRoleText>
             </TeamRole>
           </TeamItemInner>
         </TeamItem>
