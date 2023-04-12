@@ -19,7 +19,7 @@ import { useEffect, useState } from 'react';
 import stationImgPng from '../../img/calcStation/solar-panels.png';
 import stationImgWebp from '../../img/calcStation/solar-panels.webp';
 
-export const CalcStaion = () => {
+export const CalcStaion = ({ toggleModal }) => {
   const [valueRange, setValueRange] = useState([10]);
 
   const [profit, setProfit] = useState(0);
@@ -136,7 +136,7 @@ export const CalcStaion = () => {
           </TextResult>
         </ItemResult>
       </ListResult>
-      <ButtonGetCall type="button">
+      <ButtonGetCall type="button" onClick={toggleModal}>
         <Icon name="icon-energy" />
         Отримати консультацію
       </ButtonGetCall>

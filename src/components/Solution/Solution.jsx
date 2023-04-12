@@ -39,7 +39,7 @@ import { Icon } from 'components/Icon/Icon';
 import useWindowWidth from '../../services/widthScreen';
 import { useEffect, useState } from 'react';
 
-export const Solution = () => {
+export const Solution = ({ toggleModal }) => {
   const widthScreen = useWindowWidth();
   const [slideView, setSlideView] = useState(3);
 
@@ -82,7 +82,7 @@ export const Solution = () => {
             <Title>
               Акумуляторна система живлення Victron Energy Quattro 5 кВА
             </Title>
-            <BuyBtn>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -93,7 +93,7 @@ export const Solution = () => {
               <Img src={imgJpg_5} loading="lazy" width="390" height="390" />
             </picture>
             <Title>Сонячна електростанція 5 кВт</Title>
-            <BuyBtn>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -104,7 +104,7 @@ export const Solution = () => {
               <Img src={imgJpg_2} loading="lazy" width="390" height="390" />
             </picture>
             <Title>Акумуляторна система живлення Victron Energy 9 кВА</Title>
-            <BuyBtn>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -115,7 +115,7 @@ export const Solution = () => {
               <Img src={imgJpg_6} loading="lazy" width="390" height="390" />
             </picture>
             <Title>Сонячна електростанція 10 кВт</Title>
-            <BuyBtn>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -128,7 +128,7 @@ export const Solution = () => {
             <Title>
               Акумуляторна система живлення Victron Energy Quattro 15 кВА
             </Title>
-            <BuyBtn>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -139,7 +139,7 @@ export const Solution = () => {
               <Img src={imgJpg_7} loading="lazy" width="390" height="390" />
             </picture>
             <Title>Сонячна електростанція 15 кВт</Title>
-            <BuyBtn>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -152,7 +152,7 @@ export const Solution = () => {
             <Title>
               Акумуляторна система живлення Victron Energy Quattro 30 кВА
             </Title>
-            <BuyBtn>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -163,7 +163,7 @@ export const Solution = () => {
               <Img src={imgJpg_8} loading="lazy" width="390" height="390" />
             </picture>
             <Title>Сонячна електростанція 20 кВт ціна на похилу покрівлю</Title>
-            <BuyBtn>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -174,7 +174,7 @@ export const Solution = () => {
               <Img src={imgJpg_9} loading="lazy" width="390" height="390" />
             </picture>
             <Title>Сонячна електростанція 30 кВт</Title>
-            <BuyBtn>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
           </Slide>
         </SwiperSlideS>
       </Swiper>

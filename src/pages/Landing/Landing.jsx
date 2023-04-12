@@ -9,12 +9,19 @@ import { Solution } from 'components/Solution/Solution';
 import { Team } from 'components/Team/Team';
 import { Portfolio } from 'components/Portfolio/Portfolio';
 import { Footer } from 'components/Footer/Footer';
+import { Modal } from 'components/Modal/Modal';
+import { SendPhone } from 'components/SendPhone/SendPhone';
 
 export const Landing = () => {
   const [heightHeader, setHeightHeader] = useState(0);
+  const [isShowModal, setIsShowModal] = useState(false);
 
   const getHeightHeader = height => {
     setHeightHeader(height);
+  };
+
+  const toggleModal = () => {
+    setIsShowModal(prevS => !prevS);
   };
   return (
     <>
@@ -26,12 +33,12 @@ export const Landing = () => {
         </Container>
 
         <Container>
-          <CalcStaion />
+          <CalcStaion toggleModal={toggleModal} />
         </Container>
 
         <Frontier color={'main'}>
           <Container>
-            <Solution />
+            <Solution toggleModal={toggleModal} />
           </Container>
         </Frontier>
 
@@ -47,6 +54,12 @@ export const Landing = () => {
       </Main>
 
       <Footer />
+
+      {isShowModal && (
+        <Modal toggleModal={toggleModal}>
+          <SendPhone />
+        </Modal>
+      )}
     </>
   );
 };
