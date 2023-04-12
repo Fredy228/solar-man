@@ -8,6 +8,7 @@ import { Main } from './Landing.styled';
 import { Solution } from 'components/Solution/Solution';
 import { Team } from 'components/Team/Team';
 import { Portfolio } from 'components/Portfolio/Portfolio';
+import { Footer } from 'components/Footer/Footer';
 
 export const Landing = () => {
   const [heightHeader, setHeightHeader] = useState(0);
@@ -44,6 +45,8 @@ export const Landing = () => {
           </Container>
         </Frontier>
       </Main>
+
+      <Footer />
     </>
   );
 };

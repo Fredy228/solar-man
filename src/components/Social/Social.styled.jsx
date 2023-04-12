@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const SocialBox = styled.div`
-  @media screen and (min-width: 1000px) {
+  /* @media screen and (min-width: 1000px) {
     display: none;
-  }
+  } */
 `;
 
 export const SociaLink = styled.a`
@@ -12,7 +12,7 @@ export const SociaLink = styled.a`
   }
 
   svg {
-    fill: ${({ theme: { color } }) => color.main};
+    fill: ${({ color, theme }) => (color ? color : theme.color.main)};
     width: 40px;
     height: 40px;
     transition-duration: 250ms;

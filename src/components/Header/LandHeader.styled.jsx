@@ -92,6 +92,14 @@ export const NavBox = styled.div`
   height: 100%;
   transition: transform 350ms ease;
 
+  :last-child {
+    div {
+      @media screen and (min-width: 1000px) {
+        display: none;
+      }
+    }
+  }
+
   @media screen and (max-width: 1000px) {
     position: fixed;
     width: 100%;
