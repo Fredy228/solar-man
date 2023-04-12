@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/solar-man/static/css/main.89e2bd2d.css",
-    "main.js": "/solar-man/static/js/main.128d70d1.js",
+    "main.js": "/solar-man/static/js/main.e10ac3e5.js",
     "static/media/home.jpg": "/solar-man/static/media/home.e0ca6af958aa66782b90.jpg",
     "static/media/company.jpg": "/solar-man/static/media/company.6a869d1a2bc1f3a0894a.jpg",
     "static/media/home.webp": "/solar-man/static/media/home.8811f5128684d8a4a2e9.webp",
@@ -35,12 +35,12 @@
     "static/media/montserrat-v25-cyrillic_latin-regular.ttf": "/solar-man/static/media/montserrat-v25-cyrillic_latin-regular.ab3c82024829cf5289db.ttf",
     "static/media/montserrat-v25-cyrillic_latin-700.ttf": "/solar-man/static/media/montserrat-v25-cyrillic_latin-700.36a1eb44bcfe454ced37.ttf",
     "static/media/team-1.jpg": "/solar-man/static/media/team-1.9b8b440c0db67f4d1cfe.jpg",
+    "static/media/ico.svg": "/solar-man/static/media/ico.297144846f3a524a9903004386be8296.svg",
     "static/media/solution-3.jpg": "/solar-man/static/media/solution-3.950b6912272e94c3a761.jpg",
     "static/media/solution-2.jpg": "/solar-man/static/media/solution-2.487605c92b2349489659.jpg",
     "static/media/solution-4.jpg": "/solar-man/static/media/solution-4.bc3dce571143fb745fe9.jpg",
     "static/media/solution-1.jpg": "/solar-man/static/media/solution-1.cc9b08d5d44593f46037.jpg",
     "static/media/team-3.jpg": "/solar-man/static/media/team-3.fb186f4c14e0e59122b7.jpg",
-    "static/media/ico.svg": "/solar-man/static/media/ico.887d0221c10450964340e515df91d529.svg",
     "static/media/montserrat-v25-cyrillic_latin-700italic.woff": "/solar-man/static/media/montserrat-v25-cyrillic_latin-700italic.c146c245c0bfd38de5a4.woff",
     "static/media/montserrat-v25-cyrillic_latin-500italic.woff": "/solar-man/static/media/montserrat-v25-cyrillic_latin-500italic.be46a58455ac26aae1be.woff",
     "static/media/montserrat-v25-cyrillic_latin-italic.woff": "/solar-man/static/media/montserrat-v25-cyrillic_latin-italic.db65557bfe9b0e6e2feb.woff",
@@ -79,10 +79,10 @@
     "static/media/team-2.webp": "/solar-man/static/media/team-2.e8f2f569bbc3380085b4.webp",
     "index.html": "/solar-man/index.html",
     "main.89e2bd2d.css.map": "/solar-man/static/css/main.89e2bd2d.css.map",
-    "main.128d70d1.js.map": "/solar-man/static/js/main.128d70d1.js.map"
+    "main.e10ac3e5.js.map": "/solar-man/static/js/main.e10ac3e5.js.map"
   },
   "entrypoints": [
     "static/css/main.89e2bd2d.css",
-    "static/js/main.128d70d1.js"
+    "static/js/main.e10ac3e5.js"
   ]
 }
