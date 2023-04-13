@@ -22,6 +22,7 @@ export const Landing = () => {
 
   const toggleModal = () => {
     setIsShowModal(prevS => !prevS);
+    document.body.classList.toggle('no-scroll');
   };
   return (
     <>

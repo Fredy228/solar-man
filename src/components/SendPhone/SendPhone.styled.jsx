@@ -10,6 +10,11 @@ export const Inner = styled.div`
 
 export const Text = styled.p`
   font-weight: bold;
+
+  @media screen and (max-width: 500px) {
+    text-indent: 20px;
+    font-size: 14px;
+  }
 `;
 
 export const Span = styled.a`
@@ -37,15 +42,18 @@ export const Input = styled.input`
   border-radius: 50px;
   outline: none;
   width: 100%;
+  font-size: 18px;
 `;
 
 export const Button = styled.button`
-  padding: 10px 20px;
+  padding: 10px 30px;
   border-radius: 50px;
   background-color: ${({ theme }) => theme.color.additional};
   color: ${({ theme }) => theme.color.white};
   cursor: pointer;
   font-family: inherit;
+  font-size: 18px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   transition: background-color 350ms ease;
   :hover {
