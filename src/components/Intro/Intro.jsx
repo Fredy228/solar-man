@@ -16,7 +16,7 @@ import companyImgWebp from '../../img/intro/company.webp';
 import homeImgWebp from '../../img/intro/home.webp';
 import storeImgWebp from '../../img/intro/store.webp';
 
-export const Intro = () => {
+export const Intro = ({ toggleModal }) => {
   const enterCurrentCard = e => {
     const currentCard = e.currentTarget;
     currentCard.style.flex = '2';
@@ -33,11 +33,12 @@ export const Intro = () => {
         <CardIntro
           onMouseEnter={enterCurrentCard}
           onMouseLeave={leaveCurrentCard}
+          onClick={toggleModal}
         >
           <picture>
             <source type="image/webp" srcSet={companyImgWebp} />
             <source type="image/jpg" srcSet={companyImgJpg} />
-            <IntroImg src={companyImgJpg} loading="lazy"/>
+            <IntroImg src={companyImgJpg} loading="lazy" />
           </picture>
           <OverlayIntro>
             <NameCardIntro>
@@ -50,11 +51,12 @@ export const Intro = () => {
         <CardIntro
           onMouseEnter={enterCurrentCard}
           onMouseLeave={leaveCurrentCard}
+          onClick={toggleModal}
         >
           <picture>
             <source type="image/webp" srcSet={homeImgWebp} />
             <source type="image/jpg" srcSet={homeImgJpg} />
-            <IntroImg src={homeImgJpg} loading="lazy"/>
+            <IntroImg src={homeImgJpg} loading="lazy" />
           </picture>
           <OverlayIntro>
             <NameCardIntro>
@@ -67,11 +69,12 @@ export const Intro = () => {
         <CardIntro
           onMouseEnter={enterCurrentCard}
           onMouseLeave={leaveCurrentCard}
+          onClick={toggleModal}
         >
           <picture>
             <source type="image/webp" srcSet={storeImgWebp} />
             <source type="image/jpg" srcSet={storeImgJpg} />
-            <IntroImg src={storeImgJpg} loading="lazy"/>
+            <IntroImg src={storeImgJpg} loading="lazy" />
           </picture>
           <OverlayIntro>
             <NameCardIntro>

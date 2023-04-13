@@ -10,6 +10,7 @@ export const Inner = styled.div`
 
 export const Text = styled.p`
   font-weight: bold;
+  margin-bottom: 5px;
 
   @media screen and (max-width: 500px) {
     text-indent: 20px;

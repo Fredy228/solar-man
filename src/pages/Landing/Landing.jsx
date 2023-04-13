@@ -30,7 +30,7 @@ export const Landing = () => {
 
       <Main heightHeader={heightHeader}>
         <Container>
-          <Intro />
+          <Intro toggleModal={toggleModal} />
         </Container>
 
         <Container>
