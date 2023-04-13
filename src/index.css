@@ -127,6 +127,7 @@ body {
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  touch-action: initial;
 }
 
 body.no-scroll {
@@ -135,6 +136,7 @@ body.no-scroll {
   left: 0;
   width: 100%; */
   overflow: hidden;
+  touch-action: none;
 }
 
 code {
