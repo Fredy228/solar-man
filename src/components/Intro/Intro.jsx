@@ -28,7 +28,7 @@ export const Intro = ({ toggleModal }) => {
   };
 
   return (
-    <IntroBox>
+    <IntroBox id="home" data-section>
       <CardsIntro>
         <CardIntro
           onMouseEnter={enterCurrentCard}

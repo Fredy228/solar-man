@@ -25,7 +25,7 @@ import imgWebp_6 from '../../img/portfolio/portf-6.webp';
 
 export const Portfolio = () => {
   return (
-    <PortfolioInner>
+    <PortfolioInner id="projects" data-section>
       <SectionTitle>
         <TitleSpan>Наші</TitleSpan> проекти
       </SectionTitle>

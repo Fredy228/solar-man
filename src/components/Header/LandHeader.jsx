@@ -12,25 +12,13 @@ import { Contacts } from './Contacts/Contacts';
 import { Icon } from 'components/Icon/Icon';
 import { Social } from 'components/Social/Social';
 import { Container } from 'pages/Common.styled';
+import useScrollScreen from '../../services/scrollScreen';
 
 export const LandHeader = ({ fnHeigth }) => {
   const [showBurger, setShowBurger] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
-  const [scrollPosition, setScrollPosition] = useState(0);
   const headerRef = useRef(null);
-
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const scrollScreen = useScrollScreen();
 
   const showMenu = () => {
     setShowBurger(!showBurger);
@@ -60,7 +48,7 @@ export const LandHeader = ({ fnHeigth }) => {
   }, [fnHeigth]);
 
   return (
-    <Header scroll={scrollPosition} show={showBurger}>
+    <Header scroll={scrollScreen} show={showBurger}>
       <Container>
         <HeaderInner ref={headerRef}>
           <Logo>
@@ -72,7 +60,7 @@ export const LandHeader = ({ fnHeigth }) => {
           </Burger>
 
           <NavBox headerHeight={headerHeight} show={showBurger}>
-            <Navigation />
+            <Navigation setShowBurger={setShowBurger} />
             <Contacts />
             <Social />
           </NavBox>

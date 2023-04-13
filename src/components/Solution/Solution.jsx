@@ -56,7 +56,7 @@ export const Solution = ({ toggleModal }) => {
   }, [widthScreen]);
 
   return (
-    <SolutionInner>
+    <SolutionInner id="solution" data-section>
       <SectionTitle>
         <TitleSpan>Готові</TitleSpan> рішення
       </SectionTitle>

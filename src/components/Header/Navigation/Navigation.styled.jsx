@@ -38,7 +38,7 @@ export const NavItem = styled.li`
   border-radius: 50px;
   transition: background-color 300ms linear;
   cursor: pointer;
-  padding: 7px 12px;
+  background-color: ${p => (p.active ? p.theme.color.second : 'none')};
 
   :hover {
     background-color: ${({ theme: { color } }) => color.second};
@@ -51,20 +51,28 @@ export const NavItem = styled.li`
   }
 
   @media screen and (min-width: 1000px) {
-    padding: 10px;
     :not(:last-child) {
       margin-right: 15px;
     }
   }
+`;
+
+export const NavText = styled.a`
+  font-size: 16px;
+  padding: 7px 12px;
+  text-decoration: none;
+  display: inline-block;
+  color: inherit;
+
+  @media screen and (max-width: 1000px) {
+    font-size: 18px;
+  }
+
+  @media screen and (min-width: 1000px) {
+    padding: 10px;
+  }
 
   @media screen and (min-width: 1200px) {
     padding: 15px;
-  }
-`;
-
-export const NavText = styled.p`
-  font-size: 16px;
-  @media screen and (max-width: 1000px) {
-    font-size: 18px;
   }
 `;
