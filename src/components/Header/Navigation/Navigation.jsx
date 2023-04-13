@@ -36,6 +36,7 @@ export const Navigation = ({ setShowBurger }) => {
 
       setActiveIndex(currentSectionIndex);
       setShowBurger(false);
+      document.body.classList.remove('no-scroll');
     };
 
     handleScroll();
