@@ -4,19 +4,28 @@ export const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
+  width: 100%;
+  height: 100%;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
 `;
 
 export const ModalWindow = styled.div`
-  max-width: calc(100vw - 48px);
-  max-height: calc(100vh - 24px);
-  position: relative;
+  max-width: calc(100% - 40px);
+  max-height: calc(100% - 40px);
+  /* position: relative; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 40px);
+
+  @media screen and (min-width: 600px) {
+    width: 550px;
+  }
 `;
 
 export const ButtonClose = styled.div`
