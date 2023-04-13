@@ -39,7 +39,7 @@ export const Navigation = ({ setShowBurger }) => {
     };
 
     handleScroll();
-  }, [scrollScreen]);
+  }, [scrollScreen, setShowBurger]);
 
   return (
     <Nav>
