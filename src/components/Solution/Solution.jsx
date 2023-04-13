@@ -44,13 +44,13 @@ export const Solution = ({ toggleModal }) => {
   const [slideView, setSlideView] = useState(3);
 
   useEffect(() => {
-    if (widthScreen <= 768) {
-      setSlideView(2);
-    }
-    if (widthScreen > 768) {
+    if (widthScreen > 1000) {
       setSlideView(3);
     }
-    if (widthScreen <= 500) {
+    if (widthScreen <= 1000 && widthScreen > 530) {
+      setSlideView(2);
+    }
+    if (widthScreen <= 530) {
       setSlideView(1);
     }
   }, [widthScreen]);
@@ -68,7 +68,7 @@ export const Solution = ({ toggleModal }) => {
         }}
         slidesPerView={slideView}
         spaceBetween={20}
-        freeMode={true}
+        freeMode={false}
         modules={[FreeMode, Navigation]}
         className="mySwiper"
       >
