@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/solar-man/static/css/main.b6cf5755.css",
-    "main.js": "/solar-man/static/js/main.ddeb7c77.js",
+    "main.js": "/solar-man/static/js/main.0fd548dd.js",
     "static/media/home.jpg": "/solar-man/static/media/home.e0ca6af958aa66782b90.jpg",
     "static/media/company.jpg": "/solar-man/static/media/company.6a869d1a2bc1f3a0894a.jpg",
     "static/media/home.webp": "/solar-man/static/media/home.8811f5128684d8a4a2e9.webp",
@@ -79,10 +79,10 @@
     "static/media/team-2.webp": "/solar-man/static/media/team-2.e8f2f569bbc3380085b4.webp",
     "index.html": "/solar-man/index.html",
     "main.b6cf5755.css.map": "/solar-man/static/css/main.b6cf5755.css.map",
-    "main.ddeb7c77.js.map": "/solar-man/static/js/main.ddeb7c77.js.map"
+    "main.0fd548dd.js.map": "/solar-man/static/js/main.0fd548dd.js.map"
   },
   "entrypoints": [
     "static/css/main.b6cf5755.css",
-    "static/js/main.ddeb7c77.js"
+    "static/js/main.0fd548dd.js"
   ]
 }
