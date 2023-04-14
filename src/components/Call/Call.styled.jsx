@@ -27,9 +27,15 @@ export const CallBox = styled.div`
   background-color: ${({ theme }) => theme.color.additional};
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   cursor: pointer;
+  width: 55px;
+  height: 55px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 
   @media screen and (max-width: 768px) {
-    padding: 10px;
+    width: 45px;
+    height: 45px;
   }
 
   svg {
@@ -41,14 +47,14 @@ export const CallBox = styled.div`
     justify-content: center;
     align-items: center;
     animation-name: ${callAnim};
-    animation-duration: 4s;
+    animation-duration: 3.5s;
     animation-iteration-count: infinite;
     animation-timing-function: ease;
     transform: translate(-7px, -7px);
 
     @media screen and (max-width: 768px) {
-      width: 30px;
-      height: 30px;
+      width: 35px;
+      height: 35px;
     }
   }
 `;
