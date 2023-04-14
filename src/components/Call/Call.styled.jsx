@@ -23,19 +23,18 @@ export const CallBox = styled.div`
   bottom: 15px;
   right: 15px;
   border-radius: 50%;
-  padding: 15px;
   background-color: ${({ theme }) => theme.color.additional};
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   cursor: pointer;
-  width: 55px;
-  height: 55px;
+  width: 60px;
+  height: 60px;
   justify-content: center;
   align-items: center;
   display: flex;
 
   @media screen and (max-width: 768px) {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
   }
 
   svg {
@@ -53,8 +52,8 @@ export const CallBox = styled.div`
     transform: translate(-7px, -7px);
 
     @media screen and (max-width: 768px) {
-      width: 35px;
-      height: 35px;
+      width: 30px;
+      height: 30px;
     }
   }
 `;
