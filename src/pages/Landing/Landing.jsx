@@ -11,6 +11,7 @@ import { Portfolio } from 'components/Portfolio/Portfolio';
 import { Footer } from 'components/Footer/Footer';
 import { Modal } from 'components/Modal/Modal';
 import { SendPhone } from 'components/SendPhone/SendPhone';
+import { Call } from 'components/Call/Call';
 
 export const Landing = () => {
   const [heightHeader, setHeightHeader] = useState(0);
@@ -55,6 +56,8 @@ export const Landing = () => {
       </Main>
 
       <Footer />
+
+      <Call toggleModal={toggleModal} />
 
       {isShowModal && (
         <Modal toggleModal={toggleModal}>

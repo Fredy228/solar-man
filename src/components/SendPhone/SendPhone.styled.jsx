@@ -7,10 +7,6 @@ export const Inner = styled.div`
   border-radius: 20px;
   font-size: 16px;
   width: 100%;
-  /* 
-  @media screen and (min-width: 600px) {
-    width: 550px;
-  } */
 `;
 
 export const Text = styled.p`
