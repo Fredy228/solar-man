@@ -72,4 +72,10 @@ export const Button = styled.button`
   :hover {
     background-color: #fc7100d1;
   }
+
+  :disabled {
+    background-color: transparent;
+    border: 1px solid ${({ theme }) => theme.color.white};
+    cursor: no-drop;
+  }
 `;

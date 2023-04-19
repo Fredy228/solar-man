@@ -10,12 +10,26 @@ import {
   PhoneInput,
   Button,
 } from './SendPhone.styled';
+import { sendPhoneToTelegram } from 'components/API/API';
 
 export const SendPhone = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [isBtnDisab, setIsBtnDisab] = useState(false);
   const phoneRegex =
     /^(\+38)?\s?(\(0\d{2}\)|0\d{2})[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/;
+
+  const sendAPI = async () => {
+    try {
+      setIsBtnDisab(true);
+      await sendPhoneToTelegram({ name, phone });
+      setIsBtnDisab(false);
+    } catch (error) {
+      setIsBtnDisab(false);
+      console.log(error);
+      Notify.failure('Сталася помилка...');
+    }
+  };
 
   const submitForm = e => {
     e.preventDefault();
@@ -24,6 +38,7 @@ export const SendPhone = () => {
     if (!phoneRegex.test(phone)) {
       return Notify.failure('Невірний номер телефону');
     }
+    sendAPI();
   };
   return (
     <Inner>
@@ -57,7 +72,9 @@ export const SendPhone = () => {
           onAccept={value => setPhone(value)}
           required
         />
-        <Button type="submit">Надіслати</Button>
+        <Button type="submit" disabled={isBtnDisab}>
+          Надіслати
+        </Button>
       </Form>
     </Inner>
   );
