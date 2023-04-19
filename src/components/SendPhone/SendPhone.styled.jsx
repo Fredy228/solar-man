@@ -59,23 +59,21 @@ export const PhoneInput = styled(IMaskInput)`
 `;
 
 export const Button = styled.button`
-  padding: 10px 30px;
   border-radius: 50px;
   background-color: ${({ theme }) => theme.color.additional};
   color: ${({ theme }) => theme.color.white};
   cursor: pointer;
   font-family: inherit;
   font-size: 18px;
+  width: 160px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   transition: background-color 350ms ease;
   :hover {
     background-color: #fc7100d1;
-  }
-
-  :disabled {
-    background-color: transparent;
-    border: 1px solid ${({ theme }) => theme.color.white};
-    cursor: no-drop;
   }
 `;

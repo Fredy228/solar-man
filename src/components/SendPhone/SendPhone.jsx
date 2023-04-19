@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import {
   Inner,
   Text,
@@ -11,23 +12,28 @@ import {
   Button,
 } from './SendPhone.styled';
 import { sendPhoneToTelegram } from 'components/API/API';
+import { LoadSpiner } from 'components/LoadSpiner/LoadSpiner';
 
 export const SendPhone = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [isBtnDisab, setIsBtnDisab] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const phoneRegex =
     /^(\+38)?\s?(\(0\d{2}\)|0\d{2})[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/;
 
   const sendAPI = async () => {
     try {
       setIsBtnDisab(true);
+      setIsLoading(true);
       await sendPhoneToTelegram({ name, phone });
       setIsBtnDisab(false);
+      Notify.success('Дані відправлено');
     } catch (error) {
       setIsBtnDisab(false);
+      setIsLoading(false);
       console.log(error);
-      Notify.failure('Сталася помилка...');
+      Notify.failure('Упс..Сталася помилка :(');
     }
   };
 
@@ -73,7 +79,11 @@ export const SendPhone = () => {
           required
         />
         <Button type="submit" disabled={isBtnDisab}>
-          Надіслати
+          {isLoading ? (
+            <LoadSpiner borderColor={'#fff'} barColor={'#fff'} />
+          ) : (
+            'Надіслати'
+          )}
         </Button>
       </Form>
     </Inner>
