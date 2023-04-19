@@ -26,25 +26,33 @@ export const SendPhone = () => {
     try {
       setIsBtnDisab(true);
       setIsLoading(true);
+
       await sendPhoneToTelegram({ name, phone });
+
       setIsBtnDisab(false);
+      setIsLoading(false);
+      setName('');
+      setPhone('');
+
       Notify.success('Дані відправлено');
     } catch (error) {
       setIsBtnDisab(false);
       setIsLoading(false);
+
       console.log(error);
+
       Notify.failure('Упс..Сталася помилка :(');
     }
   };
 
   const submitForm = e => {
     e.preventDefault();
-    console.log(phone);
-    console.log(phoneRegex.test(phone));
+    console.log(e.currentTarget);
     if (!phoneRegex.test(phone)) {
       return Notify.failure('Невірний номер телефону');
     }
     sendAPI();
+    e.currentTarget.reset();
   };
   return (
     <Inner>
