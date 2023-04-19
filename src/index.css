@@ -95,6 +95,8 @@ p, li, ul, ol{
 
 input{
     border: none;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
 }
 
 input::placeholder {

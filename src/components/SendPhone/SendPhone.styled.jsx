@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+// import InputMask from 'react-input-mask';
+import { IMaskInput } from 'react-imask';
 
 export const Inner = styled.div`
   background-image: linear-gradient(to right, #00425a, #5f9ea0);
@@ -39,6 +41,15 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  outline: none;
+  width: 100%;
+  font-size: 18px;
+`;
+
+export const PhoneInput = styled(IMaskInput)`
   margin-bottom: 20px;
   padding: 10px 20px;
   border-radius: 50px;

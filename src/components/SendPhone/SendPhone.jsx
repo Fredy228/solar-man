@@ -1,4 +1,5 @@
-// import { useState } from 'react';
+import { useState } from 'react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   Inner,
   Text,
@@ -6,22 +7,23 @@ import {
   TextAdd,
   Form,
   Input,
+  PhoneInput,
   Button,
 } from './SendPhone.styled';
 
 export const SendPhone = () => {
-  //   const [name, setName] = useState('');
-  //   const [phone, setPhone] = useState('');
-
-  //   const handleChangePhone = e => {
-  //     const value = Number(e.target.value);
-  //     if (!value) return;
-  //     console.log(value);
-  //     setPhone(value);
-  //   };
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const phoneRegex =
+    /^(\+38)?\s?(\(0\d{2}\)|0\d{2})[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/;
 
   const submitForm = e => {
     e.preventDefault();
+    console.log(phone);
+    console.log(phoneRegex.test(phone));
+    if (!phoneRegex.test(phone)) {
+      return Notify.failure('Невірний номер телефону');
+    }
   };
   return (
     <Inner>
@@ -35,19 +37,25 @@ export const SendPhone = () => {
         <Input
           type="text"
           placeholder="Ім’я"
-          //   value={name}
+          value={name}
+          pattern="[a-zA-Zа-яА-ЯёЁґҐіІїЇєЄ'’-]+(\s[a-zA-Zа-яА-ЯёЁґҐіІїЇєЄ'’-]+)*"
           name="name"
-          //   onChange={e => {
-          //     setName(e.target.value);
-          //   }}
+          onChange={e => {
+            setName(e.target.value);
+          }}
+          required
         />
-        <Input
-          type="tel"
-          //   pattern="\+380[0-9]{9}"
-          placeholder="Номер телефону"
-          //   value={phone}
+        <PhoneInput
+          type="text"
+          mask="+{38}(000)-000-00-00"
+          definitions={{
+            '#': /[0-9]/,
+          }}
+          placeholder="+38(0XX)-XXX-XX-XX"
           name="phone"
-          //   onChange={handleChangePhone}
+          id="phone"
+          onAccept={value => setPhone(value)}
+          required
         />
         <Button type="submit">Надіслати</Button>
       </Form>
