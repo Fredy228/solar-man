@@ -95,26 +95,45 @@ export const PortfolioImg = styled.img`
 `;
 
 export const TitleOverLay = styled.h4`
-  position: relative;
+  /* position: relative; */
   text-align: center;
-  margin: 25px 0 35px 0;
+  margin-bottom: 5px;
+  /* margin: 0 0 30px 0; */
   font-size: 16px;
+`;
+
+export const SpanOverLay = styled.span`
+  width: 100%;
+  text-align: right;
+  display: block;
+  font-style: italic;
+  font-size: 16px;
+  position: relative;
+
+  @media screen and (max-width: 1200px) {
+    font-size: 14px;
+  }
 
   :after {
     content: '';
     position: absolute;
-    bottom: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: calc(100% - 50px);
     height: 3px;
     background-color: ${({ theme: { color } }) => color.second};
   }
 `;
 
-export const TextOverLay = styled.p`
+export const ListOverLay = styled.ul`
+  list-style: initial;
+  margin-left: 15px;
+  margin: 5px 0 0 15px;
+`;
+
+export const TextOverLay = styled.li`
   font-size: 16px;
-  text-indent: 20px;
   margin-bottom: 5px;
 
   @media screen and (max-width: 1200px) {

@@ -8,6 +8,8 @@ import {
   PortfolioOverLay,
   TitleOverLay,
   TextOverLay,
+  ListOverLay,
+  SpanOverLay,
 } from './Portfolio.styled';
 
 import imgJpg_1 from '../../img/portfolio/portf-1.jpg';
@@ -43,14 +45,19 @@ export const Portfolio = () => {
           </picture>
           <PortfolioOverLay>
             <TitleOverLay>
-              Сетевая солнечная станция 30 кВт в Одесской области
+              Автономна 20кВт станція в с.Затока для забезпечення роботы готелю
+              Рапана
             </TitleOverLay>
-            <TextOverLay>
-              Солнечная панель Swiss Solar - n435 Вт, 5 BB, монокристалл
-            </TextOverLay>
-            <TextOverLay>
-              Инвертор сетевой Huawei SUN2000-33 KTL - 30 кВт, 3 фазы
-            </TextOverLay>
+            <SpanOverLay>2020</SpanOverLay>
+            <ListOverLay>
+              <TextOverLay>
+                Сонячні панелі Sunport Power 455Ват - 44 шт.
+              </TextOverLay>
+              <TextOverLay>
+                Інвертори гібридні Victron Energy Quattro 48 8kVa - 3 шт.
+              </TextOverLay>
+              <TextOverLay>АКб LiFePO 4 ємністю - 60кВт</TextOverLay>
+            </ListOverLay>
           </PortfolioOverLay>
         </PortfolioItem>
         <PortfolioItem>
@@ -66,14 +73,15 @@ export const Portfolio = () => {
           </picture>
           <PortfolioOverLay>
             <TitleOverLay>
-              Сетевая солнечная станция 30 кВт в Одесской области
+              Мережева 36 кВт станція під Зелений Тариф в с. Фонтанка
             </TitleOverLay>
-            <TextOverLay>
-              Солнечная панель Swiss Solar - n435 Вт, 5 BB, монокристалл
-            </TextOverLay>
-            <TextOverLay>
-              Инвертор сетевой Huawei SUN2000-33 KTL - 30 кВт, 3 фазы
-            </TextOverLay>
+            <SpanOverLay>2018</SpanOverLay>
+            <ListOverLay>
+              <TextOverLay>Сонячні панелі ALM 450Ват - 44 шт.</TextOverLay>
+              <TextOverLay>
+                Мережевий трифазний інвертор Grrowat 30 kVt - 1 шт.
+              </TextOverLay>
+            </ListOverLay>
           </PortfolioOverLay>
         </PortfolioItem>
         <PortfolioItem>
@@ -89,14 +97,17 @@ export const Portfolio = () => {
           </picture>
           <PortfolioOverLay>
             <TitleOverLay>
-              Сетевая солнечная станция 30 кВт в Одесской области
+              Мережева 35 кВт станція під Зелений Тариф в м. Кодима
             </TitleOverLay>
-            <TextOverLay>
-              Солнечная панель Swiss Solar - n435 Вт, 5 BB, монокристалл
-            </TextOverLay>
-            <TextOverLay>
-              Инвертор сетевой Huawei SUN2000-33 KTL - 30 кВт, 3 фазы
-            </TextOverLay>
+            <SpanOverLay>2021</SpanOverLay>
+            <ListOverLay>
+              <TextOverLay>
+                Сонячні панелі Canadian Solar 480Ват - 74 шт.
+              </TextOverLay>
+              <TextOverLay>
+                Мережевий трифазний інвертор Solis S5-GC30K - 1 шт.
+              </TextOverLay>
+            </ListOverLay>
           </PortfolioOverLay>
         </PortfolioItem>
         <PortfolioItem>
@@ -112,14 +123,16 @@ export const Portfolio = () => {
           </picture>
           <PortfolioOverLay>
             <TitleOverLay>
-              Сетевая солнечная станция 30 кВт в Одесской области
+              Автономна 7 кВт станція, м. Одеса, район Черноморка 13 станція
             </TitleOverLay>
-            <TextOverLay>
-              Солнечная панель Swiss Solar - n435 Вт, 5 BB, монокристалл
-            </TextOverLay>
-            <TextOverLay>
-              Инвертор сетевой Huawei SUN2000-33 KTL - 30 кВт, 3 фазы
-            </TextOverLay>
+            <SpanOverLay>2019</SpanOverLay>
+            <ListOverLay>
+              <TextOverLay>Сонячні панелі JA Solar 450Ват - 16 шт.</TextOverLay>
+              <TextOverLay>
+                Інвертори Victron Energy Quattro 48 8kVa - 1 шт.
+              </TextOverLay>
+              <TextOverLay>АКб LiFePO4 ємністю - 10кВт</TextOverLay>
+            </ListOverLay>
           </PortfolioOverLay>
         </PortfolioItem>
         <PortfolioItem>
@@ -135,14 +148,18 @@ export const Portfolio = () => {
           </picture>
           <PortfolioOverLay>
             <TitleOverLay>
-              Сетевая солнечная станция 30 кВт в Одесской области
+              Мережева 28 кВт станція під Зелений Тариф в м. Одеса, район Царьке
+              село
             </TitleOverLay>
-            <TextOverLay>
-              Солнечная панель Swiss Solar - n435 Вт, 5 BB, монокристалл
-            </TextOverLay>
-            <TextOverLay>
-              Инвертор сетевой Huawei SUN2000-33 KTL - 30 кВт, 3 фазы
-            </TextOverLay>
+            <SpanOverLay>2022</SpanOverLay>
+            <ListOverLay>
+              <TextOverLay>
+                Сонячні панелі Canadian Solar 490Ват - 57 шт.
+              </TextOverLay>
+              <TextOverLay>
+                Мережевий трифазний інвертор SolarEdge SE 27.6кВт - 1 шт.
+              </TextOverLay>
+            </ListOverLay>
           </PortfolioOverLay>
         </PortfolioItem>
         <PortfolioItem>
@@ -158,14 +175,15 @@ export const Portfolio = () => {
           </picture>
           <PortfolioOverLay>
             <TitleOverLay>
-              Сетевая солнечная станция 30 кВт в Одесской области
+              Мережева станція 15кВт під Зелений Тариф в с. Маяки, Одеська обл.
             </TitleOverLay>
-            <TextOverLay>
-              Солнечная панель Swiss Solar - n435 Вт, 5 BB, монокристалл
-            </TextOverLay>
-            <TextOverLay>
-              Инвертор сетевой Huawei SUN2000-33 KTL - 30 кВт, 3 фазы
-            </TextOverLay>
+            <SpanOverLay>2021</SpanOverLay>
+            <ListOverLay>
+              <TextOverLay>Сонячні панелі JA Solar 490Ват - 30 шт</TextOverLay>
+              <TextOverLay>
+                Мережевий трифазний інвертор Fronius Symo 15 кВт -1 шт.
+              </TextOverLay>
+            </ListOverLay>
           </PortfolioOverLay>
         </PortfolioItem>
       </PortfolioList>
