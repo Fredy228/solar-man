@@ -45,8 +45,8 @@ export const Team = () => {
             </picture>
             <TeamName>Анатолій Віговський</TeamName>
             <TeamRole>
-              <Icon name="icon-manager" />
-              <TeamRoleText>Менеджер з продажу</TeamRoleText>
+              <Icon name="icon-brain" />
+              <TeamRoleText>Мозок</TeamRoleText>
             </TeamRole>
           </TeamItemInner>
         </TeamItem>
@@ -64,8 +64,8 @@ export const Team = () => {
             </picture>
             <TeamName>Павел Рогожа</TeamName>
             <TeamRole>
-              <Icon name="icon-leader" />
-              <TeamRoleText>Управляючий</TeamRoleText>
+              <Icon name="icon-heart" />
+              <TeamRoleText>Серце</TeamRoleText>
             </TeamRole>
           </TeamItemInner>
         </TeamItem>
@@ -83,8 +83,8 @@ export const Team = () => {
             </picture>
             <TeamName>Малаевский Максим</TeamName>
             <TeamRole>
-              <Icon name="icon-engineer" />
-              <TeamRoleText>Головний бригадир</TeamRoleText>
+              <Icon name="icon-muscles" />
+              <TeamRoleText>М'язи</TeamRoleText>
             </TeamRole>
           </TeamItemInner>
         </TeamItem>

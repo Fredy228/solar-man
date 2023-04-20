@@ -42,7 +42,8 @@ export const IntroImg = styled.img`
   object-fit: cover;
 
   @media screen and (max-width: 768px) {
-    height: auto;
+    height: 100%;
+    width: auto;
   }
 `;
 

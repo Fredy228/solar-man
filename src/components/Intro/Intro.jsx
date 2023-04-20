@@ -9,12 +9,24 @@ import {
 } from './Intro.styled';
 import { Icon } from 'components/Icon/Icon';
 
-import companyImgJpg from '../../img/intro/company.jpg';
-import homeImgJpg from '../../img/intro/home.jpg';
-import storeImgJpg from '../../img/intro/store.jpg';
-import companyImgWebp from '../../img/intro/company.webp';
-import homeImgWebp from '../../img/intro/home.webp';
-import storeImgWebp from '../../img/intro/store.webp';
+import intro1_xl_webp from '../../img/intro/intro-1_xl.webp';
+import intro1_xl_jpg from '../../img/intro/intro-1_xl.jpg';
+import intro2_xl_webp from '../../img/intro/intro-2_xl.webp';
+import intro2_xl_jpg from '../../img/intro/intro-2_xl.jpg';
+import intro3_xl_webp from '../../img/intro/intro-3_xl.webp';
+import intro3_xl_jpg from '../../img/intro/intro-3_xl.jpg';
+import intro1_md_webp from '../../img/intro/intro-1_md.webp';
+import intro1_md_jpg from '../../img/intro/intro-1_md.jpg';
+import intro2_md_webp from '../../img/intro/intro-2_md.webp';
+import intro2_md_jpg from '../../img/intro/intro-2_md.jpg';
+import intro3_md_webp from '../../img/intro/intro-3_md.webp';
+import intro3_md_jpg from '../../img/intro/intro-3_md.jpg';
+import intro1_sm_webp from '../../img/intro/intro-1_sm.webp';
+import intro1_sm_jpg from '../../img/intro/intro-1_sm.jpg';
+import intro2_sm_webp from '../../img/intro/intro-2_sm.webp';
+import intro2_sm_jpg from '../../img/intro/intro-2_sm.jpg';
+import intro3_sm_webp from '../../img/intro/intro-3_sm.webp';
+import intro3_sm_jpg from '../../img/intro/intro-3_sm.jpg';
 
 export const Intro = ({ toggleModal }) => {
   const enterCurrentCard = e => {
@@ -36,9 +48,42 @@ export const Intro = ({ toggleModal }) => {
           onClick={toggleModal}
         >
           <picture>
-            <source type="image/webp" srcSet={companyImgWebp} />
-            <source type="image/jpg" srcSet={companyImgJpg} />
-            <IntroImg src={companyImgJpg} loading="lazy" />
+            <source
+              media="(min-width: 1000px)"
+              type="image/webp"
+              srcSet={intro1_xl_webp}
+            />
+            <source
+              media="(min-width: 1000px)"
+              type="image/jpg"
+              srcSet={intro1_xl_jpg}
+            />
+            <source
+              media="(min-width: 769px)"
+              type="image/webp"
+              srcSet={intro1_md_webp}
+            />
+            <source
+              media="(min-width: 769px)"
+              type="image/jpg"
+              srcSet={intro1_md_jpg}
+            />
+            <source
+              media="(max-width: 768px)"
+              type="image/webp"
+              srcSet={intro1_sm_webp}
+            />
+            <source
+              media="(max-width: 768px)"
+              type="image/jpg"
+              srcSet={intro1_sm_jpg}
+            />
+            <IntroImg
+              src={intro1_xl_jpg}
+              loading="lazy"
+              width="620"
+              height="420"
+            />
           </picture>
           <OverlayIntro>
             <NameCardIntro>
@@ -54,9 +99,42 @@ export const Intro = ({ toggleModal }) => {
           onClick={toggleModal}
         >
           <picture>
-            <source type="image/webp" srcSet={homeImgWebp} />
-            <source type="image/jpg" srcSet={homeImgJpg} />
-            <IntroImg src={homeImgJpg} loading="lazy" />
+            <source
+              media="(min-width: 1000px)"
+              type="image/webp"
+              srcSet={intro2_xl_webp}
+            />
+            <source
+              media="(min-width: 1000px)"
+              type="image/jpg"
+              srcSet={intro2_xl_jpg}
+            />
+            <source
+              media="(min-width: 769px)"
+              type="image/webp"
+              srcSet={intro2_md_webp}
+            />
+            <source
+              media="(min-width: 769px)"
+              type="image/jpg"
+              srcSet={intro2_md_jpg}
+            />
+            <source
+              media="(max-width: 768px)"
+              type="image/webp"
+              srcSet={intro2_sm_webp}
+            />
+            <source
+              media="(max-width: 768px)"
+              type="image/jpg"
+              srcSet={intro2_sm_jpg}
+            />
+            <IntroImg
+              src={intro2_xl_jpg}
+              loading="lazy"
+              width="620"
+              height="420"
+            />
           </picture>
           <OverlayIntro>
             <NameCardIntro>
@@ -72,9 +150,42 @@ export const Intro = ({ toggleModal }) => {
           onClick={toggleModal}
         >
           <picture>
-            <source type="image/webp" srcSet={storeImgWebp} />
-            <source type="image/jpg" srcSet={storeImgJpg} />
-            <IntroImg src={storeImgJpg} loading="lazy" />
+            <source
+              media="(min-width: 1000px)"
+              type="image/webp"
+              srcSet={intro3_xl_webp}
+            />
+            <source
+              media="(min-width: 1000px)"
+              type="image/jpg"
+              srcSet={intro3_xl_jpg}
+            />
+            <source
+              media="(min-width: 769px)"
+              type="image/webp"
+              srcSet={intro3_md_webp}
+            />
+            <source
+              media="(min-width: 769px)"
+              type="image/jpg"
+              srcSet={intro3_md_jpg}
+            />
+            <source
+              media="(max-width: 768px)"
+              type="image/webp"
+              srcSet={intro3_sm_webp}
+            />
+            <source
+              media="(max-width: 768px)"
+              type="image/jpg"
+              srcSet={intro3_sm_jpg}
+            />
+            <IntroImg
+              src={intro3_xl_jpg}
+              loading="lazy"
+              width="620"
+              height="420"
+            />
           </picture>
           <OverlayIntro>
             <NameCardIntro>

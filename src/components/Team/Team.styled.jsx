@@ -131,7 +131,7 @@ export const TeamRole = styled.div`
   svg {
     width: 25px;
     height: 25px;
-    fill: ${({ theme }) => theme.color.second};
+    stroke: ${({ theme }) => theme.color.second};
     margin-right: 5px;
   }
 `;
