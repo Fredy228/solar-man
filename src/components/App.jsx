@@ -4,7 +4,9 @@ import { Landing } from 'pages/Landing/Landing';
 export const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
+      <Route path="/" element={<Landing />}>
+        <Route path="*" element={<Landing />} />
+      </Route>
     </Routes>
   );
 };
