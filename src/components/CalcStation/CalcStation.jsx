@@ -108,7 +108,13 @@ export const CalcStaion = ({ toggleModal }) => {
       <picture>
         <source type="image/webp" srcSet={stationImgWebp} />
         <source type="image/png" srcSet={stationImgPng} />
-        <StationImg src={stationImgPng} loading="lazy" />
+        <StationImg
+          src={stationImgPng}
+          loading="lazy"
+          width="896"
+          height="281"
+          alt="Сонячні панелі"
+        />
       </picture>
       <ListResult>
         <ItemResult>

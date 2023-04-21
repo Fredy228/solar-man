@@ -4,7 +4,7 @@ import { Icon } from 'components/Icon/Icon';
 export const Social = ({ color }) => {
   return (
     <SocialBox>
-      <SociaLink href="#" target="_blank" color={color}>
+      <SociaLink href="https://t.me/solarmanpro" target="_blank" color={color}>
         <Icon name={'icon-telegram'} />
       </SociaLink>
       <SociaLink

@@ -41,6 +41,7 @@ export const Team = () => {
                 loading="lazy"
                 width="270"
                 height="280"
+                alt="Анатолій Віговський"
               />
             </picture>
             <TeamName>Анатолій Віговський</TeamName>
@@ -60,6 +61,7 @@ export const Team = () => {
                 loading="lazy"
                 width="270"
                 height="280"
+                alt="Павел Рогожа"
               />
             </picture>
             <TeamName>Павел Рогожа</TeamName>
@@ -79,6 +81,7 @@ export const Team = () => {
                 loading="lazy"
                 width="270"
                 height="280"
+                alt="Малаевский Максим"
               />
             </picture>
             <TeamName>Малаевский Максим</TeamName>

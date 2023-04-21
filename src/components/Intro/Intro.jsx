@@ -83,6 +83,7 @@ export const Intro = ({ toggleModal }) => {
               loading="lazy"
               width="620"
               height="420"
+              alt="Сонячні станції для підприємств"
             />
           </picture>
           <OverlayIntro>
@@ -134,6 +135,7 @@ export const Intro = ({ toggleModal }) => {
               loading="lazy"
               width="620"
               height="420"
+              alt="Сонячні станції для дому"
             />
           </picture>
           <OverlayIntro>
@@ -185,6 +187,7 @@ export const Intro = ({ toggleModal }) => {
               loading="lazy"
               width="620"
               height="420"
+              alt="Магазин обладнання"
             />
           </picture>
           <OverlayIntro>

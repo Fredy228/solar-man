@@ -77,12 +77,18 @@ export const Solution = ({ toggleModal }) => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_1} />
               <source type="image/jpg" srcSet={imgJpg_1} />
-              <Img src={imgJpg_1} loading="lazy" width="390" height="390" />
+              <Img
+                src={imgJpg_1}
+                loading="lazy"
+                width="390"
+                height="390"
+                alt="Акумуляторна система живлення"
+              />
             </picture>
             <Title>
               Акумуляторна система живлення Victron Energy Quattro 5 кВА
             </Title>
-            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>7 830$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -90,10 +96,16 @@ export const Solution = ({ toggleModal }) => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_5} />
               <source type="image/jpg" srcSet={imgJpg_5} />
-              <Img src={imgJpg_5} loading="lazy" width="390" height="390" />
+              <Img
+                src={imgJpg_5}
+                loading="lazy"
+                width="390"
+                height="390"
+                alt="Сонячна електростанція"
+              />
             </picture>
             <Title>Сонячна електростанція 5 кВт</Title>
-            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>3 450$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -101,10 +113,16 @@ export const Solution = ({ toggleModal }) => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_2} />
               <source type="image/jpg" srcSet={imgJpg_2} />
-              <Img src={imgJpg_2} loading="lazy" width="390" height="390" />
+              <Img
+                src={imgJpg_2}
+                loading="lazy"
+                width="390"
+                height="390"
+                alt="Акумуляторна система живлення"
+              />
             </picture>
             <Title>Акумуляторна система живлення Victron Energy 9 кВА</Title>
-            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>10 990$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -112,10 +130,16 @@ export const Solution = ({ toggleModal }) => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_6} />
               <source type="image/jpg" srcSet={imgJpg_6} />
-              <Img src={imgJpg_6} loading="lazy" width="390" height="390" />
+              <Img
+                src={imgJpg_6}
+                loading="lazy"
+                width="390"
+                height="390"
+                alt="Сонячна електростанція"
+              />
             </picture>
             <Title>Сонячна електростанція 10 кВт</Title>
-            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>6 950$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -123,12 +147,18 @@ export const Solution = ({ toggleModal }) => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_3} />
               <source type="image/jpg" srcSet={imgJpg_3} />
-              <Img src={imgJpg_3} loading="lazy" width="390" height="390" />
+              <Img
+                src={imgJpg_3}
+                loading="lazy"
+                width="390"
+                height="390"
+                alt="Акумуляторна система живлення"
+              />
             </picture>
             <Title>
               Акумуляторна система живлення Victron Energy Quattro 15 кВА
             </Title>
-            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>15 325$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -136,10 +166,16 @@ export const Solution = ({ toggleModal }) => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_7} />
               <source type="image/jpg" srcSet={imgJpg_7} />
-              <Img src={imgJpg_7} loading="lazy" width="390" height="390" />
+              <Img
+                src={imgJpg_7}
+                loading="lazy"
+                width="390"
+                height="390"
+                alt="Сонячна електростанція"
+              />
             </picture>
             <Title>Сонячна електростанція 15 кВт</Title>
-            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>11 240$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -147,12 +183,18 @@ export const Solution = ({ toggleModal }) => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_4} />
               <source type="image/jpg" srcSet={imgJpg_4} />
-              <Img src={imgJpg_4} loading="lazy" width="390" height="390" />
+              <Img
+                src={imgJpg_4}
+                loading="lazy"
+                width="390"
+                height="390"
+                alt="Акумуляторна система живлення"
+              />
             </picture>
             <Title>
               Акумуляторна система живлення Victron Energy Quattro 30 кВА
             </Title>
-            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>24 548$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -160,10 +202,16 @@ export const Solution = ({ toggleModal }) => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_8} />
               <source type="image/jpg" srcSet={imgJpg_8} />
-              <Img src={imgJpg_8} loading="lazy" width="390" height="390" />
+              <Img
+                src={imgJpg_8}
+                loading="lazy"
+                width="390"
+                height="390"
+                alt="Сонячна електростанція"
+              />
             </picture>
             <Title>Сонячна електростанція 20 кВт ціна на похилу покрівлю</Title>
-            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>13 344$</BuyBtn>
           </Slide>
         </SwiperSlideS>
         <SwiperSlideS>
@@ -171,10 +219,16 @@ export const Solution = ({ toggleModal }) => {
             <picture>
               <source type="image/webp" srcSet={imgWebp_9} />
               <source type="image/jpg" srcSet={imgJpg_9} />
-              <Img src={imgJpg_9} loading="lazy" width="390" height="390" />
+              <Img
+                src={imgJpg_9}
+                loading="lazy"
+                width="390"
+                height="390"
+                alt="Сонячна електростанція"
+              />
             </picture>
             <Title>Сонячна електростанція 30 кВт</Title>
-            <BuyBtn onClick={toggleModal}>11 768$</BuyBtn>
+            <BuyBtn onClick={toggleModal}>21 775$</BuyBtn>
           </Slide>
         </SwiperSlideS>
       </Swiper>

@@ -41,6 +41,8 @@ export const Portfolio = () => {
               loading="lazy"
               width="1280"
               height="1024"
+              alt="Автономна 20кВт станція в с.Затока для забезпечення роботы готелю
+              Рапана"
             />
           </picture>
           <PortfolioOverLay>
@@ -69,6 +71,7 @@ export const Portfolio = () => {
               loading="lazy"
               width="1280"
               height="1024"
+              alt="Мережева 36 кВт станція під Зелений Тариф в с. Фонтанка"
             />
           </picture>
           <PortfolioOverLay>
@@ -93,6 +96,7 @@ export const Portfolio = () => {
               loading="lazy"
               width="1280"
               height="1024"
+              alt="Мережева 35 кВт станція під Зелений Тариф в м. Кодима"
             />
           </picture>
           <PortfolioOverLay>
@@ -119,6 +123,7 @@ export const Portfolio = () => {
               loading="lazy"
               width="1280"
               height="1024"
+              alt="Автономна 7 кВт станція, м. Одеса, район Черноморка 13 станція"
             />
           </picture>
           <PortfolioOverLay>
@@ -144,6 +149,8 @@ export const Portfolio = () => {
               loading="lazy"
               width="1280"
               height="1024"
+              alt=" Мережева 28 кВт станція під Зелений Тариф в м. Одеса, район Царьке
+              село"
             />
           </picture>
           <PortfolioOverLay>
@@ -171,6 +178,7 @@ export const Portfolio = () => {
               loading="lazy"
               width="1280"
               height="1024"
+              alt="Мережева станція 15кВт під Зелений Тариф в с. Маяки, Одеська обл."
             />
           </picture>
           <PortfolioOverLay>
