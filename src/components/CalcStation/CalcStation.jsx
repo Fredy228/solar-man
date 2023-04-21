@@ -16,8 +16,12 @@ import { Icon } from 'components/Icon/Icon';
 import { Range, getTrackBackground } from 'react-range';
 import { useEffect, useState } from 'react';
 
-import stationImgPng from '../../img/calcStation/solar-panels.png';
-import stationImgWebp from '../../img/calcStation/solar-panels.webp';
+import stationPng_xl from '../../img/calcStation/station_xl.png';
+import stationWebp_xl from '../../img/calcStation/station_xl.webp';
+import stationPng_md from '../../img/calcStation/station_md.png';
+import stationWebp_md from '../../img/calcStation/station_md.webp';
+import stationPng_sm from '../../img/calcStation/station_sm.png';
+import stationWebp_sm from '../../img/calcStation/station_sm.webp';
 
 export const CalcStaion = ({ toggleModal }) => {
   const [valueRange, setValueRange] = useState([10]);
@@ -106,10 +110,38 @@ export const CalcStaion = ({ toggleModal }) => {
         <OutputSlider id="output">{`${valueRange[0]} кВт`}</OutputSlider>
       </SliderBox>
       <picture>
-        <source type="image/webp" srcSet={stationImgWebp} />
-        <source type="image/png" srcSet={stationImgPng} />
+        <source
+          media="(min-width: 1000px)"
+          type="image/webp"
+          srcSet={stationWebp_xl}
+        />
+        <source
+          media="(min-width: 1000px)"
+          type="image/png"
+          srcSet={stationPng_xl}
+        />
+        <source
+          media="(min-width: 500px)"
+          type="image/webp"
+          srcSet={stationWebp_md}
+        />
+        <source
+          media="(min-width: 500px)"
+          type="image/png"
+          srcSet={stationPng_md}
+        />
+        <source
+          media="(max-width: 499px)"
+          type="image/webp"
+          srcSet={stationWebp_sm}
+        />
+        <source
+          media="(max-width: 499px)"
+          type="image/png"
+          srcSet={stationPng_sm}
+        />
         <StationImg
-          src={stationImgPng}
+          src={stationPng_xl}
           loading="lazy"
           width="896"
           height="281"
