@@ -20,8 +20,8 @@ const callAnim = keyframes`
 export const CallBox = styled.div`
   position: fixed;
   z-index: 1000;
-  bottom: 15px;
-  left: 15px;
+  bottom: 25px;
+  right: 15px;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.color.additional};
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
