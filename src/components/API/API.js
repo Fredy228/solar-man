@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 // axios.defaults.baseURL = 'https://solarman.pro';
 axios.defaults.baseURL = 'http://localhost:3001';
@@ -43,12 +44,12 @@ export const logoutUser = async () => {
   setAuthHeader(token);
 
   try {
-    const response = await axios.post('/api/admin/logout');
+    await axios.post('/api/admin/logout');
     clearAuthHeader();
     localStorage.setItem('token', '');
-
-    return response.data.status;
+    localStorage.setItem('userData', '');
   } catch (error) {
+    Notify.failure(`${error.message}`);
     return error.message;
   }
 };

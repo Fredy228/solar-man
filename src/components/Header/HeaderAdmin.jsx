@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   Header,
   HeaderInnerAdmin,
@@ -11,20 +12,29 @@ import {
 } from './Header.styled';
 import { Container } from 'pages/Common.styled';
 import { Icon } from 'components/Icon/Icon';
-import { useStoreAuth } from 'globalState/globalState';
+import { useStoreAuth, useStoreUser } from 'globalState/globalState';
 import { logoutUser } from 'components/API/API';
 
 import avatar_def from '../../img/avatar_def.png';
 import avatar_out from '../../img/avatar_out.png';
+import { useEffect } from 'react';
 
 export const HeadAdmin = () => {
   const { isAuth, toggleValue } = useStoreAuth();
+  const { userData, setUser } = useStoreUser();
 
   const toLogout = async () => {
-    const res = await logoutUser();
+    await logoutUser();
+    Notify.success('Розлогінено');
     toggleValue(false);
-    console.log(res);
   };
+
+  useEffect(() => {
+    const dataUser = localStorage.getItem('userData');
+    if (!dataUser) return;
+
+    setUser({ ...JSON.parse(dataUser) });
+  }, [setUser]);
   return (
     <Header>
       <Container>
@@ -40,8 +50,8 @@ export const HeadAdmin = () => {
                   Вийти
                 </LogoutBtn>
                 <NameBox>
-                  <Name>Pavel</Name>
-                  <Role>admin</Role>
+                  <Name>{userData.name}</Name>
+                  <Role>{userData.role}</Role>
                 </NameBox>
                 <Avatar
                   src={avatar_def}
