@@ -17,11 +17,10 @@ import { logoutUser } from 'components/API/API';
 
 import avatar_def from '../../img/avatar_def.png';
 import avatar_out from '../../img/avatar_out.png';
-import { useEffect } from 'react';
 
 export const HeadAdmin = () => {
   const { isAuth, toggleValue } = useStoreAuth();
-  const { userData, setUser } = useStoreUser();
+  const { userData } = useStoreUser();
 
   const toLogout = async () => {
     await logoutUser();
@@ -29,12 +28,6 @@ export const HeadAdmin = () => {
     toggleValue(false);
   };
 
-  useEffect(() => {
-    const dataUser = localStorage.getItem('userData');
-    if (!dataUser) return;
-
-    setUser({ ...JSON.parse(dataUser) });
-  }, [setUser]);
   return (
     <Header>
       <Container>
