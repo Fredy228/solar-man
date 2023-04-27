@@ -28,7 +28,7 @@ export const HeaderInner = styled.div`
     height: 70px;
   }
   @media screen and (max-width: 768px) {
-    justify-content: space-between;
+    /* justify-content: space-between; */
     height: 60px;
   }
 `;
@@ -111,5 +111,66 @@ export const NavBox = styled.div`
     justify-content: flex-start;
     align-items: center;
     transform: translateX(${p => (p.show ? '0' : '120%')});
+  }
+`;
+
+export const HeaderInnerAdmin = styled.div`
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media screen and (max-width: 1000px) {
+    height: 70px;
+  }
+  @media screen and (max-width: 768px) {
+    height: 60px;
+  }
+`;
+
+export const UserBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: end;
+`;
+
+export const Avatar = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.color.second};
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+`;
+
+export const NameBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  margin: 0 15px;
+  cursor: default;
+`;
+
+export const Name = styled.p`
+  font-size: 16px;
+  font-style: italic;
+`;
+
+export const Role = styled.span`
+  font-size: 12px;
+  font-weight: bold;
+`;
+
+export const LogoutBtn = styled.button`
+  font-family: inherit;
+  font-weight: inherit;
+  padding: 7px 15px;
+  border-radius: 20px;
+  background-color: ${({ theme }) => theme.color.second};
+  color: ${({ theme }) => theme.color.white};
+  cursor: pointer;
+  transition: background-color 350ms ease;
+
+  :hover {
+    background-color: ${({ theme }) => theme.color.main};
   }
 `;

@@ -1,25 +1,18 @@
 import { useState } from 'react';
 
 import { CalcStaion } from 'components/CalcStation/CalcStation';
-import { LandHeader } from 'components/Header/LandHeader';
 import { Intro } from 'components/Intro/Intro';
 import { Container, Frontier } from 'pages/Common.styled';
-import { Main } from './Landing.styled';
+import { Main } from './Home.styled';
 import { Solution } from 'components/Solution/Solution';
 import { Team } from 'components/Team/Team';
 import { Portfolio } from 'components/Portfolio/Portfolio';
-import { Footer } from 'components/Footer/Footer';
 import { Modal } from 'components/Modal/Modal';
 import { SendPhone } from 'components/SendPhone/SendPhone';
 import { Call } from 'components/Call/Call';
 
-export const Landing = () => {
-  const [heightHeader, setHeightHeader] = useState(0);
+export const Home = () => {
   const [isShowModal, setIsShowModal] = useState(false);
-
-  const getHeightHeader = height => {
-    setHeightHeader(height);
-  };
 
   const toggleModal = () => {
     setIsShowModal(prevS => !prevS);
@@ -27,9 +20,7 @@ export const Landing = () => {
   };
   return (
     <>
-      <LandHeader fnHeigth={getHeightHeader} />
-
-      <Main heightHeader={heightHeader}>
+      <Main>
         <Container>
           <Intro toggleModal={toggleModal} />
         </Container>
@@ -54,8 +45,6 @@ export const Landing = () => {
           </Container>
         </Frontier>
       </Main>
-
-      <Footer />
 
       <Call toggleModal={toggleModal} />
 

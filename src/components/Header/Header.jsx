@@ -6,7 +6,7 @@ import {
   MenuSpan,
   Burger,
   NavBox,
-} from './LandHeader.styled';
+} from './Header.styled';
 import { Navigation } from './Navigation/Navigation';
 import { Contacts } from './Contacts/Contacts';
 import { Icon } from 'components/Icon/Icon';
@@ -14,7 +14,7 @@ import { Social } from 'components/Social/Social';
 import { Container } from 'pages/Common.styled';
 import useScrollScreen from '../../services/scrollScreen';
 
-export const LandHeader = ({ fnHeigth }) => {
+export const Head = ({ fnHeigth }) => {
   const [showBurger, setShowBurger] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef(null);
@@ -31,7 +31,6 @@ export const LandHeader = ({ fnHeigth }) => {
       for (let entry of entries) {
         if (entry.target === refHeader) {
           setHeaderHeight(entry.contentRect.height);
-          fnHeigth(entry.contentRect.height);
         }
       }
     });
