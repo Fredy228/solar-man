@@ -22,7 +22,6 @@ export const LoginAdmin = () => {
       localStorage.setItem('token', user.token);
       localStorage.setItem('userData', JSON.stringify(user));
 
-      console.log(user);
       setUser({
         ...user,
       });

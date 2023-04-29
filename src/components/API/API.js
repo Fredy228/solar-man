@@ -39,7 +39,7 @@ export const checkAuth = async () => {
 
 export const logoutUser = async () => {
   const token = localStorage.getItem('token');
-  if (!token) return new Error('Not authorization');
+  if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
 
   setAuthHeader(token);
 
@@ -50,6 +50,44 @@ export const logoutUser = async () => {
     localStorage.setItem('userData', '');
   } catch (error) {
     Notify.failure(`${error.message}`);
-    return error.message;
   }
+};
+
+export const getUsers = async () => {
+  const token = localStorage.getItem('token');
+  if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
+
+  setAuthHeader(token);
+
+  const response = await axios.get('/api/admin/users');
+
+  return response.data;
+};
+
+export const deleteUsers = async (role, id) => {
+  const token = localStorage.getItem('token');
+  if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
+  if (role !== 'admin') return Notify.failure(`У вас має прав видяляти User`);
+
+  setAuthHeader(token);
+
+  const response = await axios.post(`/api/admin/delete/${id}`);
+
+  return response.data;
+};
+
+export const editRoleUsers = async (role, id, roleUp) => {
+  const token = localStorage.getItem('token');
+  if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
+  if (role !== 'admin') return Notify.failure(`У вас має прав видяляти User`);
+
+  setAuthHeader(token);
+
+  console.log(roleUp);
+
+  const response = await axios.patch(`/api/admin/update-role/${id}`, {
+    role: roleUp,
+  });
+
+  return response.data.user;
 };
