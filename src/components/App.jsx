@@ -7,6 +7,7 @@ import { LoginAdmin } from 'pages/LoginAdmin/LoginAdmin';
 import PrivateRoute from './Routes/PrivateRoute';
 import RestrictedRoute from './Routes/RestrictedRoute';
 import { AdminProfile } from 'pages/AdminProfile/AdminProfile';
+import { StoreDB } from 'pages/StoreDB/StoreDB';
 export const App = () => {
   return (
     <Routes>
@@ -29,6 +30,12 @@ export const App = () => {
           path="profile"
           element={
             <PrivateRoute redirectTo="/admin" component={AdminProfile} />
+          }
+        />
+        <Route
+          path="database"
+          element={
+            <PrivateRoute redirectTo="/admin" component={StoreDB} />
           }
         />
       </Route>

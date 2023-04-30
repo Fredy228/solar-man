@@ -83,11 +83,51 @@ export const editRoleUsers = async (role, id, roleUp) => {
 
   setAuthHeader(token);
 
-  console.log(roleUp);
-
   const response = await axios.patch(`/api/admin/update-role/${id}`, {
     role: roleUp,
   });
 
   return response.data.user;
+};
+
+export const updateUser = async (name, email) => {
+  const token = localStorage.getItem('token');
+  if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
+  setAuthHeader(token);
+
+  if (name)
+    return await axios.patch(`/api/admin/update-me`, {
+      name: name.trim(),
+    });
+  if (email)
+    return await axios.patch(`/api/admin/update-me`, {
+      email: email.trim(),
+    });
+};
+
+export const updatePass = async (password, newPass) => {
+  const token = localStorage.getItem('token');
+  if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
+  setAuthHeader(token);
+
+  const response = await axios.patch(`/api/admin/update-pass`, {
+    password,
+    newPass,
+  });
+  return response.data;
+};
+
+export const createUser = async (name, password, role) => {
+  const token = localStorage.getItem('token');
+  if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
+  setAuthHeader(token);
+
+  const response = await axios.post(`/api/admin/register`, {
+    password: password.trim(),
+    name: name.trim(),
+    role,
+  });
+
+  console.log(response);
+  return response.data;
 };

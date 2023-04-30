@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Header = styled.header`
   padding: 5px;
@@ -172,5 +173,39 @@ export const LogoutBtn = styled.button`
 
   :hover {
     background-color: ${({ theme }) => theme.color.main};
+  }
+`;
+
+export const AdminTabs = styled.ul`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 110px;
+  @media screen and (max-width: 1000px) {
+    margin-top: 100px;
+  }
+  @media screen and (max-width: 768px) {
+    margin-top: 90px;
+  }
+`;
+
+export const AdmintTab = styled.li`
+  :not(:last-child) {
+    margin-right: 15px;
+  }
+`;
+
+export const LinkNav = styled(NavLink)`
+  padding: 10px 20px;
+  border-radius: 15px;
+  font-family: inherit;
+  font-weight: inherit;
+  border: 2px solid ${({ theme }) => theme.color.second};
+  color: ${({ theme }) => theme.color.second};
+  transition: transform 350ms ease;
+
+  &.active {
+    background-color: ${({ theme }) => theme.color.second};
+    color: ${({ theme }) => theme.color.white};
   }
 `;
