@@ -5,7 +5,7 @@ import { Container } from 'pages/Common.styled';
 import { loginUser } from 'components/API/API';
 import { useStoreAuth, useStoreUser } from 'globalState/globalState';
 
-export const LoginAdmin = () => {
+const LoginAdmin = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const { toggleValue } = useStoreAuth();
@@ -61,3 +61,5 @@ export const LoginAdmin = () => {
     </Container>
   );
 };
+
+export default LoginAdmin;

@@ -11,7 +11,7 @@ import { Modal } from 'components/Modal/Modal';
 import { SendPhone } from 'components/SendPhone/SendPhone';
 import { Call } from 'components/Call/Call';
 
-export const Home = () => {
+const Home = () => {
   const [isShowModal, setIsShowModal] = useState(false);
 
   const toggleModal = () => {
@@ -56,3 +56,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

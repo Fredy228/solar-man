@@ -1,3 +1,5 @@
-export const StoreDB = () => {
+const StoreDB = () => {
   return 'Store';
 };
+
+export default StoreDB;

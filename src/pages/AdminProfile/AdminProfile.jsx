@@ -6,7 +6,7 @@ import { Title, Section, Button } from './AdminProfile.styled';
 import { CreateUser } from './CreateUser/CreateUser';
 import { useState } from 'react';
 
-export const AdminProfile = () => {
+const AdminProfile = () => {
   const {
     userData: { id, name, email, role },
   } = useStoreUser();
@@ -41,3 +41,5 @@ export const AdminProfile = () => {
     </Container>
   );
 };
+
+export default AdminProfile;

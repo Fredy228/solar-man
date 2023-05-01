@@ -1,13 +1,19 @@
-// import { lazy } from "react";
+import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Home } from 'pages/Home/Home';
 import Layout from './Layout/Layout';
 import LayoutAdmin from './Layout/LayoutAdmin';
-import { LoginAdmin } from 'pages/LoginAdmin/LoginAdmin';
 import PrivateRoute from './Routes/PrivateRoute';
 import RestrictedRoute from './Routes/RestrictedRoute';
-import { AdminProfile } from 'pages/AdminProfile/AdminProfile';
-import { StoreDB } from 'pages/StoreDB/StoreDB';
+import Home from 'pages/Home/Home';
+// import { LoginAdmin } from 'pages/LoginAdmin/LoginAdmin';
+// import { AdminProfile } from 'pages/AdminProfile/AdminProfile';
+// import { StoreDB } from 'pages/StoreDB/StoreDB';
+
+// const Home = lazy(() => import('pages/Home/Home'));
+const LoginAdmin = lazy(() => import('pages/LoginAdmin/LoginAdmin'));
+const AdminProfile = lazy(() => import('pages/AdminProfile/AdminProfile'));
+const StoreDB = lazy(() => import('pages/StoreDB/StoreDB'));
+
 export const App = () => {
   return (
     <Routes>
@@ -34,9 +40,7 @@ export const App = () => {
         />
         <Route
           path="database"
-          element={
-            <PrivateRoute redirectTo="/admin" component={StoreDB} />
-          }
+          element={<PrivateRoute redirectTo="/admin" component={StoreDB} />}
         />
       </Route>
     </Routes>
