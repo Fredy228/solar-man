@@ -64,7 +64,7 @@ export const Team = () => {
                 alt="Павел Рогожа"
               />
             </picture>
-            <TeamName>Павел Рогожа</TeamName>
+            <TeamName>Павло Рогожа</TeamName>
             <TeamRole>
               <Icon name="icon-heart" />
               <TeamRoleText>Серце</TeamRoleText>
