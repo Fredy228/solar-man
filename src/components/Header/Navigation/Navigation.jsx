@@ -1,75 +1,82 @@
-import { useEffect, useState } from 'react';
-import { Nav, NavList, NavItem, NavText } from './Navigation.styled';
-import useScrollScreen from 'services/scrollScreen';
+import { Icon } from 'components/Icon/Icon';
+import {
+  Nav,
+  NavList,
+  NavItem,
+  LinkTo,
+  DropNav,
+  DropNavList,
+  DropNavItem,
+  DropNavLink,
+  LinkToDrop,
+} from './Navigation.styled';
+import { useState } from 'react';
 
-export const Navigation = ({ setShowBurger }) => {
-  const handleClick = (event, id) => {
-    event.preventDefault();
-    const element = document.getElementById(id);
-    const yOffset = -70;
-    const y =
-      element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    window.scrollTo({ top: y, behavior: 'smooth' });
+export const Navigation = ({ showMenu }) => {
+  const [isShowDropNav, setIsShowDropNav] = useState(false);
+
+  const toggleMenu = () => {
+    showMenu();
+    setIsShowDropNav(false);
   };
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollScreen = useScrollScreen();
-
-  useEffect(() => {
-    const sections = ['home', 'we', 'solution', 'projects'];
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset;
-      const sectionPositions = sections.map(section => {
-        const element = document.getElementById(section);
-        return {
-          id: section,
-          offsetTop: element.offsetTop - 150,
-          height: element.offsetHeight,
-        };
-      });
-
-      const currentSectionIndex = sectionPositions.findIndex(
-        section =>
-          scrollTop >= section.offsetTop &&
-          scrollTop < section.offsetTop + section.height
-      );
-
-      setActiveIndex(currentSectionIndex);
-      setShowBurger(false);
-      document.body.classList.remove('no-scroll');
-    };
-
-    handleScroll();
-  }, [scrollScreen, setShowBurger]);
 
   return (
     <Nav>
       <NavList>
-        <NavItem active={activeIndex === 0}>
-          <NavText href="#home" onClick={event => handleClick(event, 'home')}>
+        <NavItem>
+          <LinkTo to="/" onClick={toggleMenu}>
             Головна
-          </NavText>
+          </LinkTo>
         </NavItem>
-        <NavItem active={activeIndex === 1}>
-          <NavText href="#we" onClick={event => handleClick(event, 'we')}>
-            Наша команда
-          </NavText>
+        <NavItem
+          onMouseOver={() => setIsShowDropNav(true)}
+          onMouseOut={() => setIsShowDropNav(false)}
+        >
+          <LinkToDrop>
+            Наші послуги <Icon name="icon-downarrow" />
+          </LinkToDrop>
+          <DropNav isShow={isShowDropNav}>
+            <DropNavList>
+              <DropNavItem>
+                <DropNavLink to="/enterprises" onClick={toggleMenu}>
+                  <Icon name="icon-company" />
+                  Для підприємств
+                </DropNavLink>
+              </DropNavItem>
+              <DropNavItem>
+                <DropNavLink to="/home" onClick={toggleMenu}>
+                  <Icon name="icon-home" />
+                  Для дому
+                </DropNavLink>
+              </DropNavItem>
+              <DropNavItem>
+                <DropNavLink to="/investment" onClick={toggleMenu}>
+                  <Icon name="icon-profit" /> Для інвестицій
+                </DropNavLink>
+              </DropNavItem>
+              <DropNavItem>
+                <DropNavLink to="/backup-power" onClick={toggleMenu}>
+                  <Icon name="icon-battery" />
+                  Резервне електроживлення
+                </DropNavLink>
+              </DropNavItem>
+            </DropNavList>
+          </DropNav>
         </NavItem>
-        <NavItem active={activeIndex === 2}>
-          <NavText
-            href="#solution"
-            onClick={event => handleClick(event, 'solution')}
-          >
-            Готові рішення
-          </NavText>
+        <NavItem>
+          <LinkTo to="/store" onClick={toggleMenu}>
+            Магазин
+          </LinkTo>
         </NavItem>
-        <NavItem active={activeIndex === 3}>
-          <NavText
-            href="#projects"
-            onClick={event => handleClick(event, 'projects')}
-          >
+        <NavItem>
+          <LinkTo to="/projects" onClick={toggleMenu}>
             Наші проекти
-          </NavText>
+          </LinkTo>
+        </NavItem>
+        <NavItem>
+          <LinkTo to="/about-us" onClick={toggleMenu}>
+            Про нас
+          </LinkTo>
         </NavItem>
       </NavList>
     </Nav>

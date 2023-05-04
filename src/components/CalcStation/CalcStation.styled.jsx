@@ -117,16 +117,25 @@ export const ButtonGetCall = styled.button`
   font-family: inherit;
   cursor: pointer;
   margin: 0 auto;
-  transition: background-color 350ms ease;
+  transition-property: background-color, color;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   svg {
     width: 25px;
     height: 25px;
     margin-right: 3px;
+    stroke: transparent;
+    transition: stroke 350ms ease;
   }
 
   :hover {
-    background-color: ${({ theme: { color } }) => color.main};
+    background-color: ${({ theme: { color } }) => color.additionalV2};
+    color: ${({ theme: { color } }) => color.black};
+  }
+  :hover svg {
+    stroke: ${({ theme: { color } }) => color.black};
   }
 
   @media screen and (max-width: 768px) {

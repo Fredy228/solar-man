@@ -1,10 +1,11 @@
 export const theme = {
   color: {
-    main: '#00425A',
-    second: '#5F9EA0',
-    additional: '#FC7300',
+    main: '#16498a',
+    second: '#FC7300',
+    additional: '#F24C4C',
+    additionalV2: '#F7D716',
     black: '#000',
     white: '#fff',
-    menuBg: '#eeeeeee0',
+    menuBg: '#dcdcdc',
   },
 };

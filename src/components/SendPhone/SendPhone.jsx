@@ -13,6 +13,7 @@ import {
 } from './SendPhone.styled';
 import { sendPhoneToTelegram } from 'components/API/API';
 import { LoadSpiner } from 'components/LoadSpiner/LoadSpiner';
+import { Icon } from 'components/Icon/Icon';
 
 export const SendPhone = () => {
   const [name, setName] = useState('');
@@ -90,7 +91,10 @@ export const SendPhone = () => {
           {isLoading ? (
             <LoadSpiner borderColor={'#fff'} barColor={'#fff'} />
           ) : (
-            'Надіслати'
+            <>
+              <Icon name="icon-send" />
+              Надіслати
+            </>
           )}
         </Button>
       </Form>

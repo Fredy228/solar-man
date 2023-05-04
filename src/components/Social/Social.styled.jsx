@@ -15,12 +15,16 @@ export const SociaLink = styled.a`
     fill: ${({ color, theme }) => (color ? color : theme.color.main)};
     width: 40px;
     height: 40px;
+    border-radius: 50%;
+    border: 1px solid transparent;
     transition-duration: 250ms;
-    transition-property: scale, fill;
+    transition-property: scale, fill, background-color, border-color;
     transition-timing-function: ease;
 
     :hover {
       scale: 1.1;
+      background-color: ${({ theme }) => theme.color.white};
+      border-color: ${({ theme }) => theme.color.white};
     }
   }
 

@@ -5,20 +5,34 @@ import LayoutAdmin from './Layout/LayoutAdmin';
 import PrivateRoute from './Routes/PrivateRoute';
 import RestrictedRoute from './Routes/RestrictedRoute';
 import Home from 'pages/Home/Home';
-// import { LoginAdmin } from 'pages/LoginAdmin/LoginAdmin';
-// import { AdminProfile } from 'pages/AdminProfile/AdminProfile';
-// import { StoreDB } from 'pages/StoreDB/StoreDB';
 
-// const Home = lazy(() => import('pages/Home/Home'));
 const LoginAdmin = lazy(() => import('pages/LoginAdmin/LoginAdmin'));
 const AdminProfile = lazy(() => import('pages/AdminProfile/AdminProfile'));
 const StoreDB = lazy(() => import('pages/StoreDB/StoreDB'));
+
+const ForEnterprises = lazy(() => import('pages/OurServices/ForEnterprises'));
+const ForHome = lazy(() => import('pages/OurServices/ForHome'));
+const ForInvestment = lazy(() => import('pages/OurServices/ForInvestment'));
+const ForBackupPower = lazy(() => import('pages/OurServices/ForBackupPower'));
+
+const AboutUs = lazy(() => import('pages/AboutUs/AboutUs'));
+const Projects = lazy(() => import('pages/Projects/Projects'));
+const Store = lazy(() => import('pages/Store/Store'));
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
+
+        <Route path="/enterprises" element={<ForEnterprises />} />
+        <Route path="/home" element={<ForHome />} />
+        <Route path="/investment" element={<ForInvestment />} />
+        <Route path="/backup-power" element={<ForBackupPower />} />
+
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/store" element={<Store />} />
 
         <Route path="*" element={'Not found 404'} />
       </Route>

@@ -14,7 +14,7 @@ export const CustomNavigation = styled.div`
   margin: 20px auto 0;
 
   svg {
-    fill: ${({ theme }) => theme.color.second};
+    fill: ${({ theme }) => theme.color.additional};
     transition: fill 350ms ease;
   }
 
@@ -43,7 +43,7 @@ export const CustomNavigation = styled.div`
   & .swiper-button-prev:hover,
   & .swiper-button-next:hover {
     svg {
-      fill: ${({ theme }) => theme.color.additional};
+      fill: ${({ theme }) => theme.color.additionalV2};
     }
   }
 
@@ -95,13 +95,12 @@ export const Slide = styled.div`
   background-color: ${({ theme }) => theme.color.white};
   height: 100%;
   width: 100%;
-  border: 2px solid ${({ theme }) => theme.color.second};
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 20px;
   padding: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
 `;
 
 export const Img = styled.img`
@@ -111,28 +110,34 @@ export const Img = styled.img`
 
 export const Title = styled.p`
   text-align: center;
-  font-size: 18px;
-  margin: 10px 0 65px 0;
-  position: relative;
+  font-size: 16px;
+  padding: 0 10px;
+  margin: 10px 0 30px 0;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1200px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 768px) {
     font-size: 16px;
   }
 `;
 
 export const BuyBtn = styled.button`
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
   padding: 7px 25px;
   font-size: 18px;
-  background-color: ${({ theme }) => theme.color.second};
+  background-color: ${({ theme }) => theme.color.additional};
   color: ${({ theme }) => theme.color.white};
   border-radius: 50px;
-  margin-bottom: 20px;
+  margin-top: auto;
+  margin-bottom: 10px;
   cursor: pointer;
-  transition: background-color 350ms ease;
+  position: relative;
+  transition-property: background-color, color;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   :after {
     position: absolute;
@@ -147,6 +152,26 @@ export const BuyBtn = styled.button`
   }
 
   :hover {
-    background-color: ${({ theme }) => theme.color.additional};
+    background-color: ${({ theme }) => theme.color.additionalV2};
+    color: ${({ theme }) => theme.color.black};
+  }
+
+  :hover svg {
+    stroke: ${({ theme }) => theme.color.black};
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    stroke: ${({ theme }) => theme.color.white};
+    transition: stroke 350ms ease;
+  }
+
+  @media screen and (max-width: 1200px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
   }
 `;

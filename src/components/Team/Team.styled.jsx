@@ -77,6 +77,19 @@ export const TeamItem = styled.li`
   }
 `;
 
+export const SpanLineText = styled.span`
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 14px;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 350ms ease;
+  font-style: italic;
+`;
+
 export const TeamItemInner = styled.div`
   position: relative;
   overflow: hidden;
@@ -92,9 +105,22 @@ export const TeamItemInner = styled.div`
     position: absolute;
     content: '';
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 40px);
+    right: 20px;
+    width: calc(50% - 20px);
+    height: 5px;
+    border-radius: 5px;
+    background-color: ${({ theme }) => theme.color.second};
+    transition-property: width;
+    transition-duration: 350ms;
+    transition-timing-function: ease;
+  }
+
+  :before {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 20px;
+    width: calc(50% - 18px);
     height: 5px;
     border-radius: 5px;
     background-color: ${({ theme }) => theme.color.second};
@@ -103,8 +129,13 @@ export const TeamItemInner = styled.div`
     transition-timing-function: ease;
   }
 
-  :hover::after {
-    bottom: 15px;
+  :hover::after,
+  :hover::before {
+    width: 35px;
+  }
+
+  :hover ${SpanLineText} {
+    opacity: 1;
   }
 `;
 
@@ -126,7 +157,7 @@ export const TeamName = styled.p`
 export const TeamRole = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 
   svg {
     width: 25px;

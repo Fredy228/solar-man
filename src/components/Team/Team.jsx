@@ -11,6 +11,7 @@ import {
   TeamName,
   TeamRole,
   TeamRoleText,
+  SpanLineText,
 } from './Team.styled';
 
 import teamImg_1 from '../../img/team/team-1.jpg';
@@ -49,6 +50,7 @@ export const Team = () => {
               <Icon name="icon-brain" />
               <TeamRoleText>Мозок</TeamRoleText>
             </TeamRole>
+            <SpanLineText>Менеджер з продажу</SpanLineText>
           </TeamItemInner>
         </TeamItem>
         <TeamItem>
@@ -69,6 +71,7 @@ export const Team = () => {
               <Icon name="icon-heart" />
               <TeamRoleText>Серце</TeamRoleText>
             </TeamRole>
+            <SpanLineText>Управляючий</SpanLineText>
           </TeamItemInner>
         </TeamItem>
         <TeamItem>
@@ -89,6 +92,7 @@ export const Team = () => {
               <Icon name="icon-muscles" />
               <TeamRoleText>М'язи</TeamRoleText>
             </TeamRole>
+            <SpanLineText>Головний бригадир</SpanLineText>
           </TeamItemInner>
         </TeamItem>
       </TeamList>

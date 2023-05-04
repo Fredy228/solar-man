@@ -29,7 +29,6 @@ export const HeaderInner = styled.div`
     height: 70px;
   }
   @media screen and (max-width: 768px) {
-    /* justify-content: space-between; */
     height: 60px;
   }
 `;
@@ -93,21 +92,15 @@ export const NavBox = styled.div`
   height: 100%;
   transition: transform 350ms ease;
 
-  :last-child {
-    div {
-      @media screen and (min-width: 1000px) {
-        display: none;
-      }
-    }
-  }
-
   @media screen and (max-width: 1000px) {
     position: fixed;
     width: 100%;
     height: calc(100% - ${p => p.headerHeight}px - 10px);
     bottom: 0;
     left: 0;
-    background-color: ${({ theme: { color } }) => color.menuBg};
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(7px);
+
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;

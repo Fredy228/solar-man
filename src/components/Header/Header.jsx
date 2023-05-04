@@ -13,14 +13,18 @@ import { Icon } from 'components/Icon/Icon';
 import { Social } from 'components/Social/Social';
 import { Container } from 'pages/Common.styled';
 import useScrollScreen from '../../services/scrollScreen';
+import useWindowWidth from 'services/widthScreen';
 
 export const Head = ({ fnHeigth }) => {
   const [showBurger, setShowBurger] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef(null);
   const scrollScreen = useScrollScreen();
+  const widthSreen = useWindowWidth();
 
   const showMenu = () => {
+    if (widthSreen > 1000) return;
+
     setShowBurger(!showBurger);
     document.body.classList.toggle('no-scroll');
   };
@@ -46,6 +50,13 @@ export const Head = ({ fnHeigth }) => {
     };
   }, [fnHeigth]);
 
+  useEffect(() => {
+    if (widthSreen <= 1000) {
+      setShowBurger(false);
+      document.body.classList.remove('no-scroll');
+    }
+  }, [widthSreen]);
+
   return (
     <Header scroll={scrollScreen} show={showBurger}>
       <Container>
@@ -59,9 +70,9 @@ export const Head = ({ fnHeigth }) => {
           </Burger>
 
           <NavBox headerHeight={headerHeight} show={showBurger}>
-            <Navigation setShowBurger={setShowBurger} />
+            <Navigation showMenu={showMenu} />
             <Contacts />
-            <Social />
+            {widthSreen < 1000 && <Social />}
           </NavBox>
         </HeaderInner>
       </Container>

@@ -74,10 +74,10 @@ export const CalcStaion = ({ toggleModal }) => {
                   height: '15px',
                   width: '100%',
                   borderRadius: '10px',
-                  border: '2px solid #00425A',
+                  border: '2px solid #16498a',
                   background: getTrackBackground({
                     values: valueRange,
-                    colors: ['#FC7300', 'transparent'],
+                    colors: ['#F7D716', 'transparent'],
                     min: 5,
                     max: 30,
                   }),

@@ -55,7 +55,6 @@ export const PortfolioOverLay = styled.div`
   transform: translateY(120%);
   transition: transform 350ms ease;
   color: ${({ theme }) => theme.color.white};
-  /* overflow-y: auto; */
   background-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0),
@@ -67,7 +66,7 @@ export const PortfolioItem = styled.li`
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  border: 2px solid ${({ theme }) => theme.color.second};
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   cursor: pointer;
 
   &:hover ${PortfolioOverLay} {
@@ -95,10 +94,8 @@ export const PortfolioImg = styled.img`
 `;
 
 export const TitleOverLay = styled.h4`
-  /* position: relative; */
   text-align: center;
   margin-bottom: 5px;
-  /* margin: 0 0 30px 0; */
   font-size: 16px;
 `;
 

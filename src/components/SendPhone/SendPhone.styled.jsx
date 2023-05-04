@@ -1,9 +1,12 @@
 import styled from 'styled-components';
-// import InputMask from 'react-input-mask';
 import { IMaskInput } from 'react-imask';
 
 export const Inner = styled.div`
-  background-image: linear-gradient(to right, #00425a, #5f9ea0);
+  background-image: linear-gradient(
+    to right,
+    ${({ theme }) => theme.color.main},
+    ${({ theme }) => theme.color.second}
+  );
   padding: 20px;
   color: ${({ theme }) => theme.color.white};
   border-radius: 20px;
@@ -71,9 +74,24 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition-property: background-color, color;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
 
-  transition: background-color 350ms ease;
   :hover {
-    background-color: #fc7100d1;
+    background-color: ${({ theme }) => theme.color.additionalV2};
+    color: ${({ theme }) => theme.color.black};
+  }
+
+  :hover svg {
+    fill: ${({ theme }) => theme.color.black};
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: ${({ theme }) => theme.color.white};
+    margin-right: 5px;
+    transition: fill 350ms ease;
   }
 `;

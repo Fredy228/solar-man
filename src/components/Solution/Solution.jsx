@@ -1,8 +1,7 @@
 import { Swiper } from 'swiper/react';
-import { FreeMode, Navigation } from 'swiper';
+import { Navigation } from 'swiper';
 
 import 'swiper/css';
-import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
 import imgJpg_1 from '../../img/solution/solution-1.jpg';
@@ -39,15 +38,93 @@ import { Icon } from 'components/Icon/Icon';
 import useWindowWidth from '../../services/widthScreen';
 import { useEffect, useState } from 'react';
 
+const products = [
+  {
+    id: 1,
+    imgJpg: imgJpg_1,
+    imgWebp: imgWebp_1,
+    alt: 'Акумуляторна система живлення',
+    title: 'Акумуляторна система живлення Victron Energy Quattro 5 кВА',
+    cost: '7 830',
+  },
+  {
+    id: 2,
+    imgJpg: imgJpg_5,
+    imgWebp: imgWebp_5,
+    alt: 'Сонячна електростанція',
+    title: 'Сонячна електростанція 5 кВт',
+    cost: '3 450',
+  },
+  {
+    id: 3,
+    imgJpg: imgJpg_2,
+    imgWebp: imgWebp_2,
+    alt: 'Акумуляторна система живлення',
+    title: 'Акумуляторна система живлення Victron Energy 9 кВА',
+    cost: '10 990',
+  },
+  {
+    id: 4,
+    imgJpg: imgJpg_6,
+    imgWebp: imgWebp_6,
+    alt: 'Сонячна електростанція',
+    title: 'Сонячна електростанція 10 кВт',
+    cost: '6 950',
+  },
+  {
+    id: 5,
+    imgJpg: imgJpg_3,
+    imgWebp: imgWebp_3,
+    alt: 'Акумуляторна система живлення',
+    title: 'Акумуляторна система живлення Victron Energy Quattro 15 кВА',
+    cost: '15 325',
+  },
+  {
+    id: 6,
+    imgJpg: imgJpg_7,
+    imgWebp: imgWebp_7,
+    alt: 'Сонячна електростанція',
+    title: 'Сонячна електростанція 15 кВт',
+    cost: '11 240',
+  },
+  {
+    id: 7,
+    imgJpg: imgJpg_4,
+    imgWebp: imgWebp_4,
+    alt: 'Акумуляторна система живлення',
+    title: 'Акумуляторна система живлення Victron Energy Quattro 30 кВА',
+    cost: '24 548',
+  },
+  {
+    id: 8,
+    imgJpg: imgJpg_8,
+    imgWebp: imgWebp_8,
+    alt: 'Сонячна електростанція',
+    title: 'Сонячна електростанція 20 кВт ціна на похилу покрівлю',
+    cost: '13 344',
+  },
+  {
+    id: 9,
+    imgJpg: imgJpg_9,
+    imgWebp: imgWebp_9,
+    alt: 'Сонячна електростанція',
+    title: 'Сонячна електростанція 30 кВт',
+    cost: '21 775',
+  },
+];
+
 export const Solution = ({ toggleModal }) => {
   const widthScreen = useWindowWidth();
   const [slideView, setSlideView] = useState(3);
 
   useEffect(() => {
     if (widthScreen > 1000) {
+      setSlideView(4);
+    }
+    if (widthScreen <= 1000 && widthScreen > 768) {
       setSlideView(3);
     }
-    if (widthScreen <= 1000 && widthScreen > 530) {
+    if (widthScreen <= 767 && widthScreen > 530) {
       setSlideView(2);
     }
     if (widthScreen <= 530) {
@@ -68,169 +145,33 @@ export const Solution = ({ toggleModal }) => {
         }}
         slidesPerView={slideView}
         spaceBetween={20}
-        freeMode={false}
-        modules={[FreeMode, Navigation]}
+        modules={[Navigation]}
         className="mySwiper"
       >
-        <SwiperSlideS>
-          <Slide>
-            <picture>
-              <source type="image/webp" srcSet={imgWebp_1} />
-              <source type="image/jpg" srcSet={imgJpg_1} />
-              <Img
-                src={imgJpg_1}
-                loading="lazy"
-                width="390"
-                height="390"
-                alt="Акумуляторна система живлення"
-              />
-            </picture>
-            <Title>
-              Акумуляторна система живлення Victron Energy Quattro 5 кВА
-            </Title>
-            <BuyBtn onClick={toggleModal}>7 830$</BuyBtn>
-          </Slide>
-        </SwiperSlideS>
-        <SwiperSlideS>
-          <Slide>
-            <picture>
-              <source type="image/webp" srcSet={imgWebp_5} />
-              <source type="image/jpg" srcSet={imgJpg_5} />
-              <Img
-                src={imgJpg_5}
-                loading="lazy"
-                width="390"
-                height="390"
-                alt="Сонячна електростанція"
-              />
-            </picture>
-            <Title>Сонячна електростанція 5 кВт</Title>
-            <BuyBtn onClick={toggleModal}>3 450$</BuyBtn>
-          </Slide>
-        </SwiperSlideS>
-        <SwiperSlideS>
-          <Slide>
-            <picture>
-              <source type="image/webp" srcSet={imgWebp_2} />
-              <source type="image/jpg" srcSet={imgJpg_2} />
-              <Img
-                src={imgJpg_2}
-                loading="lazy"
-                width="390"
-                height="390"
-                alt="Акумуляторна система живлення"
-              />
-            </picture>
-            <Title>Акумуляторна система живлення Victron Energy 9 кВА</Title>
-            <BuyBtn onClick={toggleModal}>10 990$</BuyBtn>
-          </Slide>
-        </SwiperSlideS>
-        <SwiperSlideS>
-          <Slide>
-            <picture>
-              <source type="image/webp" srcSet={imgWebp_6} />
-              <source type="image/jpg" srcSet={imgJpg_6} />
-              <Img
-                src={imgJpg_6}
-                loading="lazy"
-                width="390"
-                height="390"
-                alt="Сонячна електростанція"
-              />
-            </picture>
-            <Title>Сонячна електростанція 10 кВт</Title>
-            <BuyBtn onClick={toggleModal}>6 950$</BuyBtn>
-          </Slide>
-        </SwiperSlideS>
-        <SwiperSlideS>
-          <Slide>
-            <picture>
-              <source type="image/webp" srcSet={imgWebp_3} />
-              <source type="image/jpg" srcSet={imgJpg_3} />
-              <Img
-                src={imgJpg_3}
-                loading="lazy"
-                width="390"
-                height="390"
-                alt="Акумуляторна система живлення"
-              />
-            </picture>
-            <Title>
-              Акумуляторна система живлення Victron Energy Quattro 15 кВА
-            </Title>
-            <BuyBtn onClick={toggleModal}>15 325$</BuyBtn>
-          </Slide>
-        </SwiperSlideS>
-        <SwiperSlideS>
-          <Slide>
-            <picture>
-              <source type="image/webp" srcSet={imgWebp_7} />
-              <source type="image/jpg" srcSet={imgJpg_7} />
-              <Img
-                src={imgJpg_7}
-                loading="lazy"
-                width="390"
-                height="390"
-                alt="Сонячна електростанція"
-              />
-            </picture>
-            <Title>Сонячна електростанція 15 кВт</Title>
-            <BuyBtn onClick={toggleModal}>11 240$</BuyBtn>
-          </Slide>
-        </SwiperSlideS>
-        <SwiperSlideS>
-          <Slide>
-            <picture>
-              <source type="image/webp" srcSet={imgWebp_4} />
-              <source type="image/jpg" srcSet={imgJpg_4} />
-              <Img
-                src={imgJpg_4}
-                loading="lazy"
-                width="390"
-                height="390"
-                alt="Акумуляторна система живлення"
-              />
-            </picture>
-            <Title>
-              Акумуляторна система живлення Victron Energy Quattro 30 кВА
-            </Title>
-            <BuyBtn onClick={toggleModal}>24 548$</BuyBtn>
-          </Slide>
-        </SwiperSlideS>
-        <SwiperSlideS>
-          <Slide>
-            <picture>
-              <source type="image/webp" srcSet={imgWebp_8} />
-              <source type="image/jpg" srcSet={imgJpg_8} />
-              <Img
-                src={imgJpg_8}
-                loading="lazy"
-                width="390"
-                height="390"
-                alt="Сонячна електростанція"
-              />
-            </picture>
-            <Title>Сонячна електростанція 20 кВт ціна на похилу покрівлю</Title>
-            <BuyBtn onClick={toggleModal}>13 344$</BuyBtn>
-          </Slide>
-        </SwiperSlideS>
-        <SwiperSlideS>
-          <Slide>
-            <picture>
-              <source type="image/webp" srcSet={imgWebp_9} />
-              <source type="image/jpg" srcSet={imgJpg_9} />
-              <Img
-                src={imgJpg_9}
-                loading="lazy"
-                width="390"
-                height="390"
-                alt="Сонячна електростанція"
-              />
-            </picture>
-            <Title>Сонячна електростанція 30 кВт</Title>
-            <BuyBtn onClick={toggleModal}>21 775$</BuyBtn>
-          </Slide>
-        </SwiperSlideS>
+        {products.map(item => {
+          return (
+            <SwiperSlideS key={item.id}>
+              <Slide>
+                <picture>
+                  <source type="image/webp" srcSet={item.imgWebp} />
+                  <source type="image/jpg" srcSet={item.imgJpg} />
+                  <Img
+                    src={imgJpg_1}
+                    loading="lazy"
+                    width="390"
+                    height="390"
+                    alt={item.alt}
+                  />
+                </picture>
+                <Title>{item.title}</Title>
+                <BuyBtn onClick={toggleModal}>
+                  <Icon name="icon-cart-buy" />
+                  {item.cost}$
+                </BuyBtn>
+              </Slide>
+            </SwiperSlideS>
+          );
+        })}
       </Swiper>
       <CustomNavigation>
         <div className="swiper-button-prev">

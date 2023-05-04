@@ -31,6 +31,7 @@ export const CallBox = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  transition: transform 350ms ease;
 
   @media screen and (max-width: 768px) {
     width: 50px;
@@ -38,8 +39,8 @@ export const CallBox = styled.div`
   }
 
   svg {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     stroke: ${({ theme }) => theme.color.white};
     fill: transparent;
     display: flex;
@@ -49,11 +50,14 @@ export const CallBox = styled.div`
     animation-duration: 3.5s;
     animation-iteration-count: infinite;
     animation-timing-function: ease;
-    transform: translate(-7px, -7px);
 
     @media screen and (max-width: 768px) {
-      width: 30px;
-      height: 30px;
+      width: 25px;
+      height: 25px;
     }
+  }
+
+  :hover {
+    transform: scale(1.1);
   }
 `;
