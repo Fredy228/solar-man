@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksolar_man=self.webpackChunksolar_man||[]).push([[454],{5454:function(n,e,s){s.r(e);e.default=function(){return"Investment"}}}]);
+//# sourceMappingURL=454.29102c47.chunk.js.map

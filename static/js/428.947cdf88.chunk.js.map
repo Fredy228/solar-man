@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/428.947cdf88.chunk.js","mappings":"kHAIA,UAJuB,WACrB,MAAO,cACR,C","sources":["pages/OurServices/ForBackupPower.jsx"],"sourcesContent":["const ForBackupPower = () => {\n  return 'Backup Power';\n};\n\nexport default ForBackupPower;\n"],"names":[],"sourceRoot":""}

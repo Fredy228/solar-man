@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/524.7c08da3b.chunk.js","mappings":"kHAIA,UAJuB,WACrB,MAAO,SACR,C","sources":["pages/OurServices/ForEnterprises.jsx"],"sourcesContent":["const ForEnterprises = () => {\n  return 'Company';\n};\n\nexport default ForEnterprises;\n"],"names":[],"sourceRoot":""}
