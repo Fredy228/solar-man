@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Header,
   HeaderInner,
@@ -21,6 +22,7 @@ export const Head = ({ fnHeigth }) => {
   const headerRef = useRef(null);
   const scrollScreen = useScrollScreen();
   const widthSreen = useWindowWidth();
+  const history = useNavigate();
 
   const showMenu = () => {
     if (widthSreen > 1000) return;
@@ -61,7 +63,7 @@ export const Head = ({ fnHeigth }) => {
     <Header scroll={scrollScreen} show={showBurger}>
       <Container>
         <HeaderInner ref={headerRef}>
-          <Logo>
+          <Logo onClick={() => history('/')}>
             <Icon name={'icon-logo'} viewBox="0 0 82 32" />
           </Logo>
 

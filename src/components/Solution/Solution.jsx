@@ -25,8 +25,6 @@ import imgWebp_9 from '../../img/solution/solution-9.webp';
 
 import {
   SolutionInner,
-  SectionTitle,
-  TitleSpan,
   Slide,
   Img,
   Title,
@@ -34,6 +32,12 @@ import {
   CustomNavigation,
   SwiperSlideS,
 } from './Solution.styled';
+
+import {
+  SectionTitle,
+  TitleSpan,
+} from 'components/SectionTitle/SectionTitle.styled';
+
 import { Icon } from 'components/Icon/Icon';
 import useWindowWidth from '../../services/widthScreen';
 import { useEffect, useState } from 'react';
@@ -134,7 +138,7 @@ export const Solution = ({ toggleModal }) => {
 
   return (
     <SolutionInner id="solution" data-section>
-      <SectionTitle>
+      <SectionTitle color="#fff">
         <TitleSpan>Готові</TitleSpan> рішення
       </SectionTitle>
       <Swiper

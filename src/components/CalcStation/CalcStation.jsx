@@ -1,8 +1,5 @@
 import {
   StationInner,
-  SectionTitle,
-  TitleSpan,
-  SetctionText,
   SliderBox,
   StationImg,
   ListResult,
@@ -12,6 +9,11 @@ import {
   OutputSlider,
   Sun,
 } from './CalcStation.styled';
+import {
+  SectionTitle,
+  TitleSpan,
+  SetctionText,
+} from 'components/SectionTitle/SectionTitle.styled';
 import { Icon } from 'components/Icon/Icon';
 import { Range, getTrackBackground } from 'react-range';
 import { useEffect, useState } from 'react';

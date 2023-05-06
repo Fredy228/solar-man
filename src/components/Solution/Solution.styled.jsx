@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { SwiperSlide } from 'swiper/react';
 
 export const SwiperSlideS = styled(SwiperSlide)`
-  height: auto;
+  height: auto !important;
 `;
 
 export const CustomNavigation = styled.div`
@@ -62,33 +62,6 @@ export const SolutionInner = styled.section`
   @media screen and (max-width: 1000px) {
     padding: 25px 0;
   }
-`;
-
-export const SectionTitle = styled.h2`
-  text-align: center;
-  font-size: 28px;
-  position: relative;
-  margin-bottom: 40px;
-  color: ${({ theme }) => theme.color.white};
-
-  :after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background-color: ${({ theme: { color } }) => color.white};
-  }
-
-  @media screen and (max-width: 768px) {
-    font-size: 20px;
-  }
-`;
-
-export const TitleSpan = styled.span`
-  color: ${({ theme: { color } }) => color.second};
 `;
 
 export const Slide = styled.div`

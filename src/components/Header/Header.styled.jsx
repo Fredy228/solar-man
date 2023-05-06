@@ -33,6 +33,7 @@ export const HeaderInner = styled.div`
   }
 `;
 export const Logo = styled.div`
+  cursor: pointer;
   svg {
     height: 50px;
     width: auto;

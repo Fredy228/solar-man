@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
   IntroBox,
   CardsIntro,
@@ -28,7 +29,10 @@ import intro2_sm_jpg from '../../img/intro/intro-2_sm.jpg';
 import intro3_sm_webp from '../../img/intro/intro-3_sm.webp';
 import intro3_sm_jpg from '../../img/intro/intro-3_sm.jpg';
 
-export const Intro = ({ toggleModal }) => {
+
+export const Intro = () => {
+  const history = useNavigate();
+
   const enterCurrentCard = e => {
     const currentCard = e.currentTarget;
     currentCard.style.flex = '2';
@@ -39,13 +43,33 @@ export const Intro = ({ toggleModal }) => {
     currentCard.style.flex = '1';
   };
 
+  const toLink = e => {
+    const key = e.currentTarget.dataset.name;
+    console.log(key);
+    switch (key) {
+      case 'company':
+        history('/enterprises');
+        break;
+      case 'home':
+        history('/home');
+        break;
+      case 'store':
+        history('/store');
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return (
     <IntroBox id="home" data-section>
       <CardsIntro>
         <CardIntro
           onMouseEnter={enterCurrentCard}
           onMouseLeave={leaveCurrentCard}
-          onClick={toggleModal}
+          onClick={toLink}
+          data-name="company"
         >
           <picture>
             <source
@@ -97,7 +121,8 @@ export const Intro = ({ toggleModal }) => {
         <CardIntro
           onMouseEnter={enterCurrentCard}
           onMouseLeave={leaveCurrentCard}
-          onClick={toggleModal}
+          onClick={toLink}
+          data-name="home"
         >
           <picture>
             <source
@@ -149,7 +174,8 @@ export const Intro = ({ toggleModal }) => {
         <CardIntro
           onMouseEnter={enterCurrentCard}
           onMouseLeave={leaveCurrentCard}
-          onClick={toggleModal}
+          onClick={toLink}
+          data-name="store"
         >
           <picture>
             <source

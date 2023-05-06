@@ -1,7 +1,5 @@
 import {
   PortfolioInner,
-  SectionTitle,
-  TitleSpan,
   PortfolioList,
   PortfolioItem,
   PortfolioImg,
@@ -11,6 +9,11 @@ import {
   ListOverLay,
   SpanOverLay,
 } from './Portfolio.styled';
+
+import {
+  SectionTitle,
+  TitleSpan,
+} from 'components/SectionTitle/SectionTitle.styled';
 
 import imgJpg_1 from '../../img/portfolio/portf-1.jpg';
 import imgWebp_1 from '../../img/portfolio/portf-1.webp';
@@ -28,7 +31,7 @@ import imgWebp_6 from '../../img/portfolio/portf-6.webp';
 export const Portfolio = () => {
   return (
     <PortfolioInner id="projects" data-section>
-      <SectionTitle>
+      <SectionTitle color="#fff">
         <TitleSpan>Наші</TitleSpan> проекти
       </SectionTitle>
       <PortfolioList>

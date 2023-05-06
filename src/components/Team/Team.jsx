@@ -1,9 +1,6 @@
 import { Icon } from 'components/Icon/Icon';
 import {
   TeamInner,
-  SectionTitle,
-  TitleSpan,
-  SetctionText,
   TeamList,
   TeamItem,
   TeamItemInner,
@@ -13,6 +10,12 @@ import {
   TeamRoleText,
   SpanLineText,
 } from './Team.styled';
+
+import {
+  SectionTitle,
+  TitleSpan,
+  SetctionText,
+} from 'components/SectionTitle/SectionTitle.styled';
 
 import teamImg_1 from '../../img/team/team-1.jpg';
 import teamWebp_1 from '../../img/team/team-1.webp';

@@ -14,3 +14,8 @@ export const useStoreUser = create(set => ({
   },
   setUser: value => set(() => ({ userData: { ...value } })),
 }));
+
+export const useShowModal = create(set => ({
+  isShowModal: false,
+  toggleModal: value => set(() => ({ isShowModal: value })),
+}));

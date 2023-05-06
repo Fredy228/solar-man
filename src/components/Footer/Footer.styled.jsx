@@ -56,5 +56,5 @@ export const Copyright = styled.div`
   width: 100%;
   text-align: center;
   font-size: 14px;
-  margin-top: 10px;
+  margin-top: 50px;
 `;

@@ -1,11 +1,12 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import LayoutAdmin from './Layout/LayoutAdmin';
 import PrivateRoute from './Routes/PrivateRoute';
 import RestrictedRoute from './Routes/RestrictedRoute';
-import Home from 'pages/Home/Home';
+import { useShowModal } from 'globalState/globalState';
 
+const Home = lazy(() => import('pages/Home/Home'));
 const LoginAdmin = lazy(() => import('pages/LoginAdmin/LoginAdmin'));
 const AdminProfile = lazy(() => import('pages/AdminProfile/AdminProfile'));
 const StoreDB = lazy(() => import('pages/StoreDB/StoreDB'));
@@ -20,6 +21,13 @@ const Projects = lazy(() => import('pages/Projects/Projects'));
 const Store = lazy(() => import('pages/Store/Store'));
 
 export const App = () => {
+  const { isShowModal } = useShowModal();
+
+  useEffect(() => {
+    if (isShowModal) document.body.classList.add('no-scroll');
+    if (!isShowModal) document.body.classList.remove('no-scroll');
+  }, [isShowModal]);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

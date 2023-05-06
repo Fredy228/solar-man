@@ -16,6 +16,7 @@ export const Navigation = ({ showMenu }) => {
   const [isShowDropNav, setIsShowDropNav] = useState(false);
 
   const toggleMenu = () => {
+    window.scrollTo(0, 0);
     showMenu();
     setIsShowDropNav(false);
   };

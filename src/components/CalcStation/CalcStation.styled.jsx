@@ -9,40 +9,6 @@ export const StationInner = styled.section`
   }
 `;
 
-export const SectionTitle = styled.h2`
-  text-align: center;
-  font-size: 28px;
-  position: relative;
-  margin-bottom: 30px;
-
-  :after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background-color: ${({ theme: { color } }) => color.second};
-  }
-
-  @media screen and (max-width: 768px) {
-    font-size: 20px;
-  }
-`;
-
-export const TitleSpan = styled.span`
-  color: ${({ theme: { color } }) => color.second};
-`;
-
-export const SetctionText = styled.p`
-  text-align: center;
-  font-size: 18px;
-  @media screen and (max-width: 768px) {
-    font-size: 16px;
-  }
-`;
-
 export const SliderBox = styled.div`
   max-width: 700px;
   margin: 25px auto 0 auto;

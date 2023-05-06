@@ -122,7 +122,7 @@ export const LinkToDrop = styled.span`
 
 export const DropNav = styled.div`
   visibility: ${({ isShow }) => (isShow ? 'visible' : 'hidden')};
-  height: ${({ isShow }) => (isShow ? '200px' : '0')};
+  height: ${({ isShow }) => (isShow ? '205px' : '0')};
   transition-property: visibility, height;
   transition-duration: 350ms;
   transition-timing-function: ease;
@@ -154,7 +154,12 @@ export const DropNavList = styled.ul`
   justify-content: center;
   padding: 10px 10px;
   border-radius: 20px;
-  background-color: ${({ theme: { color } }) => color.main};
+  background-color: ${({ theme: { color } }) => color.mainOpacity};
+  backdrop-filter: blur(7px);
+
+  @media screen and (min-width: 1000px) {
+    border: 1px solid ${({ theme: { color } }) => color.second};
+  }
 `;
 
 export const DropNavItem = styled.li`

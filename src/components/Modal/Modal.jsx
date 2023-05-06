@@ -1,14 +1,17 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Overlay, ModalWindow, Cross, ButtonClose } from './Modal.styled';
+import { useShowModal } from 'globalState/globalState';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const Modal = ({ toggleModal, children }) => {
+export const Modal = ({ children }) => {
+  const { toggleModal } = useShowModal();
+
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.code === 'Escape') {
-        toggleModal();
+        toggleModal(false);
       }
     }
 
@@ -20,7 +23,7 @@ export const Modal = ({ toggleModal, children }) => {
 
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
-      toggleModal();
+      toggleModal(false);
     }
   };
 
@@ -28,7 +31,7 @@ export const Modal = ({ toggleModal, children }) => {
     <Overlay onClick={handleBackdropClick}>
       <ModalWindow>
         {children}
-        <ButtonClose onClick={toggleModal}>
+        <ButtonClose onClick={() => toggleModal(false)}>
           <Cross></Cross>
         </ButtonClose>
       </ModalWindow>

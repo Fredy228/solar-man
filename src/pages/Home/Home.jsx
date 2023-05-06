@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { CalcStaion } from 'components/CalcStation/CalcStation';
 import { Intro } from 'components/Intro/Intro';
 import { Container, Frontier } from 'pages/Common.styled';
@@ -10,28 +8,25 @@ import { Portfolio } from 'components/Portfolio/Portfolio';
 import { Modal } from 'components/Modal/Modal';
 import { SendPhone } from 'components/SendPhone/SendPhone';
 import { Call } from 'components/Call/Call';
+import { useShowModal } from 'globalState/globalState';
 
 const Home = () => {
-  const [isShowModal, setIsShowModal] = useState(false);
+  const { isShowModal } = useShowModal();
 
-  const toggleModal = () => {
-    setIsShowModal(prevS => !prevS);
-    document.body.classList.toggle('no-scroll');
-  };
   return (
     <>
       <Main>
         <Container>
-          <Intro toggleModal={toggleModal} />
+          <Intro />
         </Container>
 
         <Container>
-          <CalcStaion toggleModal={toggleModal} />
+          <CalcStaion />
         </Container>
 
         <Frontier color={'main'}>
           <Container>
-            <Solution toggleModal={toggleModal} />
+            <Solution />
           </Container>
         </Frontier>
 
@@ -46,10 +41,10 @@ const Home = () => {
         </Frontier>
       </Main>
 
-      <Call toggleModal={toggleModal} />
+      <Call />
 
       {isShowModal && (
-        <Modal toggleModal={toggleModal}>
+        <Modal>
           <SendPhone />
         </Modal>
       )}

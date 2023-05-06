@@ -1,5 +1,7 @@
+import { Inner } from './AboutUs.styled';
+
 const AboutUs = () => {
-  return 'About us';
+  return <Inner>Розділ в розробці...</Inner>;
 };
 
 export default AboutUs;

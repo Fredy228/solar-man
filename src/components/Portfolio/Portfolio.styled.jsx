@@ -8,33 +8,6 @@ export const PortfolioInner = styled.section`
   }
 `;
 
-export const SectionTitle = styled.h2`
-  text-align: center;
-  font-size: 28px;
-  position: relative;
-  margin-bottom: 40px;
-  color: ${({ theme }) => theme.color.white};
-
-  :after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background-color: ${({ theme: { color } }) => color.white};
-  }
-
-  @media screen and (max-width: 768px) {
-    font-size: 20px;
-  }
-`;
-
-export const TitleSpan = styled.span`
-  color: ${({ theme: { color } }) => color.second};
-`;
-
 export const PortfolioList = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -74,7 +47,7 @@ export const PortfolioItem = styled.li`
   }
 
   @media screen and (max-width: 767px) {
-    max-width: 280px;
+    max-width: 320px;
     margin: 0 auto calc(30px / 2) auto;
   }
 
