@@ -29,7 +29,6 @@ import intro2_sm_jpg from '../../img/intro/intro-2_sm.jpg';
 import intro3_sm_webp from '../../img/intro/intro-3_sm.webp';
 import intro3_sm_jpg from '../../img/intro/intro-3_sm.jpg';
 
-
 export const Intro = () => {
   const history = useNavigate();
 
@@ -45,7 +44,6 @@ export const Intro = () => {
 
   const toLink = e => {
     const key = e.currentTarget.dataset.name;
-    console.log(key);
     switch (key) {
       case 'company':
         history('/enterprises');
