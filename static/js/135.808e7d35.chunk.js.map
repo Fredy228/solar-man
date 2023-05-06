@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/135.808e7d35.chunk.js","mappings":"kHAIA,UAJc,WACZ,MAAO,OACR,C","sources":["pages/Store/Store.jsx"],"sourcesContent":["const Store = () => {\n  return 'Store';\n};\n\nexport default Store;\n"],"names":[],"sourceRoot":""}

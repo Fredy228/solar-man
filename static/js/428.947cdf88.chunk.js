@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunksolar_man=self.webpackChunksolar_man||[]).push([[428],{6428:function(n,u,a){a.r(u);u.default=function(){return"Backup Power"}}}]);
-//# sourceMappingURL=428.947cdf88.chunk.js.map
