@@ -90,7 +90,7 @@ export const Team = () => {
                 alt="Малаевский Максим"
               />
             </picture>
-            <TeamName>Малаевский Максим</TeamName>
+            <TeamName>Максим Малаєвский</TeamName>
             <TeamRole>
               <Icon name="icon-muscles" />
               <TeamRoleText>М'язи</TeamRoleText>

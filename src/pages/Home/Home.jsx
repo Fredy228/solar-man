@@ -5,14 +5,8 @@ import { Main } from './Home.styled';
 import { Solution } from 'components/Solution/Solution';
 import { Team } from 'components/Team/Team';
 import { Portfolio } from 'components/Portfolio/Portfolio';
-import { Modal } from 'components/Modal/Modal';
-import { SendPhone } from 'components/SendPhone/SendPhone';
-import { Call } from 'components/Call/Call';
-import { useShowModal } from 'globalState/globalState';
 
 const Home = () => {
-  const { isShowModal } = useShowModal();
-
   return (
     <>
       <Main>
@@ -40,14 +34,6 @@ const Home = () => {
           </Container>
         </Frontier>
       </Main>
-
-      <Call />
-
-      {isShowModal && (
-        <Modal>
-          <SendPhone />
-        </Modal>
-      )}
     </>
   );
 };

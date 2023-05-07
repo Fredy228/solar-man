@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 import { HeadAdmin } from 'components/Header/HeaderAdmin';
 import { useStoreUser } from 'globalState/globalState';
+import { LoadPage } from 'components/LoadSpiner/LoadPage';
 
 const LayoutAdmin = () => {
   const { setUser } = useStoreUser();
@@ -16,7 +17,7 @@ const LayoutAdmin = () => {
     <>
       <HeadAdmin />
 
-      <Suspense fallback={null}>
+      <Suspense fallback={<LoadPage />}>
         <Outlet />
       </Suspense>
     </>
