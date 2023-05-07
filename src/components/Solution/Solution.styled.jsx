@@ -55,6 +55,17 @@ export const CustomNavigation = styled.div`
   }
 `;
 
+export const BtnArrow = styled.button`
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: transparent;
+`;
+
 export const SolutionInner = styled.section`
   padding: 50px 0;
   position: relative;

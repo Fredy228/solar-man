@@ -1,3 +1,5 @@
+import { Range, getTrackBackground } from 'react-range';
+import { useEffect, useState } from 'react';
 import {
   StationInner,
   SliderBox,
@@ -9,14 +11,16 @@ import {
   OutputSlider,
   Sun,
 } from './CalcStation.styled';
+
 import {
   SectionTitle,
   TitleSpan,
   SetctionText,
 } from 'components/SectionTitle/SectionTitle.styled';
+
 import { Icon } from 'components/Icon/Icon';
-import { Range, getTrackBackground } from 'react-range';
-import { useEffect, useState } from 'react';
+
+import { useShowModal } from 'globalState/globalState';
 
 import stationPng_xl from '../../img/calcStation/station_xl.png';
 import stationWebp_xl from '../../img/calcStation/station_xl.webp';
@@ -25,8 +29,9 @@ import stationWebp_md from '../../img/calcStation/station_md.webp';
 import stationPng_sm from '../../img/calcStation/station_sm.png';
 import stationWebp_sm from '../../img/calcStation/station_sm.webp';
 
-export const CalcStaion = ({ toggleModal }) => {
+export const CalcStaion = () => {
   const [valueRange, setValueRange] = useState([10]);
+  const { toggleModal } = useShowModal();
 
   const [profit, setProfit] = useState(0);
   const [income, setIncome] = useState(0);
@@ -176,7 +181,7 @@ export const CalcStaion = ({ toggleModal }) => {
           </TextResult>
         </ItemResult>
       </ListResult>
-      <ButtonGetCall type="button" onClick={toggleModal}>
+      <ButtonGetCall type="button" onClick={() => toggleModal(true)}>
         <Icon name="icon-energy" />
         Отримати консультацію
       </ButtonGetCall>

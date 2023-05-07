@@ -31,6 +31,7 @@ import {
   BuyBtn,
   CustomNavigation,
   SwiperSlideS,
+  BtnArrow,
 } from './Solution.styled';
 
 import {
@@ -40,6 +41,7 @@ import {
 
 import { Icon } from 'components/Icon/Icon';
 import useWindowWidth from '../../services/widthScreen';
+import { useShowModal } from 'globalState/globalState';
 import { useEffect, useState } from 'react';
 
 const products = [
@@ -117,7 +119,8 @@ const products = [
   },
 ];
 
-export const Solution = ({ toggleModal }) => {
+export const Solution = () => {
+  const { toggleModal } = useShowModal();
   const widthScreen = useWindowWidth();
   const [slideView, setSlideView] = useState(3);
 
@@ -168,7 +171,7 @@ export const Solution = ({ toggleModal }) => {
                   />
                 </picture>
                 <Title>{item.title}</Title>
-                <BuyBtn onClick={toggleModal}>
+                <BuyBtn onClick={() => toggleModal(true)}>
                   <Icon name="icon-cart-buy" />
                   {item.cost}$
                 </BuyBtn>
@@ -179,10 +182,14 @@ export const Solution = ({ toggleModal }) => {
       </Swiper>
       <CustomNavigation>
         <div className="swiper-button-prev">
-          <Icon name="icon-arrow" width="40" height="40" />
+          <BtnArrow>
+            <Icon name="icon-arrow" width="40" height="40" />
+          </BtnArrow>
         </div>
         <div className="swiper-button-next">
-          <Icon name="icon-arrow" width="40" height="40" />
+          <BtnArrow>
+            <Icon name="icon-arrow" width="40" height="40" />
+          </BtnArrow>
         </div>
       </CustomNavigation>
     </SolutionInner>
