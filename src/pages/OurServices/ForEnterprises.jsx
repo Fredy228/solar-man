@@ -1,11 +1,10 @@
 import { Container } from 'pages/Common.styled';
-import { Section, BoxForm } from './OurServices.styled';
+import { Section } from './OurServices.styled';
 import { OptionEnterprises } from 'components/Option/OptionEnterprises';
 import { BenefitsEnterprises } from 'components/Benefits/BenefitsEnterprises';
 import { Areas } from 'components/Areas/Areas';
 import { ElementsStationEnterprises } from 'components/ElementsStation/ElementsStationEnterprise';
 import { StepsWorkEnterprises } from 'components/StepsWork/StepsWorkEnterprises';
-import { SendPhone } from 'components/SendPhone/SendPhone';
 
 const ForEnterprises = () => {
   return (
