@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/solar-man/static/css/main.6f72b787.css",
-    "main.js": "/solar-man/static/js/main.a7b20d65.js",
-    "static/css/364.c0848235.chunk.css": "/solar-man/static/css/364.c0848235.chunk.css",
-    "static/js/364.625ff126.chunk.js": "/solar-man/static/js/364.625ff126.chunk.js",
+    "main.js": "/solar-man/static/js/main.f539a3ce.js",
+    "static/css/76.c0e8ca8f.chunk.css": "/solar-man/static/css/76.c0e8ca8f.chunk.css",
+    "static/js/76.9ebff3bc.chunk.js": "/solar-man/static/js/76.9ebff3bc.chunk.js",
     "static/js/290.4d790cb2.chunk.js": "/solar-man/static/js/290.4d790cb2.chunk.js",
     "static/js/542.4bfb01bd.chunk.js": "/solar-man/static/js/542.4bfb01bd.chunk.js",
     "static/js/437.81d5b520.chunk.js": "/solar-man/static/js/437.81d5b520.chunk.js",
@@ -14,7 +14,7 @@
     "static/js/688.18f9354f.chunk.js": "/solar-man/static/js/688.18f9354f.chunk.js",
     "static/js/620.f7e440e0.chunk.js": "/solar-man/static/js/620.f7e440e0.chunk.js",
     "static/js/630.ac5e6aad.chunk.js": "/solar-man/static/js/630.ac5e6aad.chunk.js",
-    "static/js/569.04f513de.chunk.js": "/solar-man/static/js/569.04f513de.chunk.js",
+    "static/js/612.cf361275.chunk.js": "/solar-man/static/js/612.cf361275.chunk.js",
     "static/media/intro-2.png": "/solar-man/static/media/intro-2.eab4a872667a2638291a.png",
     "static/media/intro-3.png": "/solar-man/static/media/intro-3.681fb6741310f55611b3.png",
     "static/media/portf-3.jpg": "/solar-man/static/media/portf-3.4482643e7c5341ca4148.jpg",
@@ -139,9 +139,9 @@
     "static/media/enterprises-1.webp": "/solar-man/static/media/enterprises-1.20392627b5958b65d27a.webp",
     "index.html": "/solar-man/index.html",
     "main.6f72b787.css.map": "/solar-man/static/css/main.6f72b787.css.map",
-    "main.a7b20d65.js.map": "/solar-man/static/js/main.a7b20d65.js.map",
-    "364.c0848235.chunk.css.map": "/solar-man/static/css/364.c0848235.chunk.css.map",
-    "364.625ff126.chunk.js.map": "/solar-man/static/js/364.625ff126.chunk.js.map",
+    "main.f539a3ce.js.map": "/solar-man/static/js/main.f539a3ce.js.map",
+    "76.c0e8ca8f.chunk.css.map": "/solar-man/static/css/76.c0e8ca8f.chunk.css.map",
+    "76.9ebff3bc.chunk.js.map": "/solar-man/static/js/76.9ebff3bc.chunk.js.map",
     "290.4d790cb2.chunk.js.map": "/solar-man/static/js/290.4d790cb2.chunk.js.map",
     "542.4bfb01bd.chunk.js.map": "/solar-man/static/js/542.4bfb01bd.chunk.js.map",
     "437.81d5b520.chunk.js.map": "/solar-man/static/js/437.81d5b520.chunk.js.map",
@@ -152,10 +152,10 @@
     "688.18f9354f.chunk.js.map": "/solar-man/static/js/688.18f9354f.chunk.js.map",
     "620.f7e440e0.chunk.js.map": "/solar-man/static/js/620.f7e440e0.chunk.js.map",
     "630.ac5e6aad.chunk.js.map": "/solar-man/static/js/630.ac5e6aad.chunk.js.map",
-    "569.04f513de.chunk.js.map": "/solar-man/static/js/569.04f513de.chunk.js.map"
+    "612.cf361275.chunk.js.map": "/solar-man/static/js/612.cf361275.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6f72b787.css",
-    "static/js/main.a7b20d65.js"
+    "static/js/main.f539a3ce.js"
   ]
 }
