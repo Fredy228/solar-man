@@ -14,6 +14,7 @@ import {
 import { sendPhoneToTelegram } from 'components/API/API';
 import { LoadSpiner } from 'components/LoadSpiner/LoadSpiner';
 import { Icon } from 'components/Icon/Icon';
+import { gtag_report_conversion } from 'services/gtag';
 
 export const SendPhone = () => {
   const [name, setName] = useState('');
@@ -36,6 +37,7 @@ export const SendPhone = () => {
       setPhone('');
 
       Notify.success('Дані відправлено');
+      gtag_report_conversion('https://solarman.pro/');
     } catch (error) {
       setIsBtnDisab(false);
       setIsLoading(false);
