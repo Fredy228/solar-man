@@ -125,8 +125,6 @@ export const createUser = async (name, password, role) => {
 };
 
 export const getPosts = async (limit = 20, page = 1) => {
-  checkSetAuth();
-
   const response = await axios.get(
     `/api/admin/portfolio?limit=${limit}&page=${page}`
   );
@@ -134,8 +132,6 @@ export const getPosts = async (limit = 20, page = 1) => {
 };
 
 export const getPostsById = async id => {
-  checkSetAuth();
-
   const response = await axios.get(`/api/admin/portfolio/${id}`);
   return response.data;
 };
