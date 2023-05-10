@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunksolar_man=self.webpackChunksolar_man||[]).push([[620],{620:function(n,e,t){t.r(e),t.d(e,{default:function(){return a}});var i,r=t(168),s=t(6444).ZP.div(i||(i=(0,r.Z)(["\n  width: 100%;\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n"]))),u=t(184),a=function(){return(0,u.jsx)(s,{children:"\u0420\u043e\u0437\u0434\u0456\u043b \u0432 \u0440\u043e\u0437\u0440\u043e\u0431\u0446\u0456..."})}}}]);
-//# sourceMappingURL=620.f7e440e0.chunk.js.map
