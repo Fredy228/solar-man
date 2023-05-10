@@ -1,7 +1,15 @@
-import { Inner } from './Projects.styled';
+import { Container } from 'pages/Common.styled';
+import { ProjectsC } from 'components/Portfolio/Projects';
+import { Section } from 'pages/OurServices/OurServices.styled';
 
 const Projects = () => {
-  return <Inner>Розділ в розробці...</Inner>;
+  return (
+    <Section>
+      <Container>
+        <ProjectsC />
+      </Container>
+    </Section>
+  );
 };
 
 export default Projects;

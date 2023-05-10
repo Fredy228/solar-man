@@ -182,12 +182,12 @@ export const Solution = () => {
       </Swiper>
       <CustomNavigation>
         <div className="swiper-button-prev">
-          <BtnArrow>
+          <BtnArrow type="button">
             <Icon name="icon-arrow" width="40" height="40" />
           </BtnArrow>
         </div>
         <div className="swiper-button-next">
-          <BtnArrow>
+          <BtnArrow type="button">
             <Icon name="icon-arrow" width="40" height="40" />
           </BtnArrow>
         </div>

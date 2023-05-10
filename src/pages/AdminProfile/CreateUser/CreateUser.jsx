@@ -57,7 +57,7 @@ export const CreateUser = ({ setIsCreate }) => {
             onChange={e => setPassword(e.target.value)}
           />
         </Label>
-        <Button type="submit">Сворити</Button>
+        <Button type="submit">Створити</Button>
       </Form>
     </BoxForm>
   );

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
   Header,
   HeaderInnerAdmin,
@@ -23,13 +24,14 @@ export const HeadAdmin = () => {
   const { isAuth } = useStoreAuth();
   const { userData } = useStoreUser();
   const scrollScreen = useScrollScreen();
+  const history = useNavigate();
 
   return (
     <>
       <Header scroll={scrollScreen}>
         <Container>
           <HeaderInnerAdmin>
-            <Logo>
+            <Logo onClick={() => history('/')}>
               <Icon name={'icon-logo-v2'} />
             </Logo>
 
@@ -65,7 +67,10 @@ export const HeadAdmin = () => {
             <LinkNav to="/admin/profile">Профіль</LinkNav>
           </AdmintTab>
           <AdmintTab>
-            <LinkNav to="/admin/database">Товари</LinkNav>
+            <LinkNav to="/admin/goods">Товари</LinkNav>
+          </AdmintTab>
+          <AdmintTab>
+            <LinkNav to="/admin/portfolio">Портфоліо</LinkNav>
           </AdmintTab>
         </AdminTabs>
       )}

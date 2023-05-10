@@ -89,7 +89,7 @@ export const TeamItemInner = styled.div`
 
   :hover::after,
   :hover::before {
-    width: 35px;
+    width: 20px;
   }
 
   :hover ${SpanLineText} {

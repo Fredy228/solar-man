@@ -32,6 +32,8 @@ export const TitleSpan = styled.span`
 export const SetctionText = styled.p`
   text-align: center;
   font-size: 18px;
+  max-width: 850px;
+  margin: 0 auto;
   color: ${({ color, theme }) => (color ? color : theme.color.black)};
 
   @media screen and (max-width: 768px) {

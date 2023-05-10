@@ -10,6 +10,8 @@ const Home = lazy(() => import('pages/Home/Home'));
 const LoginAdmin = lazy(() => import('pages/LoginAdmin/LoginAdmin'));
 const AdminProfile = lazy(() => import('pages/AdminProfile/AdminProfile'));
 const StoreDB = lazy(() => import('pages/StoreDB/StoreDB'));
+const Portfolio = lazy(() => import('pages/Portfolio/Portfolio'));
+const PortfolioId = lazy(() => import('pages/Portfolio/PortfolioId'));
 
 const ForEnterprises = lazy(() => import('pages/OurServices/ForEnterprises'));
 const ForHome = lazy(() => import('pages/OurServices/ForHome'));
@@ -61,8 +63,16 @@ export const App = () => {
           }
         />
         <Route
-          path="database"
+          path="goods"
           element={<PrivateRoute redirectTo="/admin" component={StoreDB} />}
+        />
+        <Route
+          path="portfolio"
+          element={<PrivateRoute redirectTo="/admin" component={Portfolio} />}
+        />
+        <Route
+          path="portfolio/:postId"
+          element={<PrivateRoute redirectTo="/admin" component={PortfolioId} />}
         />
       </Route>
     </Routes>

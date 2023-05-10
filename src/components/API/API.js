@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-// axios.defaults.baseURL = 'https://solarman.pro';
-axios.defaults.baseURL = 'http://localhost:3001';
+// export const baseURL = 'https://solarman.pro';
+export const baseURL = 'http://localhost:3001';
+
+axios.defaults.baseURL = baseURL;
 
 export const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -37,11 +39,14 @@ export const checkAuth = async () => {
   }
 };
 
-export const logoutUser = async () => {
+const checkSetAuth = () => {
   const token = localStorage.getItem('token');
   if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
-
   setAuthHeader(token);
+};
+
+export const logoutUser = async () => {
+  checkSetAuth();
 
   try {
     await axios.post('/api/admin/logout');
@@ -54,10 +59,7 @@ export const logoutUser = async () => {
 };
 
 export const getUsers = async () => {
-  const token = localStorage.getItem('token');
-  if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
-
-  setAuthHeader(token);
+  checkSetAuth();
 
   const response = await axios.get('/api/admin/users');
 
@@ -65,11 +67,9 @@ export const getUsers = async () => {
 };
 
 export const deleteUsers = async (role, id) => {
-  const token = localStorage.getItem('token');
-  if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
-  if (role !== 'admin') return Notify.failure(`У вас має прав видяляти User`);
+  checkSetAuth();
 
-  setAuthHeader(token);
+  if (role !== 'admin') return Notify.failure(`У вас має прав видяляти User`);
 
   const response = await axios.post(`/api/admin/delete/${id}`);
 
@@ -77,11 +77,9 @@ export const deleteUsers = async (role, id) => {
 };
 
 export const editRoleUsers = async (role, id, roleUp) => {
-  const token = localStorage.getItem('token');
-  if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
-  if (role !== 'admin') return Notify.failure(`У вас має прав видяляти User`);
+  checkSetAuth();
 
-  setAuthHeader(token);
+  if (role !== 'admin') return Notify.failure(`У вас має прав видяляти User`);
 
   const response = await axios.patch(`/api/admin/update-role/${id}`, {
     role: roleUp,
@@ -91,9 +89,7 @@ export const editRoleUsers = async (role, id, roleUp) => {
 };
 
 export const updateUser = async (name, email) => {
-  const token = localStorage.getItem('token');
-  if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
-  setAuthHeader(token);
+  checkSetAuth();
 
   if (name)
     return await axios.patch(`/api/admin/update-me`, {
@@ -106,9 +102,7 @@ export const updateUser = async (name, email) => {
 };
 
 export const updatePass = async (password, newPass) => {
-  const token = localStorage.getItem('token');
-  if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
-  setAuthHeader(token);
+  checkSetAuth();
 
   const response = await axios.patch(`/api/admin/update-pass`, {
     password,
@@ -118,9 +112,7 @@ export const updatePass = async (password, newPass) => {
 };
 
 export const createUser = async (name, password, role) => {
-  const token = localStorage.getItem('token');
-  if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
-  setAuthHeader(token);
+  checkSetAuth();
 
   const response = await axios.post(`/api/admin/register`, {
     password: password.trim(),
@@ -129,5 +121,63 @@ export const createUser = async (name, password, role) => {
   });
 
   console.log(response);
+  return response.data;
+};
+
+export const getPosts = async (limit = 20, page = 1) => {
+  checkSetAuth();
+
+  const response = await axios.get(
+    `/api/admin/portfolio?limit=${limit}&page=${page}`
+  );
+  return response.data;
+};
+
+export const getPostsById = async id => {
+  checkSetAuth();
+
+  const response = await axios.get(`/api/admin/portfolio/${id}`);
+  return response.data;
+};
+
+export const deletePosts = async id => {
+  checkSetAuth();
+
+  const response = await axios.delete(`/api/admin/portfolio/${id}`);
+  return response.data;
+};
+
+export const createPosts = async (title, year, components, photo) => {
+  checkSetAuth();
+
+  const formData = new FormData();
+
+  formData.append('title', title);
+  formData.append('year', year);
+  formData.append('components', JSON.stringify(components));
+  formData.append('photo', photo);
+
+  const response = await axios.post(`/api/admin/portfolio`, formData);
+  return response.data;
+};
+
+export const updatePosts = async (id, title, year, components, photo) => {
+  checkSetAuth();
+
+  const formData = new FormData();
+
+  formData.append('title', title);
+  formData.append('year', year);
+  formData.append('components', JSON.stringify(components));
+  formData.append('photo', photo);
+
+  const response = await axios.patch(`/api/admin/portfolio/${id}`, formData);
+  return response.data;
+};
+
+export const updateOrderPosts = async objects => {
+  checkSetAuth();
+
+  const response = await axios.post(`/api/admin/portfolio/order`, objects);
   return response.data;
 };

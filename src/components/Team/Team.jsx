@@ -95,7 +95,7 @@ export const Team = () => {
               <Icon name="icon-muscles" />
               <TeamRoleText>М'язи</TeamRoleText>
             </TeamRole>
-            <SpanLineText>Головний бригадир</SpanLineText>
+            <SpanLineText>Начальник виробництва</SpanLineText>
           </TeamItemInner>
         </TeamItem>
       </TeamList>

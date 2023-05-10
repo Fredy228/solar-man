@@ -14,7 +14,7 @@ export const CustomNavigation = styled.div`
   margin: 20px auto 0;
 
   svg {
-    fill: ${({ theme }) => theme.color.additional};
+    fill: ${({ theme }) => theme.color.second};
     transition: fill 350ms ease;
   }
 

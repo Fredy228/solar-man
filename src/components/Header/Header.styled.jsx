@@ -175,6 +175,9 @@ export const AdminTabs = styled.ul`
   display: flex;
   justify-content: center;
   margin-top: 110px;
+  height: auto;
+  flex-wrap: wrap;
+
   @media screen and (max-width: 1000px) {
     margin-top: 100px;
   }
@@ -184,6 +187,11 @@ export const AdminTabs = styled.ul`
 `;
 
 export const AdmintTab = styled.li`
+  :last-child {
+    @media screen and (max-width: 397px) {
+      margin-top: 30px;
+    }
+  }
   :not(:last-child) {
     margin-right: 15px;
   }

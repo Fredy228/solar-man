@@ -110,3 +110,30 @@ export const TextOverLay = styled.li`
     font-size: 14px;
   }
 `;
+
+export const NavBtn = styled.button`
+  font-size: 16px;
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: ${({ color, theme }) =>
+    color ? theme.color.main : 'transparent'};
+  border: 2px solid
+    ${({ theme, color }) => (color ? theme.color.main : theme.color.additional)};
+  cursor: pointer;
+  color: ${({ theme }) => theme.color.white};
+  transition-property: background-color, border-color;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+  margin-top: 15px;
+  font-family: inherit;
+  font-weight: inherit;
+
+  :hover {
+    background-color: ${({ theme }) => theme.color.additional};
+    border-color: ${({ theme }) => theme.color.additional};
+  }
+`;
