@@ -5,10 +5,12 @@ import { BenefitsEnterprises } from 'components/Benefits/BenefitsEnterprises';
 import { Areas } from 'components/Areas/Areas';
 import { ElementsStationEnterprises } from 'components/ElementsStation/ElementsStationEnterprise';
 import { StepsWorkEnterprises } from 'components/StepsWork/StepsWorkEnterprises';
+import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 
 const ForEnterprises = () => {
+
   return (
-    <>
+      <GoogleAnalyticsWrapper>
       <Section>
         <Container>
           <OptionEnterprises />
@@ -34,7 +36,7 @@ const ForEnterprises = () => {
           <StepsWorkEnterprises />
         </Container>
       </Section>
-    </>
+      </GoogleAnalyticsWrapper>
   );
 };
 

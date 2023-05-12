@@ -4,10 +4,12 @@ import { OptionInvestment } from 'components/Option/OptionInvestment';
 import { BenefitsInvestment } from 'components/Benefits/BenefitsInvestment';
 import { ElementsStationInvestment } from 'components/ElementsStation/ElementsStationInvestment';
 import { StepsWorkInvestment } from 'components/StepsWork/StepsWorkInvestment';
+import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 
 const ForInvestment = () => {
   return (
-    <>
+
+      <GoogleAnalyticsWrapper>
       <Section>
         <Container>
           <OptionInvestment />
@@ -28,7 +30,8 @@ const ForInvestment = () => {
           <StepsWorkInvestment />
         </Container>
       </Section>
-    </>
+      </GoogleAnalyticsWrapper>
+
   );
 };
 

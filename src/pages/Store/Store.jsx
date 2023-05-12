@@ -1,7 +1,10 @@
 import { Inner } from './Store.styled';
+import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 
 const Store = () => {
-  return <Inner>Розділ в розробці...</Inner>;
+  return (<GoogleAnalyticsWrapper>
+    <Inner>Розділ в розробці...</Inner>
+  </GoogleAnalyticsWrapper>);
 };
 
 export default Store;

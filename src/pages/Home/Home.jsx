@@ -6,9 +6,13 @@ import { Solution } from 'components/Solution/Solution';
 import { Team } from 'components/Team/Team';
 import { Portfolio } from 'components/Portfolio/Portfolio';
 
+import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
+
 const Home = () => {
+  
   return (
-    <>
+
+      <GoogleAnalyticsWrapper>
       <Main>
         <Container>
           <Intro />
@@ -34,7 +38,8 @@ const Home = () => {
           </Container>
         </Frontier>
       </Main>
-    </>
+      </GoogleAnalyticsWrapper>
+
   );
 };
 
