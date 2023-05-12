@@ -17,7 +17,6 @@ export const CreatePostsForm = ({ setReGet, setIsDisableSaveBtn }) => {
   const [year, setYear] = useState('');
   const [components, setComponents] = useState([]);
   const [photo, setPhoto] = useState(undefined);
-
   const fileInputRef = useRef(null);
 
   const submitForm = async e => {
@@ -53,7 +52,15 @@ export const CreatePostsForm = ({ setReGet, setIsDisableSaveBtn }) => {
           accept="image/*"
           multiple=""
           ref={fileInputRef}
-          onChange={e => setPhoto(e.target.files[0])}
+          onChange={e => {
+            const fileSizeInMB = e.target.files[0].size / (1024 * 1024);
+            if (fileSizeInMB > 10) {
+              return Notify.failure(
+                'Файл занадто великий! Максимальний розмір: 10 МБ'
+              );
+            }
+            setPhoto(e.target.files[0]);
+          }}
         />
       </InputFile>
       <ImgInfo>Рекомендовано формат фото - 4:3*</ImgInfo>

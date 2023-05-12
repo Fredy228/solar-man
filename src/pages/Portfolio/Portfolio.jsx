@@ -29,6 +29,7 @@ import { Container } from 'pages/Common.styled';
 import { Icon } from 'components/Icon/Icon';
 import { CreatePostsForm } from './CreatePostsForm/CreatePostsForm';
 import { LoadSpiner } from 'components/LoadSpiner/LoadSpiner';
+import { useStoreUser } from '../../globalState/globalState';
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -63,6 +64,9 @@ const Portfolio = () => {
   const [isDisabledAdd, setIsDisabledAdd] = useState(false);
   const [reGet, setReGet] = useState(false);
   const history = useNavigate();
+  const {
+    userData: { role },
+  } = useStoreUser();
 
   const onDragEnd = result => {
     if (!result.destination) return;
@@ -105,15 +109,16 @@ const Portfolio = () => {
 
   useEffect(() => {
     if (page < 2) return;
-    async function gettingPosts() {
-      setIsLoading(true);
-      setIsDisabledAdd(true);
-      const { posts } = await getPosts(limit, page);
-      setItems(i => [...i, ...posts]);
-      setIsLoading(false);
-      setIsDisabledAdd(false);
-    }
+
     try {
+      async function gettingPosts() {
+        setIsLoading(true);
+        setIsDisabledAdd(true);
+        const { posts } = await getPosts(limit, page);
+        setItems(i => [...i, ...posts]);
+        setIsLoading(false);
+        setIsDisabledAdd(false);
+      }
       gettingPosts();
     } catch (error) {
       Notify.failure('Щось пішло не так...');
@@ -124,33 +129,46 @@ const Portfolio = () => {
   }, [page]);
 
   useEffect(() => {
-    setPage(1);
-    async function gettingPosts() {
-      const { posts, totalPosts } = await getPosts(limit);
-      setItems(posts);
-      setTotal(totalPosts);
+    try {
+      setPage(1);
+      async function gettingPosts() {
+        setIsLoading(true);
+        setIsDisabledAdd(true);
+        const { posts, totalPosts } = await getPosts(limit);
+        setItems(posts);
+        setTotal(totalPosts);
+        setIsLoading(false);
+        setIsDisabledAdd(false);
+      }
+      gettingPosts();
+    } catch (error) {
+      Notify.failure('Щось пішло не так...');
+      Notify.failure(`${error}`);
+      setIsLoading(false);
+      setIsDisabledAdd(false);
     }
-    gettingPosts();
   }, [reGet]);
 
   return (
     <Container>
       <Inner>
-        <BoxControl>
-          <ControlBtn
-            type="button"
-            disabled={isDisableSaveBtn}
-            onClick={changeOrder}
-          >
-            Зберегти
-          </ControlBtn>
-          <ControlBtn
-            type="button"
-            onClick={() => setIsShowCreateForm(!isShowCreateForm)}
-          >
-            {isShowCreateForm ? 'Закрити' : "Новий об'єкт"}
-          </ControlBtn>
-        </BoxControl>
+        {role !== 'user' && (
+          <BoxControl>
+            <ControlBtn
+              type="button"
+              disabled={isDisableSaveBtn}
+              onClick={changeOrder}
+            >
+              Зберегти
+            </ControlBtn>
+            <ControlBtn
+              type="button"
+              onClick={() => setIsShowCreateForm(!isShowCreateForm)}
+            >
+              {isShowCreateForm ? 'Закрити' : "Новий об'єкт"}
+            </ControlBtn>
+          </BoxControl>
+        )}
         {isShowCreateForm && (
           <CreatePostsForm
             setReGet={setReGet}
@@ -202,22 +220,24 @@ const Portfolio = () => {
                                 ))}
                               </ItemList>
                             </BoxInfo>
-                            <BoxBtn>
-                              <ItemBtn
-                                type="button"
-                                onClick={() => history(`${item.id}`)}
-                              >
-                                <Icon name="icon-pencil" />
-                                Редаг.
-                              </ItemBtn>
-                              <ItemBtn
-                                type="button"
-                                onClick={() => deletePostsFn(item.id)}
-                              >
-                                <Icon name="icon-delete" />
-                                Видал.
-                              </ItemBtn>
-                            </BoxBtn>
+                            {role !== 'user' && (
+                              <BoxBtn>
+                                <ItemBtn
+                                  type="button"
+                                  onClick={() => history(`${item.id}`)}
+                                >
+                                  <Icon name="icon-pencil" />
+                                  Редаг.
+                                </ItemBtn>
+                                <ItemBtn
+                                  type="button"
+                                  onClick={() => deletePostsFn(item.id)}
+                                >
+                                  <Icon name="icon-delete" />
+                                  Видал.
+                                </ItemBtn>
+                              </BoxBtn>
+                            )}
                           </Item>
                         );
                       }}

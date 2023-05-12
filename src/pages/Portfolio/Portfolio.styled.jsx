@@ -50,10 +50,10 @@ export const Item = styled.li`
   border-radius: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    justify-content: center;
   }
 `;
 
