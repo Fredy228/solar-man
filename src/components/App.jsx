@@ -21,7 +21,7 @@ const ForBackupPower = lazy(() => import('pages/OurServices/ForBackupPower'));
 const AboutUs = lazy(() => import('pages/AboutUs/AboutUs'));
 const Projects = lazy(() => import('pages/Projects/Projects'));
 const Store = lazy(() => import('pages/Store/Store'));
-
+const Thanks = lazy(() => import('pages/Thanks/Thanks'));
 export const App = () => {
   const { isShowModal } = useShowModal();
 
@@ -43,6 +43,7 @@ export const App = () => {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/store" element={<Store />} />
+        <Route path="/thanks" element={<Thanks />} />
 
         <Route path="*" element={'Not found 404'} />
       </Route>

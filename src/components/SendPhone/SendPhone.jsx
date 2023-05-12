@@ -14,15 +14,18 @@ import {
 import { sendPhoneToTelegram } from 'components/API/API';
 import { LoadSpiner } from 'components/LoadSpiner/LoadSpiner';
 import { Icon } from 'components/Icon/Icon';
-import { gtag_report_conversion } from 'services/gtag';
+import { useNavigate } from 'react-router-dom';
+import { useShowModal } from 'globalState/globalState';
 
 export const SendPhone = () => {
+  const { toggleModal } = useShowModal();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [isBtnDisab, setIsBtnDisab] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const phoneRegex =
     /^(\+38)?\s?(\(0\d{2}\)|0\d{2})[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/;
+  const navigate = useNavigate();
 
   const sendAPI = async () => {
     try {
@@ -37,7 +40,9 @@ export const SendPhone = () => {
       setPhone('');
 
       Notify.success('Дані відправлено');
-      gtag_report_conversion('https://solarman.pro/');
+
+      toggleModal(false);
+      navigate('/thanks');
     } catch (error) {
       setIsBtnDisab(false);
       setIsLoading(false);
