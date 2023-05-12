@@ -6,11 +6,11 @@ import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/Goog
 const Projects = () => {
   return (
     <GoogleAnalyticsWrapper>
-    <Section>
-      <Container>
-        <ProjectsC />
-      </Container>
-    </Section>
+      <Section>
+        <Container>
+          <ProjectsC />
+        </Container>
+      </Section>
     </GoogleAnalyticsWrapper>
   );
 };

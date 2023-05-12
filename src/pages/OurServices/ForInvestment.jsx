@@ -8,8 +8,7 @@ import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/Goog
 
 const ForInvestment = () => {
   return (
-
-      <GoogleAnalyticsWrapper>
+    <GoogleAnalyticsWrapper>
       <Section>
         <Container>
           <OptionInvestment />
@@ -30,8 +29,7 @@ const ForInvestment = () => {
           <StepsWorkInvestment />
         </Container>
       </Section>
-      </GoogleAnalyticsWrapper>
-
+    </GoogleAnalyticsWrapper>
   );
 };
 

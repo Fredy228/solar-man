@@ -8,9 +8,8 @@ import { StepsWorkEnterprises } from 'components/StepsWork/StepsWorkEnterprises'
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 
 const ForEnterprises = () => {
-
   return (
-      <GoogleAnalyticsWrapper>
+    <GoogleAnalyticsWrapper>
       <Section>
         <Container>
           <OptionEnterprises />
@@ -36,7 +35,7 @@ const ForEnterprises = () => {
           <StepsWorkEnterprises />
         </Container>
       </Section>
-      </GoogleAnalyticsWrapper>
+    </GoogleAnalyticsWrapper>
   );
 };
 

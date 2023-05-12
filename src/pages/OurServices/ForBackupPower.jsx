@@ -8,7 +8,7 @@ import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/Goog
 
 const ForBackupPower = () => {
   return (
-      <GoogleAnalyticsWrapper>
+    <GoogleAnalyticsWrapper>
       <Section>
         <Container>
           <OptionBackupPower />
@@ -29,8 +29,7 @@ const ForBackupPower = () => {
           <StepsWorkBackupPower />
         </Container>
       </Section>
-      </GoogleAnalyticsWrapper>
-
+    </GoogleAnalyticsWrapper>
   );
 };
 

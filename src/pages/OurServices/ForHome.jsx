@@ -8,8 +8,7 @@ import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/Goog
 
 const ForHome = () => {
   return (
-
-      <GoogleAnalyticsWrapper>
+    <GoogleAnalyticsWrapper>
       <Section>
         <Container>
           <OptionHome />
@@ -30,8 +29,7 @@ const ForHome = () => {
           <StepsWorkHome />
         </Container>
       </Section>
-      </GoogleAnalyticsWrapper>
-
+    </GoogleAnalyticsWrapper>
   );
 };
 

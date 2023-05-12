@@ -9,10 +9,8 @@ import { Portfolio } from 'components/Portfolio/Portfolio';
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 
 const Home = () => {
-  
   return (
-
-      <GoogleAnalyticsWrapper>
+    <GoogleAnalyticsWrapper>
       <Main>
         <Container>
           <Intro />
@@ -38,8 +36,7 @@ const Home = () => {
           </Container>
         </Frontier>
       </Main>
-      </GoogleAnalyticsWrapper>
-
+    </GoogleAnalyticsWrapper>
   );
 };
 
