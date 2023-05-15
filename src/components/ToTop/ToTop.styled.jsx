@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ToTopBox = styled.div`
   position: fixed;
-  z-index: 1000;
+  z-index: 20;
   bottom: 25px;
   left: 15px;
   border-radius: 50%;

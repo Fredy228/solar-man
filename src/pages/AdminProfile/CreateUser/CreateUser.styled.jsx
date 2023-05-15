@@ -60,7 +60,11 @@ export const Button = styled.button`
   font-family: inherit;
   font-weight: inherit;
   margin-top: 10px;
-  padding: 7px 15px;
+  padding: 0 15px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 20px;
   background-color: ${({ theme }) => theme.color.second};
   color: ${({ theme }) => theme.color.white};

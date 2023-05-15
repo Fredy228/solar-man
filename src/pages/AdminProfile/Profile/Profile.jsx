@@ -12,6 +12,7 @@ import {
 import { Icon } from 'components/Icon/Icon';
 import { updatePass, updateUser, logoutUser } from 'components/API/API';
 import { useStoreAuth } from 'globalState/globalState';
+import { LoadSpiner } from '../../../components/LoadSpiner/LoadSpiner';
 
 export const Profile = ({ id, role, email, name }) => {
   const [isEdit, setIsEdit] = useState({ is: false, name: '' });
@@ -19,6 +20,7 @@ export const Profile = ({ id, role, email, name }) => {
   const [emailInp, setEmailInp] = useState('');
   const [passInp, setPassInp] = useState({ currentPass: '', newPass: '' });
   const { toggleValue } = useStoreAuth();
+  const [isLoading, setIsLoading] = useState(false);
 
   const toLogout = async () => {
     await logoutUser();
@@ -33,15 +35,18 @@ export const Profile = ({ id, role, email, name }) => {
       return;
     }
     try {
+      setIsLoading(true);
       const res = await updateUser(nameInp, emailInp);
       localStorage.setItem('userData', JSON.stringify(res.data.user));
       setIsEdit({ is: false, name: '' });
+      setIsLoading(false);
       window.location.reload();
       Notify.success('Змінено');
     } catch (error) {
       setIsEdit({ is: false, name: '' });
       setNameInp('');
       setEmailInp('');
+      setIsLoading(false);
       Notify.failure(`${error}`);
     }
   };
@@ -50,11 +55,14 @@ export const Profile = ({ id, role, email, name }) => {
     if (!passInp.currentPass.trim() || !passInp.newPass.trim())
       return Notify.warning(`Введіть всі поля`);
     try {
+      setIsLoading(true);
       await updatePass(passInp.currentPass.trim(), passInp.newPass.trim());
       setIsEdit({ is: false, name: '' });
       setPassInp({ currentPass: '', newPass: '' });
       Notify.success('Змінено');
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       setIsEdit({ is: false, name: '' });
       setPassInp({ currentPass: '', newPass: '' });
       Notify.failure('Невірний поточний пароль або щось пішло не так...');
@@ -85,9 +93,19 @@ export const Profile = ({ id, role, email, name }) => {
         </ItemText>
         {isEdit.is && isEdit.name === 'name' ? (
           <>
-            <EditBtn type="button" onClick={updateUserFn}>
-              <Icon name="icon-done" />
-              Змінити
+            <EditBtn
+              type="button"
+              onClick={updateUserFn}
+              disabled={isLoading && isEdit.name === 'name'}
+            >
+              {isLoading && isEdit.name === 'name' ? (
+                <LoadSpiner borderColor={'#fff'} barColor={'#fff'} />
+              ) : (
+                <>
+                  <Icon name="icon-done" />
+                  Змінити
+                </>
+              )}
             </EditBtn>
             <EditBtn
               type="button"
@@ -122,9 +140,19 @@ export const Profile = ({ id, role, email, name }) => {
         </ItemText>
         {isEdit.is && isEdit.name === 'email' ? (
           <>
-            <EditBtn type="button" onClick={updateUserFn}>
-              <Icon name="icon-done" />
-              Змінити
+            <EditBtn
+              type="button"
+              onClick={updateUserFn}
+              disabled={isLoading && isEdit.name === 'email'}
+            >
+              {isLoading && isEdit.name === 'email' ? (
+                <LoadSpiner borderColor={'#fff'} barColor={'#fff'} />
+              ) : (
+                <>
+                  <Icon name="icon-done" />
+                  Змінити
+                </>
+              )}
             </EditBtn>
             <EditBtn
               type="button"
@@ -181,9 +209,19 @@ export const Profile = ({ id, role, email, name }) => {
         </ItemText>
         {isEdit.is && isEdit.name === 'pass' ? (
           <>
-            <EditBtn type="button" onClick={updatePassFn}>
-              <Icon name="icon-done" />
-              Змінити
+            <EditBtn
+              type="button"
+              onClick={updatePassFn}
+              disabled={isLoading && isEdit.name === 'pass'}
+            >
+              {isLoading && isEdit.name === 'pass' ? (
+                <LoadSpiner borderColor={'#fff'} barColor={'#fff'} />
+              ) : (
+                <>
+                  <Icon name="icon-done" />
+                  Змінити
+                </>
+              )}
             </EditBtn>
             <EditBtn
               type="button"

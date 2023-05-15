@@ -9,17 +9,17 @@ const callAnim = keyframes`
     }
     20% {
         transform: rotate(0);
-        
+
     }
     100% {
         transform: rotate(0);
-        
+
     }
 `;
 
 export const CallBox = styled.div`
   position: fixed;
-  z-index: 1000;
+  z-index: 20;
   bottom: 25px;
   right: 15px;
   border-radius: 50%;

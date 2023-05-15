@@ -13,6 +13,7 @@ import {
 } from './CreatePostsForm/CreatePostsForm.styled';
 import { updatePosts, getPostsById } from 'components/API/API';
 import { Inner } from './Portfolio.styled';
+import { LoadSpiner } from '../../components/LoadSpiner/LoadSpiner';
 
 const PortfolioId = () => {
   const { postId } = useParams();
@@ -21,14 +22,18 @@ const PortfolioId = () => {
   const [components, setComponents] = useState([]);
   const [photo, setPhoto] = useState(undefined);
   const history = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const submitForm = async e => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       await updatePosts(postId, title, year, components, photo);
+      setIsLoading(false);
       Notify.success('Змінено');
       history(`/admin/portfolio`);
     } catch (error) {
+      setIsLoading(false);
       Notify.failure('Усп... Щось пішло не так :(');
       Notify.failure(`${error}`);
     }
@@ -98,7 +103,13 @@ const PortfolioId = () => {
             onChange={e => setComponents(e.target.value.split('\n'))}
           ></Textarey>
         </Label>
-        <Button type="submit">Змінити</Button>
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? (
+            <LoadSpiner borderColor={'#fff'} barColor={'#fff'} />
+          ) : (
+            'Змінити'
+          )}
+        </Button>
       </Form>
     </Inner>
   );

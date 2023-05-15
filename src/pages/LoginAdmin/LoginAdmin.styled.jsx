@@ -41,16 +41,46 @@ export const Input = styled.input`
   }
 `;
 
+export const InputPass = styled(Input)`
+  padding-right: 75px;
+`;
+
 export const Label = styled.label`
   width: calc(100% - 20px);
   color: ${({ theme }) => theme.color.white};
   margin-bottom: 15px;
 `;
 
+export const LabelPass = styled(Label)`
+  position: relative;
+`;
+
+export const BtnShowPass = styled.button`
+  position: absolute;
+  background: transparent;
+  right: 5px;
+  bottom: 0;
+  font-size: 12px;
+  color: ${({ theme }) => theme.color.main};
+  font-family: inherit;
+  font-weight: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 37px;
+  z-index: 10;
+  cursor: pointer;
+`;
+
 export const Button = styled.button`
   font-family: inherit;
   font-weight: inherit;
-  padding: 7px 15px;
+  width: 120px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 16px;
   border-radius: 20px;
   background-color: ${({ theme }) => theme.color.second};

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const ListUsers = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 
   @media screen and (max-width: 767px) {
     max-width: 320px;
@@ -21,16 +22,16 @@ export const ItemUsers = styled.li`
   height: 240px;
 
   @media screen and (max-width: 767px) {
-    max-width: 280px;
+    max-width: 320px;
+    width: 100%;
     margin: 0 auto calc(30px / 2) auto;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1000px) {
     margin: calc(30px / 2);
     flex-basis: calc(100% / 2 - 30px);
   }
-
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 768px) {
     margin: calc(30px / 2);
     flex-basis: calc(100% / 3 - 30px);
   }

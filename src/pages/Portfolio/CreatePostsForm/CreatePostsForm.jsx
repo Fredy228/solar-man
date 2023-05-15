@@ -11,6 +11,7 @@ import {
   ImgInfo,
 } from './CreatePostsForm.styled';
 import { createPosts } from 'components/API/API';
+import { LoadSpiner } from '../../../components/LoadSpiner/LoadSpiner';
 
 export const CreatePostsForm = ({ setReGet, setIsDisableSaveBtn }) => {
   const [title, setTitle] = useState('');
@@ -18,10 +19,12 @@ export const CreatePostsForm = ({ setReGet, setIsDisableSaveBtn }) => {
   const [components, setComponents] = useState([]);
   const [photo, setPhoto] = useState(undefined);
   const fileInputRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const submitForm = async e => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       await createPosts(title, year, components, photo);
       setTitle('');
       setYear('');
@@ -31,7 +34,9 @@ export const CreatePostsForm = ({ setReGet, setIsDisableSaveBtn }) => {
       setReGet(state => !state);
       setIsDisableSaveBtn(false);
       Notify.success('Створено');
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       Notify.failure('Усп... Щось пішло не так :(');
       Notify.failure(`${error}`);
     }
@@ -93,7 +98,13 @@ export const CreatePostsForm = ({ setReGet, setIsDisableSaveBtn }) => {
           onChange={e => setComponents(e.target.value.split('\n'))}
         ></Textarey>
       </Label>
-      <Button type="submit">Створити</Button>
+      <Button type="submit" disabled={isLoading}>
+        {isLoading ? (
+          <LoadSpiner barColor={'#fff'} borderColor={'#fff'} />
+        ) : (
+          'Створити'
+        )}
+      </Button>
     </Form>
   );
 };

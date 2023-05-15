@@ -19,6 +19,7 @@ export const UserControl = ({ role }) => {
   const [click, setClick] = useState(false);
   const [isEdit, setIsEdit] = useState({ is: '', id: '', userName: '' });
   const [roleUp, setRoleUp] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const delUserFn = async idDel => {
     try {
@@ -59,6 +60,7 @@ export const UserControl = ({ role }) => {
       Notify.failure(`${error.message}`);
     }
   }, [click, role]);
+
   return (
     <ListUsers>
       {users.map(item => {

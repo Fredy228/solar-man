@@ -48,7 +48,7 @@ export const PortfolioItem = styled.li`
 
   @media screen and (max-width: 767px) {
     max-width: 320px;
-    margin: 0 auto calc(30px / 2) auto;
+    margin: 15px auto calc(30px / 2) auto;
   }
 
   @media screen and (min-width: 768px) {

@@ -73,7 +73,11 @@ export const EditBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px 15px;
+  padding: 0 15px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 30px;
   margin-top: 10px;
   cursor: pointer;
