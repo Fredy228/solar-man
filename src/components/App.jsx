@@ -7,11 +7,14 @@ import RestrictedRoute from './Routes/RestrictedRoute';
 import { useShowModal } from 'globalState/globalState';
 
 const Home = lazy(() => import('pages/Home/Home'));
-const LoginAdmin = lazy(() => import('pages/LoginAdmin/LoginAdmin'));
-const AdminProfile = lazy(() => import('pages/AdminProfile/AdminProfile'));
-const StoreDB = lazy(() => import('pages/StoreDB/StoreDB'));
-const Portfolio = lazy(() => import('pages/Portfolio/Portfolio'));
-const PortfolioId = lazy(() => import('pages/Portfolio/PortfolioId'));
+const LoginAdmin = lazy(() => import('adminPage/LoginAdmin/LoginAdmin'));
+const AdminProfile = lazy(() => import('adminPage/AdminProfile/AdminProfile'));
+const StoreDB = lazy(() => import('adminPage/StoreDB/StoreDB'));
+const Portfolio = lazy(() => import('adminPage/Portfolio/Portfolio'));
+const PortfolioId = lazy(() => import('adminPage/Portfolio/PortfolioId'));
+const CreateProduct = lazy(() =>
+  import('adminPage//StoreDB/CreateProduct/CreateProduct')
+);
 
 const ForEnterprises = lazy(() => import('pages/OurServices/ForEnterprises'));
 const ForHome = lazy(() => import('pages/OurServices/ForHome'));
@@ -74,6 +77,12 @@ export const App = () => {
         <Route
           path="portfolio/:postId"
           element={<PrivateRoute redirectTo="/admin" component={PortfolioId} />}
+        />
+        <Route
+          path="goods/:goodCreate"
+          element={
+            <PrivateRoute redirectTo="/admin" component={CreateProduct} />
+          }
         />
       </Route>
     </Routes>

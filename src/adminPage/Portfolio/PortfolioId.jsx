@@ -10,7 +10,7 @@ import {
   Textarey,
   InputFile,
   Img,
-} from './CreatePostsForm/CreatePostsForm.styled';
+} from '../../components/AdminFormCreate/AdminFormCreate.styled';
 import { updatePosts, getPostsById } from 'components/API/API';
 import { Inner } from './Portfolio.styled';
 import { LoadSpiner } from '../../components/LoadSpiner/LoadSpiner';

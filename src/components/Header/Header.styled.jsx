@@ -186,12 +186,8 @@ export const AdminTabs = styled.ul`
   }
 `;
 
-export const AdmintTab = styled.li`
-  :last-child {
-    @media screen and (max-width: 397px) {
-      margin-top: 30px;
-    }
-  }
+export const AdminTab = styled.li`
+  padding: 10px 0;
   :not(:last-child) {
     margin-right: 15px;
   }

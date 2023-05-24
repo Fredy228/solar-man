@@ -27,7 +27,7 @@ import {
 } from 'components/API/API';
 import { Container } from 'pages/Common.styled';
 import { Icon } from 'components/Icon/Icon';
-import { CreatePostsForm } from './CreatePostsForm/CreatePostsForm';
+import { CreatePost } from '../../components/AdminFormCreate/CreatePost';
 import { LoadSpiner } from 'components/LoadSpiner/LoadSpiner';
 import { useStoreUser } from '../../globalState/globalState';
 
@@ -170,7 +170,7 @@ const Portfolio = () => {
           </BoxControl>
         )}
         {isShowCreateForm && (
-          <CreatePostsForm
+          <CreatePost
             setReGet={setReGet}
             setIsDisableSaveBtn={setIsDisableSaveBtn}
           />

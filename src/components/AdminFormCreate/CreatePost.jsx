@@ -9,11 +9,11 @@ import {
   InputFile,
   Img,
   ImgInfo,
-} from './CreatePostsForm.styled';
+} from './AdminFormCreate.styled';
 import { createPosts } from 'components/API/API';
-import { LoadSpiner } from '../../../components/LoadSpiner/LoadSpiner';
+import { LoadSpiner } from '../LoadSpiner/LoadSpiner';
 
-export const CreatePostsForm = ({ setReGet, setIsDisableSaveBtn }) => {
+export const CreatePost = ({ setReGet, setIsDisableSaveBtn }) => {
   const [title, setTitle] = useState('');
   const [year, setYear] = useState('');
   const [components, setComponents] = useState([]);
@@ -58,7 +58,9 @@ export const CreatePostsForm = ({ setReGet, setIsDisableSaveBtn }) => {
           multiple=""
           ref={fileInputRef}
           onChange={e => {
-            const fileSizeInMB = e.target.files[0].size / (1024 * 1024);
+            const fileCurr = e.target.files[0];
+            if (!fileCurr) return;
+            const fileSizeInMB = fileCurr.size / (1024 * 1024);
             if (fileSizeInMB > 10) {
               return Notify.failure(
                 'Файл занадто великий! Максимальний розмір: 10 МБ'

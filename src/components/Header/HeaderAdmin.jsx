@@ -9,7 +9,7 @@ import {
   Role,
   NameBox,
   AdminTabs,
-  AdmintTab,
+  AdminTab,
   LinkNav,
 } from './Header.styled';
 import { Container } from 'pages/Common.styled';
@@ -63,15 +63,15 @@ export const HeadAdmin = () => {
       </Header>
       {isAuth && (
         <AdminTabs>
-          <AdmintTab>
+          <AdminTab>
             <LinkNav to="/admin/profile">Профіль</LinkNav>
-          </AdmintTab>
-          <AdmintTab>
+          </AdminTab>
+          <AdminTab>
             <LinkNav to="/admin/goods">Товари</LinkNav>
-          </AdmintTab>
-          <AdmintTab>
+          </AdminTab>
+          <AdminTab>
             <LinkNav to="/admin/portfolio">Портфоліо</LinkNav>
-          </AdmintTab>
+          </AdminTab>
         </AdminTabs>
       )}
     </>

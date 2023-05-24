@@ -81,6 +81,7 @@ export const Textarey = styled.textarea`
   font-weight: inherit;
   outline: none;
   transition: border-color 350ms ease;
+  margin-top: 5px;
 
   ::placeholder {
     color: ${({ theme }) => theme.color.black};
@@ -104,6 +105,7 @@ export const Label = styled.label`
   max-width: 500px;
   width: 100%;
   color: ${({ theme }) => theme.color.white};
+  position: relative;
 `;
 
 export const Button = styled.button`
@@ -114,6 +116,7 @@ export const Button = styled.button`
   height: 35px;
   border-radius: 30px;
   margin-top: 10px;
+  margin-bottom: 5px;
   font-size: 18px;
   font-family: inherit;
   font-weight: inherit;
@@ -140,4 +143,39 @@ export const Button = styled.button`
   :not(:disabled):hover svg {
     fill: ${({ theme }) => theme.color.white};
   }
+`;
+
+export const ButtonCircle = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  transition: background-color 350ms ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.additional};
+    svg {
+      fill: ${({ theme }) => theme.color.white};
+    }
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    transition: fill 350ms ease;
+  }
+`;
+
+export const Underline = styled.span`
+  max-width: 500px;
+  width: 100%;
+  height: 2px;
+  background-color: ${({ theme }) => theme.color.additional};
+  margin-bottom: 5px;
 `;
