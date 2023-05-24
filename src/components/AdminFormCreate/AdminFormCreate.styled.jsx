@@ -179,3 +179,18 @@ export const Underline = styled.span`
   background-color: ${({ theme }) => theme.color.additional};
   margin-bottom: 5px;
 `;
+
+export const Select = styled.select`
+  max-width: 500px;
+  margin: 5px 0;
+  width: 100%;
+  text-align: center;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 16px;
+  padding: 7px 5px;
+  border-radius: 50px;
+  outline: transparent;
+`;
+
+export const Option = styled.option``;

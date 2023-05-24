@@ -11,16 +11,17 @@ import {
   ImgInfo,
   ButtonCircle,
   Underline,
+  Select,
+  Option,
 } from './AdminFormCreate.styled';
 import { LoadSpiner } from '../LoadSpiner/LoadSpiner';
 import { Icon } from '../Icon/Icon';
 
 export const CreateSolution = () => {
   const [title, setTitle] = useState('');
+  const [subtype, setSubtype] = useState('Зелений тариф');
   const [cost, setCost] = useState(undefined);
-  const [brand, setBrand] = useState('');
   const [power, setPower] = useState(undefined);
-  const [country, setCountry] = useState('');
   const [descripMain, setDescripMain] = useState('');
   const [descripCharacter, setDescripCharacter] = useState([
     { subtitle: '', option: [] },
@@ -129,10 +130,8 @@ export const CreateSolution = () => {
       setDescripMain('');
       setDescripCharacter([{ subtitle: '', option: [] }]);
       setTitle('');
-      setBrand('');
       setPower(0);
       setCost(0);
-      setCountry('');
       Notify.success('Створено');
       setIsLoading(false);
     } catch (error) {
@@ -170,9 +169,9 @@ export const CreateSolution = () => {
           }}
         />
       </InputFile>
-      <ImgInfo>Рекомендовано формат фото - 3:4*</ImgInfo>
+      <ImgInfo>Рекомендовано формат фото - 1:1*</ImgInfo>
       <Label>
-        Назва товару
+        Назва комплекту
         <Input
           required
           name="name"
@@ -184,9 +183,27 @@ export const CreateSolution = () => {
       </Label>
       <Underline></Underline>
       <Label>
+        Тип комплекту
+        <Select
+          name="type"
+          value={subtype}
+          onChange={e => setSubtype(e.target.value)}
+        >
+          <Option value="Зелений тариф">Зелений тариф</Option>
+          <Option value="Автономні станції">Автономні станції</Option>
+          <Option value="Резервне живлення">Резервне живлення</Option>
+          <Option value="Модульні безперебійні системи">
+            Модульні безперебійні системи
+          </Option>
+          <Option value="Для підприємств">Для підприємств</Option>
+        </Select>
+      </Label>
+      <Underline></Underline>
+      <Label>
         Ціна
         <Input
           required
+          step="any"
           name="cost"
           type="number"
           value={cost || ''}
@@ -196,33 +213,10 @@ export const CreateSolution = () => {
       </Label>
       <Underline></Underline>
       <Label>
-        Бренд товару
+        Потужність комплекту
         <Input
           required
-          name="brand"
-          type="text"
-          value={brand}
-          placeholder="Введіть бренд..."
-          onChange={e => setBrand(e.target.value)}
-        />
-      </Label>
-      <Underline></Underline>
-      <Label>
-        Країна виробництва
-        <Input
-          required
-          name="country"
-          type="text"
-          value={country}
-          placeholder="Введіть країну..."
-          onChange={e => setCountry(e.target.value)}
-        />
-      </Label>
-      <Underline></Underline>
-      <Label>
-        Потужність
-        <Input
-          required
+          step="any"
           name="power"
           type="number"
           value={power || ''}
@@ -232,7 +226,7 @@ export const CreateSolution = () => {
       </Label>
       <Underline></Underline>
       <Label>
-        Опис товару
+        Опис комплекту
         <Textarey
           required
           name="desription"
