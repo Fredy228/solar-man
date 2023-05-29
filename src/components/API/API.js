@@ -42,7 +42,11 @@ export const checkAuth = async () => {
 const checkSetAuth = () => {
   const token = localStorage.getItem('token');
   if (!token) return Notify.failure(`Увійдіть в обліковий запис`);
-  setAuthHeader(token);
+  try {
+    setAuthHeader(token);
+  } catch (err) {
+    Notify.warning(`Ваша сесия закончилась или неверный токен`);
+  }
 };
 
 export const logoutUser = async () => {
@@ -175,5 +179,31 @@ export const updateOrderPosts = async objects => {
   checkSetAuth();
 
   const response = await axios.post(`/api/admin/portfolio/order`, objects);
+  return response.data;
+};
+
+export const createStoreSets = async formData => {
+  checkSetAuth();
+
+  const response = await axios.post(`/api/admin/store-sets`, formData);
+  return response.data;
+};
+
+export const createStoreComponents = async formData => {
+  checkSetAuth();
+
+  const response = await axios.post(`/api/admin/store-components`, formData);
+  return response.data;
+};
+
+export const getStoreSets = async (
+  page = 1,
+  limit = 12,
+  type = 'Всі',
+  sort = 'none'
+) => {
+  const response = await axios.get(
+    `/api/admin/store-sets?page=${page}&limit=${limit}&type=${type}&sort=${sort}`
+  );
   return response.data;
 };

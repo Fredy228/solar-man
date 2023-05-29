@@ -16,12 +16,14 @@ import {
 } from './AdminFormCreate.styled';
 import { LoadSpiner } from '../LoadSpiner/LoadSpiner';
 import { Icon } from '../Icon/Icon';
+import { isValidForm, styleInvalidForm } from './isValidForm';
+import { createStoreSets } from '../API/API';
 
 export const CreateSolution = () => {
   const [title, setTitle] = useState('');
-  const [subtype, setSubtype] = useState('Зелений тариф');
-  const [cost, setCost] = useState(undefined);
-  const [power, setPower] = useState(undefined);
+  const [type, setType] = useState('Зелений тариф');
+  const [cost, setCost] = useState('');
+  const [power, setPower] = useState('');
   const [descripMain, setDescripMain] = useState('');
   const [descripCharacter, setDescripCharacter] = useState([
     { subtitle: '', option: [] },
@@ -124,20 +126,30 @@ export const CreateSolution = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      setPhoto(undefined);
-      setDescripPhoto(undefined);
-      setListComponents([{ subtitle: '', option: [], image: undefined }]);
-      setDescripMain('');
-      setDescripCharacter([{ subtitle: '', option: [] }]);
-      setTitle('');
-      setPower(0);
-      setCost(0);
+      const formData = new FormData();
+
+      formData.append('photo', photo);
+      formData.append('title', title);
+      formData.append('type', type);
+      formData.append('cost', cost);
+      formData.append('power', power);
+      formData.append('descripMain', descripMain);
+      formData.append('descripCharacter', JSON.stringify(descripCharacter));
+      formData.append('descripPhoto', descripPhoto);
+      const components = listComponents.map(component => {
+        formData.append('componentsPhoto', component.image);
+        return { subtitle: component.subtitle, option: component.option };
+      });
+      formData.append('components', JSON.stringify(components));
+
+      await createStoreSets(formData);
+
       Notify.success('Створено');
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
       Notify.failure('Усп... Щось пішло не так :(');
-      Notify.failure(`${error}`);
+      console.log(error);
     }
   };
 
@@ -169,7 +181,9 @@ export const CreateSolution = () => {
           }}
         />
       </InputFile>
-      <ImgInfo>Рекомендовано формат фото - 1:1*</ImgInfo>
+      <ImgInfo>
+        Рекомендовано формат фото - 1:1* та мінімальними розмірами 500х500
+      </ImgInfo>
       <Label>
         Назва комплекту
         <Input
@@ -186,8 +200,8 @@ export const CreateSolution = () => {
         Тип комплекту
         <Select
           name="type"
-          value={subtype}
-          onChange={e => setSubtype(e.target.value)}
+          value={type}
+          onChange={e => setType(e.target.value)}
         >
           <Option value="Зелений тариф">Зелений тариф</Option>
           <Option value="Автономні станції">Автономні станції</Option>
@@ -200,15 +214,23 @@ export const CreateSolution = () => {
       </Label>
       <Underline></Underline>
       <Label>
-        Ціна
+        Ціна, $
         <Input
           required
-          step="any"
           name="cost"
-          type="number"
+          type="text"
           value={cost || ''}
           placeholder="Введіть ціну"
-          onChange={e => setCost(e.target.value)}
+          onChange={e => {
+            if (e.target.value.includes(','))
+              return Notify.warning('Використовуйте точку для нецілих чисел');
+            if (
+              Number(e.target.value) ||
+              e.target.value === '' ||
+              e.target.value === '.'
+            )
+              setCost(e.target.value);
+          }}
         />
       </Label>
       <Underline></Underline>
@@ -216,12 +238,21 @@ export const CreateSolution = () => {
         Потужність комплекту
         <Input
           required
-          step="any"
           name="power"
-          type="number"
+          type="text"
           value={power || ''}
-          placeholder="Введіть потужність..."
-          onChange={e => setPower(e.target.value)}
+          placeholder="Введіть в форматі: 5-кВт"
+          onChange={e => {
+            if (e.target.value.includes(','))
+              return Notify.warning('Використовуйте точку для нецілих чисел');
+            setPower(e.target.value);
+          }}
+          onBlur={e => {
+            if (!isValidForm('electric', e.target.value)) {
+              styleInvalidForm(e, 'blur');
+            }
+          }}
+          onFocus={e => styleInvalidForm(e, 'focus')}
         />
       </Label>
       <Underline></Underline>
@@ -232,7 +263,7 @@ export const CreateSolution = () => {
           name="desription"
           rows="10"
           value={descripMain}
-          placeholder="Введіть опис товару..."
+          placeholder="Введіть опис товару"
           onChange={e => setDescripMain(e.target.value)}
         ></Textarey>
       </Label>
@@ -262,6 +293,9 @@ export const CreateSolution = () => {
           }}
         />
       </InputFile>
+      <ImgInfo>
+        Рекомендовано формат фото - 4:3* та мінімальними розмірами 940х700
+      </ImgInfo>
       {descripCharacter.map((character, index) => {
         return (
           <Label key={index}>
@@ -280,7 +314,7 @@ export const CreateSolution = () => {
               name="title-character"
               type="text"
               value={character.subtitle}
-              placeholder="Введіть підзаголовок для хар-к..."
+              placeholder="Введіть підзаголовок для хар-к"
               onChange={e => updateCharacter(e, index, 'subtitle')}
             />
             <Textarey
@@ -288,7 +322,7 @@ export const CreateSolution = () => {
               rows="10"
               name="text-character"
               value={character.option.join('\n')}
-              placeholder="Введіть характеристки товару..."
+              placeholder="Введіть характеристки товару"
               onChange={e => updateCharacter(e, index, 'option')}
             ></Textarey>
           </Label>
@@ -337,7 +371,7 @@ export const CreateSolution = () => {
               type="text"
               name="title-component"
               value={character.subtitle}
-              placeholder="Введіть назву обладнання..."
+              placeholder="Введіть назву обладнання"
               onChange={e => updateComponents(e, index, 'subtitle')}
             />
             <Textarey
@@ -345,7 +379,7 @@ export const CreateSolution = () => {
               rows="10"
               name="text-components"
               value={character.option.join('\n')}
-              placeholder="Введіть характеристки обладнання..."
+              placeholder="Введіть характеристки обладнання"
               onChange={e => updateComponents(e, index, 'option')}
             ></Textarey>
           </Label>

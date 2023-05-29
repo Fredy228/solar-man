@@ -176,7 +176,6 @@ export const AdminTabs = styled.ul`
   justify-content: center;
   margin-top: 110px;
   height: auto;
-  flex-wrap: wrap;
 
   @media screen and (max-width: 1000px) {
     margin-top: 100px;
@@ -190,6 +189,11 @@ export const AdminTab = styled.li`
   padding: 10px 0;
   :not(:last-child) {
     margin-right: 15px;
+  }
+  @media screen and (max-width: 500px) {
+    :not(:last-child) {
+      margin-right: 5px;
+    }
   }
 `;
 
@@ -205,5 +209,9 @@ export const LinkNav = styled(NavLink)`
   &.active {
     background-color: ${({ theme }) => theme.color.second};
     color: ${({ theme }) => theme.color.white};
+  }
+
+  @media screen and (max-width: 500px) {
+    padding: 10px 10px;
   }
 `;

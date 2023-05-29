@@ -7,21 +7,55 @@ import {
   Select,
   Text,
 } from './NavStoreDB.styled';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
-export const NavStoreDB = () => {
+export const NavStoreDB = ({ isLoading }) => {
   const navigate = useNavigate();
   const [type, setType] = useState('solution');
   const [subtype, setSubtype] = useState('all');
+  const [sort, setSort] = useState('none');
+  const [, setSearchParams] = useSearchParams();
 
   const handleCreate = () => {
     navigate(`${type}`);
   };
   const handleType = e => {
     setType(e.target.value);
-    setSubtype('all');
+    setSubtype('Всі');
+    setSearchParams(prevSearchParams => {
+      const newSearchParams = new URLSearchParams(prevSearchParams);
+      newSearchParams.set('type', e.target.value);
+      return newSearchParams;
+    });
   };
+
+  const handleSubtype = e => {
+    setSort(e.target.value);
+    setSearchParams(prevSearchParams => {
+      const newSearchParams = new URLSearchParams(prevSearchParams);
+      newSearchParams.set('sort', e.target.value);
+      return newSearchParams;
+    });
+  };
+
+  const handleSort = e => {
+    setSubtype(e.target.value);
+    setSearchParams(prevSearchParams => {
+      const newSearchParams = new URLSearchParams(prevSearchParams);
+      newSearchParams.set('subtype', e.target.value);
+      return newSearchParams;
+    });
+  };
+
+  useEffect(() => {
+    setSearchParams({
+      page: '1',
+      type: 'Готові рішення',
+      subtype: 'Всі',
+      sort: 'none',
+    });
+  }, []);
 
   return (
     <Inner>
@@ -34,7 +68,12 @@ export const NavStoreDB = () => {
         </ItemNav>
         <ItemNav>
           <Text>Тип:</Text>
-          <Select name="type" value={type} onChange={handleType}>
+          <Select
+            name="type"
+            value={type}
+            onChange={handleType}
+            disabled={isLoading}
+          >
             <Option value="solution">Готові рішення</Option>
             <Option value="components">Компоненти</Option>
           </Select>
@@ -44,37 +83,45 @@ export const NavStoreDB = () => {
           <Select
             name="subtype"
             value={subtype}
-            onChange={e => setSubtype(e.target.value)}
+            onChange={handleSubtype}
+            disabled={isLoading}
           >
-            <Option value="all">Всі</Option>
+            <Option value="Всі">Всі</Option>
             {type === 'solution' ? (
               <>
-                <Option value="green">Зелений тариф</Option>
-                <Option value="ofline">Автономні станції</Option>
-                <Option value="backup">Резервне живлення</Option>
-                <Option value="module">Модульні безперебійні системи</Option>
-                <Option value="company">Для підприємств</Option>
+                <Option value="Зелений тариф">Зелений тариф</Option>
+                <Option value="Автономні станції">Автономні станції</Option>
+                <Option value="Резервне живлення">Резервне живлення</Option>
+                <Option value="Модульні безперебійні системи">
+                  Модульні безперебійні системи
+                </Option>
+                <Option value="Для підприємств">Для підприємств</Option>
               </>
             ) : (
               <>
-                <Option value="panels">Панелі</Option>
-                <Option value="inventors">Інвентори</Option>
-                <Option value="batters">Акумулятори</Option>
-                <Option value="mounts">Кріплення</Option>
-                <Option value="components">Комлпектуючі</Option>
-                <Option value="controlers">Контролери заряду</Option>
+                <Option value="Панелі">Панелі</Option>
+                <Option value="Інвентори">Інвентори</Option>
+                <Option value="Акумулятори">Акумулятори</Option>
+                <Option value="Кріплення">Кріплення</Option>
+                <Option value="Комлпектуючі">Комлпектуючі</Option>
+                <Option value="Контролери заряду">Контролери заряду</Option>
               </>
             )}
           </Select>
         </ItemNav>
         <ItemNav>
           <Text>Сортування:</Text>
-          <Select>
-            <Option value="default">За замовчуванням</Option>
-            <Option value="fromCheap">Від дешевих</Option>
-            <Option value="fromRich">Від дорогих</Option>
-            <Option value="powerDown">Від менш потужних</Option>
-            <Option value="powerUp">Від більш потужних</Option>
+          <Select
+            onChange={handleSubtype}
+            value={sort}
+            name="sort"
+            disabled={isLoading}
+          >
+            <Option value="none">За замовчуванням</Option>
+            <Option value="cost-up">Від дешевих</Option>
+            <Option value="cost-down">Від дорогих</Option>
+            <Option value="power-up">Від менш потужних</Option>
+            <Option value="power-down">Від більш потужних</Option>
           </Select>
         </ItemNav>
       </ListNav>

@@ -16,6 +16,8 @@ import {
 } from './AdminFormCreate.styled';
 import { LoadSpiner } from '../LoadSpiner/LoadSpiner';
 import { Icon } from '../Icon/Icon';
+import { isValidForm, styleInvalidForm } from './isValidForm';
+import { createStoreComponents } from '../API/API';
 
 const initialAddSort = {
   subtype: undefined,
@@ -84,19 +86,27 @@ export const CreateComponents = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      setPhoto(undefined);
-      setDescripMain('');
-      setDescripCharacter([{ subtitle: '', option: [] }]);
-      setTitle('');
-      setBrand('');
-      setCost('');
-      setCountry('');
+      const formData = new FormData();
+
+      formData.append('photo', photo);
+      formData.append('type', type);
+      formData.append('title', title);
+      formData.append('cost', cost);
+      formData.append('brand', brand || 'unknown');
+      formData.append('country', country || 'unknown');
+      formData.append('optionSort', JSON.stringify(addSort));
+      formData.append('descripMain', descripMain);
+      formData.append('descripCharacter', JSON.stringify(descripCharacter));
+
+      const data = await createStoreComponents(formData);
+      console.log(data);
+
       Notify.success('Створено');
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
       Notify.failure('Усп... Щось пішло не так :(');
-      Notify.failure(`${error}`);
+      console.log(error.response.data.message || error);
     }
   };
 
@@ -128,7 +138,7 @@ export const CreateComponents = () => {
           }}
         />
       </InputFile>
-      <ImgInfo>Рекомендовано формат фото - 3:4*</ImgInfo>
+      <ImgInfo>Рекомендовано формат фото - 1:1*</ImgInfo>
       <Label>
         Назва обладнання
         <Input
@@ -182,9 +192,9 @@ export const CreateComponents = () => {
               )}
               {type === 'Інвентори' && (
                 <>
-                  <Option value="Автономний">Автономний</Option>
-                  <Option value="Гібридний">Гібридний</Option>
-                  <Option value="ІБП">ІБП</Option>
+                  <Option value="Автономні">Автономні</Option>
+                  <Option value="Гібридні">Гібридні</Option>
+                  <Option value="Мережеві">Мережеві</Option>
                 </>
               )}
               {type === 'Акумулятори' && (
@@ -207,7 +217,7 @@ export const CreateComponents = () => {
         </>
       )}
       <Label>
-        Ціна
+        Ціна, $
         <Input
           required
           name="cost"
@@ -215,35 +225,51 @@ export const CreateComponents = () => {
           value={cost || ''}
           placeholder="Введіть ціну"
           onChange={e => {
-            if (Number(e.target.value)) setCost(e.target.value);
+            if (e.target.value.includes(','))
+              return Notify.warning('Використовуйте точку для нецілих чисел');
+            if (
+              Number(e.target.value) ||
+              e.target.value === '' ||
+              e.target.value === '.'
+            )
+              setCost(e.target.value);
           }}
         />
       </Label>
       <Underline></Underline>
-      <Label>
-        Бренд товару
-        <Input
-          required
-          name="brand"
-          type="text"
-          value={brand}
-          placeholder="Введіть бренд"
-          onChange={e => setBrand(e.target.value)}
-        />
-      </Label>
-      <Underline></Underline>
-      <Label>
-        Країна виробництва
-        <Input
-          required
-          name="country"
-          type="text"
-          value={country}
-          placeholder="Введіть країну"
-          onChange={e => setCountry(e.target.value)}
-        />
-      </Label>
-      <Underline></Underline>
+      {[
+        'Панелі',
+        'Інвентори',
+        'Акумулятори',
+        'Комлпектуючі',
+        'Контролери заряду',
+      ].includes(type) && (
+        <>
+          <Label>
+            Бренд товару
+            <Input
+              name="brand"
+              type="text"
+              value={brand}
+              placeholder="Введіть бренд"
+              onChange={e => setBrand(e.target.value)}
+            />
+          </Label>
+          <Underline></Underline>
+          <Label>
+            Країна виробництва
+            <Input
+              name="country"
+              type="text"
+              value={country}
+              placeholder="Введіть країну"
+              onChange={e => setCountry(e.target.value)}
+            />
+          </Label>
+          <Underline></Underline>
+        </>
+      )}
+
       {['Панелі', 'Інвентори'].includes(type) && (
         <>
           <Label>
@@ -252,14 +278,19 @@ export const CreateComponents = () => {
               name="power"
               type="text"
               value={addSort.power || ''}
-              placeholder="Введіть потужність"
+              placeholder="Введіть в форматі: 7-кВт"
               onChange={e => {
-                if (Number(e.target.value) || e.target.value === '')
-                  setAddSort(prevState => ({
-                    ...prevState,
-                    power: e.target.value,
-                  }));
+                setAddSort(prevState => ({
+                  ...prevState,
+                  power: e.target.value,
+                }));
               }}
+              onBlur={e => {
+                if (!isValidForm('electric', e.target.value)) {
+                  styleInvalidForm(e, 'blur');
+                }
+              }}
+              onFocus={e => styleInvalidForm(e, 'focus')}
             />
           </Label>
           <Underline></Underline>
@@ -289,19 +320,24 @@ export const CreateComponents = () => {
       {['Акумулятори'].includes(type) && (
         <>
           <Label>
-            Ємність, Ампер/годин (Аг)
+            Ємність акумулятора
             <Input
               name="reservoir"
               type="text"
               value={addSort.reservoir || ''}
-              placeholder="Введіть ємність"
+              placeholder="Введіть в форматі: 3-Ач"
               onChange={e => {
-                if (Number(e.target.value) || e.target.value === '')
-                  setAddSort(prevState => ({
-                    ...prevState,
-                    reservoir: e.target.value,
-                  }));
+                setAddSort(prevState => ({
+                  ...prevState,
+                  reservoir: e.target.value,
+                }));
               }}
+              onBlur={e => {
+                if (!isValidForm('electric', e.target.value)) {
+                  styleInvalidForm(e, 'blur');
+                }
+              }}
+              onFocus={e => styleInvalidForm(e, 'focus')}
             />
           </Label>
           <Underline></Underline>
@@ -310,19 +346,28 @@ export const CreateComponents = () => {
       {['Акумулятори'].includes(type) && (
         <>
           <Label>
-            Напруга, Вольт (В)
+            Напруга акумулятора
             <Input
               name="voltage"
               type="text"
               value={addSort.voltage || ''}
-              placeholder="Введіть напругу"
+              placeholder="Введіть в форматі: 12.5-В"
               onChange={e => {
-                if (Number(e.target.value) || e.target.value === '')
-                  setAddSort(prevState => ({
-                    ...prevState,
-                    voltage: e.target.value,
-                  }));
+                if (e.target.value.includes(','))
+                  return Notify.warning(
+                    'Використовуйте точку для нецілих чисел'
+                  );
+                setAddSort(prevState => ({
+                  ...prevState,
+                  voltage: e.target.value,
+                }));
               }}
+              onBlur={e => {
+                if (!isValidForm('electric', e.target.value)) {
+                  styleInvalidForm(e, 'blur');
+                }
+              }}
+              onFocus={e => styleInvalidForm(e, 'focus')}
             />
           </Label>
           <Underline></Underline>
@@ -332,24 +377,20 @@ export const CreateComponents = () => {
         <>
           <Label>
             Матеріал
-            <Input
+            <Select
               name="material"
-              type="text"
-              list="list-material"
-              value={addSort.material || ''}
-              placeholder="Введіть матеріал"
+              value={addSort.material}
               onChange={e => {
                 setAddSort(prevState => ({
                   ...prevState,
                   material: e.target.value,
                 }));
               }}
-            />
-            <datalist id="list-material">
-              <Option value="Алюміній" />
-              <Option value="Цинк" />
-              <Option value="Метал" />
-            </datalist>
+            >
+              <Option value="Алюміній">Алюміній</Option>
+              <Option value="Цинк">Цинк</Option>
+              <Option value="Метал">Метал</Option>
+            </Select>
           </Label>
           <Underline></Underline>
         </>
