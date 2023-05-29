@@ -1,15 +1,10 @@
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-// export const baseURL = 'https://solarman.pro';
-// export const baseURL = 'http://localhost:3001';
-
 export const baseURL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3001'
     : 'https://solarman.pro';
-
-console.log(baseURL);
 
 axios.defaults.baseURL = baseURL;
 

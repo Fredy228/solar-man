@@ -55,7 +55,6 @@ export const SendPhone = () => {
 
   const submitForm = e => {
     e.preventDefault();
-    console.log(e.currentTarget);
     if (!phoneRegex.test(phone)) {
       return Notify.failure('Невірний номер телефону');
     }
