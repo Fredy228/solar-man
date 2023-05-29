@@ -23,10 +23,13 @@ export const UserControl = ({ role }) => {
 
   const delUserFn = async idDel => {
     try {
+      setIsLoading(true);
       await deleteUsers(role, idDel);
+      setIsLoading(false);
       setClick(!click);
       Notify.success('Видалено');
     } catch (error) {
+      setIsLoading(false);
       Notify.failure(`${error.message}`);
       Notify.failure(`Упс... Щось пішло не так :(`);
     }
@@ -36,13 +39,15 @@ export const UserControl = ({ role }) => {
     if (!roleUp) return setIsEdit(state => ({ ...state, is: false }));
 
     try {
-      console.log(roleUp);
+      setIsLoading(true);
       await editRoleUsers(role, isEdit.userName, roleUp);
       setIsEdit({ is: false, id: '', userName: '' });
       setRoleUp('');
+      setIsLoading(false);
       Notify.success(`Змінено :)`);
       setClick(!click);
     } catch (error) {
+      setIsLoading(false);
       Notify.failure(`${error.message}`);
       Notify.failure(`Упс... Щось пішло не так :(`);
     }
@@ -103,7 +108,10 @@ export const UserControl = ({ role }) => {
                 {isEdit.is && isEdit.id === item.id ? (
                   <BtnUser
                     type="button"
-                    disabled={item.role === 'admin' ? true : false}
+                    disabled={
+                      item.role === 'admin' ||
+                      (isLoading && isEdit.id === item.id)
+                    }
                     onClick={editUserFn}
                   >
                     <Icon name="icon-done" />
@@ -112,7 +120,7 @@ export const UserControl = ({ role }) => {
                 ) : (
                   <BtnUser
                     type="button"
-                    disabled={item.role === 'admin' ? true : false}
+                    disabled={item.role === 'admin'}
                     onClick={() =>
                       setIsEdit(state => ({
                         ...state,
@@ -131,7 +139,10 @@ export const UserControl = ({ role }) => {
                   type="button"
                   data-id={item.id}
                   onClick={() => delUserFn(item.id)}
-                  disabled={item.role === 'admin' ? true : false}
+                  disabled={
+                    item.role === 'admin' ||
+                    (isLoading && isEdit.id === item.id)
+                  }
                 >
                   <Icon name="icon-delete" />
                   Видал.

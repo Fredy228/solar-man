@@ -55,7 +55,7 @@ export const NavStoreDB = ({ isLoading }) => {
       subtype: 'Всі',
       sort: 'none',
     });
-  }, []);
+  }, [setSearchParams]);
 
   return (
     <Inner>
@@ -112,7 +112,7 @@ export const NavStoreDB = ({ isLoading }) => {
         <ItemNav>
           <Text>Сортування:</Text>
           <Select
-            onChange={handleSubtype}
+            onChange={handleSort}
             value={sort}
             name="sort"
             disabled={isLoading}

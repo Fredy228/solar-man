@@ -7,7 +7,7 @@ import { ListProduct } from './ListProduct/ListProduct';
 import useWindowWidth from '../../services/widthScreen';
 
 const StoreDB = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const pageParams = searchParams.get('page');
   const typeParams = searchParams.get('type');
   const subtypeParams = searchParams.get('subtype');
@@ -16,34 +16,34 @@ const StoreDB = () => {
   const width = useWindowWidth();
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchProducts = async () => {
-    setIsLoading(true);
-    const type = typeParams;
-    const page = Number(pageParams);
-    const subtype = subtypeParams;
-    const sort = sortParams;
-
-    console.log(type, page, subtype, sort);
-
-    if (!type || !page || !subtype || !sort) return;
-
-    if (type === 'Готові рішення') {
-      try {
-        const data = await getStoreSets(page, 12, subtype, sort);
-        setProducts(data);
-        console.log(data);
-        setIsLoading(false);
-      } catch (error) {
-        setProducts([]);
-        setIsLoading(false);
-      }
-    }
-    if (type === 'Компоненти') {
-    }
-    setIsLoading(false);
-  };
-
   useEffect(() => {
+    const fetchProducts = async () => {
+      setIsLoading(true);
+      const type = typeParams;
+      const page = Number(pageParams);
+      const subtype = subtypeParams;
+      const sort = sortParams;
+
+      console.log(type, page, subtype, sort);
+
+      if (!type || !page || !subtype || !sort) return;
+
+      if (type === 'Готові рішення') {
+        try {
+          const data = await getStoreSets(page, 12, subtype, sort);
+          setProducts(data);
+          console.log(data);
+          setIsLoading(false);
+        } catch (error) {
+          setProducts([]);
+          setIsLoading(false);
+        }
+      }
+      if (type === 'Компоненти') {
+      }
+      setIsLoading(false);
+    };
+
     fetchProducts().catch(err => console.log(err));
   }, [pageParams, typeParams, sortParams, subtypeParams]);
 
