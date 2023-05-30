@@ -7,7 +7,7 @@ import {
   Select,
   Text,
 } from './NavStoreDB.styled';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export const NavStoreDB = ({ isLoading }) => {

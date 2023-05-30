@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   Form,
@@ -25,6 +26,7 @@ import {
 } from '../API/API';
 
 export const CreateSolution = ({ idProduct }) => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [type, setType] = useState('Зелений тариф');
   const [cost, setCost] = useState('');
@@ -181,6 +183,7 @@ export const CreateSolution = ({ idProduct }) => {
 
       Notify.success(!idProduct ? 'Створено' : 'Змінено');
       setIsLoading(false);
+      navigate('/admin/goods');
     } catch (error) {
       setIsLoading(false);
       if (error.response.status === 401)

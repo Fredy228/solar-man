@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   Form,
@@ -21,7 +22,6 @@ import {
   baseURL,
   createStoreComponents,
   getByIdStoreComponent,
-  getByIdStoreSet,
   updateStoreComponents,
 } from '../API/API';
 
@@ -35,6 +35,7 @@ const initialAddSort = {
 };
 
 export const CreateComponents = ({ idProduct }) => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [type, setType] = useState('Панелі');
   const [cost, setCost] = useState(undefined);
@@ -133,6 +134,7 @@ export const CreateComponents = ({ idProduct }) => {
 
       Notify.success(!idProduct ? 'Створено' : 'Змінено');
       setIsLoading(false);
+      navigate('/admin/goods');
     } catch (error) {
       setIsLoading(false);
       if (error.response.status === 401)
