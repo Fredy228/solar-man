@@ -47,7 +47,7 @@ const checkSetAuth = () => {
   try {
     setAuthHeader(token);
   } catch (err) {
-    Notify.warning(`Ваша сесия закончилась или неверный токен`);
+    Notify.warning(`Ваша сесія закончилась або ваш токен невірний`);
   }
 };
 
@@ -198,6 +198,23 @@ export const createStoreComponents = async formData => {
   return response.data;
 };
 
+export const updateStoreSets = async (formData, id) => {
+  checkSetAuth();
+
+  const response = await axios.patch(`/api/admin/store-sets/${id}`, formData);
+  return response.data;
+};
+
+export const updateStoreComponents = async (formData, id) => {
+  checkSetAuth();
+
+  const response = await axios.patch(
+    `/api/admin/store-components/${id}`,
+    formData
+  );
+  return response.data;
+};
+
 export const getStoreSets = async (
   page = 1,
   limit = 12,
@@ -207,5 +224,44 @@ export const getStoreSets = async (
   const response = await axios.get(
     `/api/admin/store-sets?page=${page}&limit=${limit}&type=${type}&sort=${sort}`
   );
+  return response.data;
+};
+
+export const getStoreComponents = async (
+  page = 1,
+  limit = 12,
+  type = 'Всі',
+  sort = 'none',
+  optionSort
+) => {
+  const response = await axios.get(
+    `/api/admin/store-components?page=${page}&limit=${limit}&type=${type}&sort=${sort}`
+  );
+  return response.data;
+};
+
+export const deleteStoreSet = async id => {
+  checkSetAuth();
+
+  const response = await axios.delete(`/api/admin/store-sets/${id}`);
+  return response.data;
+};
+export const deleteStoreComponent = async id => {
+  checkSetAuth();
+
+  const response = await axios.delete(`/api/admin/store-components/${id}`);
+  return response.data;
+};
+
+export const getByIdStoreSet = async id => {
+  checkSetAuth();
+
+  const response = await axios.get(`/api/admin/store-sets/${id}`);
+  return response.data;
+};
+export const getByIdStoreComponent = async id => {
+  checkSetAuth();
+
+  const response = await axios.get(`/api/admin/store-components/${id}`);
   return response.data;
 };

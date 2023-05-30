@@ -43,7 +43,9 @@ const LoginAdmin = () => {
       Notify.success('Авторизовано');
     } catch (error) {
       setIsLoading(false);
-      Notify.failure(`${error.message}`);
+      if (error.response.status === 401)
+        return Notify.failure('Не вірний пароль або логін');
+      Notify.failure(`Щось пішло не так, помилка: ${error.response.status}`);
     }
   };
 

@@ -84,6 +84,12 @@ export const App = () => {
             <PrivateRoute redirectTo="/admin" component={CreateProduct} />
           }
         />
+        <Route
+          path="goods/update/:typeGood"
+          element={
+            <PrivateRoute redirectTo="/admin" component={CreateProduct} />
+          }
+        />
       </Route>
     </Routes>
   );

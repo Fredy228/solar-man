@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   Form,
@@ -17,9 +17,14 @@ import {
 import { LoadSpiner } from '../LoadSpiner/LoadSpiner';
 import { Icon } from '../Icon/Icon';
 import { isValidForm, styleInvalidForm } from './isValidForm';
-import { createStoreSets } from '../API/API';
+import {
+  baseURL,
+  createStoreSets,
+  getByIdStoreSet,
+  updateStoreSets,
+} from '../API/API';
 
-export const CreateSolution = () => {
+export const CreateSolution = ({ idProduct }) => {
   const [title, setTitle] = useState('');
   const [type, setType] = useState('Зелений тариф');
   const [cost, setCost] = useState('');
@@ -34,6 +39,27 @@ export const CreateSolution = () => {
   ]);
   const [photo, setPhoto] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (!idProduct) return;
+    try {
+      const fetchSet = async () => {
+        const { result } = await getByIdStoreSet(idProduct);
+        setTitle(result.title);
+        setType(result.type);
+        setCost(result.cost);
+        setPower(result.power);
+        setDescripMain(result.descripMain);
+        setDescripCharacter(JSON.parse(result.descripCharacter));
+        setListComponents(JSON.parse(result.components));
+        setPhoto(result.photo);
+        setDescripPhoto(result.descripPhoto);
+      };
+      fetchSet();
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
 
   const addCharacter = () => {
     if (descripCharacter.length > 7)
@@ -136,33 +162,51 @@ export const CreateSolution = () => {
       formData.append('descripMain', descripMain);
       formData.append('descripCharacter', JSON.stringify(descripCharacter));
       formData.append('descripPhoto', descripPhoto);
-      const components = listComponents.map(component => {
-        formData.append('componentsPhoto', component.image);
-        return { subtitle: component.subtitle, option: component.option };
-      });
+      let components;
+      if (!idProduct) {
+        components = listComponents.map(component => {
+          formData.append('componentsPhoto', component.image);
+          return { subtitle: component.subtitle, option: component.option };
+        });
+      } else {
+        components = listComponents;
+      }
       formData.append('components', JSON.stringify(components));
 
-      await createStoreSets(formData);
+      if (!idProduct) {
+        await createStoreSets(formData);
+      } else {
+        await updateStoreSets(formData, idProduct);
+      }
 
-      Notify.success('Створено');
+      Notify.success(!idProduct ? 'Створено' : 'Змінено');
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      Notify.failure('Усп... Щось пішло не так :(');
-      console.log(error);
+      if (error.response.status === 401)
+        return Notify.failure(
+          'Неавторизовано, ваша сесія закінчилася або невірний токен'
+        );
+      Notify.failure(`Щось пішло не так, помилка: ${error.response.message}`);
     }
   };
 
   return (
     <Form onSubmit={submitForm}>
       <InputFile>
-        {photo ? (
+        {photo && (!idProduct || typeof photo !== 'string') ? (
           <Img src={URL.createObjectURL(photo)} alt="Вибране фото" />
         ) : (
-          'Вибір фото товару'
+          <>
+            {typeof photo === 'string' && idProduct ? (
+              <Img src={`${baseURL}/${photo}`} alt="Вибране фото" />
+            ) : (
+              'Вибір фото товару'
+            )}
+          </>
         )}
         <input
-          required
+          required={!idProduct}
           name="img-main"
           style={{ display: 'none' }}
           type="file"
@@ -268,13 +312,19 @@ export const CreateSolution = () => {
         ></Textarey>
       </Label>
       <InputFile>
-        {descripPhoto ? (
+        {descripPhoto && (!idProduct || typeof descripPhoto !== 'string') ? (
           <Img src={URL.createObjectURL(descripPhoto)} alt="Вибране фото" />
         ) : (
-          'Вибір фото схеми'
+          <>
+            {typeof descripPhoto === 'string' && idProduct ? (
+              <Img src={`${baseURL}/${descripPhoto}`} alt="Вибране фото" />
+            ) : (
+              'Вибір фото схеми'
+            )}
+          </>
         )}
         <input
-          required
+          required={!idProduct}
           name="img-shema"
           style={{ display: 'none' }}
           type="file"
@@ -336,7 +386,7 @@ export const CreateSolution = () => {
         return (
           <Label key={index}>
             <br />
-            {listComponents.length > 1 && (
+            {listComponents.length > 1 && !idProduct && (
               <ButtonCircle
                 type="button"
                 onClick={() => deleteComponent(index)}
@@ -350,21 +400,27 @@ export const CreateSolution = () => {
             <InputFile>
               {listComponents[index].image ? (
                 <Img
-                  src={URL.createObjectURL(listComponents[index].image)}
+                  src={
+                    !idProduct
+                      ? URL.createObjectURL(listComponents[index].image)
+                      : `${baseURL}/${listComponents[index].image}`
+                  }
                   alt="Вибране фото"
                 />
               ) : (
                 'Вибір фото обладнання'
               )}
-              <input
-                required
-                name="img-component"
-                style={{ display: 'none' }}
-                type="file"
-                accept="image/*"
-                multiple=""
-                onChange={e => updateComponents(e, index, 'image')}
-              />
+              {!idProduct && (
+                <input
+                  required
+                  name="img-component"
+                  style={{ display: 'none' }}
+                  type="file"
+                  accept="image/*"
+                  multiple=""
+                  onChange={e => updateComponents(e, index, 'image')}
+                />
+              )}
             </InputFile>
             <Input
               required
@@ -385,16 +441,18 @@ export const CreateSolution = () => {
           </Label>
         );
       })}
-      <Button type="button" onClick={addComponent}>
-        + Додати обладнання
-      </Button>
+      {!idProduct && (
+        <Button type="button" onClick={addComponent}>
+          + Додати обладнання
+        </Button>
+      )}
       <Underline></Underline>
 
       <Button type="submit" disabled={isLoading}>
         {isLoading ? (
           <LoadSpiner barColor={'#fff'} borderColor={'#fff'} />
         ) : (
-          '-- Створити товар --'
+          <>{!idProduct ? '-- Створити товар --' : '-- Змінити товар --'}</>
         )}
       </Button>
     </Form>

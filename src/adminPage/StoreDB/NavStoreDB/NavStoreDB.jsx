@@ -12,10 +12,14 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export const NavStoreDB = ({ isLoading }) => {
   const navigate = useNavigate();
-  const [type, setType] = useState('solution');
-  const [subtype, setSubtype] = useState('all');
-  const [sort, setSort] = useState('none');
-  const [, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const typeParams = searchParams.get('type');
+  const subtypeParams = searchParams.get('subtype');
+  const sortParams = searchParams.get('sort');
+
+  const [type, setType] = useState(typeParams || 'Готові рішення');
+  const [subtype, setSubtype] = useState(subtypeParams || 'Всі');
+  const [sort, setSort] = useState(sortParams || 'none');
 
   const handleCreate = () => {
     navigate(`${type}`);
@@ -23,14 +27,17 @@ export const NavStoreDB = ({ isLoading }) => {
   const handleType = e => {
     setType(e.target.value);
     setSubtype('Всі');
+
     setSearchParams(prevSearchParams => {
       const newSearchParams = new URLSearchParams(prevSearchParams);
+      newSearchParams.set('subtype', 'Всі');
+      newSearchParams.set('sort', 'none');
       newSearchParams.set('type', e.target.value);
       return newSearchParams;
     });
   };
 
-  const handleSubtype = e => {
+  const handleSort = e => {
     setSort(e.target.value);
     setSearchParams(prevSearchParams => {
       const newSearchParams = new URLSearchParams(prevSearchParams);
@@ -39,23 +46,16 @@ export const NavStoreDB = ({ isLoading }) => {
     });
   };
 
-  const handleSort = e => {
+  const handleSubtype = e => {
     setSubtype(e.target.value);
+    setSort('none');
     setSearchParams(prevSearchParams => {
       const newSearchParams = new URLSearchParams(prevSearchParams);
+      newSearchParams.set('sort', 'none');
       newSearchParams.set('subtype', e.target.value);
       return newSearchParams;
     });
   };
-
-  useEffect(() => {
-    setSearchParams({
-      page: '1',
-      type: 'Готові рішення',
-      subtype: 'Всі',
-      sort: 'none',
-    });
-  }, [setSearchParams]);
 
   return (
     <Inner>
@@ -74,8 +74,8 @@ export const NavStoreDB = ({ isLoading }) => {
             onChange={handleType}
             disabled={isLoading}
           >
-            <Option value="solution">Готові рішення</Option>
-            <Option value="components">Компоненти</Option>
+            <Option value="Готові рішення">Готові рішення</Option>
+            <Option value="Компоненти">Компоненти</Option>
           </Select>
         </ItemNav>
         <ItemNav>
@@ -87,7 +87,7 @@ export const NavStoreDB = ({ isLoading }) => {
             disabled={isLoading}
           >
             <Option value="Всі">Всі</Option>
-            {type === 'solution' ? (
+            {type === 'Готові рішення' ? (
               <>
                 <Option value="Зелений тариф">Зелений тариф</Option>
                 <Option value="Автономні станції">Автономні станції</Option>
@@ -120,8 +120,28 @@ export const NavStoreDB = ({ isLoading }) => {
             <Option value="none">За замовчуванням</Option>
             <Option value="cost-up">Від дешевих</Option>
             <Option value="cost-down">Від дорогих</Option>
-            <Option value="power-up">Від менш потужних</Option>
-            <Option value="power-down">Від більш потужних</Option>
+            {type === 'Готові рішення' && (
+              <>
+                <Option value="power-up">Від менш потужних</Option>
+                <Option value="power-down">Від більш потужних</Option>
+              </>
+            )}
+
+            {['Панелі', 'Інвентори'].includes(subtype) && (
+              <>
+                <Option value="c-power-up">Від менш потужних-</Option>
+                <Option value="c-power-down">Від більш потужних-</Option>
+              </>
+            )}
+
+            {['Акумулятори'].includes(subtype) && (
+              <>
+                <Option value="с-voltage-up">Від менш потужних</Option>
+                <Option value="с-voltage-down">Від більш потужних</Option>
+                <Option value="с-reservoir-up">Від менш ємких</Option>
+                <Option value="с-reservoir-down">Від більш ємких</Option>
+              </>
+            )}
           </Select>
         </ItemNav>
       </ListNav>

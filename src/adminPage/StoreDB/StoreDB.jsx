@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { NavStoreDB } from './NavStoreDB/NavStoreDB';
 import { Container } from '../../pages/Common.styled';
-import { getStoreSets } from '../../components/API/API';
+import { getStoreComponents, getStoreSets } from '../../components/API/API';
 import { ListProduct } from './ListProduct/ListProduct';
 import useWindowWidth from '../../services/widthScreen';
 
@@ -19,28 +19,30 @@ const StoreDB = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       setIsLoading(true);
-      const type = typeParams;
-      const page = Number(pageParams);
-      const subtype = subtypeParams;
-      const sort = sortParams;
 
-      console.log(type, page, subtype, sort);
+      const type = typeParams || 'Готові рішення';
+      const page = Number(pageParams) || 1;
+      const subtype = subtypeParams || 'Всі';
+      const sort = sortParams || 'none';
 
-      if (!type || !page || !subtype || !sort) return;
+      if (!type || !page || !subtype || !sort) return setIsLoading(false);
 
-      if (type === 'Готові рішення') {
-        try {
-          const data = await getStoreSets(page, 12, subtype, sort);
-          setProducts(data);
-          console.log(data);
-          setIsLoading(false);
-        } catch (error) {
-          setProducts([]);
-          setIsLoading(false);
-        }
+      try {
+        let data;
+
+        if (type === 'Готові рішення')
+          data = await getStoreSets(page, 12, subtype, sort);
+
+        if (type === 'Компоненти')
+          data = await getStoreComponents(page, 12, subtype, sort);
+
+        setProducts(data);
+        setIsLoading(false);
+      } catch (error) {
+        setProducts([]);
+        setIsLoading(false);
       }
-      if (type === 'Компоненти') {
-      }
+
       setIsLoading(false);
     };
 
@@ -52,7 +54,11 @@ const StoreDB = () => {
       {width > 769 ? (
         <Container>
           <NavStoreDB isLoading={isLoading} />
-          <ListProduct result={products.result} />
+          <ListProduct
+            products={products}
+            setProducts={setProducts}
+            type={typeParams || 'Готові рішення'}
+          />
         </Container>
       ) : (
         <p style={{ textAlign: 'center', fontSize: '18px', padding: '20px' }}>

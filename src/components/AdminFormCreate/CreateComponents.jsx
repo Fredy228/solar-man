@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   Form,
@@ -17,7 +17,13 @@ import {
 import { LoadSpiner } from '../LoadSpiner/LoadSpiner';
 import { Icon } from '../Icon/Icon';
 import { isValidForm, styleInvalidForm } from './isValidForm';
-import { createStoreComponents } from '../API/API';
+import {
+  baseURL,
+  createStoreComponents,
+  getByIdStoreComponent,
+  getByIdStoreSet,
+  updateStoreComponents,
+} from '../API/API';
 
 const initialAddSort = {
   subtype: undefined,
@@ -28,7 +34,7 @@ const initialAddSort = {
   phases: undefined,
 };
 
-export const CreateComponents = () => {
+export const CreateComponents = ({ idProduct }) => {
   const [title, setTitle] = useState('');
   const [type, setType] = useState('Панелі');
   const [cost, setCost] = useState(undefined);
@@ -41,6 +47,27 @@ export const CreateComponents = () => {
   ]);
   const [photo, setPhoto] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (!idProduct) return;
+    try {
+      const fetchComponent = async () => {
+        const { result } = await getByIdStoreComponent(idProduct);
+        setTitle(result.title);
+        setType(result.type);
+        setCost(result.cost);
+        setBrand(result.brand);
+        setCountry(result.country);
+        setAddSort(JSON.parse(result.optionSort));
+        setDescripMain(result.descripMain);
+        setDescripCharacter(JSON.parse(result.descripCharacter));
+        setPhoto(result.photo);
+      };
+      fetchComponent();
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
 
   const addCharacter = () => {
     if (descripCharacter.length > 7)
@@ -98,28 +125,40 @@ export const CreateComponents = () => {
       formData.append('descripMain', descripMain);
       formData.append('descripCharacter', JSON.stringify(descripCharacter));
 
-      const data = await createStoreComponents(formData);
-      console.log(data);
+      if (!idProduct) {
+        await createStoreComponents(formData);
+      } else {
+        await updateStoreComponents(formData, idProduct);
+      }
 
-      Notify.success('Створено');
+      Notify.success(!idProduct ? 'Створено' : 'Змінено');
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      Notify.failure('Усп... Щось пішло не так :(');
-      console.log(error.response.data.message || error);
+      if (error.response.status === 401)
+        return Notify.failure(
+          'Неавторизовано, ваша сесія закінчилася або невірний токен'
+        );
+      Notify.failure(`Щось пішло не так, помилка: ${error.response.message}`);
     }
   };
 
   return (
     <Form onSubmit={submitForm}>
       <InputFile>
-        {photo ? (
+        {photo && (!idProduct || typeof photo !== 'string') ? (
           <Img src={URL.createObjectURL(photo)} alt="Вибране фото" />
         ) : (
-          'Вибір фото товару'
+          <>
+            {typeof photo === 'string' && idProduct ? (
+              <Img src={`${baseURL}/${photo}`} alt="Вибране фото" />
+            ) : (
+              'Вибір фото товару'
+            )}
+          </>
         )}
         <input
-          required
+          required={!idProduct}
           name="img-main"
           style={{ display: 'none' }}
           type="file"
@@ -438,6 +477,7 @@ export const CreateComponents = () => {
           </Label>
         );
       })}
+
       <Button type="button" onClick={addCharacter}>
         + Додати хар-ки
       </Button>
@@ -446,7 +486,7 @@ export const CreateComponents = () => {
         {isLoading ? (
           <LoadSpiner barColor={'#fff'} borderColor={'#fff'} />
         ) : (
-          '-- Створити товар --'
+          <>{!idProduct ? '-- Створити товар --' : '-- Змінити товар --'}</>
         )}
       </Button>
     </Form>
