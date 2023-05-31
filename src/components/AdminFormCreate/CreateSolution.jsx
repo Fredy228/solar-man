@@ -190,7 +190,7 @@ export const CreateSolution = ({ idProduct }) => {
         return Notify.failure(
           'Неавторизовано, ваша сесія закінчилася або невірний токен'
         );
-      Notify.failure(`Щось пішло не так, помилка: ${error.response.message}`);
+      Notify.failure(`Помилка: ${error.response.data.message}`);
     }
   };
 
@@ -235,6 +235,8 @@ export const CreateSolution = ({ idProduct }) => {
         Назва комплекту
         <Input
           required
+          minlength="2"
+          maxlength="80"
           name="name"
           type="text"
           value={title}
@@ -285,6 +287,8 @@ export const CreateSolution = ({ idProduct }) => {
         Потужність комплекту
         <Input
           required
+          minlength="2"
+          maxlength="10"
           name="power"
           type="text"
           value={power || ''}
@@ -307,6 +311,7 @@ export const CreateSolution = ({ idProduct }) => {
         Опис комплекту
         <Textarey
           required
+          minlength="10"
           name="desription"
           rows="10"
           value={descripMain}
@@ -365,6 +370,8 @@ export const CreateSolution = ({ idProduct }) => {
             <Input
               required
               name="title-character"
+              minlength="2"
+              maxlength="100"
               type="text"
               value={character.subtitle}
               placeholder="Введіть підзаголовок для хар-к"
@@ -427,6 +434,8 @@ export const CreateSolution = ({ idProduct }) => {
             </InputFile>
             <Input
               required
+              minlength="2"
+              maxlength="100"
               type="text"
               name="title-component"
               value={character.subtitle}

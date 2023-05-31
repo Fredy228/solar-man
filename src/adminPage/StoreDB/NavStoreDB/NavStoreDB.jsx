@@ -9,8 +9,12 @@ import {
 } from './NavStoreDB.styled';
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useStoreUser } from '../../../globalState/globalState';
 
 export const NavStoreDB = ({ isLoading }) => {
+  const {
+    userData: { role },
+  } = useStoreUser();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const typeParams = searchParams.get('type');
@@ -62,7 +66,11 @@ export const NavStoreDB = ({ isLoading }) => {
       <ListNav>
         <ItemNav>
           <Text>Новий товар:</Text>
-          <Button type={'button'} onClick={handleCreate}>
+          <Button
+            type={'button'}
+            onClick={handleCreate}
+            disabled={role === 'user'}
+          >
             + Створити
           </Button>
         </ItemNav>

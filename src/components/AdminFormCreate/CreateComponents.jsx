@@ -22,6 +22,7 @@ import {
   baseURL,
   createStoreComponents,
   getByIdStoreComponent,
+  getFilterStoreComponent,
   updateStoreComponents,
 } from '../API/API';
 
@@ -36,6 +37,7 @@ const initialAddSort = {
 
 export const CreateComponents = ({ idProduct }) => {
   const navigate = useNavigate();
+  const [dataList, setDataList] = useState({});
   const [title, setTitle] = useState('');
   const [type, setType] = useState('Панелі');
   const [cost, setCost] = useState(undefined);
@@ -48,6 +50,41 @@ export const CreateComponents = ({ idProduct }) => {
   ]);
   const [photo, setPhoto] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchFilter = async () => {
+      try {
+        const data = await getFilterStoreComponent(type);
+        setDataList(data);
+        console.log(data);
+      } catch (err) {
+        Notify.warning('Помилка получення datalist');
+        console.log(err);
+      }
+    };
+    fetchFilter();
+
+    switch (type) {
+      case 'Панелі':
+        setAddSort(prevState => ({ ...prevState, subtype: 'Монокристалічна' }));
+        break;
+      case 'Інвентори':
+        setAddSort(prevState => ({ ...prevState, subtype: 'Автономні' }));
+        break;
+      case 'Акумулятори':
+        setAddSort(prevState => ({ ...prevState, subtype: 'Гелеві' }));
+        break;
+      case 'Кріплення':
+        setAddSort(prevState => ({
+          ...prevState,
+          subtype: 'На похилий дах',
+          material: 'Алюміній',
+        }));
+        break;
+      default:
+        break;
+    }
+  }, [type]);
 
   useEffect(() => {
     if (!idProduct) return;
@@ -141,7 +178,7 @@ export const CreateComponents = ({ idProduct }) => {
         return Notify.failure(
           'Неавторизовано, ваша сесія закінчилася або невірний токен'
         );
-      Notify.failure(`Щось пішло не так, помилка: ${error.response.message}`);
+      Notify.failure(`Помилка: ${error.response.data.message}`);
     }
   };
 
@@ -184,6 +221,8 @@ export const CreateComponents = ({ idProduct }) => {
         Назва обладнання
         <Input
           required
+          minlength="2"
+          maxlength="80"
           name="name"
           type="text"
           value={title}
@@ -198,8 +237,8 @@ export const CreateComponents = ({ idProduct }) => {
           name="type"
           value={type}
           onChange={e => {
-            setType(e.target.value);
             setAddSort(initialAddSort);
+            setType(e.target.value);
           }}
         >
           <Option value="Панелі">Панелі</Option>
@@ -289,23 +328,41 @@ export const CreateComponents = ({ idProduct }) => {
           <Label>
             Бренд товару
             <Input
+              required
+              minlength="2"
+              maxlength="20"
               name="brand"
               type="text"
               value={brand}
               placeholder="Введіть бренд"
               onChange={e => setBrand(e.target.value)}
+              list={'brand-data'}
             />
+            <datalist id={'brand-data'}>
+              {dataList.sortBrand && dataList.sortBrand.length > 0
+                ? dataList.sortBrand.map(i => <option key={i} value={i} />)
+                : null}
+            </datalist>
           </Label>
           <Underline></Underline>
           <Label>
             Країна виробництва
             <Input
+              required
+              minlength="2"
+              maxlength="20"
               name="country"
               type="text"
               value={country}
               placeholder="Введіть країну"
               onChange={e => setCountry(e.target.value)}
+              list={'country-data'}
             />
+            <datalist id={'country-data'}>
+              {dataList.sortCountry && dataList.sortCountry.length > 0
+                ? dataList.sortCountry.map(i => <option key={i} value={i} />)
+                : null}
+            </datalist>
           </Label>
           <Underline></Underline>
         </>
@@ -316,6 +373,9 @@ export const CreateComponents = ({ idProduct }) => {
           <Label>
             Потужність
             <Input
+              required
+              minlength="2"
+              maxlength="10"
               name="power"
               type="text"
               value={addSort.power || ''}
@@ -342,6 +402,7 @@ export const CreateComponents = ({ idProduct }) => {
           <Label>
             Кількість фаз
             <Input
+              required
               name="phases"
               type="text"
               value={addSort.phases || ''}
@@ -363,6 +424,9 @@ export const CreateComponents = ({ idProduct }) => {
           <Label>
             Ємність акумулятора
             <Input
+              required
+              minlength="2"
+              maxlength="10"
               name="reservoir"
               type="text"
               value={addSort.reservoir || ''}
@@ -389,6 +453,9 @@ export const CreateComponents = ({ idProduct }) => {
           <Label>
             Напруга акумулятора
             <Input
+              required
+              minlength="2"
+              maxlength="10"
               name="voltage"
               type="text"
               value={addSort.voltage || ''}
@@ -462,6 +529,8 @@ export const CreateComponents = ({ idProduct }) => {
             Характеристика {index + 1}
             <Input
               required
+              minlength="2"
+              maxlength="100"
               name="title-character"
               type="text"
               value={character.subtitle}
@@ -470,6 +539,7 @@ export const CreateComponents = ({ idProduct }) => {
             />
             <Textarey
               required
+              minlength="10"
               rows="10"
               name="text-character"
               value={character.option.join('\n')}

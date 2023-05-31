@@ -29,7 +29,10 @@ export const loginUser = async credentials => {
 
 export const checkAuth = async () => {
   const token = localStorage.getItem('token');
-  if (!token) return false;
+  if (!token) {
+    Notify.warning('Увійдіть в обліковий запис');
+    return false;
+  }
 
   setAuthHeader(token);
 
@@ -37,6 +40,7 @@ export const checkAuth = async () => {
     const response = await axios.get('/api/admin/check-auth');
     return response.data.status;
   } catch (error) {
+    Notify.warning('Ваша сессия закінчилась або ваш токен невірний');
     return false;
   }
 };
@@ -201,7 +205,10 @@ export const createStoreComponents = async formData => {
 export const updateStoreSets = async (formData, id) => {
   checkSetAuth();
 
-  const response = await axios.patch(`/api/admin/store-sets/${id}`, formData);
+  const response = await axios.patch(
+    `/api/admin/store-sets/by-id/${id}`,
+    formData
+  );
   return response.data;
 };
 
@@ -209,7 +216,7 @@ export const updateStoreComponents = async (formData, id) => {
   checkSetAuth();
 
   const response = await axios.patch(
-    `/api/admin/store-components/${id}`,
+    `/api/admin/store-components/by-id/${id}`,
     formData
   );
   return response.data;
@@ -243,25 +250,30 @@ export const getStoreComponents = async (
 export const deleteStoreSet = async id => {
   checkSetAuth();
 
-  const response = await axios.delete(`/api/admin/store-sets/${id}`);
+  const response = await axios.delete(`/api/admin/store-sets/by-id/${id}`);
   return response.data;
 };
 export const deleteStoreComponent = async id => {
   checkSetAuth();
 
-  const response = await axios.delete(`/api/admin/store-components/${id}`);
+  const response = await axios.delete(
+    `/api/admin/store-components/by-id/${id}`
+  );
   return response.data;
 };
 
 export const getByIdStoreSet = async id => {
-  checkSetAuth();
-
-  const response = await axios.get(`/api/admin/store-sets/${id}`);
+  const response = await axios.get(`/api/admin/store-sets/by-id/${id}`);
   return response.data;
 };
 export const getByIdStoreComponent = async id => {
-  checkSetAuth();
+  const response = await axios.get(`/api/admin/store-components/by-id/${id}`);
+  return response.data;
+};
 
-  const response = await axios.get(`/api/admin/store-components/${id}`);
+export const getFilterStoreComponent = async type => {
+  const response = await axios.get(
+    `/api/admin/store-components/option?type=${type}`
+  );
   return response.data;
 };

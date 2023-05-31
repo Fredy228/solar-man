@@ -1,5 +1,4 @@
 import { useParams, useNavigate } from 'react-router-dom';
-
 import { useState, useEffect } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
@@ -11,7 +10,7 @@ import {
   InputFile,
   Img,
 } from '../../components/AdminFormCreate/AdminFormCreate.styled';
-import { updatePosts, getPostsById } from 'components/API/API';
+import { updatePosts, getPostsById, baseURL } from 'components/API/API';
 import { Inner } from './Portfolio.styled';
 import { LoadSpiner } from '../../components/LoadSpiner/LoadSpiner';
 
@@ -43,6 +42,8 @@ const PortfolioId = () => {
     async function getPost() {
       try {
         const { post } = await getPostsById(postId);
+        console.log(post);
+        setPhoto(post.urlImg);
         setTitle(post.title);
         setYear(post.year);
         setComponents(JSON.parse(post.components));
@@ -57,14 +58,24 @@ const PortfolioId = () => {
     <Inner>
       <Form onSubmit={submitForm}>
         <InputFile>
-          {photo ? (
+          {photo && typeof photo !== 'string' ? (
             <Img
               src={URL.createObjectURL(photo)}
               alt="Вибране фото"
               width="100px"
             />
           ) : (
-            'Вибір фото'
+            <>
+              {photo && typeof photo === 'string' ? (
+                <Img
+                  src={`${baseURL}/${photo}`}
+                  alt="Вибране фото"
+                  width="100px"
+                />
+              ) : (
+                'Вибір фото товару'
+              )}
+            </>
           )}
           <input
             style={{ display: 'none' }}

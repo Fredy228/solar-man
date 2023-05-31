@@ -17,8 +17,12 @@ import {
 import { Icon } from '../../../components/Icon/Icon';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useStoreUser } from '../../../globalState/globalState';
 
 export const ListProduct = ({ products, setProducts, type }) => {
+  const {
+    userData: { role },
+  } = useStoreUser();
   const [isShowBtn, setIsShowBtn] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -61,7 +65,7 @@ export const ListProduct = ({ products, setProducts, type }) => {
               <ImgProduts src={`${baseURL}/${item.photo}`} alt={item.title} />
               <TitleProduts>{item.title}</TitleProduts>
               <CostProduts>{item.cost}$</CostProduts>
-              {isShowBtn === item.id && (
+              {isShowBtn === item.id && role !== 'user' && (
                 <BoxBtnProducts>
                   <ButtonProducts
                     type={'button'}

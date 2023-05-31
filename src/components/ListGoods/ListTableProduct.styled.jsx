@@ -9,7 +9,6 @@ export const ItemProduts = styled.li`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
   border-radius: 20px;
@@ -63,6 +62,7 @@ export const CostProduts = styled.p`
   background-color: ${({ theme }) => theme.color.second};
   border-radius: 25px;
   margin-bottom: 15px;
+  margin-top: auto;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
