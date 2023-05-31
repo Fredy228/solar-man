@@ -36,6 +36,7 @@ export const NavStoreDB = ({ isLoading }) => {
       const newSearchParams = new URLSearchParams(prevSearchParams);
       newSearchParams.set('subtype', 'Всі');
       newSearchParams.set('sort', 'none');
+      newSearchParams.set('page', '1');
       newSearchParams.set('type', e.target.value);
       return newSearchParams;
     });
@@ -46,6 +47,7 @@ export const NavStoreDB = ({ isLoading }) => {
     setSearchParams(prevSearchParams => {
       const newSearchParams = new URLSearchParams(prevSearchParams);
       newSearchParams.set('sort', e.target.value);
+      newSearchParams.set('page', '1');
       return newSearchParams;
     });
   };
@@ -56,6 +58,7 @@ export const NavStoreDB = ({ isLoading }) => {
     setSearchParams(prevSearchParams => {
       const newSearchParams = new URLSearchParams(prevSearchParams);
       newSearchParams.set('sort', 'none');
+      newSearchParams.set('page', '1');
       newSearchParams.set('subtype', e.target.value);
       return newSearchParams;
     });

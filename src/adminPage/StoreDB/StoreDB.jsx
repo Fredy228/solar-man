@@ -5,9 +5,10 @@ import { Container } from '../../pages/Common.styled';
 import { getStoreComponents, getStoreSets } from '../../components/API/API';
 import { ListProduct } from './ListProduct/ListProduct';
 import useWindowWidth from '../../services/widthScreen';
+import Pagination from '../../components/Pagination/Pagination';
 
 const StoreDB = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const pageParams = searchParams.get('page');
   const typeParams = searchParams.get('type');
   const subtypeParams = searchParams.get('subtype');
@@ -15,6 +16,15 @@ const StoreDB = () => {
   const [products, setProducts] = useState([]);
   const width = useWindowWidth();
   const [isLoading, setIsLoading] = useState(true);
+  const limit = 12;
+
+  useEffect(() => {
+    setSearchParams(prevSearchParams => {
+      const newSearchParams = new URLSearchParams(prevSearchParams);
+      newSearchParams.set('page', '1');
+      return newSearchParams;
+    });
+  }, []);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -31,10 +41,10 @@ const StoreDB = () => {
         let data;
 
         if (type === 'Готові рішення')
-          data = await getStoreSets(page, 12, subtype, sort);
+          data = await getStoreSets(page, limit, subtype, sort);
 
         if (type === 'Компоненти')
-          data = await getStoreComponents(page, 12, subtype, sort);
+          data = await getStoreComponents(page, limit, subtype, sort);
 
         setProducts(data);
         setIsLoading(false);
@@ -59,6 +69,9 @@ const StoreDB = () => {
             setProducts={setProducts}
             type={typeParams || 'Готові рішення'}
           />
+          {products.count / limit > 1 && (
+            <Pagination limit={limit} count={products.count} />
+          )}
         </Container>
       ) : (
         <p style={{ textAlign: 'center', fontSize: '18px', padding: '20px' }}>

@@ -17,15 +17,20 @@ import {
 import { Icon } from '../../../components/Icon/Icon';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useStoreUser } from '../../../globalState/globalState';
+import { useShowModal, useStoreUser } from '../../../globalState/globalState';
+import { Modal } from '../../../components/Modal/Modal';
+import { DeleteWindow } from '../../../components/DeleteWindow/DeleteWindow';
 
 export const ListProduct = ({ products, setProducts, type }) => {
   const {
     userData: { role },
   } = useStoreUser();
+  const { toggleModal } = useShowModal();
   const [isShowBtn, setIsShowBtn] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { isShowModal } = useShowModal();
+  const [idGood, setIdGood] = useState('');
 
   const fnDeleteProd = async id => {
     try {
@@ -42,6 +47,7 @@ export const ListProduct = ({ products, setProducts, type }) => {
         return { result: newResult, count: prev.count - 1 };
       });
       Notify.success('Видалено');
+      toggleModal(false);
     } catch (err) {
       if (err.response.status === 401)
         return Notify.failure(
@@ -69,7 +75,10 @@ export const ListProduct = ({ products, setProducts, type }) => {
                 <BoxBtnProducts>
                   <ButtonProducts
                     type={'button'}
-                    onClick={() => fnDeleteProd(item.id)}
+                    onClick={() => {
+                      toggleModal(true);
+                      setIdGood(item.id);
+                    }}
                     disabled={isLoading}
                   >
                     <Icon name={'icon-delete'} />
@@ -84,6 +93,11 @@ export const ListProduct = ({ products, setProducts, type }) => {
               )}
             </ItemProduts>
           ))}
+        {isShowModal && (
+          <Modal>
+            <DeleteWindow fn={fnDeleteProd} id={idGood} />
+          </Modal>
+        )}
       </ListProduts>
     </Inner>
   );

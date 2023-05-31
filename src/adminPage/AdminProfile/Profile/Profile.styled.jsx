@@ -15,11 +15,11 @@ export const ItemInfo = styled.li`
   padding: 5px 15px 15px 15px;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
   cursor: default;
   flex-wrap: wrap;
   justify-content: center;
+
   :not(:last-child) {
     border-bottom: 2px solid ${({ theme }) => theme.color.second};
   }
@@ -75,9 +75,6 @@ export const EditBtn = styled.button`
   align-items: center;
   padding: 0 15px;
   height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 30px;
   margin-top: 10px;
   cursor: pointer;

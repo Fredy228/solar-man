@@ -26,6 +26,7 @@ const LayoutAdmin = () => {
 
     setUser({ ...JSON.parse(dataUser) });
   }, [setUser]);
+
   return (
     <>
       <HeadAdmin />

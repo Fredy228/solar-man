@@ -12,7 +12,11 @@ const options = {
   debug: false,
 };
 
-ReactPixel.init('727645149364780', null, options);
+if (process.env.NODE_ENV === 'development') {
+  console.log('Development mode');
+} else {
+  ReactPixel.init('727645149364780', null, options);
+}
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
