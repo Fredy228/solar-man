@@ -8,6 +8,9 @@ import {
   Button,
   Select,
   Option,
+  BtnShowPass,
+  BoxShowPass,
+  InputPass,
 } from './CreateUser.styled';
 import { createUser } from 'components/API/API';
 import { LoadSpiner } from '../../../components/LoadSpiner/LoadSpiner';
@@ -17,6 +20,7 @@ export const CreateUser = ({ setIsCreate }) => {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('user');
   const [isLoading, setIsLoading] = useState(false);
+  const [isShowPass, setIsShowPass] = useState(false);
 
   const createUserFn = async e => {
     e.preventDefault();
@@ -56,11 +60,19 @@ export const CreateUser = ({ setIsCreate }) => {
         </Label>
         <Label>
           Пароль:
-          <Input
-            type="password"
+          <InputPass
+            type={isShowPass ? 'text' : 'password'}
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
+          <BoxShowPass>
+            <BtnShowPass
+              type={'button'}
+              onClick={() => setIsShowPass(state => !state)}
+            >
+              {isShowPass ? 'Сховати' : 'Показати'}
+            </BtnShowPass>
+          </BoxShowPass>
         </Label>
         <Button type="submit" disabled={isLoading}>
           {isLoading ? (
