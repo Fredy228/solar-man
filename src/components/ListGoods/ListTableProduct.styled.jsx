@@ -3,6 +3,13 @@ import styled from 'styled-components';
 export const ListProduts = styled.ul`
   display: flex;
   flex-wrap: wrap;
+
+  @media screen and (max-width: 767px) {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 15px;
+  }
 `;
 
 export const ItemProduts = styled.li`
@@ -19,6 +26,12 @@ export const ItemProduts = styled.li`
 
   :hover {
     box-shadow: rgba(242, 76, 76, 0.5) 0 3px 8px;
+  }
+
+  @media screen and (max-width: 767px) {
+    max-width: 320px;
+    margin-bottom: 15px;
+    align-items: center;
   }
 
   @media screen and (min-width: 768px) {
@@ -40,12 +53,12 @@ export const ItemProduts = styled.li`
 export const ImgProduts = styled.img`
   width: 100%;
   border-radius: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 `;
 
 export const TitleProduts = styled.a`
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   padding: 0 10px;
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -93,7 +106,7 @@ export const ButtonProducts = styled.button`
   border-radius: 50%;
   background-color: ${({ theme }) => theme.color.additional};
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   transition: background-color 350ms ease;
 
   :hover {
@@ -105,4 +118,13 @@ export const ButtonProducts = styled.button`
     height: 30px;
     fill: ${({ theme }) => theme.color.white};
   }
+`;
+
+export const NotFoundText = styled.div`
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
 `;

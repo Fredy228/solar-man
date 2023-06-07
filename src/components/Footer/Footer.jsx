@@ -11,6 +11,11 @@ import { Icon } from 'components/Icon/Icon';
 import { Social } from 'components/Social/Social';
 
 export const Footer = () => {
+  const getCurrentYear = () => {
+    const now = new Date();
+    return now.getFullYear();
+  };
+
   return (
     <FooterBox>
       <Container>
@@ -26,7 +31,7 @@ export const Footer = () => {
             </FooterLink>
             <Social color={'#fff'} />
           </FooterContacts>
-          <Copyright>© SOLAR MAN. 2023</Copyright>
+          <Copyright>© SOLAR MAN. {getCurrentYear()}</Copyright>
         </FooterInner>
       </Container>
     </FooterBox>

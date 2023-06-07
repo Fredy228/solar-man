@@ -239,10 +239,16 @@ export const getStoreComponents = async (
   limit = 12,
   type = 'Всі',
   sort = 'none',
-  optionSort
+  selectedValues
 ) => {
+  const optionSort = Object.keys(selectedValues).map(
+    i => `${i}=${selectedValues[i].join('_')}`
+  );
+
   const response = await axios.get(
-    `/api/admin/store-components?page=${page}&limit=${limit}&type=${type}&sort=${sort}`
+    `/api/admin/store-components?page=${page}&limit=${limit}&type=${type}&sort=${sort}&${optionSort.join(
+      '&'
+    )}`
   );
   return response.data;
 };

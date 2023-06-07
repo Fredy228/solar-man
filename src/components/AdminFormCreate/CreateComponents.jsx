@@ -2,18 +2,18 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
-  Form,
-  Input,
-  Label,
   Button,
-  Textarey,
-  InputFile,
+  ButtonCircle,
+  Form,
   Img,
   ImgInfo,
-  ButtonCircle,
-  Underline,
-  Select,
+  Input,
+  InputFile,
+  Label,
   Option,
+  Select,
+  Textarey,
+  Underline,
 } from './AdminFormCreate.styled';
 import { LoadSpiner } from '../LoadSpiner/LoadSpiner';
 import { Icon } from '../Icon/Icon';
@@ -68,7 +68,7 @@ export const CreateComponents = ({ idProduct }) => {
       case 'Панелі':
         setAddSort(prevState => ({ ...prevState, subtype: 'Монокристалічна' }));
         break;
-      case 'Інвентори':
+      case 'Інвертори':
         setAddSort(prevState => ({ ...prevState, subtype: 'Автономні' }));
         break;
       case 'Акумулятори':
@@ -105,7 +105,7 @@ export const CreateComponents = ({ idProduct }) => {
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [idProduct]);
 
   const addCharacter = () => {
     if (descripCharacter.length > 7)
@@ -242,15 +242,15 @@ export const CreateComponents = ({ idProduct }) => {
           }}
         >
           <Option value="Панелі">Панелі</Option>
-          <Option value="Інвентори">Інвентори</Option>
+          <Option value="Інвертори">Інвертори</Option>
           <Option value="Акумулятори">Акумулятори</Option>
           <Option value="Кріплення">Кріплення</Option>
           <Option value="Комлпектуючі">Комлпектуючі</Option>
-          <Option value="Контролери заряду">Контролери заряду</Option>
+          <Option value="Зарядні станції">Зарядні станції</Option>
         </Select>
       </Label>
       <Underline></Underline>
-      {['Панелі', 'Інвентори', 'Акумулятори', 'Кріплення'].includes(type) && (
+      {['Панелі', 'Інвертори', 'Акумулятори', 'Кріплення'].includes(type) && (
         <>
           <Label>
             Підтип обладнання
@@ -270,7 +270,7 @@ export const CreateComponents = ({ idProduct }) => {
                   <Option value="Полікристалічна">Полікристалічна</Option>
                 </>
               )}
-              {type === 'Інвентори' && (
+              {type === 'Інвертори' && (
                 <>
                   <Option value="Автономні">Автономні</Option>
                   <Option value="Гібридні">Гібридні</Option>
@@ -319,10 +319,10 @@ export const CreateComponents = ({ idProduct }) => {
       <Underline></Underline>
       {[
         'Панелі',
-        'Інвентори',
+        'Інвертори',
         'Акумулятори',
         'Комлпектуючі',
-        'Контролери заряду',
+        'Зарядні станції',
       ].includes(type) && (
         <>
           <Label>
@@ -368,7 +368,7 @@ export const CreateComponents = ({ idProduct }) => {
         </>
       )}
 
-      {['Панелі', 'Інвентори'].includes(type) && (
+      {['Панелі', 'Інвертори'].includes(type) && (
         <>
           <Label>
             Потужність
@@ -397,7 +397,7 @@ export const CreateComponents = ({ idProduct }) => {
           <Underline></Underline>
         </>
       )}
-      {['Інвентори'].includes(type) && (
+      {['Інвертори'].includes(type) && (
         <>
           <Label>
             Кількість фаз

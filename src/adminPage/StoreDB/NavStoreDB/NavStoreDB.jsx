@@ -111,11 +111,11 @@ export const NavStoreDB = ({ isLoading }) => {
             ) : (
               <>
                 <Option value="Панелі">Панелі</Option>
-                <Option value="Інвентори">Інвентори</Option>
+                <Option value="Інвертори">Інвертори</Option>
                 <Option value="Акумулятори">Акумулятори</Option>
                 <Option value="Кріплення">Кріплення</Option>
                 <Option value="Комлпектуючі">Комлпектуючі</Option>
-                <Option value="Контролери заряду">Контролери заряду</Option>
+                <Option value="Зарядні станції">Зарядні станції</Option>
               </>
             )}
           </Select>
@@ -138,7 +138,7 @@ export const NavStoreDB = ({ isLoading }) => {
               </>
             )}
 
-            {['Панелі', 'Інвентори'].includes(subtype) && (
+            {['Панелі', 'Інвертори'].includes(subtype) && (
               <>
                 <Option value="c-power-up">Від менш потужних-</Option>
                 <Option value="c-power-down">Від більш потужних-</Option>
