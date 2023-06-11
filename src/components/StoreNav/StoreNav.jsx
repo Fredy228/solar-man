@@ -116,7 +116,6 @@ export const StoreNav = () => {
   };
 
   const handleSubtype = ({ value }) => {
-    console.log(value);
     setSubtype(value);
     setSort('none');
     setSearchParams(prevSearchParams => {

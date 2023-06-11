@@ -234,6 +234,21 @@ export const getStoreSets = async (
   return response.data;
 };
 
+export const getSetsHomeOrder = async () => {
+  const response = await axios.get(`/api/admin/store-sets/home-sets`);
+  return response.data;
+};
+
+export const updateSetsHomeOrder = async objects => {
+  const response = await axios.post(`/api/admin/store-sets/home-sets`, objects);
+  return response.data;
+};
+
+export const toggleSetsHome = async id => {
+  const response = await axios.patch(`/api/admin/store-sets/home-sets/${id}`);
+  return response.data;
+};
+
 export const getStoreComponents = async (
   page = 1,
   limit = 12,

@@ -96,7 +96,7 @@ export const NavBox = styled.div`
   @media screen and (max-width: 1000px) {
     position: fixed;
     width: 100%;
-    height: calc(100% - ${p => p.headerHeight}px - 10px);
+    height: calc(100% - ${p => p.headerHeight}px);
     bottom: 0;
     left: 0;
     background-color: rgba(255, 255, 255, 0.7);

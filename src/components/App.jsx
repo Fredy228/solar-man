@@ -10,6 +10,7 @@ const Home = lazy(() => import('pages/Home/Home'));
 const LoginAdmin = lazy(() => import('adminPage/LoginAdmin/LoginAdmin'));
 const AdminProfile = lazy(() => import('adminPage/AdminProfile/AdminProfile'));
 const StoreDB = lazy(() => import('adminPage/StoreDB/StoreDB'));
+const OrderHome = lazy(() => import('adminPage/StoreDB/OrderHome'));
 const Portfolio = lazy(() => import('adminPage/Portfolio/Portfolio'));
 const PortfolioId = lazy(() => import('adminPage/Portfolio/PortfolioId'));
 const CreateProduct = lazy(() =>
@@ -25,6 +26,7 @@ const AboutUs = lazy(() => import('pages/AboutUs/AboutUs'));
 const Projects = lazy(() => import('pages/Projects/Projects'));
 const Store = lazy(() => import('pages/Store/Store'));
 const Thanks = lazy(() => import('pages/Thanks/Thanks'));
+const NotFound = lazy(() => import('pages/NotFound/NotFound'));
 export const App = () => {
   const { isShowModal } = useShowModal();
 
@@ -48,7 +50,7 @@ export const App = () => {
         <Route path="/store" element={<Store />} />
         <Route path="/thanks" element={<Thanks />} />
 
-        <Route path="*" element={'Not found 404'} />
+        <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/admin" element={<LayoutAdmin />}>
         <Route
@@ -85,10 +87,8 @@ export const App = () => {
           }
         />
         <Route
-          path="goods/update/:typeGood"
-          element={
-            <PrivateRoute redirectTo="/admin" component={CreateProduct} />
-          }
+          path="goods/home/order"
+          element={<PrivateRoute redirectTo="/admin" component={OrderHome} />}
         />
       </Route>
     </Routes>

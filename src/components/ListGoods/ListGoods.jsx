@@ -9,6 +9,7 @@ import {
   TitleProduts,
 } from './ListTableProduct.styled';
 import { LoadPage } from '../LoadSpiner/LoadPage';
+import { numbersFormatCost } from '../../services/numbersFormatCost';
 
 export const ListGoods = ({ products, type, isLoading }) => {
   return (
@@ -23,7 +24,7 @@ export const ListGoods = ({ products, type, isLoading }) => {
               >
                 <ImgProduts src={`${baseURL}/${item.photo}`} alt={item.title} />
                 <TitleProduts>{item.title}</TitleProduts>
-                <CostProduts>{item.cost}$</CostProduts>
+                <CostProduts>{numbersFormatCost(item.cost)}$</CostProduts>
               </ItemProduts>
             ))
           ) : (

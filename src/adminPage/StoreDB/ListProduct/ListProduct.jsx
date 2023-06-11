@@ -13,6 +13,7 @@ import {
   baseURL,
   deleteStoreComponent,
   deleteStoreSet,
+  toggleSetsHome,
 } from '../../../components/API/API';
 import { Icon } from '../../../components/Icon/Icon';
 import { useState } from 'react';
@@ -57,6 +58,38 @@ export const ListProduct = ({ products, setProducts, type }) => {
     }
   };
 
+  const toggleHomeSetsInOrder = async (id, isInHome) => {
+    try {
+      setIsLoading(true);
+      await toggleSetsHome(id);
+
+      setProducts(prev => {
+        const newResult = prev.result.map(item => {
+          if (item.id === id) {
+            const parse = JSON.parse(item.home);
+            parse.value = !isInHome;
+            const stringify = JSON.stringify(parse);
+            console.log(parse);
+            return { ...item, home: stringify };
+          } else {
+            return item;
+          }
+        });
+
+        return { result: newResult, count: prev.count };
+      });
+
+      setIsLoading(false);
+    } catch (err) {
+      setIsLoading(false);
+      if (err.response.status === 401)
+        return Notify.failure(
+          'Неавторизовано, ваша сесія закінчилася або невірний токен'
+        );
+      Notify.failure(`Щось пішло не так, помилка: ${err.response.status}`);
+    }
+  };
+
   return (
     <Inner>
       <ListProduts>
@@ -73,6 +106,25 @@ export const ListProduct = ({ products, setProducts, type }) => {
               <CostProduts>{item.cost}$</CostProduts>
               {isShowBtn === item.id && role !== 'user' && (
                 <BoxBtnProducts>
+                  {type === 'Готові рішення' && (
+                    <ButtonProducts
+                      type={'button'}
+                      onClick={() =>
+                        toggleHomeSetsInOrder(
+                          item.id,
+                          JSON.parse(item.home).value
+                        )
+                      }
+                      disabled={isLoading}
+                    >
+                      {JSON.parse(item.home).value ? (
+                        <Icon name={'icon-home'} />
+                      ) : (
+                        <Icon name={'icon-plus'} />
+                      )}
+                    </ButtonProducts>
+                  )}
+
                   <ButtonProducts
                     type={'button'}
                     onClick={() => {

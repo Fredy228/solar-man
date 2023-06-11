@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Header,
@@ -16,10 +16,8 @@ import { Container } from 'pages/Common.styled';
 import useScrollScreen from '../../services/scrollScreen';
 import useWindowWidth from 'services/widthScreen';
 
-export const Head = ({ fnHeigth }) => {
+export const Head = forwardRef(({ headerHeight }, ref) => {
   const [showBurger, setShowBurger] = useState(false);
-  const [headerHeight, setHeaderHeight] = useState(0);
-  const headerRef = useRef(null);
   const scrollScreen = useScrollScreen();
   const widthSreen = useWindowWidth();
   const history = useNavigate();
@@ -32,27 +30,6 @@ export const Head = ({ fnHeigth }) => {
   };
 
   useEffect(() => {
-    const refHeader = headerRef.current;
-    const resizeObserver = new ResizeObserver(entries => {
-      for (let entry of entries) {
-        if (entry.target === refHeader) {
-          setHeaderHeight(entry.contentRect.height);
-        }
-      }
-    });
-
-    if (refHeader) {
-      resizeObserver.observe(refHeader);
-    }
-
-    return () => {
-      if (refHeader) {
-        resizeObserver.unobserve(refHeader);
-      }
-    };
-  }, [fnHeigth]);
-
-  useEffect(() => {
     if (widthSreen <= 1000) {
       setShowBurger(false);
       document.body.classList.remove('no-scroll');
@@ -60,9 +37,9 @@ export const Head = ({ fnHeigth }) => {
   }, [widthSreen]);
 
   return (
-    <Header scroll={scrollScreen} show={showBurger}>
+    <Header scroll={scrollScreen} show={showBurger} ref={ref}>
       <Container>
-        <HeaderInner ref={headerRef}>
+        <HeaderInner>
           <Logo onClick={() => history('/')}>
             <Icon name={'icon-logo'} viewBox="0 0 82 32" />
           </Logo>
@@ -80,4 +57,4 @@ export const Head = ({ fnHeigth }) => {
       </Container>
     </Header>
   );
-};
+});

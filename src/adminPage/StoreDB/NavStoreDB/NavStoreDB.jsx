@@ -4,6 +4,7 @@ import {
   ItemNav,
   ListNav,
   Option,
+  OrderBtn,
   Select,
   Text,
 } from './NavStoreDB.styled';
@@ -65,97 +66,105 @@ export const NavStoreDB = ({ isLoading }) => {
   };
 
   return (
-    <Inner>
-      <ListNav>
-        <ItemNav>
-          <Text>Новий товар:</Text>
-          <Button
-            type={'button'}
-            onClick={handleCreate}
-            disabled={role === 'user'}
-          >
-            + Створити
-          </Button>
-        </ItemNav>
-        <ItemNav>
-          <Text>Тип:</Text>
-          <Select
-            name="type"
-            value={type}
-            onChange={handleType}
-            disabled={isLoading}
-          >
-            <Option value="Готові рішення">Готові рішення</Option>
-            <Option value="Компоненти">Компоненти</Option>
-          </Select>
-        </ItemNav>
-        <ItemNav>
-          <Text>Підтип:</Text>
-          <Select
-            name="subtype"
-            value={subtype}
-            onChange={handleSubtype}
-            disabled={isLoading}
-          >
-            <Option value="Всі">Всі</Option>
-            {type === 'Готові рішення' ? (
-              <>
-                <Option value="Зелений тариф">Зелений тариф</Option>
-                <Option value="Автономні станції">Автономні станції</Option>
-                <Option value="Резервне живлення">Резервне живлення</Option>
-                <Option value="Модульні безперебійні системи">
-                  Модульні безперебійні системи
-                </Option>
-                <Option value="Для підприємств">Для підприємств</Option>
-              </>
-            ) : (
-              <>
-                <Option value="Панелі">Панелі</Option>
-                <Option value="Інвертори">Інвертори</Option>
-                <Option value="Акумулятори">Акумулятори</Option>
-                <Option value="Кріплення">Кріплення</Option>
-                <Option value="Комлпектуючі">Комлпектуючі</Option>
-                <Option value="Зарядні станції">Зарядні станції</Option>
-              </>
-            )}
-          </Select>
-        </ItemNav>
-        <ItemNav>
-          <Text>Сортування:</Text>
-          <Select
-            onChange={handleSort}
-            value={sort}
-            name="sort"
-            disabled={isLoading}
-          >
-            <Option value="none">За замовчуванням</Option>
-            <Option value="cost-up">Від дешевих</Option>
-            <Option value="cost-down">Від дорогих</Option>
-            {type === 'Готові рішення' && (
-              <>
-                <Option value="power-up">Від менш потужних</Option>
-                <Option value="power-down">Від більш потужних</Option>
-              </>
-            )}
+    <>
+      <OrderBtn
+        type={'button'}
+        disabled={role === 'user'}
+        onClick={() => navigate(`home/order`)}
+      >
+        Home page
+      </OrderBtn>
+      <Inner>
+        <ListNav>
+          <ItemNav>
+            <Button
+              type={'button'}
+              onClick={handleCreate}
+              disabled={role === 'user'}
+            >
+              + Створити
+            </Button>
+          </ItemNav>
+          <ItemNav>
+            <Text>Тип:</Text>
+            <Select
+              name="type"
+              value={type}
+              onChange={handleType}
+              disabled={isLoading}
+            >
+              <Option value="Готові рішення">Готові рішення</Option>
+              <Option value="Компоненти">Компоненти</Option>
+            </Select>
+          </ItemNav>
+          <ItemNav>
+            <Text>Підтип:</Text>
+            <Select
+              name="subtype"
+              value={subtype}
+              onChange={handleSubtype}
+              disabled={isLoading}
+            >
+              <Option value="Всі">Всі</Option>
+              {type === 'Готові рішення' ? (
+                <>
+                  <Option value="Зелений тариф">Зелений тариф</Option>
+                  <Option value="Автономні станції">Автономні станції</Option>
+                  <Option value="Резервне живлення">Резервне живлення</Option>
+                  <Option value="Модульні безперебійні системи">
+                    Модульні безперебійні системи
+                  </Option>
+                  <Option value="Для підприємств">Для підприємств</Option>
+                </>
+              ) : (
+                <>
+                  <Option value="Панелі">Панелі</Option>
+                  <Option value="Інвертори">Інвертори</Option>
+                  <Option value="Акумулятори">Акумулятори</Option>
+                  <Option value="Кріплення">Кріплення</Option>
+                  <Option value="Комлпектуючі">Комлпектуючі</Option>
+                  <Option value="Зарядні станції">Зарядні станції</Option>
+                </>
+              )}
+            </Select>
+          </ItemNav>
+          <ItemNav>
+            <Text>Сортування:</Text>
+            <Select
+              onChange={handleSort}
+              value={sort}
+              name="sort"
+              disabled={isLoading}
+            >
+              <Option value="none">За замовчуванням</Option>
+              <Option value="cost-up">Від дешевих</Option>
+              <Option value="cost-down">Від дорогих</Option>
+              {type === 'Готові рішення' && (
+                <>
+                  <Option value="power-up">Від менш потужних</Option>
+                  <Option value="power-down">Від більш потужних</Option>
+                </>
+              )}
 
-            {['Панелі', 'Інвертори'].includes(subtype) && (
-              <>
-                <Option value="c-power-up">Від менш потужних-</Option>
-                <Option value="c-power-down">Від більш потужних-</Option>
-              </>
-            )}
+              {['Панелі', 'Інвертори'].includes(subtype) && (
+                <>
+                  <Option value="c-power-up">Від менш потужних-</Option>
+                  <Option value="c-power-down">Від більш потужних-</Option>
+                </>
+              )}
 
-            {['Акумулятори'].includes(subtype) && (
-              <>
-                <Option value="с-voltage-up">Від менш потужних</Option>
-                <Option value="с-voltage-down">Від більш потужних</Option>
-                <Option value="с-reservoir-up">Від менш ємких</Option>
-                <Option value="с-reservoir-down">Від більш ємких</Option>
-              </>
-            )}
-          </Select>
-        </ItemNav>
-      </ListNav>
-    </Inner>
+              {['Акумулятори'].includes(subtype) && (
+                <>
+                  <Option value="с-voltage-up">Від менш потужних</Option>
+                  <Option value="с-voltage-down">Від більш потужних</Option>
+                  <Option value="с-reservoir-up">Від менш ємких</Option>
+                  <Option value="с-reservoir-down">Від більш ємких</Option>
+                </>
+              )}
+            </Select>
+          </ItemNav>
+        </ListNav>
+      </Inner>
+    </>
   );
 };

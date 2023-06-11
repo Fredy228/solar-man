@@ -72,3 +72,11 @@ export const Button = styled.button`
     color: ${({ theme }) => theme.color.white};
   }
 `;
+
+export const OrderBtn = styled(Button)`
+  position: fixed;
+  top: 200px;
+  left: -70px;
+  rotate: 90deg;
+  border: 1px solid ${({ theme }) => theme.color.additional};
+`;

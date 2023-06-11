@@ -1,4 +1,10 @@
-import { Inner, WrapperFilter, WrapperStore } from './Store.styled';
+import {
+  BackDropFilter,
+  FilterToggle,
+  Inner,
+  WrapperFilter,
+  WrapperStore,
+} from './Store.styled';
 import { Filter } from '../../components/Filter/Filter';
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 import { StoreNav } from '../../components/StoreNav/StoreNav';
@@ -6,13 +12,13 @@ import { ListGoods } from '../../components/ListGoods/ListGoods';
 import Pagination from '../../components/Pagination/Pagination';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-// import useWindowWidth from '../../services/widthScreen';
 import {
   getFilterStoreComponent,
   getStoreComponents,
   getStoreSets,
 } from '../../components/API/API';
 import { Container } from '../Common.styled';
+import { Icon } from '../../components/Icon/Icon';
 
 const initialFilter = {
   brand: [],
@@ -33,10 +39,10 @@ const Store = () => {
   const subtypeParams = searchParams.get('subtype');
   const sortParams = searchParams.get('sort');
   const [products, setProducts] = useState([]);
-  // const width = useWindowWidth();
   const [isLoading, setIsLoading] = useState(true);
   const [filterList, setFilterList] = useState({});
   const [selectedValues, setSelectedValues] = useState(initialFilter);
+  const [isShowFilter, setIsShowFilter] = useState(false);
 
   const handleCheckboxChange = (e, filter) => {
     const { value, checked } = e.target;
@@ -69,7 +75,9 @@ const Store = () => {
 
       const type = typeParams || 'Готові рішення';
       const page = Number(pageParams) || 1;
-      const subtype = subtypeParams || 'Всі';
+      const subtype =
+        subtypeParams ||
+        (type === 'Готові рішення' ? 'Зелений тариф' : 'Панелі');
       const sort = sortParams || 'none';
 
       if (!type || !page || !subtype || !sort) return setIsLoading(false);
@@ -88,7 +96,6 @@ const Store = () => {
             sort,
             selectedValues
           );
-        console.log(data);
 
         setProducts(data);
         setIsLoading(false);
@@ -117,6 +124,7 @@ const Store = () => {
             isShow={
               typeParams === 'Компоненти' && Object.keys(filterList).length > 0
             }
+            isShowFilter={isShowFilter}
           >
             <Filter
               filterList={filterList}
@@ -127,8 +135,28 @@ const Store = () => {
               handleCheckboxChange={handleCheckboxChange}
               count={products.count}
               isLoading={isLoading}
+              setCheck={setSelectedValues}
+              initialFilter={initialFilter}
             />
+            {typeParams === 'Компоненти' &&
+              Object.keys(filterList).length > 0 && (
+                <FilterToggle
+                  type={'button'}
+                  onClick={() => setIsShowFilter(prev => !prev)}
+                  isShowFilter={isShowFilter}
+                >
+                  {!isShowFilter ? (
+                    <Icon name={'icon-filter'} />
+                  ) : (
+                    <Icon name={'icon-cancel'} />
+                  )}
+                </FilterToggle>
+              )}
           </WrapperFilter>
+          <BackDropFilter
+            isShowFilter={isShowFilter}
+            onClick={() => setIsShowFilter(false)}
+          ></BackDropFilter>
           <WrapperStore>
             <StoreNav isLoading={isLoading} />
             <ListGoods

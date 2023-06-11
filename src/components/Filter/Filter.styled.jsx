@@ -11,6 +11,12 @@ export const WrapperFilter = styled.div`
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+
+  @media screen and (max-width: 1000px) {
+    height: calc(100vh - 115px);
+    min-height: initial;
+    overflow-y: scroll;
+  }
 `;
 
 export const ListFilter = styled.ul`
@@ -85,17 +91,36 @@ export const CustomCheckBox = styled.span`
   }
 `;
 
-export const CountInfo = styled.p`
+export const FilterForm = styled.form`
+  width: 100%;
+  height: 100%;
+`;
+
+export const CountInfo = styled.div`
+  font-size: 14px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: ${({ theme }) => theme.color.white};
+`;
+
+export const ResetFilter = styled.button`
   width: 150px;
   height: 30px;
+  margin-top: 5px;
   justify-content: center;
   align-items: center;
   display: flex;
-  margin-top: auto;
   border-radius: 30px;
   font-size: 14px;
   border: 2px solid ${({ theme }) => theme.color.additional};
-  background-color: ${({ theme }) => theme.color.additional};
+  background-color: transparent;
   color: ${({ theme }) => theme.color.white};
-  cursor: default;
+  cursor: pointer;
+  transition: background-color 350ms ease;
+
+  :hover {
+    background-color: ${({ theme }) => theme.color.additional};
+  }
 `;

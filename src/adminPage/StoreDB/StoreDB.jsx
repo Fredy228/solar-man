@@ -7,6 +7,17 @@ import { ListProduct } from './ListProduct/ListProduct';
 import useWindowWidth from '../../services/widthScreen';
 import Pagination from '../../components/Pagination/Pagination';
 
+const initialFilter = {
+  brand: [],
+  country: [],
+  subtype: [],
+  power: [],
+  material: [],
+  reservoir: [],
+  voltage: [],
+  phases: [],
+};
+
 const StoreDB = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const pageParams = searchParams.get('page');
@@ -44,7 +55,13 @@ const StoreDB = () => {
           data = await getStoreSets(page, limit, subtype, sort);
 
         if (type === 'Компоненти')
-          data = await getStoreComponents(page, limit, subtype, sort);
+          data = await getStoreComponents(
+            page,
+            limit,
+            subtype,
+            sort,
+            initialFilter
+          );
 
         setProducts(data);
         setIsLoading(false);

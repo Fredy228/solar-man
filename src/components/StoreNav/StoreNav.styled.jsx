@@ -18,9 +18,14 @@ export const WrapperSort = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   background-color: ${({ theme }) => theme.color.main};
   padding: 10px;
   border-radius: 20px;
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
 `;
 
 export const SortLabelWrap = styled.label`
@@ -29,6 +34,14 @@ export const SortLabelWrap = styled.label`
   justify-content: center;
   font-size: 16px;
   color: ${({ theme }) => theme.color.white};
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+
+    :not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
 `;
 
 export const ButtonTab = styled.button`
@@ -61,17 +74,20 @@ export const ButtonTab = styled.button`
     color: ${({ theme }) => theme.color.white};
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     margin: 5px 7px;
     font-size: 15px;
   }
 `;
 
 export const SelectCustom = styled(Select)`
-  /* Стили для контейнера Select */
-  width: 270px;
+  display: block;
   text-align: center;
   margin-left: 10px;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 5px;
+  }
 
   .react-select__control {
     border-radius: 50px;
@@ -80,6 +96,15 @@ export const SelectCustom = styled(Select)`
     background-color: ${({ theme }) => theme.color.additional};
     cursor: pointer;
     box-shadow: none;
+    width: 260px;
+
+    @media screen and (max-width: 1000px) {
+      width: 250px;
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 240px;
+    }
   }
 
   .react-select__control-is-focused {
