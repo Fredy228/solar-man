@@ -35,7 +35,7 @@ const StoreDB = () => {
       newSearchParams.set('page', '1');
       return newSearchParams;
     });
-  }, []);
+  }, [setSearchParams]);
 
   useEffect(() => {
     const fetchProducts = async () => {

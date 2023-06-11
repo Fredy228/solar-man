@@ -133,7 +133,7 @@ export const Avatar = styled.img`
   height: 50px;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.color.second};
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 `;
 
 export const NameBox = styled.div`
