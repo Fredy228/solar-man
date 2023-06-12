@@ -23,8 +23,13 @@ export const WrapperFilter = styled.div`
   transition-property: visibility, width, left;
   transition-duration: 350ms;
   transition-timing-function: ease;
+  padding: 20px 15px;
+  background-color: ${({ theme }) => theme.color.main};
+  border-radius: 20px;
 
   @media screen and (min-width: 1000px) {
+    margin-top: 15px;
+    max-height: calc(100vh - 115px);
     width: ${({ isShow }) => (isShow ? '220px' : '0px')};
     overflow: ${({ isShow }) => (isShow ? 'initial' : 'hidden')};
     visibility: ${({ isShow }) => (isShow ? 'visible' : 'hidden')};
@@ -36,12 +41,19 @@ export const WrapperFilter = styled.div`
     width: 220px;
     bottom: 0;
     z-index: 50;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    height: calc(100% - 90px);
+  }
+
+  @media screen and (max-width: 768px) {
+    height: calc(100% - 80px);
   }
 `;
 
 export const FilterToggle = styled.button`
   position: absolute;
-  bottom: 130px;
+  bottom: 100px;
   right: -35px;
   cursor: pointer;
   display: none;

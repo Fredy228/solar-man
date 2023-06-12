@@ -50,9 +50,10 @@ const Layout = () => {
       </Suspense>
 
       <Footer />
-      <Call />
 
       {isVisible && <ToTop />}
+
+      <Call />
 
       {isShowModal && (
         <Modal>

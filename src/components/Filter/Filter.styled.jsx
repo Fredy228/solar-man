@@ -1,20 +1,15 @@
 import styled from 'styled-components';
 
 export const WrapperFilter = styled.div`
-  background-color: ${({ theme }) => theme.color.main};
   width: 100%;
-  min-height: calc(100vh - 115px);
-  border-radius: 20px;
-  margin: 15px 0;
-  padding: 20px 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 100%;
+  //display: flex;
+  //flex-direction: column;
+  //align-items: center;
+  //justify-content: space-between;
   overflow: hidden;
 
   @media screen and (max-width: 1000px) {
-    height: calc(100vh - 115px);
-    min-height: initial;
     overflow-y: scroll;
   }
 `;
@@ -94,11 +89,15 @@ export const CustomCheckBox = styled.span`
 export const FilterForm = styled.form`
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const CountInfo = styled.div`
   font-size: 14px;
-  margin-top: auto;
+  //margin-top: auto;
   display: flex;
   flex-direction: column;
   align-items: center;

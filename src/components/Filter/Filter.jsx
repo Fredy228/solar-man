@@ -206,21 +206,21 @@ export const Filter = ({
             </ItemFilter>
           )}
         </ListFilter>
+        <CountInfo>
+          {!isLoading ? (
+            `Знайдено (${count})`
+          ) : (
+            <LoadSpiner barColor={'#fff'} borderColor={'#fff'} />
+          )}
+          <ResetFilter
+            type={'button'}
+            disabled={isLoading}
+            onClick={handleResetForm}
+          >
+            Очистити
+          </ResetFilter>
+        </CountInfo>
       </FilterForm>
-      <CountInfo>
-        {!isLoading ? (
-          `Знайдено (${count})`
-        ) : (
-          <LoadSpiner barColor={'#fff'} borderColor={'#fff'} />
-        )}
-        <ResetFilter
-          type={'button'}
-          disabled={isLoading}
-          onClick={handleResetForm}
-        >
-          Очистити
-        </ResetFilter>
-      </CountInfo>
     </WrapperFilter>
   );
 };

@@ -16,7 +16,7 @@ export const CardsIntro = styled.div`
     flex-direction: column;
     max-width: 430px;
     margin: 0 auto;
-    height: 430px;
+    height: 550px;
   }
 `;
 

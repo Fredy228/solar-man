@@ -3,7 +3,7 @@ import { MutatingDots } from 'react-loader-spinner';
 
 const Div = styled.div`
   width: 100%;
-  height: 200px;
+  height: 350px;
   display: flex;
   justify-content: center;
   align-items: center;

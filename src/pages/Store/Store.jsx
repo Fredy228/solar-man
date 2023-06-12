@@ -61,6 +61,11 @@ const Store = () => {
   };
 
   useEffect(() => {
+    if (isShowFilter) document.body.classList.add('no-scroll');
+    if (!isShowFilter) document.body.classList.remove('no-scroll');
+  }, [isShowFilter]);
+
+  useEffect(() => {
     setSearchParams(prevSearchParams => {
       const newSearchParams = new URLSearchParams(prevSearchParams);
       if (!pageParams) newSearchParams.set('page', '1');

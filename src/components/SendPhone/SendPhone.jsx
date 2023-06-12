@@ -15,10 +15,11 @@ import { sendPhoneToTelegram } from 'components/API/API';
 import { LoadSpiner } from 'components/LoadSpiner/LoadSpiner';
 import { Icon } from 'components/Icon/Icon';
 import { useNavigate } from 'react-router-dom';
-import { useShowModal } from 'globalState/globalState';
+import { useBasket, useShowModal } from 'globalState/globalState';
 
 export const SendPhone = () => {
   const { toggleModal } = useShowModal();
+  const { currentGood } = useBasket();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [isBtnDisab, setIsBtnDisab] = useState(false);
@@ -32,7 +33,7 @@ export const SendPhone = () => {
       setIsBtnDisab(true);
       setIsLoading(true);
 
-      await sendPhoneToTelegram({ name, phone });
+      await sendPhoneToTelegram({ name, phone, currentGood });
 
       setIsBtnDisab(false);
       setIsLoading(false);
@@ -63,9 +64,9 @@ export const SendPhone = () => {
   };
   return (
     <Inner>
-      <Text>Заповніть дані і отримаєте безкоштовну консультацію!</Text>
+      <Text isBold={true}>Отримаєте безкоштовну консультацію!</Text>
       <Text>
-        Або зателефонуйте нам по номеру{' '}
+        Заповніть дані або зателефонуйте нам по номеру{' '}
         <Span href="tel:+380680554488">0680554488</Span>
       </Text>
       <TextAdd>Найближчим часом з вами зв'яжеться менеджер.</TextAdd>
@@ -74,7 +75,7 @@ export const SendPhone = () => {
           type="text"
           placeholder="Ім’я"
           value={name}
-          pattern="[a-zA-Zа-яА-ЯёЁґҐіІїЇєЄ'’-]+(\s[a-zA-Zа-яА-ЯёЁґҐіІїЇєЄ'’-]+)*"
+          pattern="[a-zA-Zа-яА-ЯёЁґҐіІїЇєЄ'’\-]+( [a-zA-Zа-яА-ЯёЁґҐіІїЇєЄ'’\-]+)*"
           name="name"
           onChange={e => {
             setName(e.target.value);
@@ -104,6 +105,7 @@ export const SendPhone = () => {
           )}
         </Button>
       </Form>
+      {currentGood && <TextAdd>Консультація стосовно: {currentGood}</TextAdd>}
     </Inner>
   );
 };

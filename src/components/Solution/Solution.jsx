@@ -22,18 +22,30 @@ import {
 
 import { Icon } from 'components/Icon/Icon';
 import useWindowWidth from '../../services/widthScreen';
-import { useShowModal } from 'globalState/globalState';
+import { useBasket, useShowModal } from 'globalState/globalState';
 import { useEffect, useState } from 'react';
 import { baseURL, getSetsHomeOrder } from '../API/API';
 import { LoadPage } from '../LoadSpiner/LoadPage';
 import { numbersFormatCost } from '../../services/numbersFormatCost';
 
 export const Solution = () => {
-  const { toggleModal } = useShowModal();
   const widthScreen = useWindowWidth();
   const [slideView, setSlideView] = useState(3);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { toggleModal, isShowModal } = useShowModal();
+  const { setGood } = useBasket();
+
+  const clickGood = nameGood => {
+    setGood(nameGood);
+    toggleModal(true);
+  };
+
+  useEffect(() => {
+    if (!isShowModal) {
+      setGood(null);
+    }
+  }, [isShowModal, setGood]);
 
   useEffect(() => {
     try {
@@ -88,7 +100,7 @@ export const Solution = () => {
             {items.map(item => {
               return (
                 <SwiperSlideS key={item.id}>
-                  <Slide>
+                  <Slide onClick={() => clickGood(item.title)}>
                     <Img
                       src={`${baseURL}/${item.photo}`}
                       loading="lazy"
@@ -97,7 +109,7 @@ export const Solution = () => {
                       alt={item.title}
                     />
                     <Title>{item.title}</Title>
-                    <BuyBtn onClick={() => toggleModal(true)}>
+                    <BuyBtn>
                       <Icon name="icon-cart-buy" />
                       {numbersFormatCost(item.cost)}$
                     </BuyBtn>

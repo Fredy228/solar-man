@@ -40,7 +40,12 @@ export const Head = forwardRef(({ headerHeight }, ref) => {
     <Header scroll={scrollScreen} show={showBurger} ref={ref}>
       <Container>
         <HeaderInner>
-          <Logo onClick={() => history('/')}>
+          <Logo
+            onClick={() => {
+              history('/');
+              window.scrollTo(0, 0);
+            }}
+          >
             <Icon name={'icon-logo'} viewBox="0 0 82 32" />
           </Logo>
 

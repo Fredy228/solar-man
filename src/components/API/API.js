@@ -6,6 +6,9 @@ export const baseURL =
     ? 'http://localhost:3001'
     : 'https://solarman.pro';
 
+// 'http://localhost:3001'
+// http://192.168.31.58:3001
+
 axios.defaults.baseURL = baseURL;
 
 export const setAuthHeader = token => {

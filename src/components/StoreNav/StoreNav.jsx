@@ -159,6 +159,7 @@ export const StoreNav = () => {
             options={type === 'Готові рішення' ? subtypeSolution : subtypeGoods}
             value={{ value: subtype, label: subtype }}
             onChange={handleSubtype}
+            isSearchable={false}
             className="react-select-container"
             classNamePrefix="react-select"
           />
@@ -169,6 +170,7 @@ export const StoreNav = () => {
             options={optionSort(subtype)}
             value={{ value: sort, label: sortLabel }}
             onChange={handleSort}
+            isSearchable={false}
             className="react-select-container"
             classNamePrefix="react-select"
           />

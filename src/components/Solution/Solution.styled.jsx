@@ -79,12 +79,13 @@ export const Slide = styled.div`
   background-color: ${({ theme }) => theme.color.white};
   height: 100%;
   width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   border-radius: 20px;
   padding: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const Img = styled.img`
@@ -121,7 +122,7 @@ export const BuyBtn = styled.button`
   transition-timing-function: ease;
   display: flex;
   align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 
   :after {
     position: absolute;

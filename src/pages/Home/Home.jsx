@@ -9,6 +9,7 @@ import { Portfolio } from 'components/Portfolio/Portfolio';
 
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 import { useEffect } from 'react';
+import { BigBtnAds } from '../../components/BigBtnAds/BigBtnAds';
 
 const Home = () => {
   useEffect(() => {
@@ -22,6 +23,9 @@ const Home = () => {
       <Main>
         <Container>
           <Intro />
+        </Container>
+        <Container>
+          <BigBtnAds />
         </Container>
 
         <Container>

@@ -11,17 +11,16 @@ export const Inner = styled.div`
   color: ${({ theme }) => theme.color.white};
   border-radius: 20px;
   font-size: 16px;
+  max-width: 460px;
   width: 100%;
+  text-align: center;
 `;
 
 export const Text = styled.p`
-  font-weight: bold;
+  font-weight: ${({ isBold }) => (isBold ? 'bold' : '500')};
   margin-bottom: 5px;
-
-  @media screen and (max-width: 500px) {
-    text-indent: 20px;
-    font-size: 14px;
-  }
+  font-size: 16px;
+  line-height: 1.6;
 `;
 
 export const Span = styled.a`
@@ -33,6 +32,7 @@ export const Span = styled.a`
 export const TextAdd = styled.p`
   font-style: italic;
   margin-top: 10px;
+  font-size: 16px;
 `;
 
 export const Form = styled.form`
@@ -73,10 +73,11 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   transition-property: background-color, color;
   transition-duration: 350ms;
   transition-timing-function: ease;
+  margin-bottom: 10px;
 
   :hover {
     background-color: ${({ theme }) => theme.color.additionalV2};

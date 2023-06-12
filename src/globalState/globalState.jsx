@@ -19,3 +19,8 @@ export const useShowModal = create(set => ({
   isShowModal: false,
   toggleModal: value => set(() => ({ isShowModal: value })),
 }));
+
+export const useBasket = create(set => ({
+  currentGood: null,
+  setGood: value => set(() => ({ currentGood: value })),
+}));

@@ -29,7 +29,7 @@ export const ItemProduts = styled.li`
   }
 
   @media screen and (max-width: 767px) {
-    max-width: 320px;
+    max-width: 280px;
     margin-bottom: 15px;
     align-items: center;
   }
