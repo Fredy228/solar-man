@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { baseURL } from '../API/API';
 import { Inner } from '../../adminPage/StoreDB/ListProduct/ListProduct.styled';
 import {
@@ -11,11 +13,12 @@ import {
 import { LoadPage } from '../LoadSpiner/LoadPage';
 import { numbersFormatCost } from '../../services/numbersFormatCost';
 import { useBasket, useShowModal } from '../../globalState/globalState';
-import { useEffect } from 'react';
+import { Icon } from '../Icon/Icon';
 
 export const ListGoods = ({ products, type, isLoading }) => {
   const { toggleModal, isShowModal } = useShowModal();
   const { setGood } = useBasket();
+  const navigate = useNavigate();
 
   const clickGood = nameGood => {
     setGood(nameGood);
@@ -38,14 +41,20 @@ export const ListGoods = ({ products, type, isLoading }) => {
                 <ItemProduts
                   key={item.id}
                   flex={type ? ['2', '3', '4'] : ['2', '3', '3']}
-                  onClick={() => clickGood(item.title)}
+                  onClick={e => {
+                    if (e.target.tagName === 'BUTTON') return;
+                    navigate(`${type ? 'set' : 'component'}?id=${item.id}`);
+                  }}
                 >
                   <ImgProduts
                     src={`${baseURL}/${item.photo}`}
                     alt={item.title}
                   />
                   <TitleProduts>{item.title}</TitleProduts>
-                  <CostProduts>{numbersFormatCost(item.cost)}$</CostProduts>
+                  <CostProduts onClick={() => clickGood(item.title)}>
+                    <Icon name="icon-cart-buy" />
+                    {numbersFormatCost(item.cost)}$
+                  </CostProduts>
                 </ItemProduts>
               ))
             ) : (

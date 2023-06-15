@@ -25,6 +25,7 @@ const ForBackupPower = lazy(() => import('pages/OurServices/ForBackupPower'));
 const AboutUs = lazy(() => import('pages/AboutUs/AboutUs'));
 const Projects = lazy(() => import('pages/Projects/Projects'));
 const Store = lazy(() => import('pages/Store/Store'));
+const StoreByOne = lazy(() => import('pages/Store/StoreByOne'));
 const Thanks = lazy(() => import('pages/Thanks/Thanks'));
 const NotFound = lazy(() => import('pages/NotFound/NotFound'));
 export const App = () => {
@@ -48,6 +49,7 @@ export const App = () => {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/store" element={<Store />} />
+        <Route path="/store/:typeProduct" element={<StoreByOne />} />
         <Route path="/thanks" element={<Thanks />} />
 
         <Route path="*" element={<NotFound />} />

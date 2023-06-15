@@ -69,13 +69,22 @@ export const TitleProduts = styled.a`
   }
 `;
 
-export const CostProduts = styled.p`
+export const CostProduts = styled.button`
   color: ${({ theme }) => theme.color.white};
-  padding: 5px 15px;
+  padding: 7px 20px;
   background-color: ${({ theme }) => theme.color.second};
   border-radius: 25px;
   margin-bottom: 15px;
   margin-top: auto;
+  cursor: pointer;
+  transition: background-color 350ms ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  :hover {
+    background-color: ${({ theme }) => theme.color.additional};
+  }
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -83,6 +92,14 @@ export const CostProduts = styled.p`
 
   @media screen and (min-width: 1000px) {
     font-size: 18px;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    stroke: ${({ theme }) => theme.color.white};
+    transition: stroke 350ms ease;
   }
 `;
 

@@ -61,7 +61,7 @@ export const CreateSolution = ({ idProduct }) => {
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [idProduct]);
 
   const addCharacter = () => {
     if (descripCharacter.length > 7)
@@ -352,7 +352,7 @@ export const CreateSolution = ({ idProduct }) => {
         />
       </InputFile>
       <ImgInfo>
-        Рекомендовано формат фото - 4:3* та мінімальними розмірами 940х700
+        Рекомендовано формат фото - 16:9* та мінімальними розмірами 1200х700
       </ImgInfo>
       {descripCharacter.map((character, index) => {
         return (
