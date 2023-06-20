@@ -24,17 +24,12 @@ export const Navigation = ({ showMenu }) => {
   return (
     <Nav>
       <NavList>
-        <NavItem>
-          <LinkTo to="/" onClick={toggleMenu}>
-            Головна
-          </LinkTo>
-        </NavItem>
         <NavItem
           onMouseOver={() => setIsShowDropNav(true)}
           onMouseOut={() => setIsShowDropNav(false)}
         >
           <LinkToDrop>
-            Наші послуги <Icon name="icon-downarrow" />
+            Послуги <Icon name="icon-downarrow" />
           </LinkToDrop>
           <DropNav isShow={isShowDropNav}>
             <DropNavList>
@@ -71,12 +66,17 @@ export const Navigation = ({ showMenu }) => {
         </NavItem>
         <NavItem>
           <LinkTo to="/projects" onClick={toggleMenu}>
-            Наші проекти
+            Проекти
           </LinkTo>
         </NavItem>
         <NavItem>
           <LinkTo to="/about-us" onClick={toggleMenu}>
             Про нас
+          </LinkTo>
+        </NavItem>
+        <NavItem>
+          <LinkTo to="/about-us" onClick={toggleMenu}>
+            Контакти
           </LinkTo>
         </NavItem>
       </NavList>

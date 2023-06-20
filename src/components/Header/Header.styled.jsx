@@ -2,16 +2,17 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Header = styled.header`
-  padding: 5px;
+  padding: 10px 5px;
   position: fixed;
-  top: ${p => (p.scroll > 70 && !p.show ? 5 : 0)}px;
-  left: ${p => (p.scroll > 70 && !p.show ? 5 : 0)}px;
+  top: ${p => (p.scroll > 40 && !p.show ? 5 : 0)}px;
+  left: ${p => (p.scroll > 40 && !p.show ? 5 : 0)}px;
   z-index: 100;
-  background-color: ${({ theme: { color } }) => color.white};
-  border-radius: ${p => (p.scroll > 70 && !p.show ? 20 : 0)}px;
-  width: calc(100% - ${p => (p.scroll > 70 && !p.show ? 10 : 0)}px);
+  background-color: ${({ theme, scroll }) =>
+    scroll > 40 ? theme.color.white : 'transparent'};
+  border-radius: ${p => (p.scroll > 40 && !p.show ? 20 : 0)}px;
+  width: calc(100% - ${p => (p.scroll > 40 && !p.show ? 10 : 0)}px);
   box-shadow: ${p =>
-    p.scroll > 70 && !p.show
+    p.scroll > 40 && !p.show
       ? ' rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;'
       : 'none'};
   transition-timing-function: ease;
@@ -20,17 +21,18 @@ export const Header = styled.header`
 `;
 
 export const HeaderInner = styled.div`
-  height: 80px;
+  height: 60px;
   display: flex;
   align-items: center;
   position: relative;
-  @media screen and (max-width: 1000px) {
-    justify-content: space-between;
-    height: 70px;
-  }
-  @media screen and (max-width: 768px) {
-    height: 60px;
-  }
+
+  //@media screen and (max-width: 1000px) {
+  //  justify-content: space-between;
+  //  height: 70px;
+  //}
+  //@media screen and (max-width: 768px) {
+  //  height: 60px;
+  //}
 `;
 export const Logo = styled.div`
   cursor: pointer;

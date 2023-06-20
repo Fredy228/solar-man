@@ -26,7 +26,7 @@ import teamWebp_3 from '../../img/team/team-3.webp';
 
 export const Team = () => {
   return (
-    <TeamInner id="we" data-section>
+    <TeamInner>
       <SectionTitle>
         <TitleSpan>Наша</TitleSpan> команда
       </SectionTitle>
