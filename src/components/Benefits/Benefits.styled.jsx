@@ -5,85 +5,57 @@ export const Inner = styled.div``;
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  margin-top: 30px;
 `;
 
 export const Item = styled.li`
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-  background-color: ${({ theme }) => theme.color.main};
-  color: ${({ theme }) => theme.color.white};
-  padding: 30px 15px;
+  //padding: 30px 30px 30px 60px;
+  padding-left: 65px;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  //justify-content: center;
-  align-items: center;
-
-  svg {
-    width: 100px;
-    height: 100px;
-    fill: ${({ theme }) => theme.color.second};
-
-    @media screen and (max-width: 1200px) {
-      width: 70px;
-      height: 70px;
-    }
-
-    @media screen and (max-width: 550px) {
-      width: 45px;
-      height: 45px;
-      position: static;
-      transform: translateX(0);
-      margin-right: 10px;
-    }
-  }
 
   @media screen and (max-width: 767px) {
     margin: 0 auto calc(30px / 2) auto;
-    flex-basis: calc(100% - 30px);
   }
 
   @media screen and (min-width: 768px) {
     margin: calc(30px / 2);
-    flex-basis: calc(100% / 2 - 30px);
+    flex-basis: calc(100% - 30px);
   }
 
   @media screen and (min-width: 1000px) {
-    margin: calc(30px / 4);
-    flex-basis: calc(100% / 4 - 30px);
-  }
-
-  @media screen and (max-width: 1200px) {
-    padding: 20px;
-  }
-
-  @media screen and (max-width: 550px) {
-    padding-left: 20px;
+    margin: calc(30px / 2);
+    flex-basis: calc(100% / 2 - 30px);
   }
 `;
 
 export const TitleBenefits = styled.h3`
   font-size: 18px;
-  margin-top: 20px;
-  text-align: center;
+  margin-bottom: 10px;
+  color: ${({ theme }) => theme.color.g2};
+`;
 
-  @media screen and (max-width: 1200px) {
-    font-size: 16px;
-  }
+export const WrapperSvg = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 47px;
+  height: 47px;
+  background-color: ${({ theme }) => theme.color.second};
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  @media screen and (max-width: 550px) {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: ${({ theme }) => theme.color.white};
+    stroke: ${({ theme }) => theme.color.white};
   }
 `;
 
 export const TextBenefits = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
-
-  @media screen and (max-width: 1200px) {
-    font-size: 16px;
-  }
+  color: ${({ theme }) => theme.color.g1};
 `;

@@ -12,27 +12,25 @@ export const Inner = styled.div`
 
 export const DescripBox = styled.div`
   flex: 1;
-  background-color: ${({ theme }) => theme.color.main};
-  border-radius: 20px;
-  color: ${({ theme }) => theme.color.white};
-  padding: 20px 30px;
+  margin-bottom: 50px;
 `;
 
 export const ImageBox = styled.div`
   width: 40%;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @media screen and (max-width: 1000px) {
-    max-width: 500px;
-    width: 100%;
-  }
+  position: relative;
 `;
 
 export const Img = styled.img`
-  display: block;
+  position: absolute;
+  right: -70px;
+  bottom: -120px;
+  width: 560px;
+
+  @media screen and (max-width: 1200px) {
+    width: 480px;
+    right: -60px;
+    bottom: -110px;
+  }
 `;
 
 export const TitleMobile = styled.h1`
@@ -47,15 +45,16 @@ export const TitleMobile = styled.h1`
     display: block;
   }
 `;
-
 export const Title = styled.h1`
   text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 20px;
-  display: block;
+  font-size: 40px;
+  color: ${({ theme }) => theme.color.main};
+  line-height: 1.3;
+  margin-bottom: 15px;
+  z-index: 20;
 
-  @media screen and (max-width: 1000px) {
-    display: none;
+  @media screen and (max-width: 1200px) {
+    font-size: 30px;
   }
 `;
 
@@ -64,10 +63,10 @@ export const Span = styled.span`
 `;
 
 export const Text = styled.p`
-  margin-bottom: 5px;
-  text-indent: 20px;
+  margin-bottom: 20px;
   font-size: 18px;
   line-height: 1.5;
+  margin-right: 70px;
 
   @media screen and (max-width: 1200px) {
     font-size: 16px;

@@ -4,20 +4,15 @@ export const Inner = styled.div``;
 
 export const List = styled.ul`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 50px;
 `;
 
 export const Item = styled.li`
   display: flex;
-  align-items: center;
-  padding: 20px 0;
-  :not(:last-child) {
-    border-bottom: 2px solid ${({ theme }) => theme.color.second};
-  }
-
-  @media screen and (max-width: 500px) {
-    flex-direction: column;
-  }
+  width: calc((100% / 2) - 15px);
+  margin-bottom: 20px;
 `;
 
 export const Info = styled.div`
@@ -29,28 +24,24 @@ export const Info = styled.div`
 `;
 
 export const Title = styled.h3`
-  text-transform: uppercase;
-  font-size: 20px;
+  font-size: 24px;
   margin-bottom: 15px;
+  color: ${({ theme }) => theme.color.g2};
 `;
 
 export const Text = styled.p`
   line-height: 1.5;
-  font-size: 18px;
-
-  @media screen and (max-width: 768px) {
-    font-size: 16px;
-  }
+  font-size: 16px;
+  color: ${({ theme }) => theme.color.g1};
 `;
 
 export const Img = styled.img`
-  width: 200px;
+  width: 180px;
+`;
 
-  @media screen and (max-width: 768px) {
-    width: 120px;
-  }
-
-  @media screen and (max-width: 500px) {
-    margin-bottom: 10px;
-  }
+export const LastItem = styled.div`
+  padding: 50px;
+  background-color: #f9fafb;
+  display: flex;
+  align-items: center;
 `;

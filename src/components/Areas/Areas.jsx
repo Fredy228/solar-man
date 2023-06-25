@@ -1,9 +1,16 @@
 import {
-  SectionTitle,
-  TitleSpan,
-} from 'components/SectionTitle/SectionTitle.styled';
-import { Inner, List, Item, Text } from './Areas.styled';
+  Inner,
+  List,
+  Item,
+  Text,
+  WrapperTitle,
+  WrapperSvg,
+} from './Areas.styled';
 import { Icon } from 'components/Icon/Icon';
+import {
+  SectionSubtitle,
+  SectionTitle,
+} from '../../CommonStyle/SectionTitle.styled';
 
 const areasList = [
   'АЗС',
@@ -23,14 +30,24 @@ const areasList = [
 export const Areas = () => {
   return (
     <Inner>
-      <SectionTitle color="true">
-        <TitleSpan>Сфери</TitleSpan> <br />
-        застосування електростанцій
-      </SectionTitle>
+      <WrapperTitle>
+        <SectionTitle colorText={'white'} text={'left'}>
+          Сфери <br />
+          застосування
+        </SectionTitle>
+        <SectionSubtitle colorText={'white'} text={'left'}>
+          Якщо ваш бізнес є серед цих сфер, то ви 100% можете вийти на нові
+          рівні прибутку та незалежності
+        </SectionSubtitle>
+      </WrapperTitle>
+
       <List>
         {areasList.map((item, index) => (
           <Item key={index}>
-            <Icon name="icon-solar-list" /> <Text>{item}</Text>
+            <WrapperSvg>
+              <Icon name="icon-check-list" />
+            </WrapperSvg>
+            <Text>{item}</Text>
           </Item>
         ))}
       </List>

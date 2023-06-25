@@ -4,22 +4,18 @@ import {
   PortfolioList,
   PortfolioItem,
   PortfolioImg,
-  PortfolioOverLay,
-  TitleOverLay,
-  TextOverLay,
-  ListOverLay,
+  TitlePortfolio,
   SpanOverLay,
   NavBtn,
+  WrapperImg,
 } from './Portfolio.styled';
 
-import {
-  SectionTitle,
-  SetctionText,
-  TitleSpan,
-} from 'components/SectionTitle/SectionTitle.styled';
+import { SectionTitle } from '../../CommonStyle/SectionTitle.styled';
 
 import { getPosts, baseURL } from 'components/API/API';
 import { LoadSpiner } from 'components/LoadSpiner/LoadSpiner';
+import { Icon } from '../Icon/Icon';
+import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
 
 export const ProjectsC = () => {
   const limit = 6;
@@ -61,50 +57,52 @@ export const ProjectsC = () => {
 
   return (
     <>
-      <SectionTitle>
-        <TitleSpan>Наші</TitleSpan> проекти
-      </SectionTitle>
-      <SetctionText>
-        Реалізовані нами проекти в області альтернативної енергетики та
-        енергоефективності, які демонструють нашу компетентність та досвід у
-        даній галузі.
-      </SetctionText>
+      <SectionTitle marginBottom={'40px'}>Проекти</SectionTitle>
+
+      {/*  Реалізовані нами проекти в області альтернативної енергетики та*/}
+      {/*  енергоефективності, які демонструють нашу компетентність та досвід у*/}
+      {/*  даній галузі.*/}
+
       <PortfolioList>
         {items.map(item => (
           <PortfolioItem key={item.id}>
-            <PortfolioImg
-              src={`${baseURL}/${item.urlImg}`}
-              loading="lazy"
-              width="500"
-              height="400"
-              alt={item.title}
-            />
-            <PortfolioOverLay>
-              <TitleOverLay>{item.title}</TitleOverLay>
+            <WrapperImg>
+              <PortfolioImg
+                src={`${baseURL}/${item.urlImg}`}
+                loading="lazy"
+                width="500"
+                height="400"
+                alt={item.title}
+              />
               <SpanOverLay>{item.year}</SpanOverLay>
-              <ListOverLay>
-                {JSON.parse(item.components).map(component => (
-                  <TextOverLay key={component}>{component}</TextOverLay>
-                ))}
-              </ListOverLay>
-            </PortfolioOverLay>
+            </WrapperImg>
+
+            <TitlePortfolio>{item.title}</TitlePortfolio>
           </PortfolioItem>
         ))}
       </PortfolioList>
-      <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+      <div
+        style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: '20px',
+        }}
+      >
         {total / limit > 1 && total / limit > page && (
-          <NavBtn
-            type="button"
-            color="true"
-            disabled={isDisabled}
+          <ButtonOrg
+            type={'button'}
             onClick={() => setPage(state => state + 1)}
+            colorBg={'main'}
+            colorBgHover={'second'}
+            disabled={isDisabled}
           >
             {isLoading ? (
               <LoadSpiner borderColor={'#fff'} barColor={'#fff'} />
             ) : (
               'Завантажити ще'
             )}
-          </NavBtn>
+          </ButtonOrg>
         )}
       </div>
     </>

@@ -3,10 +3,10 @@ import styled from 'styled-components';
 export const ToTopBox = styled.div`
   position: fixed;
   z-index: 20;
-  bottom: 25px;
+  bottom: 100px;
   left: 15px;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.color.additional};
+  background-color: ${({ theme }) => theme.color.second};
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   cursor: pointer;
   width: 60px;

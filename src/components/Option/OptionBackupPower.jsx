@@ -14,6 +14,7 @@ import { useShowModal } from 'globalState/globalState';
 
 import imgIntro_webp from '../../img/ourServices/intro-4.webp';
 import imgIntro_png from '../../img/ourServices/intro-4.png';
+import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
 
 export const OptionBackupPower = () => {
   const { toggleModal } = useShowModal();
@@ -22,27 +23,18 @@ export const OptionBackupPower = () => {
     <Inner>
       <DescripBox>
         <Title>
-          <Span>Системи</Span>
-          <br /> резервного живлення
+          Системи резервного <br /> живлення
         </Title>
         <Text>
-          Система, яка забезпечує електроживлення будинку в разі відключення
-          зовнішньої мережі або тимчасової відсутності електроенергії. Такі
-          системи можуть бути автономними та працювати за відсутності
-          підключення до мережі електропостачання, або під час тимчасового
-          відключення електроенергії.
-        </Text>
-        <Text>
-          Важливою перевагою таких систем є те, що вони забезпечують
-          стабільність живлення в будь-який момент часу, не залежно від
-          зовнішніх факторів, таких як відключення електропостачання чи
-          зростання тарифів.
+          Система, що забезпечує електроживлення будинку при відключенні мережі
+          або відсутності електроенергії. Можуть бути автономними та працювати
+          без підключення до мережі, забезпечуючи стабільне живлення незалежно
+          від зовнішніх факторів.
         </Text>
 
-        <Button type="button" onClick={() => toggleModal(true)}>
-          <Icon name="icon-energy" />
-          Отримати консультацію
-        </Button>
+        <ButtonOrg type={'button'} onClick={() => toggleModal(true)}>
+          <Icon name={'icon-annotation'} /> Замовити консультацію
+        </ButtonOrg>
       </DescripBox>
       <ImageBox>
         <picture>
@@ -51,10 +43,6 @@ export const OptionBackupPower = () => {
           <Img src={imgIntro_png} width="500" height="500" loading="lazy" />
         </picture>
       </ImageBox>
-      <TitleMobile>
-        <Span>Системи</Span>
-        <br /> резервного живлення
-      </TitleMobile>
     </Inner>
   );
 };

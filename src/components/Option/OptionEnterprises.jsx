@@ -1,19 +1,9 @@
 import { Icon } from 'components/Icon/Icon';
-import {
-  Button,
-  DescripBox,
-  ImageBox,
-  Inner,
-  Span,
-  Text,
-  Title,
-  Img,
-  TitleMobile,
-} from './Option.styled';
+import { DescripBox, ImageBox, Inner, Text, Title, Img } from './Option.styled';
 import { useShowModal } from 'globalState/globalState';
 
-import imgIntro_webp from '../../img/ourServices/intro-1.webp';
-import imgIntro_png from '../../img/ourServices/intro-1.png';
+import imgIntro_webp from '../../img/ourServices/enterprise-intro.webp';
+import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
 
 export const OptionEnterprises = () => {
   const { toggleModal } = useShowModal();
@@ -22,35 +12,22 @@ export const OptionEnterprises = () => {
     <Inner>
       <DescripBox>
         <Title>
-          <Span>Сонячні станції</Span>
-          <br /> для бізнесу та підприємств
+          Сонячні електростанції <br /> для бізнесу <br /> та підприємств
         </Title>
         <Text>
-          Ідеальний спосіб зменшити витрати на електроенергію на вашому
-          підприємстві! Їх можна легко встановити на даху будь-якої будівлі,
-          виробничої лінії або логістичного складу.
+          Завдяки використанню нашої технології, сонячна електростанція може
+          зменшити ваш обсяг використання електроенергії з мережі на 30-70% на
+          рік, в залежності від вашого режиму споживання. Їх можна легко
+          встановити на даху будь-якої будівлі, виробничої лінії або
+          логістичного складу.
         </Text>
-        <Text>
-          Cонячна електростанція може зменшити ваш обсяг використання
-          електроенергії з мережі на 30-70% на рік, в залежності від вашого
-          режиму споживання.
-        </Text>
-        <Button type="button" onClick={() => toggleModal(true)}>
-          <Icon name="icon-energy" />
-          Отримати консультацію
-        </Button>
+        <ButtonOrg type={'button'} onClick={() => toggleModal(true)}>
+          <Icon name={'icon-annotation'} /> Замовити консультацію
+        </ButtonOrg>
       </DescripBox>
       <ImageBox>
-        <picture>
-          <source type="image/webp" srcSet={imgIntro_webp} />
-          <source type="image/png" srcSet={imgIntro_png} />
-          <Img src={imgIntro_png} width="500" height="500" loading="lazy" />
-        </picture>
+        <Img src={imgIntro_webp} width="718" height="718" loading="lazy" />
       </ImageBox>
-      <TitleMobile>
-        <Span>Сонячні станції</Span>
-        <br /> для бізнесу та підприємств
-      </TitleMobile>
     </Inner>
   );
 };

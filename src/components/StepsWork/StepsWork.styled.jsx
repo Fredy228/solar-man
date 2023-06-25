@@ -5,7 +5,7 @@ export const Inner = styled.div``;
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  padding-bottom: 25px;
+  margin-top: 40px;
 
   @media screen and (max-width: 767px) {
     max-width: 320px;
@@ -13,13 +13,79 @@ export const List = styled.ul`
   }
 `;
 
-export const Item = styled.li`
-  border-radius: 20px;
-  overflow: hidden;
-  padding: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+export const NumStepBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
   background-color: ${({ theme }) => theme.color.second};
-  color: ${({ theme }) => theme.color.white};
+  position: relative;
+  box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.05),
+    0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: ${({ theme }) => theme.color.white};
+    stroke: ${({ theme }) => theme.color.white};
+    z-index: 1;
+  }
+`;
+
+export const Item = styled.li`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 30px;
+  position: relative;
+
+  :after {
+    content: '';
+    height: 3px;
+    width: 100%;
+    background-color: ${({ theme }) => theme.color.second};
+    position: absolute;
+    top: 39px;
+    transform: translateY(-50%);
+    left: 0;
+  }
+
+  :first-child {
+    :after {
+      width: 50%;
+      right: 0;
+      left: initial;
+    }
+  }
+
+  :last-child {
+    :after {
+      width: 50%;
+      left: 0;
+    }
+  }
+
+  :nth-child(3):not(:last-child):not(:first-child) {
+    :after {
+      width: ${({ isRows }) => (isRows ? '100vw' : '100%')};
+    }
+  }
+
+  :nth-child(4) {
+    :after {
+      width: ${({ isRows }) => (isRows ? '100vw' : '100%')};
+      right: ${({ isRows }) => (isRows ? '0' : 'initial')};
+      left: ${({ isRows }) => (isRows ? 'initial' : '0')};
+    }
+  }
+
+  :last-child ${NumStepBox} {
+    box-shadow: 0 0 50px 0 #fc7300;
+  }
 
   @media screen and (max-width: 767px) {
     max-width: 320px;
@@ -27,51 +93,27 @@ export const Item = styled.li`
   }
 
   @media screen and (min-width: 768px) {
-    margin: calc(30px / 2);
-    flex-basis: calc(100% / 2 - 30px);
+    padding: 15px 15px 30px 15px;
+    flex-basis: calc(100% / 2);
   }
 
   @media screen and (min-width: 1000px) {
-    margin: calc(30px / 2);
-    flex-basis: calc(100% / 3 - 30px);
-  }
-`;
-
-export const NumStepBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    width: 70px;
-    height: 70px;
-    fill: ${({ theme }) => theme.color.white};
-
-    @media screen and (max-width: 1200px) {
-      width: 50px;
-      height: 50px;
-    }
-  }
-`;
-
-export const NumStep = styled.span`
-  font-size: 70px;
-  margin-right: 10px;
-
-  @media screen and (max-width: 1200px) {
-    font-size: 50px;
+    padding: 15px 15px 30px 15px;
+    flex-basis: calc(100% / 3);
   }
 `;
 
 export const Title = styled.h3`
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   margin-bottom: 10px;
+  color: ${({ theme }) => theme.color.g900};
 `;
 
 export const Text = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
+  color: ${({ theme }) => theme.color.g500};
 
   @media screen and (max-width: 1200px) {
     font-size: 16px;

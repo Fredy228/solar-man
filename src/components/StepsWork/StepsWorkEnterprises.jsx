@@ -1,18 +1,9 @@
+import { Inner, Item, List, NumStepBox, Title, Text } from './StepsWork.styled';
+import { Icon } from 'components/Icon/Icon';
 import {
   SectionTitle,
-  TitleSpan,
-} from 'components/SectionTitle/SectionTitle.styled';
-
-import {
-  Inner,
-  Item,
-  List,
-  NumStepBox,
-  NumStep,
-  Title,
-  Text,
-} from './StepsWork.styled';
-import { Icon } from 'components/Icon/Icon';
+  SectionSubtitle,
+} from '../../CommonStyle/SectionTitle.styled';
 
 const steps = [
   {
@@ -56,14 +47,16 @@ const steps = [
 export const StepsWorkEnterprises = () => {
   return (
     <Inner>
-      <SectionTitle color="true">
-        <TitleSpan>Етапи</TitleSpan> робіт
-      </SectionTitle>
+      <SectionTitle>Етапи робіт</SectionTitle>
+      <SectionSubtitle>
+        За кожний єтап є відповідальний відділ, який контролює якість і деталі{' '}
+        <br />
+        кожного кроку співпраці
+      </SectionSubtitle>
       <List>
         {steps.map(item => (
-          <Item key={item.id}>
+          <Item key={item.id} isRows={true}>
             <NumStepBox>
-              <NumStep>{item.id}</NumStep>
               <Icon name={item.ico} />
             </NumStepBox>
             <Title>{item.title}</Title>

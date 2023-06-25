@@ -21,6 +21,10 @@ export const ButtonOrg = styled.button`
   svg {
     stroke: ${({ theme, colorSvg }) =>
       colorSvg ? theme.color[colorSvg] : theme.color.white};
+
+    fill: ${({ theme, colorSvg }) =>
+      colorSvg ? theme.color[colorSvg] : theme.color.white};
+
     width: 20px;
     height: 20px;
     margin-right: 5px;

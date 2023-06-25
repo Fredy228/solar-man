@@ -1,30 +1,57 @@
 import {
+  SectionSubtitle,
   SectionTitle,
-  TitleSpan,
-} from 'components/SectionTitle/SectionTitle.styled';
+} from '../../CommonStyle/SectionTitle.styled';
 
-import { Inner, Item, List, TitleBenefits } from './Benefits.styled';
+import {
+  Inner,
+  Item,
+  List,
+  TitleBenefits,
+  TextBenefits,
+  WrapperSvg,
+} from './Benefits.styled';
 import { Icon } from 'components/Icon/Icon';
 
 export const BenefitsInvestment = () => {
   return (
     <Inner>
-      <SectionTitle>
-        <TitleSpan>Переваги сонячних станцій </TitleSpan>
-        <br /> після встановлення
-      </SectionTitle>
+      <SectionTitle>Переваги сонячних станцій після встановлення</SectionTitle>
+      <SectionSubtitle>
+        Чому варто якомога скоріше скористатись можливостями
+      </SectionSubtitle>
       <List>
         <Item>
-          <Icon name="icon-saving" />
+          <WrapperSvg>
+            <Icon name="icon-saving" />
+          </WrapperSvg>
           <TitleBenefits>Відсутність квітанцій за електроенергію</TitleBenefits>
+          <TextBenefits>
+            Система працює на зменшення вашого власного споживання та продаж
+            надлишку електроенергії за високим Зеленим тарифом в мережу.
+          </TextBenefits>
         </Item>
         <Item>
-          <Icon name="icon-payment" />
+          <WrapperSvg>
+            <Icon name="icon-payment" />
+          </WrapperSvg>
           <TitleBenefits>Щомісячні виплати на карту</TitleBenefits>
+          <TextBenefits>
+            Ви можете продавати надлишки електроенергії в мережу за Зеленим
+            тарифом за допомогою нашої системи.
+          </TextBenefits>
         </Item>
         <Item>
-          <Icon name="icon-scales" />
-          <TitleBenefits>Незалежність від зростання тарифів</TitleBenefits>
+          <WrapperSvg>
+            <Icon name="icon-scales" />
+          </WrapperSvg>
+          <TitleBenefits>
+            Стійкість та незалежність від зростання тарифів
+          </TitleBenefits>
+          <TextBenefits>
+            Завдяки зменшенню споживання електроенергії з мережі, ви більше не
+            залежите від зростання тарифів.
+          </TextBenefits>
         </Item>
       </List>
     </Inner>

@@ -1,6 +1,5 @@
 import { Container } from 'pages/Common.styled';
 import {
-  FooterBox,
   FooterInner,
   FooterContacts,
   FooterLink,
@@ -9,31 +8,36 @@ import {
 } from './Footer.styled';
 import { Icon } from 'components/Icon/Icon';
 import { Social } from 'components/Social/Social';
+import useWindowWidth from '../../services/widthScreen';
 
 export const Footer = () => {
+  const widthScreen = useWindowWidth();
+
   const getCurrentYear = () => {
     const now = new Date();
     return now.getFullYear();
   };
 
   return (
-    <FooterBox>
-      <Container>
-        <FooterInner>
-          <FooterLogo>
-            <Icon name="icon-logo-footer" viewBox="0 0 61 24" />
-          </FooterLogo>
+    <Container>
+      <FooterInner>
+        <FooterLogo>
+          <Icon
+            name={widthScreen < 768 ? 'icon-logo-v2' : 'icon-logo-footer'}
+            viewBox={widthScreen < 768 ? undefined : '0 0 61 24'}
+          />
+        </FooterLogo>
 
-          <FooterContacts>
-            <FooterLink href="tel:+380680554488">068 055 44 88</FooterLink>
-            <FooterLink href="mailto:solarmanua@gmail.com">
-              solarmanua@gmail.com
-            </FooterLink>
-            <Social color={'#fff'} />
-          </FooterContacts>
-          <Copyright>© SOLAR MAN. {getCurrentYear()}</Copyright>
-        </FooterInner>
-      </Container>
-    </FooterBox>
+        <Copyright>{getCurrentYear()} © Solar Man</Copyright>
+
+        <FooterContacts>
+          <FooterLink href="tel:+380680554488">
+            <Icon name={'icon-device'} />
+            {widthScreen >= 768 && '(068) 055-44-88'}
+          </FooterLink>
+          <Social color={'#9CA3AF'} />
+        </FooterContacts>
+      </FooterInner>
+    </Container>
   );
 };

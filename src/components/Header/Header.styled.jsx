@@ -26,19 +26,21 @@ export const HeaderInner = styled.div`
   align-items: center;
   position: relative;
 
-  //@media screen and (max-width: 1000px) {
-  //  justify-content: space-between;
-  //  height: 70px;
-  //}
-  //@media screen and (max-width: 768px) {
-  //  height: 60px;
-  //}
+  @media screen and (max-width: 1000px) {
+    justify-content: space-between;
+  }
 `;
 export const Logo = styled.div`
   cursor: pointer;
   svg {
     height: 50px;
     width: auto;
+  }
+
+  @media screen and (max-width: 1200px) {
+    svg {
+      height: 42px;
+    }
   }
 `;
 export const Burger = styled.div`
@@ -48,6 +50,7 @@ export const Burger = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
   @media screen and (min-width: 1001px) {
     display: none;
   }
@@ -55,7 +58,7 @@ export const Burger = styled.div`
 export const MenuSpan = styled.span`
   width: 20px;
   height: 2px;
-  background-color: #000;
+  background-color: ${({ theme }) => theme.color.main};
   position: relative;
   transition-timing-function: ease;
   transition-duration: 250ms;
@@ -65,7 +68,7 @@ export const MenuSpan = styled.span`
   :after,
   :before {
     content: '';
-    background-color: #000;
+    background-color: ${({ theme }) => theme.color.main};
     width: 20px;
     height: 2px;
     position: absolute;

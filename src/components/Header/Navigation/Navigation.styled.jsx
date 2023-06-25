@@ -70,18 +70,6 @@ export const LinkTo = styled(NavLink)`
     font-weight: bold;
     border-bottom-color: ${({ theme }) => theme.color.second};
   }
-
-  //@media screen and (max-width: 1000px) {
-  //  font-size: 18px;
-  //}
-
-  //@media screen and (min-width: 1000px) {
-  //  padding: 10px;
-  //}
-
-  //@media screen and (min-width: 1200px) {
-  //  padding: 15px;
-  //}
 `;
 
 export const LinkToDrop = styled.span`
@@ -101,32 +89,17 @@ export const LinkToDrop = styled.span`
     border-bottom-color: ${({ theme }) => theme.color.second};
 
     svg {
+      transform: rotate(180deg);
       fill: ${({ theme: { color } }) => color.main};
     }
   }
-
-  @media screen and (max-width: 1000px) {
-    font-size: 18px;
-    :hover {
-      background-color: transparent;
-    }
-  }
-
-  //@media screen and (min-width: 1000px) {
-  //  padding: 10px;
-  //}
-  //
-  //@media screen and (min-width: 1200px) {
-  //  padding: 15px;
-  //}
 
   svg {
     width: 15px;
     height: 15px;
     margin-left: 5px;
-    transition: fill 350ms ease;
     fill: ${({ theme: { color } }) => color.g500};
-    transform: translateY(2px);
+    transition: transform 350ms ease;
   }
 `;
 
@@ -151,7 +124,7 @@ export const DropNav = styled.div`
   }
 
   @media screen and (max-width: 1000px) {
-    height: ${({ isShow }) => (isShow ? '162px' : '0')};
+    height: ${({ isShow }) => (isShow ? '180px' : '0')};
   }
   @media screen and (max-width: 355px) {
     height: ${({ isShow }) => (isShow ? '180px' : '0')};
@@ -163,9 +136,14 @@ export const DropNavList = styled.ul`
   flex-direction: column;
   justify-content: center;
   padding: 15px;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: ${({ theme: { color } }) => color.white};
   box-shadow: rgba(0, 0, 0, 0.1) 0 0 5px 0, rgba(0, 0, 0, 0.1) 0 0 1px 0;
+
+  @media screen and (max-width: 1000px) {
+    background-color: transparent;
+    box-shadow: none;
+  }
 `;
 
 export const DropNavItem = styled.li`
@@ -180,8 +158,7 @@ export const DropNavLink = styled(NavLink)`
   font-size: 16px;
   color: ${({ theme: { color } }) => color.g500};
   padding: 7px 0;
-  border-bottom: 2px solid transparent;
-  transition-property: color, border-bottom-color;
+  transition-property: color;
   transition-timing-function: ease;
   transition-duration: 350ms;
 
@@ -202,22 +179,20 @@ export const DropNavLink = styled(NavLink)`
 
   :hover {
     color: ${({ theme }) => theme.color.main};
-    border-bottom-color: ${({ theme }) => theme.color.second};
 
     svg {
-      fill: ${({ theme: { color } }) => color.main};
-      stroke: ${({ theme: { color } }) => color.main};
+      fill: ${({ theme: { color } }) => color.second};
+      stroke: ${({ theme: { color } }) => color.second};
     }
   }
 
   &.active {
     color: ${({ theme }) => theme.color.main};
     font-weight: bold;
-    border-bottom-color: ${({ theme }) => theme.color.second};
 
     svg {
-      fill: ${({ theme: { color } }) => color.main};
-      stroke: ${({ theme: { color } }) => color.main};
+      fill: ${({ theme: { color } }) => color.second};
+      stroke: ${({ theme: { color } }) => color.second};
     }
   }
 

@@ -1,227 +1,98 @@
-import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import {
   IntroBox,
   CardsIntro,
   CardIntro,
   OverlayIntro,
   TextOverlay,
-  IntroImg,
-  NameCardIntro,
+  IntroTitle,
+  IntroText,
+  EllipseBg,
+  ImgEllipse,
+  EllipseBox,
+  // IntroImg,
 } from './Intro.styled';
 import { Icon } from 'components/Icon/Icon';
 
-import intro1_xl_webp from '../../img/intro/intro-1_xl.webp';
-import intro1_xl_jpg from '../../img/intro/intro-1_xl.jpg';
-import intro2_xl_webp from '../../img/intro/intro-2_xl.webp';
-import intro2_xl_jpg from '../../img/intro/intro-2_xl.jpg';
-import intro3_xl_webp from '../../img/intro/intro-3_xl.webp';
-import intro3_xl_jpg from '../../img/intro/intro-3_xl.jpg';
-import intro1_md_webp from '../../img/intro/intro-1_md.webp';
-import intro1_md_jpg from '../../img/intro/intro-1_md.jpg';
-import intro2_md_webp from '../../img/intro/intro-2_md.webp';
-import intro2_md_jpg from '../../img/intro/intro-2_md.jpg';
-import intro3_md_webp from '../../img/intro/intro-3_md.webp';
-import intro3_md_jpg from '../../img/intro/intro-3_md.jpg';
-import intro1_sm_webp from '../../img/intro/intro-1_sm.webp';
-import intro1_sm_jpg from '../../img/intro/intro-1_sm.jpg';
-import intro2_sm_webp from '../../img/intro/intro-2_sm.webp';
-import intro2_sm_jpg from '../../img/intro/intro-2_sm.jpg';
-import intro3_sm_webp from '../../img/intro/intro-3_sm.webp';
-import intro3_sm_jpg from '../../img/intro/intro-3_sm.jpg';
+import intro1_webp from '../../img/intro/intro-1.webp';
+// import intro1_jpg from '../../img/intro/intro-1.jpg';
+import intro2_webp from '../../img/intro/intro-2.webp';
+// import intro2_jpg from '../../img/intro/intro-2.jpg';
+import intro3_webp from '../../img/intro/intro-3.webp';
+// import intro3_jpg from '../../img/intro/intro-3.jpg';
+
+// <picture>
+//   <source type="image/webp" srcSet={intro1_webp} />
+//   <source type="image/jpg" srcSet={intro1_jpg} />
+//   <IntroImg
+//     src={intro1_jpg}
+//     loading="lazy"
+//     width="396"
+//     height="280"
+//     alt="Сонячні станції для підприємств"
+//   />
+// </picture>
+
+import vector_img from '../../img/intro/vector.webp';
+import { Container } from '../../pages/Common.styled';
 
 export const Intro = () => {
-  const history = useNavigate();
-
-  const enterCurrentCard = e => {
-    const currentCard = e.currentTarget;
-    currentCard.style.flex = '2';
-  };
-
-  const leaveCurrentCard = e => {
-    const currentCard = e.currentTarget;
-    currentCard.style.flex = '1';
-  };
-
-  const toLink = e => {
-    const key = e.currentTarget.dataset.name;
-    switch (key) {
-      case 'company':
-        history('/enterprises');
-        break;
-      case 'home':
-        history('/home');
-        break;
-      case 'store':
-        history('/store');
-        break;
-
-      default:
-        break;
-    }
-  };
-
   return (
-    <IntroBox id="home" data-section>
-      <CardsIntro>
-        <CardIntro
-          onMouseEnter={enterCurrentCard}
-          onMouseLeave={leaveCurrentCard}
-          onClick={toLink}
-          data-name="company"
-        >
-          <picture>
-            <source
-              media="(min-width: 1000px)"
-              type="image/webp"
-              srcSet={intro1_xl_webp}
-            />
-            <source
-              media="(min-width: 1000px)"
-              type="image/jpg"
-              srcSet={intro1_xl_jpg}
-            />
-            <source
-              media="(min-width: 769px)"
-              type="image/webp"
-              srcSet={intro1_md_webp}
-            />
-            <source
-              media="(min-width: 769px)"
-              type="image/jpg"
-              srcSet={intro1_md_jpg}
-            />
-            <source
-              media="(max-width: 768px)"
-              type="image/webp"
-              srcSet={intro1_sm_webp}
-            />
-            <source
-              media="(max-width: 768px)"
-              type="image/jpg"
-              srcSet={intro1_sm_jpg}
-            />
-            <IntroImg
-              src={intro1_xl_jpg}
-              loading="lazy"
-              width="620"
-              height="420"
-              alt="Сонячні станції для підприємств"
-            />
-          </picture>
-          <OverlayIntro>
-            <NameCardIntro>
-              <Icon name="icon-company" />
-              <TextOverlay>Сонячні станції для підприємств</TextOverlay>
-            </NameCardIntro>
-          </OverlayIntro>
-        </CardIntro>
+    <IntroBox>
+      <EllipseBg>
+        <EllipseBox>
+          <ImgEllipse
+            src={vector_img}
+            alt={'Вектор'}
+            loading="lazy"
+            width={'743'}
+            height={'750'}
+          />
+        </EllipseBox>
+      </EllipseBg>
+      <Container>
+        <IntroTitle>
+          Сонячні електростанції <br /> для незалежності <br /> та прибутку
+        </IntroTitle>
+        <IntroText>
+          Комплексні рішення під ключ для підприємств та звичайний
+          домогосподарств
+        </IntroText>
+        <CardsIntro>
+          <CardIntro srcImg={intro1_webp}>
+            <NavLink to="/enterprises">
+              <OverlayIntro>
+                <Icon name="icon-company" />
+                <TextOverlay>
+                  Сонячні станції <br /> для підприємств
+                </TextOverlay>
+              </OverlayIntro>
+            </NavLink>
+          </CardIntro>
 
-        <CardIntro
-          onMouseEnter={enterCurrentCard}
-          onMouseLeave={leaveCurrentCard}
-          onClick={toLink}
-          data-name="home"
-        >
-          <picture>
-            <source
-              media="(min-width: 1000px)"
-              type="image/webp"
-              srcSet={intro2_xl_webp}
-            />
-            <source
-              media="(min-width: 1000px)"
-              type="image/jpg"
-              srcSet={intro2_xl_jpg}
-            />
-            <source
-              media="(min-width: 769px)"
-              type="image/webp"
-              srcSet={intro2_md_webp}
-            />
-            <source
-              media="(min-width: 769px)"
-              type="image/jpg"
-              srcSet={intro2_md_jpg}
-            />
-            <source
-              media="(max-width: 768px)"
-              type="image/webp"
-              srcSet={intro2_sm_webp}
-            />
-            <source
-              media="(max-width: 768px)"
-              type="image/jpg"
-              srcSet={intro2_sm_jpg}
-            />
-            <IntroImg
-              src={intro2_xl_jpg}
-              loading="lazy"
-              width="620"
-              height="420"
-              alt="Сонячні станції для дому"
-            />
-          </picture>
-          <OverlayIntro>
-            <NameCardIntro>
-              <Icon name="icon-home" />
-              <TextOverlay>Сонячні станції для дому</TextOverlay>
-            </NameCardIntro>
-          </OverlayIntro>
-        </CardIntro>
+          <CardIntro srcImg={intro2_webp}>
+            <NavLink to="/home">
+              <OverlayIntro>
+                <Icon name="icon-home" />
+                <TextOverlay>
+                  Сонячні станції <br /> для дому
+                </TextOverlay>
+              </OverlayIntro>
+            </NavLink>
+          </CardIntro>
 
-        <CardIntro
-          onMouseEnter={enterCurrentCard}
-          onMouseLeave={leaveCurrentCard}
-          onClick={toLink}
-          data-name="store"
-        >
-          <picture>
-            <source
-              media="(min-width: 1000px)"
-              type="image/webp"
-              srcSet={intro3_xl_webp}
-            />
-            <source
-              media="(min-width: 1000px)"
-              type="image/jpg"
-              srcSet={intro3_xl_jpg}
-            />
-            <source
-              media="(min-width: 769px)"
-              type="image/webp"
-              srcSet={intro3_md_webp}
-            />
-            <source
-              media="(min-width: 769px)"
-              type="image/jpg"
-              srcSet={intro3_md_jpg}
-            />
-            <source
-              media="(max-width: 768px)"
-              type="image/webp"
-              srcSet={intro3_sm_webp}
-            />
-            <source
-              media="(max-width: 768px)"
-              type="image/jpg"
-              srcSet={intro3_sm_jpg}
-            />
-            <IntroImg
-              src={intro3_xl_jpg}
-              loading="lazy"
-              width="620"
-              height="420"
-              alt="Магазин обладнання"
-            />
-          </picture>
-          <OverlayIntro>
-            <NameCardIntro>
-              <Icon name="icon-store" />
-              <TextOverlay>Магазин обладнання</TextOverlay>
-            </NameCardIntro>
-          </OverlayIntro>
-        </CardIntro>
-      </CardsIntro>
+          <CardIntro srcImg={intro3_webp}>
+            <NavLink to="/store">
+              <OverlayIntro>
+                <Icon name="icon-store" />
+                <TextOverlay>
+                  Обладнання <br /> та сервіс
+                </TextOverlay>
+              </OverlayIntro>
+            </NavLink>
+          </CardIntro>
+        </CardsIntro>
+      </Container>
     </IntroBox>
   );
 };

@@ -1,9 +1,4 @@
 import {
-  SectionTitle,
-  TitleSpan,
-} from 'components/SectionTitle/SectionTitle.styled';
-
-import {
   Inner,
   List,
   Item,
@@ -11,7 +6,9 @@ import {
   Title,
   Text,
   Img,
+  LastItem,
 } from './ElementsStation.styled';
+import { SectionTitle } from '../../CommonStyle/SectionTitle.styled';
 
 import img1_webp from '../../img/ourServices/enterprises/enterprises-1.webp';
 import img1_png from '../../img/ourServices/enterprises/enterprises-1.png';
@@ -61,7 +58,7 @@ export const ElementsStationEnterprises = () => {
   return (
     <Inner>
       <SectionTitle>
-        <TitleSpan>Елементи сонячної електростанції </TitleSpan>
+        Елементи сонячної електростанції
         <br /> для власного використання
       </SectionTitle>
       <List>
@@ -78,6 +75,14 @@ export const ElementsStationEnterprises = () => {
             </Info>
           </Item>
         ))}
+        <Item>
+          <LastItem>
+            <Text>
+              Можливі індивідуальні варіації, але більшість задач вирішуються
+              саме завдяки цим зазначеним елементам.
+            </Text>
+          </LastItem>
+        </Item>
       </List>
     </Inner>
   );

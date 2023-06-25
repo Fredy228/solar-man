@@ -5,20 +5,16 @@ import {
   PortfolioList,
   PortfolioItem,
   PortfolioImg,
-  PortfolioOverLay,
-  TitleOverLay,
-  TextOverLay,
-  ListOverLay,
+  TitlePortfolio,
   SpanOverLay,
-  NavBtn,
+  WrapperImg,
 } from './Portfolio.styled';
 
-import {
-  SectionTitle,
-  TitleSpan,
-} from 'components/SectionTitle/SectionTitle.styled';
+import { SectionTitle } from '../../CommonStyle/SectionTitle.styled';
 
 import { getPosts, baseURL } from 'components/API/API';
+import { Icon } from '../Icon/Icon';
+import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
 
 export const Portfolio = () => {
   const limit = 6;
@@ -34,36 +30,42 @@ export const Portfolio = () => {
   }, []);
 
   return (
-    <PortfolioInner id="projects">
-      <SectionTitle color="#fff">
-        <TitleSpan>Наші</TitleSpan> проекти
-      </SectionTitle>
+    <PortfolioInner>
+      <SectionTitle marginBottom={'40px'}>Проекти</SectionTitle>
+
       <PortfolioList>
         {items.map(item => (
           <PortfolioItem key={item.id}>
-            <PortfolioImg
-              src={`${baseURL}/${item.urlImg}`}
-              loading="lazy"
-              width="500"
-              height="400"
-              alt={item.title}
-            />
-            <PortfolioOverLay>
-              <TitleOverLay>{item.title}</TitleOverLay>
-              <SpanOverLay>{item.year}</SpanOverLay>
-              <ListOverLay>
-                {JSON.parse(item.components).map(component => (
-                  <TextOverLay key={component}>{component}</TextOverLay>
-                ))}
-              </ListOverLay>
-            </PortfolioOverLay>
+            <WrapperImg>
+              <PortfolioImg
+                src={`${baseURL}/${item.urlImg}`}
+                loading="lazy"
+                width="450"
+                height="260"
+                alt={item.title}
+              />
+              <SpanOverLay>{item.year} рік</SpanOverLay>
+            </WrapperImg>
+            <TitlePortfolio>{item.title}</TitlePortfolio>
           </PortfolioItem>
         ))}
       </PortfolioList>
-      <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-        <NavBtn type="button" onClick={() => history('/projects')}>
-          Дивитися більше
-        </NavBtn>
+      <div
+        style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: '20px',
+        }}
+      >
+        <ButtonOrg
+          type={'button'}
+          onClick={() => history('/projects')}
+          colorBg={'main'}
+          colorBgHover={'second'}
+        >
+          <Icon name={'icon-photograph'} /> Дивитись усі проекти
+        </ButtonOrg>
       </div>
     </PortfolioInner>
   );

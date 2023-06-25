@@ -1,60 +1,81 @@
 import styled from 'styled-components';
 
-export const FooterBox = styled.footer`
-  background-color: ${({ theme }) => theme.color.main};
-  width: 100%;
-  border-top: 2px solid ${({ theme }) => theme.color.second};
-  padding: 15px 0;
-`;
-
 export const FooterInner = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-
-  @media screen and (max-width: 500px) {
-    flex-direction: column;
-    justify-content: center;
-  }
+  padding: 20px 0;
 `;
 
 export const FooterLogo = styled.div`
   svg {
     width: auto;
     height: 50px;
-  }
-
-  @media screen and (max-width: 500px) {
-    margin-bottom: 15px;
+    fill: ${({ theme }) => theme.color.main};
   }
 `;
 
 export const FooterContacts = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: end;
-
-  @media screen and (max-width: 500px) {
-    align-items: center;
-  }
+  align-items: center;
+  justify-content: end;
+  margin-left: auto;
 `;
 
 export const FooterLink = styled.a`
   text-decoration: none;
-  color: ${({ theme }) => theme.color.white};
-  margin-bottom: 20px;
+  color: ${({ theme }) => theme.color.g1};
   transition: color 350ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-right: 30px;
+  position: relative;
+
+  @media screen and (max-width: 767px) {
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+
+    ::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 2px solid ${({ theme }) => theme.color.second};
+      z-index: 20;
+    }
+  }
 
   :hover {
-    color: ${({ theme }) => theme.color.additional};
+    color: ${({ theme }) => theme.color.second};
+  }
+
+  svg {
+    stroke: ${({ theme }) => theme.color.second};
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    position: relative;
+
+    @media screen and (max-width: 767px) {
+      margin-right: 0;
+    }
   }
 `;
 
 export const Copyright = styled.div`
-  color: ${({ theme }) => theme.color.white};
-  width: 100%;
+  color: #6b7280;
   text-align: center;
-  font-size: 14px;
-  margin-top: 50px;
+  font-size: 12px;
+  margin-left: 30px;
+
+  @media screen and (max-width: 767px) {
+    margin-left: 15px;
+  }
 `;

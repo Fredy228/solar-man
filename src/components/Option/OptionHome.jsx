@@ -1,19 +1,10 @@
 import { Icon } from 'components/Icon/Icon';
-import {
-  Button,
-  DescripBox,
-  ImageBox,
-  Inner,
-  Span,
-  Text,
-  Title,
-  Img,
-  TitleMobile,
-} from './Option.styled';
+import { DescripBox, ImageBox, Inner, Text, Title, Img } from './Option.styled';
 import { useShowModal } from 'globalState/globalState';
 
 import imgIntro_webp from '../../img/ourServices/intro-2.webp';
 import imgIntro_png from '../../img/ourServices/intro-2.png';
+import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
 
 export const OptionHome = () => {
   const { toggleModal } = useShowModal();
@@ -22,26 +13,19 @@ export const OptionHome = () => {
     <Inner>
       <DescripBox>
         <Title>
-          <Span>Сонячні станції</Span>
+          Сонячні електростанції
           <br /> для дому
         </Title>
         <Text>
-          Сонячні електростанції для дому - це невеликі енергетичні системи, які
-          використовують сонячну енергію для виробництва електроенергії для
-          будинку. Вони складаються з сонячних панелей, інвертора, зберігальної
-          батареї та контролера заряду.
-        </Text>
-        <Text>
-          Станції можуть бути розташовані на даху будинку або на землі поруч з
-          ним, що дозволяє ефективно використовувати сонячну енергію для
-          життєвих потреб будинку і зменшувати залежність від зовнішніх джерел
-          енергії.
+          Сонячні електростанції для дому використовують сонячну енергію для
+          виробництва електроенергії. Вони складаються з сонячних панелей,
+          інвертора, зберігальної батареї та контролера заряду, і можуть бути
+          розташовані на даху або на землі поруч з будинком.
         </Text>
 
-        <Button type="button" onClick={() => toggleModal(true)}>
-          <Icon name="icon-energy" />
-          Отримати консультацію
-        </Button>
+        <ButtonOrg type={'button'} onClick={() => toggleModal(true)}>
+          <Icon name={'icon-annotation'} /> Замовити консультацію
+        </ButtonOrg>
       </DescripBox>
       <ImageBox>
         <picture>
@@ -50,10 +34,6 @@ export const OptionHome = () => {
           <Img src={imgIntro_png} width="500" height="500" loading="lazy" />
         </picture>
       </ImageBox>
-      <TitleMobile>
-        <Span>Сонячні станції</Span>
-        <br /> для дому
-      </TitleMobile>
     </Inner>
   );
 };

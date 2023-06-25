@@ -4,14 +4,17 @@ import { Intro } from 'components/Intro/Intro';
 import { Container, Frontier } from 'pages/Common.styled';
 import { Main } from './Home.styled';
 import { Solution } from 'components/Solution/Solution';
-import { Team } from 'components/Team/Team';
+import { Consult } from '../../components/Сonsult/Сonsult';
 import { Portfolio } from 'components/Portfolio/Portfolio';
 
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 import { useEffect } from 'react';
 import { BigBtnAds } from '../../components/BigBtnAds/BigBtnAds';
+import useWindowWidth from '../../services/widthScreen';
 
 const Home = () => {
+  const widthScreen = useWindowWidth();
+
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') return;
 
@@ -21,32 +24,28 @@ const Home = () => {
   return (
     <GoogleAnalyticsWrapper>
       <Main>
-        <Container>
+        <Frontier hiddenX={true}>
           <Intro />
-        </Container>
+        </Frontier>
 
         <Container>
           <BigBtnAds />
         </Container>
 
+        <Container flowOver={true}>
+          <CalcStaion widthScreen={widthScreen} />
+        </Container>
+
         <Container>
-          <CalcStaion />
+          <Solution widthScreen={widthScreen} />
+        </Container>
+
+        <Container>
+          <Portfolio />
         </Container>
 
         <Frontier color={'main'}>
-          <Container>
-            <Solution />
-          </Container>
-        </Frontier>
-
-        <Container>
-          <Team />
-        </Container>
-
-        <Frontier color={'main'}>
-          <Container>
-            <Portfolio />
-          </Container>
+          <Consult widthScreen={widthScreen} />
         </Frontier>
       </Main>
       <img

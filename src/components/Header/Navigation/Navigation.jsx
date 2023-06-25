@@ -47,7 +47,7 @@ export const Navigation = ({ showMenu }) => {
               </DropNavItem>
               <DropNavItem>
                 <DropNavLink to="/investment" onClick={toggleMenu}>
-                  <Icon name="icon-profit" /> Для інвестицій
+                  <Icon name="icon-store" /> Для інвестицій
                 </DropNavLink>
               </DropNavItem>
               <DropNavItem>

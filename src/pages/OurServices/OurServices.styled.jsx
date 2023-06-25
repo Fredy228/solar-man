@@ -1,18 +1,22 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  margin-top: 25px;
-  padding: 25px 0;
+  padding-bottom: ${({ paddBott }) => (paddBott ? paddBott : '60px')};
+  padding-top: ${({ paddTop }) => (paddTop ? paddTop : '60px')};
+  margin-bottom: ${({ margBott }) => (margBott ? margBott : '0')};
+
   background-color: ${({ theme, color }) =>
     color ? theme.color.main : theme.color.white};
+  overflow-x: ${({ overX }) => (overX ? overX : 'initial')};
 
   :first-of-type {
-    margin-top: 90px;
-    @media screen and (max-width: 1000px) {
-      margin-top: 80px;
-    }
-    @media screen and (max-width: 768px) {
-      margin-top: 70px;
-    }
+    background: radial-gradient(
+      186.93% 102.34% at 81.46% 7.95%,
+      #fff8de 0%,
+      #dceeff 100%
+    );
+    padding-top: 120px;
+    padding-bottom: 0;
+    overflow: hidden;
   }
 `;

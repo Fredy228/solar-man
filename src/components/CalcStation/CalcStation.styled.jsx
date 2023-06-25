@@ -1,161 +1,167 @@
 import styled from 'styled-components';
+import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
 
 export const StationInner = styled.section`
   padding: 50px 0;
   position: relative;
+  display: flex;
 
   @media screen and (max-width: 1000px) {
     padding: 25px 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
+`;
+
+export const WrapperTitle = styled.div``;
+
+export const WrapperSlider = styled.div`
+  flex: 1;
+`;
+
+export const SubTextSlider = styled.p`
+  color: #6b7280;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 30px;
+
+  @media screen and (max-width: 767px) {
+    margin: 230px auto 0 auto;
+    max-width: 200px;
   }
 `;
 
 export const SliderBox = styled.div`
   max-width: 700px;
   margin: 25px auto 0 auto;
-  display: 'flex';
-  justify-content: 'center';
-  flex-wrap: 'wrap';
-  @media screen and (max-width: 768px) {
-    padding: 0 25px;
+
+  @media screen and (max-width: 1200px) {
+    margin: 25px 50px 0 50px;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin: 25px 25px 0 25px;
   }
 `;
 
 export const OutputSlider = styled.output`
-  margin-top: 30px;
   font-weight: bold;
+  position: absolute;
+  display: block;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85px;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 16px;
+  border-radius: 20px;
+  background: ${({ theme }) => theme.color.second};
+  color: ${({ theme }) => theme.color.white};
 `;
 
 export const StationImg = styled.img`
   margin: 0 auto;
   height: auto;
-  width: 100%;
+  width: 700px;
+  bottom: 0;
+  left: -200px;
+  position: absolute;
+  z-index: -1;
 
-  @media screen and (min-width: 1200px) {
-    width: 1000px;
+  @media screen and (max-width: 1200px) {
+    width: 600px;
+    left: -150px;
+  }
+
+  @media screen and (max-width: 767px) {
+    top: 80px;
+    width: 550px;
+    right: 0;
+    left: initial;
+    transform: translateX(30px);
   }
 `;
 
 export const ListResult = styled.ul`
   display: flex;
-  background-color: ${({ theme: { color } }) => color.main};
   padding: 5px;
-  border-radius: 50px;
-  margin: 20px auto;
-  max-width: 700px;
-  justify-content: space-between;
+  margin: 80px auto 40px auto;
+  gap: 20px;
+  justify-content: center;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1000px) {
     flex-wrap: wrap;
-    border-radius: 20px;
-    justify-content: center;
-    max-width: 500px;
-    padding: 10px 30px 0 30px;
-    gap: 10px;
+  }
+
+  @media screen and (max-width: 767px) {
+    gap: 5px;
+    margin-top: 60px;
   }
 `;
 
 export const ItemResult = styled.li`
   padding: 5px 20px;
-  background-color: ${({ theme: { color } }) => color.second};
-  border-radius: 50px;
+  width: 180px;
+  height: 100px;
+  background-color: ${({ theme: { color } }) => color.white};
+  color: ${({ theme: { color } }) => color.g500};
+  border: 1px solid ${({ theme }) => theme.color.main};
+  border-radius: 10px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: start;
 
-  @media screen and (max-width: 768px) {
-    min-width: 180px;
-    margin-bottom: 10px;
+  :first-child {
+    background-color: ${({ theme: { color } }) => color.main};
+    outline: 2px solid ${({ theme }) => theme.color.white};
+
+    p {
+      color: ${({ theme: { color } }) => color.white};
+    }
+
+    span {
+      color: ${({ theme: { color } }) => color.second};
+    }
+  }
+
+  span {
+    color: ${({ theme }) => theme.color.main};
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 150px;
+    height: 80px;
+    padding: 5px 15px;
+
+    span {
+      font-size: 22px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    flex: 1;
+    height: 90px;
+    padding: 5px 10px;
   }
 `;
 
 export const TextResult = styled.p`
-  color: ${({ theme: { color } }) => color.white};
   font-size: 16px;
+  text-align: left;
+  margin-bottom: 5px;
+
+  @media screen and (max-width: 1200px) {
+    font-size: 14px;
+  }
 `;
 
-export const ButtonGetCall = styled.button`
-  border: none;
-  background-color: ${({ theme: { color } }) => color.additional};
-  color: ${({ theme: { color } }) => color.white};
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  border-radius: 50px;
-  font-size: 18px;
-  font-family: inherit;
-  cursor: pointer;
+export const ButtonGetCall = styled(ButtonOrg)`
   margin: 0 auto;
-  transition-property: background-color, color;
-  transition-duration: 350ms;
-  transition-timing-function: ease;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-  svg {
-    width: 25px;
-    height: 25px;
-    margin-right: 3px;
-    stroke: transparent;
-    transition: stroke 350ms ease;
-  }
-
-  :hover {
-    background-color: ${({ theme: { color } }) => color.additionalV2};
-    color: ${({ theme: { color } }) => color.black};
-  }
-  :hover svg {
-    stroke: ${({ theme: { color } }) => color.black};
-  }
-
-  @media screen and (max-width: 768px) {
-    font-size: 16px;
-  }
-`;
-
-export const Sun = styled.span`
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-color: #fc710064;
-  top: 50px;
-  left: 10px;
-
-  @media screen and (max-width: 1000px) {
-    width: 100px;
-    height: 100px;
-    left: -50px;
-  }
-
-  @media screen and (max-width: 510px) {
-    display: none;
-  }
-
-  :before,
-  :after {
-    content: '';
-    background-color: #fc710064;
-    position: absolute;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  :before {
-    width: 150px;
-    height: 150px;
-
-    @media screen and (max-width: 1000px) {
-      width: 130px;
-      height: 130px;
-    }
-  }
-
-  :after {
-    width: 70px;
-    height: 70px;
-
-    @media screen and (max-width: 1000px) {
-      width: 50px;
-      height: 50px;
-    }
-  }
 `;

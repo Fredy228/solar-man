@@ -20,7 +20,6 @@ export const Head = forwardRef(({ headerHeight }, ref) => {
   const [showBurger, setShowBurger] = useState(false);
   const scrollScreen = useScrollScreen();
   const widthSreen = useWindowWidth();
-  const history = useNavigate();
 
   const showMenu = () => {
     if (widthSreen > 1000) return;
@@ -40,6 +39,10 @@ export const Head = forwardRef(({ headerHeight }, ref) => {
     <Header scroll={scrollScreen} show={showBurger} ref={ref}>
       <Container>
         <HeaderInner>
+          <Burger onClick={showMenu}>
+            <MenuSpan show={showBurger}></MenuSpan>
+          </Burger>
+
           <NavLink to="/">
             <Logo
               onClick={() => {
@@ -50,13 +53,11 @@ export const Head = forwardRef(({ headerHeight }, ref) => {
             </Logo>
           </NavLink>
 
-          <Burger onClick={showMenu}>
-            <MenuSpan show={showBurger}></MenuSpan>
-          </Burger>
+          {widthSreen <= 1000 && <Contacts widthSreen={widthSreen} />}
 
           <NavBox headerHeight={headerHeight} show={showBurger}>
             <Navigation showMenu={showMenu} />
-            <Contacts />
+            <Contacts widthSreen={widthSreen} />
             {widthSreen < 1000 && <Social />}
           </NavBox>
         </HeaderInner>
