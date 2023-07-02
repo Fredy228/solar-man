@@ -20,7 +20,7 @@ export const SectionTitle = styled.h2`
       color ? theme.color.white : theme.color.second};
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     font-size: 20px;
   }
 `;
@@ -36,7 +36,7 @@ export const SetctionText = styled.p`
   margin: 0 auto;
   color: ${({ color, theme }) => (color ? color : theme.color.black)};
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     font-size: 16px;
   }
 `;

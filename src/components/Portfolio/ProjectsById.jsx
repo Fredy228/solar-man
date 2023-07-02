@@ -1,0 +1,55 @@
+import {
+  BoxIntroComponents,
+  BoxIntroImg,
+  Gallery,
+  InnerProjectOne,
+  IntroComponentsItem,
+  IntroComponentsList,
+  IntroImg,
+  IntroTitle,
+  WrapperIntroProject,
+} from './Portfolio.styled';
+import { baseURL } from '../API/API';
+import { GoBackBtn } from '../GoBackBtn/GoBackBtn';
+
+export const ProjectsById = ({ post }) => {
+  const components = JSON.parse(post.components);
+  const gallery = post.galleryUrl ? JSON.parse(post.galleryUrl) : [];
+  console.log('gallery', gallery);
+  const reactImgView = gallery.map(item => ({
+    original: `${baseURL}/${item.original}`,
+    thumbnail: `${baseURL}/${item.mini}`,
+  }));
+
+  console.log(reactImgView);
+
+  return (
+    <InnerProjectOne>
+      <GoBackBtn />
+      <WrapperIntroProject>
+        <BoxIntroImg>
+          <IntroImg
+            src={`${baseURL}/${post.urlImg}`}
+            loading="lazy"
+            alt={post.title}
+          />
+        </BoxIntroImg>
+        <BoxIntroComponents>
+          <IntroTitle>{post.title}</IntroTitle>
+          <IntroComponentsList>
+            {components && (
+              <IntroComponentsItem>Встановлене обладнання:</IntroComponentsItem>
+            )}
+            {components &&
+              components.map(item => (
+                <IntroComponentsItem key={item}>{item}</IntroComponentsItem>
+              ))}
+          </IntroComponentsList>
+        </BoxIntroComponents>
+      </WrapperIntroProject>
+      {gallery.length > 0 && (
+        <Gallery items={reactImgView} lazyLoad={true} showPlayButton={false} />
+      )}
+    </InnerProjectOne>
+  );
+};

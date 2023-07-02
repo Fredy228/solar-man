@@ -23,14 +23,13 @@ export const ItemInfo = styled.li`
   :not(:last-child) {
     border-bottom: 2px solid ${({ theme }) => theme.color.second};
   }
-  @media screen and (max-width: 380px) {
-  }
 `;
 
 export const ItemText = styled.p`
   font-size: 18px;
   width: 100%;
   text-align: center;
+
   @media screen and (max-width: 500px) {
     font-size: 16px;
   }

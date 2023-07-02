@@ -14,8 +14,8 @@ const subtypeSolution = [
   { value: 'Автономні станції', label: 'Автономні станції' },
   { value: 'Резервне живлення', label: 'Резервне живлення' },
   {
-    value: 'Модульні безперебійні системи',
-    label: 'Модульні безперебійні системи',
+    value: 'Гібридні безперебійні системи',
+    label: 'Гібридні безперебійні системи',
   },
   { value: 'Для підприємств', label: 'Для підприємств' },
 ];
@@ -54,7 +54,7 @@ export const StoreNav = () => {
         'Зелений тариф',
         'Автономні станції',
         'Резервне живлення',
-        'Модульні безперебійні системи',
+        'Гібридні безперебійні системи',
         'Для підприємств',
       ].includes(subtype)
     ) {
@@ -126,6 +126,18 @@ export const StoreNav = () => {
       return newSearchParams;
     });
   };
+
+  useEffect(() => {
+    if (subtypeParams)
+      setTimeout(() => {
+        setSubtype(subtypeParams);
+      }, 10);
+
+    if (sortParams)
+      setTimeout(() => {
+        setSort(sortParams);
+      }, 10);
+  }, [subtypeParams, sortParams]);
 
   useEffect(() => {
     setType(typeParams);

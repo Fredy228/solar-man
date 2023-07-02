@@ -7,6 +7,7 @@ export const baseURL =
     : 'https://solarman.pro';
 
 // 'http://192.168.31.58:3001'
+//"http://localhost:3001"
 
 axios.defaults.baseURL = baseURL;
 
@@ -155,7 +156,16 @@ export const deletePosts = async id => {
   return response.data;
 };
 
-export const createPosts = async (title, year, components, photo) => {
+export const deletePostImage = async (id, urlMini) => {
+  checkSetAuth();
+
+  const response = await axios.patch(`/api/admin/portfolio/image/${id}`, {
+    urlMini,
+  });
+  return response.data;
+};
+
+export const createPosts = async (title, year, components, photo, gallery) => {
   checkSetAuth();
 
   const formData = new FormData();
@@ -164,12 +174,22 @@ export const createPosts = async (title, year, components, photo) => {
   formData.append('year', year);
   formData.append('components', JSON.stringify(components));
   formData.append('photo', photo);
+  gallery.map(({ file }) => {
+    return formData.append('gallery', file);
+  });
 
   const response = await axios.post(`/api/admin/portfolio`, formData);
   return response.data;
 };
 
-export const updatePosts = async (id, title, year, components, photo) => {
+export const updatePosts = async (
+  id,
+  title,
+  year,
+  components,
+  photo,
+  gallery
+) => {
   checkSetAuth();
 
   const formData = new FormData();
@@ -178,6 +198,9 @@ export const updatePosts = async (id, title, year, components, photo) => {
   formData.append('year', year);
   formData.append('components', JSON.stringify(components));
   formData.append('photo', photo);
+  gallery.map(({ file }) => {
+    return formData.append('gallery', file);
+  });
 
   const response = await axios.patch(`/api/admin/portfolio/${id}`, formData);
   return response.data;

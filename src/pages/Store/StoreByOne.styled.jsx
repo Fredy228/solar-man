@@ -4,7 +4,7 @@ export const InnerProduct = styled.div`
   margin-top: 90px;
   padding: 20px 0;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     margin-top: 80px;
   }
   @media screen and (max-width: 767px) {
@@ -15,6 +15,7 @@ export const InnerProduct = styled.div`
 
 export const IntroWrapper = styled.div`
   display: flex;
+  margin-bottom: 30px;
 
   @media screen and (max-width: 767px) {
     flex-direction: column;
@@ -53,7 +54,7 @@ export const TitleProduct = styled.h2`
   color: ${({ theme }) => theme.color.main};
   margin-bottom: 30px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     font-size: 24px;
   }
 
@@ -63,33 +64,41 @@ export const TitleProduct = styled.h2`
 `;
 
 export const CostProduct = styled.p`
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.color.g2};
+
   font-size: 20px;
   margin-bottom: 15px;
   :last-of-type {
     margin-bottom: 30px;
   }
 
-  @media screen and (max-width: 1000px) {
+  :first-of-type {
+    margin-top: 30px;
+  }
+
+  @media screen and (max-width: 999px) {
     font-size: 18px;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: ${({ theme }) => theme.color.second};
+    margin-right: 7px;
   }
 `;
 
-export const SpanColor = styled.span`
-  color: ${({ theme }) => theme.color.second};
-`;
-
 export const WrapperDescrip = styled.div`
-  padding: 20px;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  max-width: 970px;
-  margin: 15px auto;
+  margin: 15px auto 30px auto;
+  border-radius: 10px;
   height: ${({ full, isOpen }) => (full && !isOpen ? '300px' : 'auto')};
   position: relative;
   overflow: hidden;
 
   p {
-    text-indent: 20px;
+    margin-top: 20px;
   }
 `;
 
@@ -116,20 +125,20 @@ export const SpanDesrip = styled.span`
 export const ListCharacter = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  margin-top: 15px;
 
   @media screen and (max-width: 767px) {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 15px;
+    margin-top: 20px;
   }
 `;
 
 export const ItemCharacter = styled.li`
-  background-color: ${({ theme }) => theme.color.main};
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
 
   @media screen and (max-width: 767px) {
     max-width: 420px;
@@ -146,11 +155,11 @@ export const ItemCharacter = styled.li`
 
 export const OptionTitle = styled.h3`
   font-size: 24px;
-  color: ${({ theme }) => theme.color.main};
+  color: ${({ theme }) => theme.color.g2};
   text-align: center;
   margin-bottom: 15px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     font-size: 20px;
   }
 `;
@@ -172,18 +181,19 @@ export const OptionItem = styled.li`
 export const OptionText = styled.p`
   font-size: 18px;
   color: ${({ theme, isWhite }) =>
-    isWhite ? theme.color.white : theme.color.black};
+    isWhite ? theme.color.white : theme.color.g2};
   font-weight: ${({ isBold }) => (isBold ? '700' : '500')};
   line-height: 1.4;
   text-align: ${({ isCenter }) => (isCenter ? 'center' : 'left')};
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     font-size: 16px;
+    text-align: left;
   }
 `;
 
 export const WrapperShemaItems = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 `;
 
 export const ImgShema = styled.img`
@@ -192,18 +202,18 @@ export const ImgShema = styled.img`
   max-width: 700px;
   width: 100%;
   height: auto;
-  margin: 0 auto;
+  margin: 20px auto;
 `;
 
 export const ItemElement = styled.li`
-  border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  display: flex;
+  justify-content: start;
+  align-items: start;
 
   @media screen and (max-width: 767px) {
     max-width: 420px;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     align-items: center;
   }
 
@@ -211,10 +221,32 @@ export const ItemElement = styled.li`
     margin: calc(20px / 2);
     flex-basis: calc(100% / 2 - 20px);
   }
+
+  @media screen and (max-width: 999px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const ElementImage = styled.img`
-  max-width: 200px;
+  width: 150px;
+  margin-right: 10px;
+
+  @media screen and (max-width: 999px) {
+    margin-bottom: 15px;
+    margin-right: 0;
+  }
+`;
+
+export const WrapperOptionEl = styled.div`
+  display: flex;
   width: 100%;
-  margin: 0 auto 15px auto;
+  flex-direction: column;
+  align-items: start;
+
+  p {
+    @media screen and (max-width: 999px) {
+      width: 100%;
+    }
+  }
 `;

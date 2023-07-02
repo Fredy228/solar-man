@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const ListProduts = styled.ul`
   display: flex;
@@ -12,20 +13,30 @@ export const ListProduts = styled.ul`
   }
 `;
 
+export const TitleProduts = styled.p`
+  margin-bottom: 20px;
+  padding: 0 10px;
+  color: ${({ theme }) => theme.color.g2};
+  transition: color 350ms ease;
+  margin-top: 15px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media screen and (min-width: 1000px) {
+    font-size: 16px;
+  }
+`;
+
 export const ItemProduts = styled.li`
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  border-radius: 20px;
+
   overflow: hidden;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-  transition: box-shadow 350ms ease;
 
-  :hover {
-    box-shadow: rgba(242, 76, 76, 0.5) 0 3px 8px;
+  :hover ${TitleProduts} {
+    color: ${({ theme }) => theme.color.second};
   }
 
   @media screen and (max-width: 767px) {
@@ -50,41 +61,56 @@ export const ItemProduts = styled.li`
   }
 `;
 
-export const ImgProduts = styled.img`
-  width: 100%;
-  border-radius: 20px;
-  margin-bottom: 15px;
+export const ItemProdutsLink = styled(NavLink)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
 `;
 
-export const TitleProduts = styled.a`
-  font-weight: bold;
-  margin-bottom: 20px;
-  padding: 0 10px;
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-  }
+export const WrapperImgProducts = styled.div`
+  width: 100%;
+  height: 320px;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+`;
 
-  @media screen and (min-width: 1000px) {
-    font-size: 16px;
+export const ImgProduts = styled.img`
+  width: 100%;
+`;
+
+export const PowerSpan = styled.span`
+  font-size: 14px;
+  width: 80px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  margin: 15px auto 0 auto;
+  background-color: ${({ theme }) => theme.color.second};
+  color: ${({ theme }) => theme.color.white};
+
+  @media screen and (max-width: 1119px) and (min-width: 767px) {
+    font-size: 12px;
+    width: 70px;
+    height: 25px;
   }
 `;
 
 export const CostProduts = styled.button`
-  color: ${({ theme }) => theme.color.white};
+  color: ${({ theme }) => theme.color.g2};
   padding: 7px 20px;
-  background-color: ${({ theme }) => theme.color.second};
-  border-radius: 25px;
   margin-bottom: 15px;
   margin-top: auto;
   cursor: pointer;
-  transition: background-color 350ms ease;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  :hover {
-    background-color: ${({ theme }) => theme.color.additional};
-  }
+  background-color: transparent;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -97,8 +123,8 @@ export const CostProduts = styled.button`
   svg {
     width: 20px;
     height: 20px;
-    margin-right: 5px;
-    stroke: ${({ theme }) => theme.color.white};
+    margin-right: 7px;
+    fill: ${({ theme }) => theme.color.second};
     transition: stroke 350ms ease;
   }
 `;
@@ -134,6 +160,7 @@ export const ButtonProducts = styled.button`
     width: 30px;
     height: 30px;
     fill: ${({ theme }) => theme.color.white};
+    stroke: ${({ theme }) => theme.color.white};
   }
 `;
 

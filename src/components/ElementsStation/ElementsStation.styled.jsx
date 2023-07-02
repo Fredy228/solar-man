@@ -13,20 +13,32 @@ export const Item = styled.li`
   display: flex;
   width: calc((100% / 2) - 15px);
   margin-bottom: 20px;
+
+  @media screen and (max-width: 999px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 10px;
+  }
 `;
 
 export const Info = styled.div`
   padding-left: 10px;
-
-  @media screen and (max-width: 500px) {
-    text-align: center;
-  }
 `;
 
 export const Title = styled.h3`
   font-size: 24px;
   margin-bottom: 15px;
   color: ${({ theme }) => theme.color.g2};
+
+  @media screen and (max-width: 999px) {
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 20px;
+  }
 `;
 
 export const Text = styled.p`
@@ -37,6 +49,10 @@ export const Text = styled.p`
 
 export const Img = styled.img`
   width: 180px;
+
+  @media screen and (max-width: 999px) {
+    width: 110px;
+  }
 `;
 
 export const LastItem = styled.div`

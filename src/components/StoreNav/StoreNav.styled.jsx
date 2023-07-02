@@ -21,7 +21,7 @@ export const WrapperSort = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.color.main};
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
 
   @media screen and (max-width: 767px) {
     flex-direction: column;
@@ -46,32 +46,29 @@ export const SortLabelWrap = styled.label`
 
 export const ButtonTab = styled.button`
   font-family: inherit;
-  font-weight: inherit;
+  font-weight: ${({ active }) => (active ? '700' : '500')};
   height: 40px;
   display: flex;
   font-size: 18px;
   justify-content: center;
   align-items: center;
-  max-width: 350px;
+  max-width: 250px;
   width: 100%;
   margin: 5px 30px;
-  border-radius: 50px;
   cursor: pointer;
   color: ${({ theme, active }) =>
-    active ? theme.color.white : theme.color.main};
-  border: 1px solid
-    ${({ theme, active }) => (active ? theme.color.second : theme.color.main)};
-  background-color: ${({ theme, active }) =>
-    active ? theme.color.second : 'transparent'};
+    active ? theme.color.main : theme.color.g500};
+  border-bottom: 2px solid
+    ${({ theme, active }) => (active ? theme.color.second : 'transparent')};
+  background-color: transparent;
 
   transition-duration: 350ms;
   transition-timing-function: ease;
-  transition-property: color, background-color;
+  transition-property: color, border-bottom-color;
 
   :hover {
-    background-color: ${({ theme, active }) =>
-      active ? theme.color.second : theme.color.main};
-    color: ${({ theme }) => theme.color.white};
+    color: ${({ theme }) => theme.color.main};
+    border-color: ${({ theme }) => theme.color.second};
   }
 
   @media screen and (max-width: 767px) {
@@ -90,15 +87,15 @@ export const SelectCustom = styled(Select)`
   }
 
   .react-select__control {
-    border-radius: 50px;
+    border-radius: 10px;
     outline: transparent;
     border: none;
-    background-color: ${({ theme }) => theme.color.additional};
+    background-color: ${({ theme }) => theme.color.white};
     cursor: pointer;
     box-shadow: none;
     width: 260px;
 
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 999px) {
       width: 250px;
     }
 
@@ -112,12 +109,12 @@ export const SelectCustom = styled(Select)`
   }
 
   .react-select__single-value {
-    color: ${({ theme }) => theme.color.white};
+    color: ${({ theme }) => theme.color.g2};
   }
 
   .react-select__indicators {
     svg {
-      fill: ${({ theme }) => theme.color.white};
+      fill: ${({ theme }) => theme.color.g2};
     }
   }
 
@@ -131,12 +128,13 @@ export const SelectCustom = styled(Select)`
   }
 
   .react-select__option {
-    border-radius: 50px;
+    border-radius: 10px;
     cursor: pointer;
-    color: ${({ theme }) => theme.color.black};
+    color: ${({ theme }) => theme.color.g500};
     transition-property: color, background-color;
     transition-timing-function: ease;
     transition-duration: 350ms;
+
     :not(:last-child) {
       margin-bottom: 5px;
     }
@@ -148,7 +146,7 @@ export const SelectCustom = styled(Select)`
   }
 
   .react-select__option--is-selected {
-    background-color: ${({ theme }) => theme.color.additional};
+    background-color: ${({ theme }) => theme.color.second};
     color: ${({ theme }) => theme.color.white};
   }
 

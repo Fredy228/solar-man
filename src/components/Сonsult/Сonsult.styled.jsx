@@ -75,7 +75,7 @@ export const ImgConsult = styled.img`
     left: -200px;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     left: -300px;
   }
 
@@ -93,7 +93,7 @@ export const ConsultText = styled.p`
   line-height: 1.5;
   margin-bottom: 30px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
   }
 
   @media screen and (max-width: 767px) {

@@ -13,7 +13,7 @@ const ForInvestment = () => {
 
   return (
     <GoogleAnalyticsWrapper>
-      <Section>
+      <Section isGradient={true}>
         <Container>
           <OptionInvestment />
         </Container>

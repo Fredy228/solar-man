@@ -8,6 +8,7 @@ import {
   TitlePortfolio,
   SpanOverLay,
   WrapperImg,
+  PortfolioItemLink,
 } from './Portfolio.styled';
 
 import { SectionTitle } from '../../CommonStyle/SectionTitle.styled';
@@ -26,7 +27,7 @@ export const Portfolio = () => {
       const { posts } = await getPosts(limit);
       setItems(posts);
     }
-    gettingPosts();
+    gettingPosts().catch(console.error);
   }, []);
 
   return (
@@ -36,17 +37,24 @@ export const Portfolio = () => {
       <PortfolioList>
         {items.map(item => (
           <PortfolioItem key={item.id}>
-            <WrapperImg>
-              <PortfolioImg
-                src={`${baseURL}/${item.urlImg}`}
-                loading="lazy"
-                width="450"
-                height="260"
-                alt={item.title}
-              />
-              <SpanOverLay>{item.year} рік</SpanOverLay>
-            </WrapperImg>
-            <TitlePortfolio>{item.title}</TitlePortfolio>
+            <PortfolioItemLink
+              to={`/projects/${item.id}`}
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+            >
+              <WrapperImg>
+                <PortfolioImg
+                  src={`${baseURL}/${item.urlImg}`}
+                  loading="lazy"
+                  width="450"
+                  height="280"
+                  alt={item.title}
+                />
+                <SpanOverLay>{item.year} рік</SpanOverLay>
+              </WrapperImg>
+              <TitlePortfolio>{item.title}</TitlePortfolio>
+            </PortfolioItemLink>
           </PortfolioItem>
         ))}
       </PortfolioList>

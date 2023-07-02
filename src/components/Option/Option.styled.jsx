@@ -3,21 +3,31 @@ import styled from 'styled-components';
 export const Inner = styled.div`
   display: flex;
 
-  @media screen and (max-width: 1000px) {
-    flex-direction: column-reverse;
+  @media screen and (max-width: 999px) {
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-top: -20px;
   }
 `;
 
 export const DescripBox = styled.div`
   flex: 1;
   margin-bottom: 50px;
+  z-index: 20;
 `;
 
 export const ImageBox = styled.div`
   width: 40%;
   position: relative;
+
+  @media screen and (max-width: 999px) {
+    width: 100%;
+    height: 0;
+    z-index: 10;
+  }
 `;
 
 export const Img = styled.img`
@@ -26,25 +36,23 @@ export const Img = styled.img`
   bottom: -120px;
   width: 560px;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1199px) {
     width: 480px;
     right: -60px;
     bottom: -110px;
   }
-`;
 
-export const TitleMobile = styled.h1`
-  display: none;
-  text-transform: uppercase;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 20px;
-  color: ${({ theme }) => theme.color.black};
+  @media screen and (max-width: 999px) {
+    width: 400px;
+    right: -160px;
+  }
 
-  @media screen and (max-width: 1000px) {
-    display: block;
+  @media screen and (max-width: 767px) {
+    width: 380px;
+    right: -185px;
   }
 `;
+
 export const Title = styled.h1`
   text-transform: uppercase;
   font-size: 40px;
@@ -53,13 +61,9 @@ export const Title = styled.h1`
   margin-bottom: 15px;
   z-index: 20;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1199px) {
     font-size: 30px;
   }
-`;
-
-export const Span = styled.span`
-  color: ${({ theme }) => theme.color.additional};
 `;
 
 export const Text = styled.p`
@@ -68,8 +72,17 @@ export const Text = styled.p`
   line-height: 1.5;
   margin-right: 70px;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1199px) {
     font-size: 16px;
+  }
+
+  @media screen and (max-width: 999px) and (min-width: 768px) {
+    margin-right: 250px;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-right: 0;
+    font-size: 18px;
   }
 `;
 
@@ -88,7 +101,7 @@ export const Button = styled.button`
   transition-property: background-color, color;
   transition-duration: 350ms;
   transition-timing-function: ease;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 
   svg {
     width: 25px;
@@ -106,7 +119,7 @@ export const Button = styled.button`
     stroke: ${({ theme: { color } }) => color.black};
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     font-size: 16px;
   }
 `;

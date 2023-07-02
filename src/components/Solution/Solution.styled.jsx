@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { SwiperSlide } from 'swiper/react';
+import { NavLink } from 'react-router-dom';
 
 export const SwiperSlideS = styled(SwiperSlide)`
   height: auto !important;
@@ -16,11 +17,11 @@ export const CustomNavigation = styled.div`
   bottom: 200px;
   z-index: 20;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1119px) {
     bottom: 180px;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     bottom: 160px;
   }
 
@@ -86,7 +87,7 @@ export const SolutionInner = styled.section`
   padding: 50px 0;
   position: relative;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     padding: 25px 0;
   }
 `;
@@ -98,7 +99,7 @@ export const Title = styled.p`
   margin: 10px 0 15px 0;
   transition: color 350ms ease;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1119px) {
     font-size: 14px;
   }
   @media screen and (max-width: 767px) {
@@ -111,14 +112,19 @@ export const Slide = styled.div`
   height: 100%;
   width: 100%;
   padding: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   cursor: pointer;
 
   :hover ${Title} {
     color: ${({ theme }) => theme.color.second};
   }
+`;
+
+export const SlideLink = styled(NavLink)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: ${({ theme }) => theme.color.g2};
+  height: 100%;
 `;
 
 export const Img = styled.img`
@@ -148,7 +154,7 @@ export const PowerSpan = styled.span`
 export const BuyBtn = styled.span`
   padding: 7px 25px;
   font-size: 18px;
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.g2};
   margin-top: auto;
   margin-bottom: 10px;
   display: flex;
@@ -162,7 +168,7 @@ export const BuyBtn = styled.span`
     transition: stroke 350ms ease;
   }
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1119px) {
     font-size: 16px;
   }
   @media screen and (max-width: 767px) {

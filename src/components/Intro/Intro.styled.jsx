@@ -21,7 +21,7 @@ export const EllipseBg = styled.div`
   border-radius: 50%;
   overflow: hidden;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     top: -600px;
   }
 `;
@@ -41,7 +41,7 @@ export const ImgEllipse = styled.img`
   right: 0;
   bottom: -50px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     width: 450px;
     right: 150px;
   }
@@ -61,7 +61,7 @@ export const IntroTitle = styled.h1`
   margin-bottom: 10px;
   z-index: 20;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     font-size: 30px;
     margin-top: 100px;
   }
@@ -79,7 +79,7 @@ export const IntroText = styled.p`
   z-index: 20;
   margin-bottom: 80px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     margin-bottom: 60px;
   }
 
@@ -123,11 +123,11 @@ export const CardIntro = styled.div`
     outline-color: ${({ theme }) => theme.color.second};
   }
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1119px) {
     height: 240px;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     height: 180px;
   }
 
@@ -168,7 +168,7 @@ export const OverlayIntro = styled.div`
     background-color: ${({ theme }) => theme.color.main};
     transition: background-color 350ms ease;
 
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 999px) {
       width: 40px;
       height: 40px;
       top: -20px;
@@ -191,7 +191,7 @@ export const TextOverlay = styled.p`
   text-align: center;
   margin-bottom: 20px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     font-size: 16px;
   }
 `;

@@ -24,7 +24,7 @@ export const CallBox = styled.div`
   right: 15px;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.color.second};
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   cursor: pointer;
   width: 60px;
   height: 60px;
@@ -33,7 +33,7 @@ export const CallBox = styled.div`
   display: flex;
   transition: transform 350ms ease;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     width: 50px;
     height: 50px;
   }
@@ -51,7 +51,7 @@ export const CallBox = styled.div`
     animation-iteration-count: infinite;
     animation-timing-function: ease;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
       width: 25px;
       height: 25px;
     }

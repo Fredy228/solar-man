@@ -14,7 +14,7 @@ export const NameErr = styled.h3`
   color: ${({ theme }) => theme.color.black};
   padding-bottom: 30px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     font-size: 25px;
   }
 

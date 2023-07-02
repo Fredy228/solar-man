@@ -14,9 +14,9 @@ const ForEnterprises = () => {
 
   return (
     <GoogleAnalyticsWrapper>
-      <Section>
+      <Section isGradient={true}>
         <Container>
-          <OptionEnterprises />
+          <OptionEnterprises widthScreen={widthScreen} />
         </Container>
       </Section>
       <Section>
@@ -26,7 +26,7 @@ const ForEnterprises = () => {
       </Section>
       <Section color="true" margBott={'60px'}>
         <Container>
-          <Areas />
+          <Areas widthScreen={widthScreen} />
         </Container>
       </Section>
       <Section paddBott={'0px'} paddTop={'0px'}>

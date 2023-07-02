@@ -6,8 +6,10 @@ import {
   CostProduts,
   ImgProduts,
   ItemProduts,
+  ItemProdutsLink,
   ListProduts,
   TitleProduts,
+  WrapperImgProducts,
 } from '../../../components/ListGoods/ListTableProduct.styled';
 import {
   baseURL,
@@ -21,6 +23,7 @@ import { useNavigate } from 'react-router-dom';
 import { useShowModal, useStoreUser } from '../../../globalState/globalState';
 import { Modal } from '../../../components/Modal/Modal';
 import { DeleteWindow } from '../../../components/DeleteWindow/DeleteWindow';
+import { numbersFormatCost } from '../../../services/numbersFormatCost';
 
 export const ListProduct = ({ products, setProducts, type }) => {
   const {
@@ -101,9 +104,6 @@ export const ListProduct = ({ products, setProducts, type }) => {
               onMouseEnter={() => setIsShowBtn(item.id)}
               onMouseLeave={() => setIsShowBtn('')}
             >
-              <ImgProduts src={`${baseURL}/${item.photo}`} alt={item.title} />
-              <TitleProduts>{item.title}</TitleProduts>
-              <CostProduts>{item.cost}$</CostProduts>
               {isShowBtn === item.id && role !== 'user' && (
                 <BoxBtnProducts>
                   {type === 'Готові рішення' && (
@@ -143,6 +143,26 @@ export const ListProduct = ({ products, setProducts, type }) => {
                   </ButtonProducts>
                 </BoxBtnProducts>
               )}
+              <ItemProdutsLink
+                to={`/store/${
+                  type === 'Готові рішення' ? 'set' : 'component'
+                }?id=${item.id}`}
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                }}
+              >
+                <WrapperImgProducts>
+                  <ImgProduts
+                    src={`${baseURL}/${item.photo}`}
+                    alt={item.title}
+                  />
+                </WrapperImgProducts>
+                <TitleProduts>{item.title}</TitleProduts>
+                <CostProduts>
+                  <Icon name="icon-cart-buy" />
+                  {numbersFormatCost(item.cost)}$
+                </CostProduts>
+              </ItemProdutsLink>
             </ItemProduts>
           ))}
         {isShowModal && (

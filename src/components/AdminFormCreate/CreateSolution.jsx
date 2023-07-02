@@ -41,26 +41,24 @@ export const CreateSolution = ({ idProduct }) => {
   ]);
   const [photo, setPhoto] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
+  const [wrongValue, setWrongValue] = useState(false);
 
   useEffect(() => {
     if (!idProduct) return;
-    try {
-      const fetchSet = async () => {
-        const { result } = await getByIdStoreSet(idProduct);
-        setTitle(result.title);
-        setType(result.type);
-        setCost(result.cost);
-        setPower(result.power);
-        setDescripMain(result.descripMain);
-        setDescripCharacter(JSON.parse(result.descripCharacter));
-        setListComponents(JSON.parse(result.components));
-        setPhoto(result.photo);
-        setDescripPhoto(result.descripPhoto);
-      };
-      fetchSet();
-    } catch (err) {
-      console.log(err);
-    }
+
+    const fetchSet = async () => {
+      const { result } = await getByIdStoreSet(idProduct);
+      setTitle(result.title);
+      setType(result.type);
+      setCost(result.cost);
+      setPower(result.power);
+      setDescripMain(result.descripMain);
+      setDescripCharacter(JSON.parse(result.descripCharacter));
+      setListComponents(JSON.parse(result.components));
+      setPhoto(result.photo);
+      setDescripPhoto(result.descripPhoto);
+    };
+    fetchSet().catch(console.error);
   }, [idProduct]);
 
   const addCharacter = () => {
@@ -255,8 +253,8 @@ export const CreateSolution = ({ idProduct }) => {
           <Option value="Зелений тариф">Зелений тариф</Option>
           <Option value="Автономні станції">Автономні станції</Option>
           <Option value="Резервне живлення">Резервне живлення</Option>
-          <Option value="Модульні безперебійні системи">
-            Модульні безперебійні системи
+          <Option value="Гібридні безперебійні системи">
+            Гібридні безперебійні системи
           </Option>
           <Option value="Для підприємств">Для підприємств</Option>
         </Select>
@@ -296,12 +294,16 @@ export const CreateSolution = ({ idProduct }) => {
           onChange={e => {
             if (e.target.value.includes(','))
               return Notify.warning('Використовуйте точку для нецілих чисел');
+            if (e.target.value.includes(' '))
+              return Notify.warning('Використовуйте тире замість пробілу');
             setPower(e.target.value);
           }}
           onBlur={e => {
             if (!isValidForm('electric', e.target.value)) {
               styleInvalidForm(e, 'blur');
+              return setWrongValue(true);
             }
+            setWrongValue(false);
           }}
           onFocus={e => styleInvalidForm(e, 'focus')}
         />
@@ -460,7 +462,7 @@ export const CreateSolution = ({ idProduct }) => {
       )}
       <Underline></Underline>
 
-      <Button type="submit" disabled={isLoading}>
+      <Button type="submit" disabled={isLoading || wrongValue}>
         {isLoading ? (
           <LoadSpiner barColor={'#fff'} borderColor={'#fff'} />
         ) : (

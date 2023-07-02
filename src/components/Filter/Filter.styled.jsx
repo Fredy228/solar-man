@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const WrapperFilter = styled.div`
   width: 100%;
   height: 100%;
-  //display: flex;
-  //flex-direction: column;
-  //align-items: center;
-  //justify-content: space-between;
   overflow: hidden;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     overflow-y: scroll;
+
+    ::-webkit-scrollbar {
+      width: 0;
+    }
   }
 `;
 
@@ -26,7 +26,7 @@ export const ItemFilter = styled.li`
 
 export const TitleFilter = styled.h5`
   font-size: 18px;
-  color: ${({ theme }) => theme.color.white};
+  color: ${({ theme }) => theme.color.g2};
   margin-bottom: 10px;
 `;
 
@@ -34,7 +34,6 @@ export const ListCheckBox = styled.ul`
   width: 190px;
   transition: opacity 250ms ease 350ms;
   opacity: ${({ isShow }) => (isShow ? '1' : '0')};
-  border-bottom: 2px solid ${({ theme }) => theme.color.additional};
   display: flex;
   flex-direction: column;
   padding-bottom: 5px;
@@ -47,7 +46,7 @@ export const ItemCheckBox = styled.li`
 
 export const LabelCheckBox = styled.label`
   font-size: 16px;
-  color: ${({ theme }) => theme.color.white};
+  color: ${({ theme }) => theme.color.g2};
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -62,7 +61,7 @@ export const CustomCheckBox = styled.span`
   height: 18px;
   display: block;
   background-color: transparent;
-  border: 2px solid ${({ theme }) => theme.color.additional};
+  border: 2px solid ${({ theme }) => theme.color.second};
   border-radius: 4px;
   margin-right: 7px;
   position: relative;
@@ -72,7 +71,7 @@ export const CustomCheckBox = styled.span`
     width: 10px;
     height: 10px;
     border-radius: 2px;
-    background-color: ${({ theme }) => theme.color.additional};
+    background-color: ${({ theme }) => theme.color.second};
     opacity: 0;
     position: absolute;
     top: 50%;
@@ -97,11 +96,10 @@ export const FilterForm = styled.form`
 
 export const CountInfo = styled.div`
   font-size: 14px;
-  //margin-top: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: ${({ theme }) => theme.color.white};
+  color: ${({ theme }) => theme.color.g2};
 `;
 
 export const ResetFilter = styled.button`
@@ -113,13 +111,12 @@ export const ResetFilter = styled.button`
   display: flex;
   border-radius: 30px;
   font-size: 14px;
-  border: 2px solid ${({ theme }) => theme.color.additional};
-  background-color: transparent;
+  background-color: ${({ theme }) => theme.color.main};
   color: ${({ theme }) => theme.color.white};
   cursor: pointer;
   transition: background-color 350ms ease;
 
   :hover {
-    background-color: ${({ theme }) => theme.color.additional};
+    background-color: ${({ theme }) => theme.color.second};
   }
 `;

@@ -7,9 +7,9 @@ export const Header = styled.header`
   top: ${p => (p.scroll > 40 && !p.show ? 5 : 0)}px;
   left: ${p => (p.scroll > 40 && !p.show ? 5 : 0)}px;
   z-index: 100;
-  background-color: ${({ theme, scroll }) =>
-    scroll > 40 ? theme.color.white : 'transparent'};
-  border-radius: ${p => (p.scroll > 40 && !p.show ? 20 : 0)}px;
+  background-color: ${({ theme, scroll, show }) =>
+    show || scroll > 40 ? theme.color.white : 'transparent'};
+  border-radius: ${p => (p.scroll > 40 && !p.show ? 10 : 0)}px;
   width: calc(100% - ${p => (p.scroll > 40 && !p.show ? 10 : 0)}px);
   box-shadow: ${p =>
     p.scroll > 40 && !p.show
@@ -17,7 +17,8 @@ export const Header = styled.header`
       : 'none'};
   transition-timing-function: ease;
   transition-duration: 350ms;
-  transition-property: top, border-radius, width, left, box-shadow;
+  transition-property: top, border-radius, width, left, box-shadow,
+    background-color;
 `;
 
 export const HeaderInner = styled.div`
@@ -26,18 +27,20 @@ export const HeaderInner = styled.div`
   align-items: center;
   position: relative;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     justify-content: space-between;
   }
 `;
 export const Logo = styled.div`
   cursor: pointer;
+
   svg {
     height: 50px;
     width: auto;
+    fill: ${({ theme }) => theme.color.second};
   }
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1119px) {
     svg {
       height: 42px;
     }
@@ -51,7 +54,7 @@ export const Burger = styled.div`
   align-items: center;
   cursor: pointer;
 
-  @media screen and (min-width: 1001px) {
+  @media screen and (min-width: 1000px) {
     display: none;
   }
 `;
@@ -98,13 +101,13 @@ export const NavBox = styled.div`
   height: 100%;
   transition: transform 350ms ease;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     position: fixed;
     width: 100%;
     height: calc(100% - ${p => p.headerHeight}px);
     bottom: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(7px);
 
     flex-direction: column;
@@ -119,10 +122,10 @@ export const HeaderInnerAdmin = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     height: 70px;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     height: 60px;
   }
 `;
@@ -182,10 +185,10 @@ export const AdminTabs = styled.ul`
   margin-top: 110px;
   height: auto;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     margin-top: 100px;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     margin-top: 90px;
   }
 `;

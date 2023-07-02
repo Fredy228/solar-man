@@ -9,12 +9,11 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
-  //padding: 30px 30px 30px 60px;
   padding-left: 65px;
   position: relative;
 
   @media screen and (max-width: 767px) {
-    margin: 0 auto calc(30px / 2) auto;
+    margin: 0 auto calc(60px / 2) auto;
   }
 
   @media screen and (min-width: 768px) {
@@ -47,8 +46,8 @@ export const WrapperSvg = styled.div`
   align-items: center;
 
   svg {
-    width: 24px;
-    height: 24px;
+    width: 25px;
+    height: 25px;
     fill: ${({ theme }) => theme.color.white};
     stroke: ${({ theme }) => theme.color.white};
   }

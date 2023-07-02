@@ -9,7 +9,7 @@ export const SectionTitle = styled.h2`
   text-align: ${({ text }) => (text ? text : 'center')};
   margin-bottom: ${({ marginBottom }) => (marginBottom ? marginBottom : '0')};
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     font-size: 25px;
   }
 `;

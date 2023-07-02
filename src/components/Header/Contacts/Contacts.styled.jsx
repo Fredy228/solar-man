@@ -4,10 +4,10 @@ export const ContactList = styled.ul`
   display: flex;
   height: 100%;
 
-  @media screen and (max-width: 1000px) {
-    justify-content: flex-start;
+  @media screen and (max-width: 999px) {
+    justify-content: center;
     height: auto;
-    //margin-bottom: 15px;
+    flex-wrap: wrap;
   }
 `;
 export const ContactItem = styled.li`
@@ -20,9 +20,14 @@ export const ContactItem = styled.li`
   :not(:last-child) {
     margin-right: 20px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
       margin-right: 5px;
     }
+  }
+
+  @media screen and (max-width: 999px) {
+    width: ${({ showBurger }) => (showBurger ? '100%' : 'initial')};
+    margin-bottom: ${({ showBurger }) => (showBurger ? '30px' : '0')};
   }
 `;
 export const ContactLink = styled.a`
@@ -46,7 +51,7 @@ export const ContactLink = styled.a`
     transition: stroke 350ms ease;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     background-color: ${({ theme }) => theme.color.white};
     padding: 7px;
     border-radius: 50%;
@@ -60,7 +65,7 @@ export const ContactLink = styled.a`
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     svg {
       width: 20px;
       height: 20px;

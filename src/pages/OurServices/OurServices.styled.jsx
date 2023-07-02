@@ -10,11 +10,10 @@ export const Section = styled.section`
   overflow-x: ${({ overX }) => (overX ? overX : 'initial')};
 
   :first-of-type {
-    background: radial-gradient(
-      186.93% 102.34% at 81.46% 7.95%,
-      #fff8de 0%,
-      #dceeff 100%
-    );
+    background: ${({ isGradient }) =>
+      isGradient
+        ? 'radial-gradient(186.93% 102.34% at 81.46% 7.95%, #fff8de 0%, #dceeff 100%)'
+        : 'initial'};
     padding-top: 120px;
     padding-bottom: 0;
     overflow: hidden;

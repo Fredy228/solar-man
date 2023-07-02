@@ -14,11 +14,11 @@ import {
   SwiperSlideS,
   BtnArrow,
   PowerSpan,
+  SlideLink,
 } from './Solution.styled';
 import { SectionTitle } from '../../CommonStyle/SectionTitle.styled';
 
 import { Icon } from 'components/Icon/Icon';
-import { useBasket, useShowModal } from 'globalState/globalState';
 import { useEffect, useState } from 'react';
 import { baseURL, getSetsHomeOrder } from '../API/API';
 import { LoadPage } from '../LoadSpiner/LoadPage';
@@ -28,19 +28,6 @@ export const Solution = ({ widthScreen }) => {
   const [slideView, setSlideView] = useState(3);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { toggleModal, isShowModal } = useShowModal();
-  const { setGood } = useBasket();
-
-  const clickGood = nameGood => {
-    setGood(nameGood);
-    toggleModal(true);
-  };
-
-  useEffect(() => {
-    if (!isShowModal) {
-      setGood(null);
-    }
-  }, [isShowModal, setGood]);
 
   useEffect(() => {
     try {
@@ -91,20 +78,22 @@ export const Solution = ({ widthScreen }) => {
             {items.map(item => {
               return (
                 <SwiperSlideS key={item.id}>
-                  <Slide onClick={() => clickGood(item.title)}>
-                    <Img
-                      src={`${baseURL}/${item.photo}`}
-                      loading="lazy"
-                      width="500"
-                      height="500"
-                      alt={item.title}
-                    />
-                    <PowerSpan>{item.power}</PowerSpan>
-                    <Title>{item.title}</Title>
-                    <BuyBtn>
-                      <Icon name="icon-cart-buy" />
-                      {numbersFormatCost(item.cost)}$
-                    </BuyBtn>
+                  <Slide>
+                    <SlideLink to={`store/set?id=${item.id}`}>
+                      <Img
+                        src={`${baseURL}/${item.photo}`}
+                        loading="lazy"
+                        width="500"
+                        height="500"
+                        alt={item.title}
+                      />
+                      <PowerSpan>{item.power}</PowerSpan>
+                      <Title>{item.title}</Title>
+                      <BuyBtn>
+                        <Icon name="icon-cart-buy" />
+                        {numbersFormatCost(item.cost)}$
+                      </BuyBtn>
+                    </SlideLink>
                   </Slide>
                 </SwiperSlideS>
               );

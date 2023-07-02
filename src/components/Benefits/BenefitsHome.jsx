@@ -34,7 +34,7 @@ export const BenefitsHome = () => {
         </Item>
         <Item>
           <WrapperSvg>
-            <Icon name="icon-accumulator" />
+            <Icon name="icon-smile" />
           </WrapperSvg>
           <TitleBenefits>Нестрашні відключення</TitleBenefits>
           <TextBenefits>

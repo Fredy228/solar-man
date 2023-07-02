@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TeamInner = styled.section`
   padding: 50px 0;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     padding: 25px 0;
   }
 `;
@@ -56,7 +56,7 @@ export const TeamItemInner = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   cursor: pointer;
 
   :after {

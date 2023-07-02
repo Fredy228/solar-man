@@ -1,15 +1,5 @@
 import { Icon } from 'components/Icon/Icon';
-import {
-  Button,
-  DescripBox,
-  ImageBox,
-  Inner,
-  Span,
-  Text,
-  Title,
-  Img,
-  TitleMobile,
-} from './Option.styled';
+import { DescripBox, ImageBox, Inner, Text, Title, Img } from './Option.styled';
 import { useShowModal } from 'globalState/globalState';
 
 import imgIntro_webp from '../../img/ourServices/intro-4.webp';

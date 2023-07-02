@@ -1,5 +1,5 @@
 import { useState, useEffect, forwardRef } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import {
   Header,
   HeaderInner,
@@ -47,6 +47,7 @@ export const Head = forwardRef(({ headerHeight }, ref) => {
             <Logo
               onClick={() => {
                 window.scrollTo(0, 0);
+                if (showBurger) showMenu();
               }}
             >
               <Icon name={'icon-logo'} viewBox="0 0 82 32" />
@@ -57,7 +58,7 @@ export const Head = forwardRef(({ headerHeight }, ref) => {
 
           <NavBox headerHeight={headerHeight} show={showBurger}>
             <Navigation showMenu={showMenu} />
-            <Contacts widthSreen={widthSreen} />
+            <Contacts widthSreen={widthSreen} showBurger={showBurger} />
             {widthSreen < 1000 && <Social />}
           </NavBox>
         </HeaderInner>

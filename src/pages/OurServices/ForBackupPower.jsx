@@ -13,7 +13,7 @@ const ForBackupPower = () => {
 
   return (
     <GoogleAnalyticsWrapper>
-      <Section>
+      <Section isGradient={true}>
         <Container>
           <OptionBackupPower />
         </Container>

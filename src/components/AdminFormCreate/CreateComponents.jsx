@@ -50,6 +50,7 @@ export const CreateComponents = ({ idProduct }) => {
   ]);
   const [photo, setPhoto] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
+  const [wrongValue, setWrongValue] = useState(false);
 
   useEffect(() => {
     const fetchFilter = async () => {
@@ -381,6 +382,13 @@ export const CreateComponents = ({ idProduct }) => {
               value={addSort.power || ''}
               placeholder="Введіть в форматі: 7-кВт"
               onChange={e => {
+                if (e.target.value.includes(','))
+                  return Notify.warning(
+                    'Використовуйте точку для нецілих чисел'
+                  );
+                if (e.target.value.includes(' '))
+                  return Notify.warning('Використовуйте тире замість пробілу');
+
                 setAddSort(prevState => ({
                   ...prevState,
                   power: e.target.value,
@@ -389,7 +397,9 @@ export const CreateComponents = ({ idProduct }) => {
               onBlur={e => {
                 if (!isValidForm('electric', e.target.value)) {
                   styleInvalidForm(e, 'blur');
+                  return setWrongValue(true);
                 }
+                setWrongValue(false);
               }}
               onFocus={e => styleInvalidForm(e, 'focus')}
             />
@@ -432,6 +442,13 @@ export const CreateComponents = ({ idProduct }) => {
               value={addSort.reservoir || ''}
               placeholder="Введіть в форматі: 3-Ач"
               onChange={e => {
+                if (e.target.value.includes(','))
+                  return Notify.warning(
+                    'Використовуйте точку для нецілих чисел'
+                  );
+                if (e.target.value.includes(' '))
+                  return Notify.warning('Використовуйте тире замість пробілу');
+
                 setAddSort(prevState => ({
                   ...prevState,
                   reservoir: e.target.value,
@@ -440,7 +457,9 @@ export const CreateComponents = ({ idProduct }) => {
               onBlur={e => {
                 if (!isValidForm('electric', e.target.value)) {
                   styleInvalidForm(e, 'blur');
+                  return setWrongValue(true);
                 }
+                setWrongValue(false);
               }}
               onFocus={e => styleInvalidForm(e, 'focus')}
             />
@@ -465,6 +484,8 @@ export const CreateComponents = ({ idProduct }) => {
                   return Notify.warning(
                     'Використовуйте точку для нецілих чисел'
                   );
+                if (e.target.value.includes(' '))
+                  return Notify.warning('Використовуйте тире замість пробілу');
                 setAddSort(prevState => ({
                   ...prevState,
                   voltage: e.target.value,
@@ -473,7 +494,9 @@ export const CreateComponents = ({ idProduct }) => {
               onBlur={e => {
                 if (!isValidForm('electric', e.target.value)) {
                   styleInvalidForm(e, 'blur');
+                  return setWrongValue(true);
                 }
+                setWrongValue(false);
               }}
               onFocus={e => styleInvalidForm(e, 'focus')}
             />
@@ -554,7 +577,7 @@ export const CreateComponents = ({ idProduct }) => {
         + Додати хар-ки
       </Button>
 
-      <Button type="submit" disabled={isLoading}>
+      <Button type="submit" disabled={isLoading || wrongValue}>
         {isLoading ? (
           <LoadSpiner barColor={'#fff'} borderColor={'#fff'} />
         ) : (

@@ -52,7 +52,7 @@ export const Option = styled.option``;
 export const Text = styled.p`
   color: ${({ theme }) => theme.color.white};
   margin-right: 10px;
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1119px) {
     margin-bottom: 5px;
   }
 `;

@@ -6,15 +6,17 @@ import {
   PortfolioImg,
   TitlePortfolio,
   SpanOverLay,
-  NavBtn,
   WrapperImg,
+  PortfolioItemLink,
 } from './Portfolio.styled';
 
-import { SectionTitle } from '../../CommonStyle/SectionTitle.styled';
+import {
+  SectionTitle,
+  SectionSubtitle,
+} from '../../CommonStyle/SectionTitle.styled';
 
 import { getPosts, baseURL } from 'components/API/API';
 import { LoadSpiner } from 'components/LoadSpiner/LoadSpiner';
-import { Icon } from '../Icon/Icon';
 import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
 
 export const ProjectsC = () => {
@@ -57,27 +59,34 @@ export const ProjectsC = () => {
 
   return (
     <>
-      <SectionTitle marginBottom={'40px'}>Проекти</SectionTitle>
-
-      {/*  Реалізовані нами проекти в області альтернативної енергетики та*/}
-      {/*  енергоефективності, які демонструють нашу компетентність та досвід у*/}
-      {/*  даній галузі.*/}
+      <SectionTitle>Проекти</SectionTitle>
+      <SectionSubtitle>
+        Реалізовані нами проекти в області альтернативної енергетики, <br />
+        які демонструють нашу компетентність та досвід у даній галузі.
+      </SectionSubtitle>
 
       <PortfolioList>
         {items.map(item => (
           <PortfolioItem key={item.id}>
-            <WrapperImg>
-              <PortfolioImg
-                src={`${baseURL}/${item.urlImg}`}
-                loading="lazy"
-                width="500"
-                height="400"
-                alt={item.title}
-              />
-              <SpanOverLay>{item.year}</SpanOverLay>
-            </WrapperImg>
+            <PortfolioItemLink
+              to={`/projects/${item.id}`}
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+            >
+              <WrapperImg>
+                <PortfolioImg
+                  src={`${baseURL}/${item.urlImg}`}
+                  loading="lazy"
+                  width="450"
+                  height="280"
+                  alt={item.title}
+                />
+                <SpanOverLay>{item.year}</SpanOverLay>
+              </WrapperImg>
 
-            <TitlePortfolio>{item.title}</TitlePortfolio>
+              <TitlePortfolio>{item.title}</TitlePortfolio>
+            </PortfolioItemLink>
           </PortfolioItem>
         ))}
       </PortfolioList>

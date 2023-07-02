@@ -9,9 +9,11 @@ import {
   InputFile,
   Img,
   ImgInfo,
+  ButtonCircle,
 } from './AdminFormCreate.styled';
 import { createPosts } from 'components/API/API';
 import { LoadSpiner } from '../LoadSpiner/LoadSpiner';
+import { Icon } from '../Icon/Icon';
 
 export const CreatePost = ({ setReGet, setIsDisableSaveBtn }) => {
   const [title, setTitle] = useState('');
@@ -20,16 +22,18 @@ export const CreatePost = ({ setReGet, setIsDisableSaveBtn }) => {
   const [photo, setPhoto] = useState(undefined);
   const fileInputRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [listComponents, setListComponents] = useState([{ file: undefined }]);
 
   const submitForm = async e => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      await createPosts(title, year, components, photo);
+      await createPosts(title, year, components, photo, listComponents);
       setTitle('');
       setYear('');
       setComponents([]);
       setPhoto(null);
+      setListComponents([{ file: undefined }]);
       fileInputRef.current.value = '';
       setReGet(state => !state);
       setIsDisableSaveBtn(false);
@@ -42,13 +46,36 @@ export const CreatePost = ({ setReGet, setIsDisableSaveBtn }) => {
     }
   };
 
+  const addComponent = () => {
+    if (listComponents.length > 12)
+      return Notify.warning('Можна створити до 12 блоків');
+    setListComponents(prevState => [...prevState, { file: undefined }]);
+  };
+
+  const updateComponents = (e, index) => {
+    setListComponents(prevState => {
+      return prevState.map((item, i) => {
+        if (i === index) {
+          return { file: e.target.files[0] };
+        }
+        return item;
+      });
+    });
+  };
+
+  const deleteComponent = index => {
+    setListComponents(prevState => {
+      return prevState.filter((item, i) => i !== index);
+    });
+  };
+
   return (
     <Form onSubmit={submitForm}>
       <InputFile>
         {photo ? (
           <Img src={URL.createObjectURL(photo)} alt="Вибране фото" />
         ) : (
-          'Вибір фото'
+          'Вибір головного фото'
         )}
         <input
           required
@@ -100,6 +127,47 @@ export const CreatePost = ({ setReGet, setIsDisableSaveBtn }) => {
           onChange={e => setComponents(e.target.value.split('\n'))}
         ></Textarey>
       </Label>
+
+      {listComponents.map((character, index) => {
+        return (
+          <Label key={index}>
+            <br />
+            {listComponents.length > 1 && (
+              <ButtonCircle
+                type="button"
+                onClick={() => deleteComponent(index)}
+              >
+                <Icon name="icon-delete" />
+              </ButtonCircle>
+            )}
+            <InputFile>
+              {listComponents[index].file ? (
+                <Img
+                  src={URL.createObjectURL(listComponents[index].file)}
+                  alt="Вибране фото"
+                />
+              ) : (
+                "Вибір фото об'єкта"
+              )}
+
+              <input
+                required
+                name="img-component"
+                style={{ display: 'none' }}
+                type="file"
+                accept="image/*"
+                multiple=""
+                onChange={e => updateComponents(e, index)}
+              />
+            </InputFile>
+          </Label>
+        );
+      })}
+
+      <Button type="button" onClick={addComponent}>
+        + Додати об'єкт
+      </Button>
+
       <Button type="submit" disabled={isLoading}>
         {isLoading ? (
           <LoadSpiner barColor={'#fff'} borderColor={'#fff'} />

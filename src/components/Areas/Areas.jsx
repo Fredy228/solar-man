@@ -12,30 +12,38 @@ import {
   SectionTitle,
 } from '../../CommonStyle/SectionTitle.styled';
 
-const areasList = [
-  'АЗС',
-  'Готелі',
-  'Склади',
-  'Автомийки',
-  'СТО',
-  'Ресторани',
-  'Офісні центри',
-  'Елеватори',
-  'ТРЦ',
-  'Теплиці',
-  'Супермаркети',
-  'Ферми',
-];
+export const Areas = ({ widthScreen }) => {
+  const areasItem = widthScreen > 767 ? 'Супермаркети' : 'Супер- маркети';
 
-export const Areas = () => {
+  const areasList = [
+    'АЗС',
+    'Готелі',
+    'Склади',
+    'Автомийки',
+    'СТО',
+    'Ресторани',
+    'Офісні центри',
+    'Елеватори',
+    'ТРЦ',
+    'Теплиці',
+    areasItem,
+    'Ферми',
+  ];
+
   return (
     <Inner>
       <WrapperTitle>
-        <SectionTitle colorText={'white'} text={'left'}>
+        <SectionTitle
+          colorText={'white'}
+          text={widthScreen > 767 ? 'left' : 'center'}
+        >
           Сфери <br />
           застосування
         </SectionTitle>
-        <SectionSubtitle colorText={'white'} text={'left'}>
+        <SectionSubtitle
+          colorText={'white'}
+          text={widthScreen > 767 ? 'left' : 'center'}
+        >
           Якщо ваш бізнес є серед цих сфер, то ви 100% можете вийти на нові
           рівні прибутку та незалежності
         </SectionSubtitle>

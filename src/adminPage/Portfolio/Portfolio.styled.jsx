@@ -51,7 +51,7 @@ export const Item = styled.li`
   display: flex;
   align-items: center;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     flex-direction: column;
     justify-content: center;
   }
@@ -66,7 +66,7 @@ export const ItemTitle = styled.h4`
     text-decoration: underline;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     text-align: center;
     margin: 10px 0;
   }
@@ -90,7 +90,7 @@ export const ItemItem = styled.li`
 
 export const BoxInfo = styled.div`
   padding-left: 15px;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     padding: 0;
     width: 100%;
   }
@@ -106,7 +106,7 @@ export const BoxBtn = styled.div`
   flex-direction: column;
   margin-left: auto;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -131,12 +131,12 @@ export const ItemBtn = styled.button`
   :not(:last-child) {
     margin-bottom: 15px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
       margin-bottom: 0;
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     margin: 0 10px;
   }
 

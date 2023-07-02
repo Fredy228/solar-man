@@ -17,8 +17,10 @@ import {
   getStoreComponents,
   getStoreSets,
 } from '../../components/API/API';
-import { Container } from '../Common.styled';
+import { Container, Frontier } from '../Common.styled';
 import { Icon } from '../../components/Icon/Icon';
+import { Consult } from '../../components/Сonsult/Сonsult';
+import useWindowWidth from '../../services/widthScreen';
 
 const initialFilter = {
   brand: [],
@@ -32,6 +34,7 @@ const initialFilter = {
 };
 
 const Store = () => {
+  const widthScreen = useWindowWidth();
   const limit = 12;
   const [searchParams, setSearchParams] = useSearchParams();
   const pageParams = searchParams.get('page');
@@ -59,6 +62,15 @@ const Store = () => {
       }));
     }
   };
+
+  useEffect(() => {
+    setSearchParams(prevSearchParams => {
+      const newSearchParams = new URLSearchParams(prevSearchParams);
+      newSearchParams.set('page', '1');
+      return newSearchParams;
+    });
+    console.log('selectedValues');
+  }, [selectedValues, setSearchParams]);
 
   useEffect(() => {
     if (isShowFilter) document.body.classList.add('no-scroll');
@@ -175,6 +187,9 @@ const Store = () => {
           </WrapperStore>
         </Inner>
       </Container>
+      <Frontier color={'main'}>
+        <Consult widthScreen={widthScreen} />
+      </Frontier>
     </GoogleAnalyticsWrapper>
   );
 };

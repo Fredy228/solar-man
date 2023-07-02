@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
+
 import {
   baseURL,
   getByIdStoreComponent,
@@ -20,20 +21,23 @@ import {
   OptionItem,
   OptionList,
   OptionText,
-  OptionTitle,
-  SpanColor,
   SpanDesrip,
-  TitleProduct,
   WrapperDescrip,
+  WrapperOptionEl,
   WrapperShemaItems,
 } from './StoreByOne.styled';
 import { numbersFormatCost } from '../../services/numbersFormatCost';
 import { Icon } from '../../components/Icon/Icon';
-import { CostProduts } from '../../components/ListGoods/ListTableProduct.styled';
 import { useBasket, useShowModal } from '../../globalState/globalState';
-import { Container } from '../Common.styled';
+import { Container, Frontier } from '../Common.styled';
+import { SectionTitle } from '../../CommonStyle/SectionTitle.styled';
+import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
+import { Consult } from '../../components/Сonsult/Сonsult';
+import useWindowWidth from '../../services/widthScreen';
+import { GoBackBtn } from '../../components/GoBackBtn/GoBackBtn';
 
 const StoreByOne = () => {
+  const widthScreen = useWindowWidth();
   const { typeProduct } = useParams();
   const [searchParams] = useSearchParams();
   const id = searchParams.get('id');
@@ -88,6 +92,7 @@ const StoreByOne = () => {
       ) : (
         <Container>
           <InnerProduct>
+            <GoBackBtn />
             <IntroWrapper>
               <ImgProduct
                 src={`${baseURL}/${product.photo}`}
@@ -96,7 +101,7 @@ const StoreByOne = () => {
                 height="500"
               />
               <NameBox>
-                <TitleProduct>{product.title}</TitleProduct>
+                <SectionTitle text={'left'}>{product.title}</SectionTitle>
                 <CostProduct>
                   {typeProduct === 'component' ? 'Компонент:' : 'Тип:'}{' '}
                   {product.type}
@@ -116,13 +121,15 @@ const StoreByOne = () => {
                   </>
                 )}
                 <CostProduct>
-                  Ціна:{' '}
-                  <SpanColor>{numbersFormatCost(product.cost)}$</SpanColor>
-                </CostProduct>
-                <CostProduts onClick={() => clickGood(product.title)}>
                   <Icon name="icon-cart-buy" />
-                  Замовити
-                </CostProduts>
+                  {numbersFormatCost(product.cost)}$
+                </CostProduct>
+                <ButtonOrg
+                  type={'button'}
+                  onClick={() => clickGood(product.title)}
+                >
+                  <Icon name={'icon-phone'} /> Замовити
+                </ButtonOrg>
               </NameBox>
             </IntroWrapper>
             <WrapperDescrip
@@ -130,7 +137,7 @@ const StoreByOne = () => {
               full={descripHight.value > 250}
               isOpen={descripHight.isOpen}
             >
-              <OptionTitle>Опис товару</OptionTitle>
+              <SectionTitle>Опис товару</SectionTitle>
               <OptionText>{product.descripMain}</OptionText>
               {descripHight.value > 250 && !descripHight.isOpen && (
                 <SpanDesrip
@@ -148,13 +155,13 @@ const StoreByOne = () => {
             <ListCharacter>
               {JSON.parse(product.descripCharacter).map((item, index) => (
                 <ItemCharacter key={index}>
-                  <OptionText isBold={true} isWhite={true} isCenter={true}>
+                  <OptionText isBold={true} isWhite={false} isCenter={false}>
                     {item.subtitle}
                   </OptionText>
-                  <OptionList isWhite={true}>
+                  <OptionList isWhite={false}>
                     {item.option.map((iOption, index) => (
                       <OptionItem key={index}>
-                        <OptionText isWhite={true}>{iOption}</OptionText>
+                        <OptionText isWhite={false}>{iOption}</OptionText>
                       </OptionItem>
                     ))}
                   </OptionList>
@@ -164,14 +171,14 @@ const StoreByOne = () => {
             {typeProduct === 'set' && (
               <>
                 <WrapperShemaItems>
-                  <OptionTitle>Схема роботи СЕС</OptionTitle>
+                  <SectionTitle>Схема роботи СЕС</SectionTitle>
                   <ImgShema
                     src={`${baseURL}/${product.descripPhoto}`}
                     alt={'Схема роботи СЕС'}
                   />
                 </WrapperShemaItems>
                 <WrapperShemaItems>
-                  <OptionTitle>Елементи СЕС</OptionTitle>
+                  <SectionTitle>Елементи СЕС</SectionTitle>
                   <ListCharacter>
                     {JSON.parse(product.components).map((item, index) => (
                       <ItemElement key={index}>
@@ -179,16 +186,16 @@ const StoreByOne = () => {
                           src={`${baseURL}/${item.image}`}
                           alt={item.subtitle}
                         />
-                        <OptionText isBold={true} isCenter={true}>
-                          {item.subtitle}
-                        </OptionText>
-                        <OptionList>
-                          {item.option.map((iOption, indexOption) => (
-                            <OptionItem key={indexOption}>
-                              <OptionText>{iOption}</OptionText>
-                            </OptionItem>
-                          ))}
-                        </OptionList>
+                        <WrapperOptionEl>
+                          <OptionText isBold={true}>{item.subtitle}</OptionText>
+                          <OptionList>
+                            {item.option.map((iOption, indexOption) => (
+                              <OptionItem key={indexOption}>
+                                <OptionText>{iOption}</OptionText>
+                              </OptionItem>
+                            ))}
+                          </OptionList>
+                        </WrapperOptionEl>
                       </ItemElement>
                     ))}
                   </ListCharacter>
@@ -198,6 +205,9 @@ const StoreByOne = () => {
           </InnerProduct>
         </Container>
       )}
+      <Frontier color={'main'}>
+        <Consult widthScreen={widthScreen} />
+      </Frontier>
     </>
   );
 };

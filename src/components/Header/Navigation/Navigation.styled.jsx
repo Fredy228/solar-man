@@ -8,7 +8,7 @@ export const Nav = styled.nav`
   flex: 1;
   color: ${({ theme: { color } }) => color.white};
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     width: 100%;
     flex: none;
   }
@@ -17,7 +17,7 @@ export const Nav = styled.nav`
 export const NavList = styled.ul`
   display: flex;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     flex-direction: column;
     align-items: center;
     border-radius: 20px;
@@ -27,8 +27,8 @@ export const NavList = styled.ul`
     padding: 20px 5px;
   }
 
-  @media screen and (max-width: 768px) {
-    margin: 15px;
+  @media screen and (max-width: 999px) {
+    margin: 0;
   }
 `;
 
@@ -36,13 +36,13 @@ export const NavItem = styled.li`
   cursor: pointer;
   position: relative;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     :not(:last-child) {
       margin-bottom: 5px;
     }
   }
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 999px) {
     :not(:last-child) {
       margin-right: 20px;
     }
@@ -123,7 +123,7 @@ export const DropNav = styled.div`
     width: 310px;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     height: ${({ isShow }) => (isShow ? '180px' : '0')};
   }
   @media screen and (max-width: 355px) {
@@ -196,7 +196,7 @@ export const DropNavLink = styled(NavLink)`
     }
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     justify-content: center;
     text-align: center;
   }

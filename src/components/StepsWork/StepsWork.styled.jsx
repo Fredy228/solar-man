@@ -9,7 +9,7 @@ export const List = styled.ul`
 
   @media screen and (max-width: 767px) {
     max-width: 320px;
-    margin: 0 auto;
+    margin: 20px auto 0 auto;
   }
 `;
 
@@ -43,43 +43,69 @@ export const Item = styled.li`
   padding-bottom: 30px;
   position: relative;
 
-  :after {
-    content: '';
-    height: 3px;
-    width: 100%;
-    background-color: ${({ theme }) => theme.color.second};
-    position: absolute;
-    top: 39px;
-    transform: translateY(-50%);
-    left: 0;
-  }
-
-  :first-child {
+  @media screen and (min-width: 768px) {
     :after {
-      width: 50%;
-      right: 0;
-      left: initial;
-    }
-  }
-
-  :last-child {
-    :after {
-      width: 50%;
+      content: '';
+      height: 3px;
+      width: 100%;
+      background-color: ${({ theme }) => theme.color.second};
+      position: absolute;
+      top: 39px;
+      transform: translateY(-50%);
       left: 0;
     }
-  }
 
-  :nth-child(3):not(:last-child):not(:first-child) {
-    :after {
-      width: ${({ isRows }) => (isRows ? '100vw' : '100%')};
+    :first-child {
+      :after {
+        width: 50%;
+        right: 0;
+        left: initial;
+      }
+    }
+
+    :last-child {
+      :after {
+        width: 50%;
+        left: 0;
+      }
+    }
+
+    :nth-child(3):not(:last-child):not(:first-child) {
+      :after {
+        width: ${({ isRows }) => (isRows ? '100vw' : '100%')};
+      }
+    }
+
+    :nth-child(4) {
+      :after {
+        width: ${({ isRows }) => (isRows ? '100vw' : '100%')};
+        right: ${({ isRows }) => (isRows ? '0' : 'initial')};
+        left: ${({ isRows }) => (isRows ? 'initial' : '0')};
+      }
     }
   }
 
-  :nth-child(4) {
-    :after {
-      width: ${({ isRows }) => (isRows ? '100vw' : '100%')};
-      right: ${({ isRows }) => (isRows ? '0' : 'initial')};
-      left: ${({ isRows }) => (isRows ? 'initial' : '0')};
+  @media screen and (max-width: 999px) and (min-width: 768px) {
+    :nth-child(2) {
+      :after {
+        width: 100vw;
+      }
+    }
+
+    :nth-child(5) {
+      :after {
+        width: 100vw;
+        right: 0;
+        left: initial;
+      }
+    }
+
+    :last-child {
+      :after {
+        width: 100vw;
+        right: 50%;
+        left: initial;
+      }
     }
   }
 
@@ -115,7 +141,7 @@ export const Text = styled.p`
   text-align: center;
   color: ${({ theme }) => theme.color.g500};
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1119px) {
     font-size: 16px;
   }
 `;

@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import ImageGallery from 'react-image-gallery';
 
 export const PortfolioInner = styled.section`
   padding: 50px 0;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     padding: 25px 0;
   }
 `;
@@ -11,39 +13,16 @@ export const PortfolioInner = styled.section`
 export const PortfolioList = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  margin-top: 20px;
 
   @media screen and (max-width: 767px) {
     max-width: 320px;
-    margin: 0 auto;
+    margin: 20px auto 0 auto;
   }
 `;
 
-// export const PortfolioOverLay = styled.div`
-//   position: absolute;
-//   padding: 15px;
-//   width: 100%;
-//   height: 100%;
-//   top: 0;
-//   bottom: 0;
-//   transform: translateY(120%);
-//   transition: transform 350ms ease;
-//   color: ${({ theme }) => theme.color.white};
-//   background-image: linear-gradient(
-//     to bottom,
-//     rgba(0, 0, 0, 0),
-//     rgba(0, 0, 0, 0.9) 40%
-//   );
-// `;
-
 export const PortfolioItem = styled.li`
   border-radius: 10px;
-  cursor: pointer;
-
-  :hover {
-    h4 {
-      color: ${({ theme }) => theme.color.second};
-    }
-  }
 
   @media screen and (max-width: 767px) {
     max-width: 320px;
@@ -61,18 +40,39 @@ export const PortfolioItem = styled.li`
   }
 `;
 
+export const PortfolioItemLink = styled(NavLink)`
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+
+  :hover {
+    h4 {
+      color: ${({ theme }) => theme.color.second};
+    }
+  }
+`;
+
 export const WrapperImg = styled.div`
   border-radius: 10px;
   overflow: hidden;
   width: 100%;
   height: 260px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 350ms ease;
 
-  @media screen and (max-width: 1200px) {
+  :hover {
+    transform: ${({ scaleImg }) => (scaleImg ? 'scale(1.05)' : 'initial')};
+  }
+
+  @media screen and (max-width: 1199px) {
     height: 200px;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     height: 220px;
   }
 
@@ -82,7 +82,7 @@ export const WrapperImg = styled.div`
 `;
 
 export const PortfolioImg = styled.img`
-  width: 100%;
+  border-radius: 10px;
 `;
 
 export const TitlePortfolio = styled.h4`
@@ -103,22 +103,81 @@ export const SpanOverLay = styled.span`
   border-radius: 20px;
   color: ${({ theme }) => theme.color.g2};
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1199px) {
     font-size: 12px;
   }
 `;
 
-// export const ListOverLay = styled.ul`
-//   list-style: initial;
-//   margin-left: 15px;
-//   margin: 5px 0 0 15px;
-// `;
-//
-// export const TextOverLay = styled.li`
-//   font-size: 16px;
-//   margin-bottom: 5px;
-//
-//   @media screen and (max-width: 1200px) {
-//     font-size: 14px;
-//   }
-// `;
+export const InnerProjectOne = styled.div`
+  margin-top: 100px;
+`;
+
+export const WrapperIntroProject = styled.div`
+  display: flex;
+  margin-bottom: 30px;
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
+`;
+
+export const BoxIntroImg = styled.div`
+  width: 420px;
+  height: 250px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-right: 15px;
+
+  @media screen and (max-width: 999px) {
+    width: 300px;
+    height: 180px;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    height: 200px;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+`;
+
+export const BoxIntroComponents = styled.div`
+  flex: 1;
+`;
+
+export const IntroImg = styled.img``;
+export const IntroTitle = styled.h2`
+  font-size: 24px;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  color: ${({ theme }) => theme.color.g2};
+
+  @media screen and (max-width: 999px) {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+`;
+
+export const IntroComponentsList = styled.ul`
+  list-style: initial;
+  margin-left: 20px;
+  color: ${({ theme }) => theme.color.g2};
+`;
+
+export const IntroComponentsItem = styled.li`
+  font-size: 18px;
+
+  :first-child {
+    font-weight: bold;
+    list-style: none;
+  }
+
+  :not(:last-child) {
+    margin-bottom: 5px;
+  }
+`;
+
+export const Gallery = styled(ImageGallery)``;

@@ -22,16 +22,18 @@ export const ReactPaginateStyled = styled(ReactPaginate)`
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-    border: 1px solid ${({ theme }) => theme.color.additional};
+    background-color: ${({ theme }) => theme.color.white};
     cursor: pointer;
     font-size: 16px;
     line-height: 0.94;
-    color: ${({ theme }) => theme.color.additional};
-    transition: transform 350ms ease;
+    color: ${({ theme }) => theme.color.main};
+    transition-property: background-color, color;
+    transition-duration: 350ms;
+    transition-timing-function: ease;
 
-    &:hover,
-    &:focus {
-      transform: scale(1.1);
+    &:hover {
+      background-color: ${({ theme }) => theme.color.main};
+      color: ${({ theme }) => theme.color.white};
     }
   }
 
@@ -43,11 +45,14 @@ export const ReactPaginateStyled = styled(ReactPaginate)`
     align-items: center;
     justify-content: center;
     text-align: center;
-    border: 1px solid ${({ theme }) => theme.color.additional};
     font-size: 16px;
-    line-height: 0.94;
+    line-height: 1;
     color: ${({ theme }) => theme.color.white};
-    background-color: ${({ theme }) => theme.color.additional};
+    background-color: ${({ theme }) => theme.color.second};
+
+    :hover {
+      background-color: ${({ theme }) => theme.color.second};
+    }
   }
 `;
 
@@ -65,11 +70,20 @@ export const BtnWrapper = styled.div`
   border: none;
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: ${({ theme }) => theme.color.g200};
+  border-radius: 50%;
 
   svg {
-    width: 35px;
-    height: 35px;
-    fill: ${({ theme }) => theme.color.additional};
+    width: 25px;
+    height: 25px;
+    stroke: ${({ theme }) => theme.color.main};
+  }
+
+  :hover {
+    background-color: transparent;
+
+    svg {
+      stroke: ${({ theme }) => theme.color.white};
+    }
   }
 `;

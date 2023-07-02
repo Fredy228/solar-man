@@ -9,10 +9,17 @@ import {
   Textarey,
   InputFile,
   Img,
+  ButtonCircle,
 } from '../../components/AdminFormCreate/AdminFormCreate.styled';
-import { updatePosts, getPostsById, baseURL } from 'components/API/API';
+import {
+  updatePosts,
+  getPostsById,
+  baseURL,
+  deletePostImage,
+} from 'components/API/API';
 import { Inner } from './Portfolio.styled';
 import { LoadSpiner } from '../../components/LoadSpiner/LoadSpiner';
+import { Icon } from '../../components/Icon/Icon';
 
 const PortfolioId = () => {
   const { postId } = useParams();
@@ -22,12 +29,14 @@ const PortfolioId = () => {
   const [photo, setPhoto] = useState(undefined);
   const history = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [listComponents, setListComponents] = useState([{ file: undefined }]);
+  const [gallery, setGallery] = useState([]);
 
   const submitForm = async e => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      await updatePosts(postId, title, year, components, photo);
+      await updatePosts(postId, title, year, components, photo, listComponents);
       setIsLoading(false);
       Notify.success('Змінено');
       history(`/admin/portfolio`);
@@ -40,19 +49,49 @@ const PortfolioId = () => {
 
   useEffect(() => {
     async function getPost() {
-      try {
-        const { post } = await getPostsById(postId);
-        console.log(post);
-        setPhoto(post.urlImg);
-        setTitle(post.title);
-        setYear(post.year);
-        setComponents(JSON.parse(post.components));
-      } catch (error) {
-        console.log(error);
-      }
+      const { post } = await getPostsById(postId);
+      setPhoto(post.urlImg);
+      setTitle(post.title);
+      setYear(post.year);
+      setComponents(JSON.parse(post.components));
+      if (post.galleryUrl) setGallery(JSON.parse(post.galleryUrl));
     }
-    getPost();
+    getPost().catch(console.error);
   }, [postId]);
+
+  const addComponent = () => {
+    if (listComponents.length > 12)
+      return Notify.warning('Можна створити до 12 блоків');
+    setListComponents(prevState => [...prevState, { file: undefined }]);
+  };
+
+  const updateComponents = (e, index) => {
+    setListComponents(prevState => {
+      return prevState.map((item, i) => {
+        if (i === index) {
+          return { file: e.target.files[0] };
+        }
+        return item;
+      });
+    });
+  };
+
+  const deleteComponent = index => {
+    setListComponents(prevState => {
+      return prevState.filter((item, i) => i !== index);
+    });
+  };
+
+  const deleteImage = urlMini => {
+    async function fnDelete() {
+      setIsLoading(true);
+      await deletePostImage(postId, urlMini);
+      setGallery(prevState => prevState.filter(item => urlMini !== item.mini));
+      setIsLoading(false);
+      Notify.success('Виделено');
+    }
+    fnDelete().catch(console.error);
+  };
 
   return (
     <Inner>
@@ -114,6 +153,60 @@ const PortfolioId = () => {
             onChange={e => setComponents(e.target.value.split('\n'))}
           ></Textarey>
         </Label>
+
+        {gallery.map(item => (
+          <Label key={item.mini}>
+            <ButtonCircle
+              type="button"
+              onClick={() => deleteImage(item.mini)}
+              disabled={isLoading}
+            >
+              <Icon name="icon-delete" />
+            </ButtonCircle>
+            <Img src={`${baseURL}/${item.mini}`} alt="Вибране фото" />
+          </Label>
+        ))}
+
+        {listComponents.map((character, index) => {
+          return (
+            <Label key={index}>
+              <br />
+              {listComponents.length > 1 && (
+                <ButtonCircle
+                  type="button"
+                  onClick={() => deleteComponent(index)}
+                >
+                  <Icon name="icon-delete" />
+                </ButtonCircle>
+              )}
+
+              <InputFile>
+                {listComponents[index].file ? (
+                  <Img
+                    src={URL.createObjectURL(listComponents[index].file)}
+                    alt="Вибране фото"
+                  />
+                ) : (
+                  "Вибір фото об'єкта"
+                )}
+
+                <input
+                  name="img-component"
+                  style={{ display: 'none' }}
+                  type="file"
+                  accept="image/*"
+                  multiple=""
+                  onChange={e => updateComponents(e, index)}
+                />
+              </InputFile>
+            </Label>
+          );
+        })}
+
+        <Button type="button" onClick={addComponent}>
+          + Додати об'єкт
+        </Button>
+
         <Button type="submit" disabled={isLoading}>
           {isLoading ? (
             <LoadSpiner borderColor={'#fff'} barColor={'#fff'} />

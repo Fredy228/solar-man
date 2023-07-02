@@ -6,7 +6,7 @@ export const StationInner = styled.section`
   position: relative;
   display: flex;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     padding: 25px 0;
   }
 
@@ -37,7 +37,7 @@ export const SliderBox = styled.div`
   max-width: 700px;
   margin: 25px auto 0 auto;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1119px) {
     margin: 25px 50px 0 50px;
   }
 
@@ -71,7 +71,7 @@ export const StationImg = styled.img`
   position: absolute;
   z-index: -1;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1119px) {
     width: 600px;
     left: -150px;
   }
@@ -92,7 +92,7 @@ export const ListResult = styled.ul`
   gap: 20px;
   justify-content: center;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 999px) {
     flex-wrap: wrap;
   }
 
@@ -135,7 +135,7 @@ export const ItemResult = styled.li`
     font-weight: bold;
   }
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1119px) {
     width: 150px;
     height: 80px;
     padding: 5px 15px;
@@ -157,7 +157,7 @@ export const TextResult = styled.p`
   text-align: left;
   margin-bottom: 5px;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1119px) {
     font-size: 14px;
   }
 `;
