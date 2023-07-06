@@ -40,7 +40,7 @@ export const Logo = styled.div`
     fill: ${({ theme }) => theme.color.second};
   }
 
-  @media screen and (max-width: 1119px) {
+  @media screen and (max-width: 1199px) {
     svg {
       height: 42px;
     }

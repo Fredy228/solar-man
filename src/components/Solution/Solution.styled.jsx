@@ -17,7 +17,7 @@ export const CustomNavigation = styled.div`
   bottom: 200px;
   z-index: 20;
 
-  @media screen and (max-width: 1119px) {
+  @media screen and (max-width: 1199px) {
     bottom: 180px;
   }
 
@@ -99,7 +99,7 @@ export const Title = styled.p`
   margin: 10px 0 15px 0;
   transition: color 350ms ease;
 
-  @media screen and (max-width: 1119px) {
+  @media screen and (max-width: 1199px) {
     font-size: 14px;
   }
   @media screen and (max-width: 767px) {
@@ -168,7 +168,7 @@ export const BuyBtn = styled.span`
     transition: stroke 350ms ease;
   }
 
-  @media screen and (max-width: 1119px) {
+  @media screen and (max-width: 1199px) {
     font-size: 16px;
   }
   @media screen and (max-width: 767px) {

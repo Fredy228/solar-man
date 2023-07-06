@@ -25,7 +25,9 @@ export const Head = forwardRef(({ headerHeight }, ref) => {
     if (widthSreen > 1000) return;
 
     setShowBurger(!showBurger);
-    document.body.classList.toggle('no-scroll');
+
+    if (!showBurger) document.body.classList.add('no-scroll');
+    if (showBurger) document.body.classList.remove('no-scroll');
   };
 
   useEffect(() => {

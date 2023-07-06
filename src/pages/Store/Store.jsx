@@ -69,7 +69,6 @@ const Store = () => {
       newSearchParams.set('page', '1');
       return newSearchParams;
     });
-    console.log('selectedValues');
   }, [selectedValues, setSearchParams]);
 
   useEffect(() => {

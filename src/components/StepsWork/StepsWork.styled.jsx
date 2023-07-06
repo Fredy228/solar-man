@@ -141,7 +141,7 @@ export const Text = styled.p`
   text-align: center;
   color: ${({ theme }) => theme.color.g500};
 
-  @media screen and (max-width: 1119px) {
+  @media screen and (max-width: 1199px) {
     font-size: 16px;
   }
 `;

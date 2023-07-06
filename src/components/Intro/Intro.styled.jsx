@@ -123,7 +123,7 @@ export const CardIntro = styled.div`
     outline-color: ${({ theme }) => theme.color.second};
   }
 
-  @media screen and (max-width: 1119px) {
+  @media screen and (max-width: 1199px) {
     height: 240px;
   }
 

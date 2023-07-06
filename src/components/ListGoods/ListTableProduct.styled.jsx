@@ -94,7 +94,7 @@ export const PowerSpan = styled.span`
   background-color: ${({ theme }) => theme.color.second};
   color: ${({ theme }) => theme.color.white};
 
-  @media screen and (max-width: 1119px) and (min-width: 767px) {
+  @media screen and (max-width: 1199px) and (min-width: 767px) {
     font-size: 12px;
     width: 70px;
     height: 25px;
