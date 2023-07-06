@@ -15,13 +15,10 @@ import { GoBackBtn } from '../GoBackBtn/GoBackBtn';
 export const ProjectsById = ({ post }) => {
   const components = JSON.parse(post.components);
   const gallery = post.galleryUrl ? JSON.parse(post.galleryUrl) : [];
-  console.log('gallery', gallery);
   const reactImgView = gallery.map(item => ({
     original: `${baseURL}/${item.original}`,
     thumbnail: `${baseURL}/${item.mini}`,
   }));
-
-  console.log(reactImgView);
 
   return (
     <InnerProjectOne>

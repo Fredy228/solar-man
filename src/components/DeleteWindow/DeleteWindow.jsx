@@ -1,7 +1,7 @@
 import { Button, Text, WindowBox, WrapperBtn } from './DeleteWindow.styled';
 import { Icon } from '../Icon/Icon';
 
-export const DeleteWindow = ({ fn, id }) => {
+export const DeleteWindow = ({ fn, id, url }) => {
   return (
     <WindowBox>
       <Text>Точно хочете видалити?</Text>
@@ -9,7 +9,7 @@ export const DeleteWindow = ({ fn, id }) => {
         <Button
           type={'button'}
           onClick={() => {
-            fn(id);
+            fn(id, url);
           }}
         >
           <Icon name="icon-delete" />

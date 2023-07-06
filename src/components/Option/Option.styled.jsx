@@ -28,6 +28,10 @@ export const ImageBox = styled.div`
     height: 0;
     z-index: 10;
   }
+
+  @media screen and (max-width: 767px) {
+    height: ${({ heightSet }) => (heightSet ? heightSet : '0')};
+  }
 `;
 
 export const Img = styled.img`
@@ -50,6 +54,31 @@ export const Img = styled.img`
   @media screen and (max-width: 767px) {
     width: 380px;
     right: -185px;
+  }
+`;
+
+export const ImgAboutUs = styled.img`
+  position: absolute;
+  right: -70px;
+  bottom: -320px;
+  width: 560px;
+
+  @media screen and (max-width: 1199px) {
+    width: 480px;
+    right: -60px;
+    bottom: -250px;
+  }
+
+  @media screen and (max-width: 999px) {
+    width: 400px;
+    right: -140px;
+    bottom: -180px;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 420px;
+    right: -120px;
+    bottom: -220px;
   }
 `;
 

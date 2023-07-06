@@ -20,9 +20,13 @@ import {
 import { Inner } from './Portfolio.styled';
 import { LoadSpiner } from '../../components/LoadSpiner/LoadSpiner';
 import { Icon } from '../../components/Icon/Icon';
+import { Modal } from '../../components/Modal/Modal';
+import { DeleteWindow } from '../../components/DeleteWindow/DeleteWindow';
+import { useShowModal } from '../../globalState/globalState';
 
 const PortfolioId = () => {
   const { postId } = useParams();
+  const { isShowModal, toggleModal } = useShowModal();
   const [title, setTitle] = useState('');
   const [year, setYear] = useState('');
   const [components, setComponents] = useState([]);
@@ -31,6 +35,7 @@ const PortfolioId = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [listComponents, setListComponents] = useState([{ file: undefined }]);
   const [gallery, setGallery] = useState([]);
+  const [urlPhoto, setUrlPhoto] = useState('');
 
   const submitForm = async e => {
     e.preventDefault();
@@ -82,13 +87,14 @@ const PortfolioId = () => {
     });
   };
 
-  const deleteImage = urlMini => {
+  const deleteImage = (id, urlMini) => {
     async function fnDelete() {
       setIsLoading(true);
-      await deletePostImage(postId, urlMini);
+      await deletePostImage(id, urlMini);
       setGallery(prevState => prevState.filter(item => urlMini !== item.mini));
       setIsLoading(false);
       Notify.success('Виделено');
+      toggleModal(false);
     }
     fnDelete().catch(console.error);
   };
@@ -158,7 +164,10 @@ const PortfolioId = () => {
           <Label key={item.mini}>
             <ButtonCircle
               type="button"
-              onClick={() => deleteImage(item.mini)}
+              onClick={() => {
+                setUrlPhoto(item.mini);
+                toggleModal(true);
+              }}
               disabled={isLoading}
             >
               <Icon name="icon-delete" />
@@ -215,6 +224,11 @@ const PortfolioId = () => {
           )}
         </Button>
       </Form>
+      {isShowModal && (
+        <Modal>
+          <DeleteWindow fn={deleteImage} id={postId} url={urlPhoto} />
+        </Modal>
+      )}
     </Inner>
   );
 };

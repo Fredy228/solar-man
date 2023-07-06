@@ -29,11 +29,10 @@ export const ListProduct = ({ products, setProducts, type }) => {
   const {
     userData: { role },
   } = useStoreUser();
-  const { toggleModal } = useShowModal();
   const [isShowBtn, setIsShowBtn] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { isShowModal } = useShowModal();
+  const { isShowModal, toggleModal } = useShowModal();
   const [idGood, setIdGood] = useState('');
 
   const fnDeleteProd = async id => {

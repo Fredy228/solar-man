@@ -7,97 +7,75 @@ import {
   TeamImg,
   TeamName,
   TeamRole,
-  TeamRoleText,
   SpanLineText,
+  TeamSvgWrapper,
 } from './Team.styled';
 
 import {
   SectionTitle,
-  TitleSpan,
-  SetctionText,
-} from 'components/SectionTitle/SectionTitle.styled';
+  SectionSubtitle,
+} from '../../CommonStyle/SectionTitle.styled';
 
-import teamImg_1 from '../../img/team/team-1.jpg';
-import teamWebp_1 from '../../img/team/team-1.webp';
-import teamImg_2 from '../../img/team/team-2.jpg';
-import teamWebp_2 from '../../img/team/team-2.webp';
-import teamImg_3 from '../../img/team/team-3.jpg';
-import teamWebp_3 from '../../img/team/team-3.webp';
+import teamWebp_1 from '../../img/team/teamWebp_1.webp';
+import teamWebp_2 from '../../img/team/teamWebp_2.webp';
+import teamWebp_3 from '../../img/team/teamWebp_3.webp';
+
+const teams = [
+  {
+    id: 1,
+    name: 'Анатолій Віговський',
+    role: 'Менеджер з продажів',
+    photo: teamWebp_1,
+    iconName: 'icon-brain',
+  },
+  {
+    id: 2,
+    name: 'Павло Рогожа',
+    role: 'Управляючий',
+    photo: teamWebp_2,
+    iconName: 'icon-heart',
+  },
+  {
+    id: 3,
+    name: 'Максим Малаєвський',
+    role: 'Начальник виробництва',
+    photo: teamWebp_3,
+    iconName: 'icon-muscles',
+  },
+];
 
 export const Team = () => {
   return (
     <TeamInner>
-      <SectionTitle>
-        <TitleSpan>Наша</TitleSpan> команда
-      </SectionTitle>
-      <SetctionText>
-        Зарядіть свій будинок сонячною енергією та економте на рахунках за
-        електрику!
-      </SetctionText>
+      <SectionTitle colorText={'white'}>Зіркова команда</SectionTitle>
+      <SectionSubtitle colorText={'white'} maxWidth={'580px'}>
+        Наша команда - це з висококваліфіковані інженеріи та монтажники, які
+        мають багаторічний досвід у реалізації сонячних проектів. Ми гарантуємо
+        високу якість роботи та використання надійних компонентів, що
+        забезпечують тривалу та безперебійну роботу сонячних електростанцій.
+      </SectionSubtitle>
+
       <TeamList>
-        <TeamItem>
-          <TeamItemInner>
-            <picture>
-              <source type="image/webp" srcSet={teamWebp_2} />
-              <source type="image/jpg" srcSet={teamImg_2} />
+        {teams.map(item => (
+          <TeamItem key={item.id}>
+            <TeamItemInner>
               <TeamImg
-                src={teamImg_2}
+                src={item.photo}
                 loading="lazy"
-                width="270"
-                height="280"
-                alt="Анатолій Віговський"
+                width="224"
+                height="224"
+                alt={item.name}
               />
-            </picture>
-            <TeamName>Анатолій Віговський</TeamName>
-            <TeamRole>
-              <Icon name="icon-brain" />
-              <TeamRoleText>Мозок</TeamRoleText>
-            </TeamRole>
-            <SpanLineText>Менеджер з продажу</SpanLineText>
-          </TeamItemInner>
-        </TeamItem>
-        <TeamItem>
-          <TeamItemInner>
-            <picture>
-              <source type="image/webp" srcSet={teamWebp_1} />
-              <source type="image/jpg" srcSet={teamImg_1} />
-              <TeamImg
-                src={teamImg_1}
-                loading="lazy"
-                width="270"
-                height="280"
-                alt="Павел Рогожа"
-              />
-            </picture>
-            <TeamName>Павло Рогожа</TeamName>
-            <TeamRole>
-              <Icon name="icon-heart" />
-              <TeamRoleText>Серце</TeamRoleText>
-            </TeamRole>
-            <SpanLineText>Управляючий</SpanLineText>
-          </TeamItemInner>
-        </TeamItem>
-        <TeamItem>
-          <TeamItemInner>
-            <picture>
-              <source type="image/webp" srcSet={teamWebp_3} />
-              <source type="image/jpg" srcSet={teamImg_3} />
-              <TeamImg
-                src={teamImg_3}
-                loading="lazy"
-                width="270"
-                height="280"
-                alt="Малаевский Максим"
-              />
-            </picture>
-            <TeamName>Максим Малаєвський</TeamName>
-            <TeamRole>
-              <Icon name="icon-muscles" />
-              <TeamRoleText>М'язи</TeamRoleText>
-            </TeamRole>
-            <SpanLineText>Начальник виробництва</SpanLineText>
-          </TeamItemInner>
-        </TeamItem>
+              <TeamRole>
+                <TeamSvgWrapper>
+                  <Icon name={item.iconName} />
+                </TeamSvgWrapper>
+              </TeamRole>
+              <TeamName>{item.name}</TeamName>
+              <SpanLineText>{item.role}</SpanLineText>
+            </TeamItemInner>
+          </TeamItem>
+        ))}
       </TeamList>
     </TeamInner>
   );

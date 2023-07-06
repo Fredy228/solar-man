@@ -2,14 +2,15 @@ import styled from 'styled-components';
 import { IMaskInput } from 'react-imask';
 
 export const Inner = styled.div`
-  background-image: linear-gradient(
-    to right,
-    ${({ theme }) => theme.color.main},
-    ${({ theme }) => theme.color.second}
+  background: radial-gradient(
+    186.93% 102.34% at 81.46% 7.95%,
+    #fff8de 0%,
+    #dceeff 100%
   );
+
   padding: 20px;
-  color: ${({ theme }) => theme.color.white};
-  border-radius: 20px;
+  color: ${({ theme }) => theme.color.g2};
+  border-radius: 10px;
   font-size: 16px;
   max-width: 460px;
   width: 100%;
@@ -24,9 +25,14 @@ export const Text = styled.p`
 `;
 
 export const Span = styled.a`
-  color: inherit;
+  color: ${({ theme }) => theme.color.g500};
   text-decoration: underline;
   font-weight: 500;
+  transition: color 350ms ease;
+
+  :hover {
+    color: ${({ theme }) => theme.color.second};
+  }
 `;
 
 export const TextAdd = styled.p`
@@ -46,24 +52,26 @@ export const Form = styled.form`
 export const Input = styled.input`
   margin-bottom: 20px;
   padding: 10px 20px;
-  border-radius: 50px;
+  border-radius: 10px;
   outline: none;
   width: 100%;
   font-size: 18px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 0 0 1px;
 `;
 
 export const PhoneInput = styled(IMaskInput)`
   margin-bottom: 20px;
   padding: 10px 20px;
-  border-radius: 50px;
+  border-radius: 10px;
   outline: none;
   width: 100%;
   font-size: 18px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 0 0 1px;
 `;
 
 export const Button = styled.button`
   border-radius: 50px;
-  background-color: ${({ theme }) => theme.color.additional};
+  background-color: ${({ theme }) => theme.color.second};
   color: ${({ theme }) => theme.color.white};
   cursor: pointer;
   font-family: inherit;
@@ -74,18 +82,13 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-  transition-property: background-color, color;
+  transition-property: background-color;
   transition-duration: 350ms;
   transition-timing-function: ease;
   margin-bottom: 10px;
 
   :hover {
-    background-color: ${({ theme }) => theme.color.additionalV2};
-    color: ${({ theme }) => theme.color.black};
-  }
-
-  :hover svg {
-    fill: ${({ theme }) => theme.color.black};
+    background-color: ${({ theme }) => theme.color.main};
   }
 
   svg {
@@ -93,6 +96,5 @@ export const Button = styled.button`
     height: 20px;
     fill: ${({ theme }) => theme.color.white};
     margin-right: 5px;
-    transition: fill 350ms ease;
   }
 `;

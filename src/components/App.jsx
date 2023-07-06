@@ -23,6 +23,7 @@ const ForInvestment = lazy(() => import('pages/OurServices/ForInvestment'));
 const ForBackupPower = lazy(() => import('pages/OurServices/ForBackupPower'));
 
 const AboutUs = lazy(() => import('pages/AboutUs/AboutUs'));
+const Contacts = lazy(() => import('pages/Contacts/Contacts'));
 const Projects = lazy(() => import('pages/Projects/Projects'));
 const ProjectByOne = lazy(() => import('pages/Projects/ProjectByOne'));
 const Store = lazy(() => import('pages/Store/Store'));
@@ -48,6 +49,7 @@ export const App = () => {
         <Route path="/backup-power" element={<ForBackupPower />} />
 
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/contacts" element={<Contacts />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:idProject" element={<ProjectByOne />} />
         <Route path="/store" element={<Store />} />

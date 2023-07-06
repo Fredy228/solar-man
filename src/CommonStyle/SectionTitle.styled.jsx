@@ -20,4 +20,7 @@ export const SectionSubtitle = styled.p`
   font-size: 16px;
   text-align: ${({ text }) => (text ? text : 'center')};
   margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : 'initial')};
 `;

@@ -75,7 +75,7 @@ export const Navigation = ({ showMenu }) => {
           </LinkTo>
         </NavItem>
         <NavItem>
-          <LinkTo to="/about-us" onClick={toggleMenu}>
+          <LinkTo to="/contacts" onClick={toggleMenu}>
             Контакти
           </LinkTo>
         </NavItem>

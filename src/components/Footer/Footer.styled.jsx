@@ -33,7 +33,7 @@ export const FooterLink = styled.a`
   position: relative;
 
   @media screen and (max-width: 767px) {
-    margin-right: 15px;
+    margin-right: 5px;
     width: 40px;
     height: 40px;
 

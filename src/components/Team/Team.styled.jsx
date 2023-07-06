@@ -13,6 +13,11 @@ export const TeamList = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   margin: 30px 0 0 0;
+  gap: 30px;
+
+  @media screen and (max-width: 1199px) {
+    gap: 20px;
+  }
 
   @media screen and (max-width: 767px) {
     max-width: 320px;
@@ -20,113 +25,112 @@ export const TeamList = styled.ul`
   }
 `;
 
-export const TeamItem = styled.li`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
-
-  @media screen and (min-width: 768px) {
-    width: calc(100% / 2);
-  }
-
-  @media screen and (min-width: 1000px) {
-    width: calc(100% / 3);
-  }
-`;
-
 export const SpanLineText = styled.span`
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  font-size: 14px;
+  text-align: left;
+  font-size: 18px;
   width: 100%;
-  opacity: 0;
-  transition: opacity 350ms ease;
-  font-style: italic;
+  color: ${({ theme }) => theme.color.second};
+  font-weight: 600;
+
+  @media screen and (max-width: 999px) {
+    text-align: center;
+  }
 `;
 
 export const TeamItemInner = styled.div`
   position: relative;
   overflow: hidden;
-  border-radius: 20px;
-  padding: 10px;
+  border-radius: 10px;
+  padding: 40px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-  cursor: pointer;
+  background-color: #255898;
+  width: 100%;
+  height: 100%;
 
-  :after {
-    position: absolute;
-    content: '';
-    bottom: 0;
-    right: 20px;
-    width: calc(50% - 20px);
-    height: 5px;
-    border-radius: 5px;
-    background-color: ${({ theme }) => theme.color.second};
-    transition-property: width;
-    transition-duration: 350ms;
-    transition-timing-function: ease;
-  }
-
-  :before {
-    position: absolute;
-    content: '';
-    bottom: 0;
-    left: 20px;
-    width: calc(50% - 18px);
-    height: 5px;
-    border-radius: 5px;
-    background-color: ${({ theme }) => theme.color.second};
-    transition-property: width, bottom;
-    transition-duration: 350ms;
-    transition-timing-function: ease;
-  }
-
-  :hover::after,
-  :hover::before {
-    width: 20px;
-  }
-
-  :hover ${SpanLineText} {
-    opacity: 1;
+  @media screen and (max-width: 768px) {
+    padding: 40px 24px;
   }
 `;
 
 export const TeamImg = styled.img`
-  max-width: 270px;
-  border-radius: 20px;
-  margin-bottom: 15px;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  width: 200px;
 `;
 
 export const TeamName = styled.p`
-  font-size: 20px;
-  margin-bottom: 15px;
-`;
+  font-size: 18px;
+  margin-bottom: 5px;
+  text-align: left;
+  width: 100%;
+  font-weight: 600;
+  color: ${({ theme }) => theme.color.white};
 
-export const TeamRole = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-
-  svg {
-    width: 25px;
-    height: 25px;
-    stroke: ${({ theme }) => theme.color.second};
-    margin-right: 5px;
+  @media screen and (max-width: 999px) {
+    text-align: center;
   }
 `;
 
-export const TeamRoleText = styled.p`
-  font-size: 18px;
-  color: ${({ theme }) => theme.color.second};
-  font-weight: bold;
+export const TeamRole = styled.div`
+  margin-bottom: 20px;
+  margin-top: 24px;
+  position: relative;
+  height: 0;
+  width: 100%;
+`;
+
+export const TeamSvgWrapper = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.color.white};
+  transition-property: background-color;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    stroke: ${({ theme }) => theme.color.main};
+    fill: ${({ theme }) => theme.color.main};
+    transition-property: stroke, fill;
+    transition-duration: 350ms;
+    transition-timing-function: ease;
+  }
+
+  @media screen and (max-width: 999px) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`;
+
+export const TeamItem = styled.li`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-radius: 10px;
+  border: 2px solid #255898;
+  transition-property: border-color;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+
+  :hover {
+    border-color: ${({ theme }) => theme.color.second};
+
+    ${TeamSvgWrapper} {
+      background-color: ${({ theme }) => theme.color.second};
+
+      svg {
+        stroke: ${({ theme }) => theme.color.white};
+        fill: ${({ theme }) => theme.color.white};
+      }
+    }
+  }
 `;

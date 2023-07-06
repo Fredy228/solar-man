@@ -35,6 +35,7 @@ import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
 import { Consult } from '../../components/Сonsult/Сonsult';
 import useWindowWidth from '../../services/widthScreen';
 import { GoBackBtn } from '../../components/GoBackBtn/GoBackBtn';
+import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 
 const StoreByOne = () => {
   const widthScreen = useWindowWidth();
@@ -86,7 +87,7 @@ const StoreByOne = () => {
   }, [id, typeProduct, searchParams]);
 
   return (
-    <>
+    <GoogleAnalyticsWrapper>
       {isLoading ? (
         <LoadPage />
       ) : (
@@ -208,7 +209,7 @@ const StoreByOne = () => {
       <Frontier color={'main'}>
         <Consult widthScreen={widthScreen} />
       </Frontier>
-    </>
+    </GoogleAnalyticsWrapper>
   );
 };
 

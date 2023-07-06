@@ -62,6 +62,7 @@ export const SendPhone = () => {
     sendAPI();
     e.currentTarget.reset();
   };
+
   return (
     <Inner>
       <Text isBold={true}>Отримаєте безкоштовну консультацію!</Text>
