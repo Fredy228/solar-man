@@ -2,24 +2,29 @@ import { Icon } from 'components/Icon/Icon';
 import { DescripBox, ImageBox, Inner, Text, Title, Img } from './Option.styled';
 import { useShowModal } from 'globalState/globalState';
 
-import imgIntro_webp from '../../img/ourServices/intro-4.webp';
-import imgIntro_png from '../../img/ourServices/intro-4.png';
+import backupIntro from '../../img/ourServices/backup-intro.webp';
 import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
 
-export const OptionBackupPower = () => {
+export const OptionBackupPower = ({ widthScreen }) => {
   const { toggleModal } = useShowModal();
 
   return (
-    <Inner>
+    <Inner minHeight={true}>
       <DescripBox>
         <Title>
-          Системи резервного <br /> живлення
+          Системи <br />
+          резервного живлення <br />
+          для{' '}
+          {widthScreen < 768 ? 'енерго- \nнезалежності' : 'енергонезалежності'}
         </Title>
         <Text>
           Система, що забезпечує електроживлення будинку при відключенні мережі
           або відсутності електроенергії. Можуть бути автономними та працювати
-          без підключення до мережі, забезпечуючи стабільне живлення незалежно
-          від зовнішніх факторів.
+          без підключення до мережі, {widthScreen < 768 && <br />}
+          забезпечуючи {widthScreen < 768 && <br />}стабільне{' '}
+          {widthScreen < 768 && <br />}живлення {widthScreen < 768 && <br />}
+          незалежно {widthScreen < 768 && <br />}від зовнішніх{' '}
+          {widthScreen < 768 && <br />}факторів.
         </Text>
 
         <ButtonOrg type={'button'} onClick={() => toggleModal(true)}>
@@ -27,11 +32,7 @@ export const OptionBackupPower = () => {
         </ButtonOrg>
       </DescripBox>
       <ImageBox>
-        <picture>
-          <source type="image/webp" srcSet={imgIntro_webp} />
-          <source type="image/png" srcSet={imgIntro_png} />
-          <Img src={imgIntro_png} width="500" height="500" loading="lazy" />
-        </picture>
+        <Img src={backupIntro} width="718" height="718" loading="lazy" />
       </ImageBox>
     </Inner>
   );

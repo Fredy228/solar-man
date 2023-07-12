@@ -10,29 +10,12 @@ import {
   EllipseBg,
   ImgEllipse,
   EllipseBox,
-  // IntroImg,
 } from './Intro.styled';
 import { Icon } from 'components/Icon/Icon';
 
 import intro1_webp from '../../img/intro/intro-1.webp';
-// import intro1_jpg from '../../img/intro/intro-1.jpg';
 import intro2_webp from '../../img/intro/intro-2.webp';
-// import intro2_jpg from '../../img/intro/intro-2.jpg';
 import intro3_webp from '../../img/intro/intro-3.webp';
-// import intro3_jpg from '../../img/intro/intro-3.jpg';
-
-// <picture>
-//   <source type="image/webp" srcSet={intro1_webp} />
-//   <source type="image/jpg" srcSet={intro1_jpg} />
-//   <IntroImg
-//     src={intro1_jpg}
-//     loading="lazy"
-//     width="396"
-//     height="280"
-//     alt="Сонячні станції для підприємств"
-//   />
-// </picture>
-
 import vector_img from '../../img/intro/vector.webp';
 import { Container } from '../../pages/Common.styled';
 

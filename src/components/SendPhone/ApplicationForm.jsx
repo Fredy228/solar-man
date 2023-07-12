@@ -39,7 +39,7 @@ export const ApplicationForm = ({
       setPhone('');
       setEmail('');
 
-      Notify.success('Дані відправлено');
+      Notify.success('Відправлено успішно');
 
       toggleModal(false);
       navigate('/thanks');
@@ -47,9 +47,9 @@ export const ApplicationForm = ({
       setIsBtnDisab(false);
       setIsLoading(false);
 
-      console.log(error);
-
       Notify.failure('Упс..Сталася помилка :(');
+      if (error.response.data.message)
+        Notify.failure(error.response.data.message);
     }
   };
 
@@ -58,8 +58,8 @@ export const ApplicationForm = ({
     if (!phoneRegex.test(phone)) {
       return Notify.failure('Невірний номер телефону');
     }
+
     sendAPI().catch(console.error);
-    e.currentTarget.reset();
   };
 
   return (
@@ -72,7 +72,7 @@ export const ApplicationForm = ({
     >
       <Input
         type="text"
-        placeholder="Ім’я"
+        placeholder="Ваше ім’я"
         value={name}
         pattern="[a-zA-Zа-яА-ЯёЁґҐіІїЇєЄ'’\-]+( [a-zA-Zа-яА-ЯёЁґҐіІїЇєЄ'’\-]+)*"
         name="name"
@@ -81,9 +81,22 @@ export const ApplicationForm = ({
         }}
         required
       />
+
+      <PhoneInput
+        type="text"
+        mask="+{38}(000)-000-00-00"
+        definitions={{
+          '#': /[0-9]/,
+        }}
+        placeholder="Ваш номер телефону"
+        name="phone"
+        id="phone"
+        onAccept={value => setPhone(value)}
+        required
+      />
       <Input
         type="email"
-        placeholder="Email"
+        placeholder="Ваш email"
         value={email}
         name="email"
         onChange={e => {
@@ -91,19 +104,11 @@ export const ApplicationForm = ({
         }}
         required
       />
-      <PhoneInput
-        type="text"
-        mask="+{38}(000)-000-00-00"
-        definitions={{
-          '#': /[0-9]/,
-        }}
-        placeholder="+38(0XX)-XXX-XX-XX"
-        name="phone"
-        id="phone"
-        onAccept={value => setPhone(value)}
-        required
-      />
-      <ButtonOrg type={'submit'} disabled={isBtnDisab} colorBgHover={'second'}>
+      <ButtonOrg
+        type={'submit'}
+        disabled={isBtnDisab}
+        colorBgHover={'secondBlur'}
+      >
         {isLoading ? (
           <LoadSpiner borderColor={'#fff'} barColor={'#fff'} />
         ) : (

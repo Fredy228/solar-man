@@ -7,6 +7,7 @@ import {
   IntroComponentsList,
   IntroImg,
   IntroTitle,
+  WrapperGallery,
   WrapperIntroProject,
 } from './Portfolio.styled';
 import { baseURL } from '../API/API';
@@ -45,7 +46,13 @@ export const ProjectsById = ({ post }) => {
         </BoxIntroComponents>
       </WrapperIntroProject>
       {gallery.length > 0 && (
-        <Gallery items={reactImgView} lazyLoad={true} showPlayButton={false} />
+        <WrapperGallery>
+          <Gallery
+            items={reactImgView}
+            lazyLoad={true}
+            showPlayButton={false}
+          />
+        </WrapperGallery>
       )}
     </InnerProjectOne>
   );

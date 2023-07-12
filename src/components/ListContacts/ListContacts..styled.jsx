@@ -6,7 +6,7 @@ export const InnerListContacts = styled.div`
 
   @media screen and (max-width: 767px) {
     padding-top: 80px;
-    margin-bottom: -60px;
+    margin-bottom: -30px;
   }
 `;
 

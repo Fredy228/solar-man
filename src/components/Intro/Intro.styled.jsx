@@ -113,7 +113,7 @@ export const CardIntro = styled.div`
   align-items: center;
   cursor: pointer;
   outline: 2px solid transparent;
-  transition: border-color 350ms ease;
+  transition: outline-color 350ms ease;
   background-image: url(${({ srcImg }) => srcImg});
   background-size: cover;
   background-repeat: no-repeat;

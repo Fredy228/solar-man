@@ -51,7 +51,7 @@ export const Consult = ({ widthScreen }) => {
               </ConsultText>
               <ButtonOrg
                 type={'button'}
-                colorBgHover={'second'}
+                colorBgHover={'secondBlur'}
                 onClick={() => toggleModal(true)}
               >
                 <Icon name={'icon-annotation'} /> Замовити консультацію

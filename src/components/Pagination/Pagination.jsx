@@ -26,13 +26,14 @@ const Pagination = ({ count, limit }) => {
 
   const handlePageChange = selectedPage => {
     const newPage = Number(selectedPage.selected) + 1;
-    console.log(newPage);
 
     setSearchParams(prevSearchParams => {
       const newSearchParams = new URLSearchParams(prevSearchParams);
       newSearchParams.set('page', String(newPage));
       return newSearchParams;
     });
+
+    window.scrollTo(0, 80);
   };
 
   const rightArrow = (

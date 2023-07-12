@@ -15,7 +15,7 @@ const ForHome = () => {
     <GoogleAnalyticsWrapper>
       <Section isGradient={true}>
         <Container>
-          <OptionHome />
+          <OptionHome widthScreen={widthScreen} />
         </Container>
       </Section>
       <Section>

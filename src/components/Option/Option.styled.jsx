@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 export const Inner = styled.div`
   display: flex;
+  min-height: ${({ minHeight }) => (minHeight ? '416px' : 'initial')};
+
+  @media screen and (max-width: 1199px) {
+    min-height: ${({ minHeight }) => (minHeight ? '380px' : 'initial')};
+  }
 
   @media screen and (max-width: 999px) {
     flex-direction: column;

@@ -15,7 +15,7 @@ const ForInvestment = () => {
     <GoogleAnalyticsWrapper>
       <Section isGradient={true}>
         <Container>
-          <OptionInvestment />
+          <OptionInvestment widthScreen={widthScreen} />
         </Container>
       </Section>
       <Section>

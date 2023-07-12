@@ -31,6 +31,7 @@ export const WrapperFilter = styled.div`
     #dceeff 100%
   );
   border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
 
   @media screen and (min-width: 1000px) {
     margin-top: 80px;

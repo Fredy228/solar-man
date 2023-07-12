@@ -16,7 +16,7 @@ const Contacts = () => {
           <OptionContacts widthScreen={widthScreen} />
         </Container>
       </Section>
-      <Section>
+      <Section paddBott={'0'}>
         <Container>
           <ListContacts />
         </Container>

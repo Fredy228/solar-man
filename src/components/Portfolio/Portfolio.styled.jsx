@@ -180,4 +180,9 @@ export const IntroComponentsItem = styled.li`
   }
 `;
 
+export const WrapperGallery = styled.div`
+  max-width: 1000px;
+  margin: 0 auto;
+`;
+
 export const Gallery = styled(ImageGallery)``;

@@ -2,15 +2,14 @@ import { Icon } from 'components/Icon/Icon';
 import { DescripBox, ImageBox, Inner, Text, Title, Img } from './Option.styled';
 import { useShowModal } from 'globalState/globalState';
 
-import imgIntro_webp from '../../img/ourServices/intro-2.webp';
-import imgIntro_png from '../../img/ourServices/intro-2.png';
+import homeIntro from '../../img/ourServices/home-intro.webp';
 import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
 
-export const OptionHome = () => {
+export const OptionHome = ({ widthScreen }) => {
   const { toggleModal } = useShowModal();
 
   return (
-    <Inner>
+    <Inner minHeight={true}>
       <DescripBox>
         <Title>
           Сонячні електростанції
@@ -19,8 +18,13 @@ export const OptionHome = () => {
         <Text>
           Сонячні електростанції для дому використовують сонячну енергію для
           виробництва електроенергії. Вони складаються з сонячних панелей,
-          інвертора, зберігальної батареї та контролера заряду, і можуть бути
-          розташовані на даху або на землі поруч з будинком.
+          інвертора, {widthScreen < 768 && <br />}зберігальної батареї{' '}
+          {widthScreen < 768 && <br />} та контролера заряду,{' '}
+          {widthScreen < 768 && <br />}і можуть бути
+          {widthScreen < 768 && <br />} розташовані на даху{' '}
+          {widthScreen < 768 && <br />}або на землі{' '}
+          {widthScreen < 768 && <br />}поруч з {widthScreen < 768 && <br />}
+          будинком.
         </Text>
 
         <ButtonOrg type={'button'} onClick={() => toggleModal(true)}>
@@ -28,11 +32,7 @@ export const OptionHome = () => {
         </ButtonOrg>
       </DescripBox>
       <ImageBox>
-        <picture>
-          <source type="image/webp" srcSet={imgIntro_webp} />
-          <source type="image/png" srcSet={imgIntro_png} />
-          <Img src={imgIntro_png} width="500" height="500" loading="lazy" />
-        </picture>
+        <Img src={homeIntro} width="718" height="718" loading="lazy" />
       </ImageBox>
     </Inner>
   );

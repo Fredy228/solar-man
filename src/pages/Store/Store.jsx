@@ -35,7 +35,7 @@ const initialFilter = {
 
 const Store = () => {
   const widthScreen = useWindowWidth();
-  const limit = 12;
+  const limit = 2;
   const [searchParams, setSearchParams] = useSearchParams();
   const pageParams = searchParams.get('page');
   const typeParams = searchParams.get('type');

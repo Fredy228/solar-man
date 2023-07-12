@@ -26,7 +26,7 @@ export const ListContacts = () => {
           <WrapperText>
             <TitleContacts>Телефон:</TitleContacts>
             <LinkContacts href="tel:+380680554488">
-              (099) 583-34-45
+              (068) 055-44-88
             </LinkContacts>
           </WrapperText>
         </ItemContactsS>
