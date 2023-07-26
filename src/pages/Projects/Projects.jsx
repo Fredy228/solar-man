@@ -2,6 +2,7 @@ import { Container } from 'pages/Common.styled';
 import { ProjectsC } from 'components/Portfolio/Projects';
 import { Section } from 'pages/OurServices/OurServices.styled';
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
+import { Call } from '../../components/Call/Call';
 
 const Projects = () => {
   return (
@@ -11,6 +12,7 @@ const Projects = () => {
           <ProjectsC />
         </Container>
       </Section>
+      <Call />
     </GoogleAnalyticsWrapper>
   );
 };

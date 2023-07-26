@@ -24,6 +24,11 @@ export const sendPhoneToTelegram = async client => {
   return response.data;
 };
 
+export const sendQuizToTelegram = async client => {
+  const response = await axios.post('/api/phone-send/quiz', client);
+  return response.data;
+};
+
 export const loginUser = async credentials => {
   const response = await axios.post('/api/admin/login', credentials);
   setAuthHeader(response.data.user.token);

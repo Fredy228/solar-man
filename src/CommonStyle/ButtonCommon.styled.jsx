@@ -28,9 +28,12 @@ export const ButtonOrg = styled.button`
     width: 20px;
     height: 20px;
     margin-right: 5px;
+    transition-property: stroke, fill;
+    transition-duration: 350ms;
+    transition-timing-function: ease;
   }
 
-  :hover {
+  :not(:disabled):hover {
     background-color: ${({ theme, colorBgHover }) =>
       colorBgHover ? theme.color[colorBgHover] : theme.color.main};
   }

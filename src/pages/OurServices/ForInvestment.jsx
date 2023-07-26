@@ -7,6 +7,7 @@ import { StepsWorkInvestment } from 'components/StepsWork/StepsWorkInvestment';
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 import { Consult } from '../../components/Сonsult/Сonsult';
 import useWindowWidth from '../../services/widthScreen';
+import { Call } from '../../components/Call/Call';
 
 const ForInvestment = () => {
   const widthScreen = useWindowWidth();
@@ -36,6 +37,7 @@ const ForInvestment = () => {
       <Frontier color={'main'}>
         <Consult widthScreen={widthScreen} />
       </Frontier>
+      <Call />
     </GoogleAnalyticsWrapper>
   );
 };

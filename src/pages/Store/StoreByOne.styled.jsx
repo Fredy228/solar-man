@@ -110,16 +110,15 @@ export const SpanDesrip = styled.span`
   align-items: center;
   justify-content: center;
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 40px;
   cursor: pointer;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 1) 80%
-  );
+  background-color: ${({ theme }) => theme.color.main};
+  width: 200px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 `;
 
 export const ListCharacter = styled.ul`
@@ -150,17 +149,6 @@ export const ItemCharacter = styled.li`
   @media screen and (min-width: 768px) {
     margin: calc(20px / 2);
     flex-basis: calc(100% / 2 - 20px);
-  }
-`;
-
-export const OptionTitle = styled.h3`
-  font-size: 24px;
-  color: ${({ theme }) => theme.color.g2};
-  text-align: center;
-  margin-bottom: 15px;
-
-  @media screen and (max-width: 999px) {
-    font-size: 20px;
   }
 `;
 

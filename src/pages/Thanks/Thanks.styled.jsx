@@ -19,6 +19,7 @@ export const Text = styled.p`
   padding: 5px 15px;
   color: ${({ theme }) => theme.color.g2};
   margin-bottom: 10px;
+  text-align: center;
 `;
 
 export const Image = styled.img`

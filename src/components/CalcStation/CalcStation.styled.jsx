@@ -50,14 +50,14 @@ export const OutputSlider = styled.output`
   font-weight: bold;
   position: absolute;
   display: block;
-  bottom: -40px;
+  top: 55px;
   left: 50%;
   transform: translateX(-50%);
-  width: 85px;
+  width: ${({ widthValue }) => (widthValue ? widthValue : '85px')};
   text-align: center;
   padding: 5px 0;
   font-size: 16px;
-  border-radius: 20px;
+  border-radius: 15px;
   background: ${({ theme }) => theme.color.second};
   color: ${({ theme }) => theme.color.white};
 `;
@@ -147,6 +147,7 @@ export const ItemResult = styled.li`
 
   @media screen and (max-width: 767px) {
     flex: 1;
+    min-width: 139px;
     height: 90px;
     padding: 5px 10px;
   }

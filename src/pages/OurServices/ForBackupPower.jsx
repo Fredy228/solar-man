@@ -7,6 +7,7 @@ import { StepsWorkBackupPower } from 'components/StepsWork/StepsWorkBackupPower'
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 import { Consult } from '../../components/Сonsult/Сonsult';
 import useWindowWidth from '../../services/widthScreen';
+import { Call } from '../../components/Call/Call';
 
 const ForBackupPower = () => {
   const widthScreen = useWindowWidth();
@@ -36,6 +37,7 @@ const ForBackupPower = () => {
       <Frontier color={'main'}>
         <Consult widthScreen={widthScreen} />
       </Frontier>
+      <Call />
     </GoogleAnalyticsWrapper>
   );
 };

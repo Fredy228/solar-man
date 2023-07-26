@@ -10,6 +10,7 @@ import {
   EllipseBg,
   ImgEllipse,
   EllipseBox,
+  OverlayIntroIco,
 } from './Intro.styled';
 import { Icon } from 'components/Icon/Icon';
 
@@ -38,14 +39,16 @@ export const Intro = () => {
           Сонячні електростанції <br /> для незалежності <br /> та прибутку
         </IntroTitle>
         <IntroText>
-          Комплексні рішення під ключ для підприємств та звичайний
+          Комплексні рішення під ключ для підприємств та звичайних
           домогосподарств
         </IntroText>
         <CardsIntro>
           <CardIntro srcImg={intro1_webp}>
             <NavLink to="/enterprises">
               <OverlayIntro>
-                <Icon name="icon-company" />
+                <OverlayIntroIco>
+                  <Icon name="icon-company" />
+                </OverlayIntroIco>
                 <TextOverlay>
                   Сонячні станції <br /> для підприємств
                 </TextOverlay>
@@ -56,7 +59,9 @@ export const Intro = () => {
           <CardIntro srcImg={intro2_webp}>
             <NavLink to="/home">
               <OverlayIntro>
-                <Icon name="icon-home" />
+                <OverlayIntroIco>
+                  <Icon name="icon-home" />
+                </OverlayIntroIco>
                 <TextOverlay>
                   Сонячні станції <br /> для дому
                 </TextOverlay>
@@ -67,7 +72,9 @@ export const Intro = () => {
           <CardIntro srcImg={intro3_webp}>
             <NavLink to="/store">
               <OverlayIntro>
-                <Icon name="icon-store" />
+                <OverlayIntroIco>
+                  <Icon name="icon-store" />
+                </OverlayIntroIco>
                 <TextOverlay>
                   Обладнання <br /> та сервіс
                 </TextOverlay>

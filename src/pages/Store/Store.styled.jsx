@@ -35,7 +35,6 @@ export const WrapperFilter = styled.div`
 
   @media screen and (min-width: 1000px) {
     margin-top: 80px;
-    max-height: calc(100vh - 115px);
     width: ${({ isShow }) => (isShow ? '220px' : '0px')};
     overflow: ${({ isShow }) => (isShow ? 'initial' : 'hidden')};
     visibility: ${({ isShow }) => (isShow ? 'visible' : 'hidden')};

@@ -101,12 +101,12 @@ export const Solution = ({ widthScreen }) => {
           </Swiper>
           <CustomNavigation>
             <div className="swiper-button-prev">
-              <BtnArrow type="button">
+              <BtnArrow type="button" name={'button-prev'}>
                 <Icon name="icon-arrow" width="25" height="25" />
               </BtnArrow>
             </div>
             <div className="swiper-button-next">
-              <BtnArrow type="button">
+              <BtnArrow type="button" name={'button-next'}>
                 <Icon name="icon-arrow" width="25" height="25" />
               </BtnArrow>
             </div>

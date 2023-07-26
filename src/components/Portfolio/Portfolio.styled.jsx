@@ -21,6 +21,14 @@ export const PortfolioList = styled.ul`
   }
 `;
 
+export const TitlePortfolio = styled.h3`
+  margin-top: 12px;
+  font-size: 16px;
+  color: ${({ theme }) => theme.color.g2};
+  font-weight: 500;
+  transition: color 350ms ease;
+`;
+
 export const PortfolioItem = styled.li`
   border-radius: 10px;
 
@@ -37,6 +45,12 @@ export const PortfolioItem = styled.li`
   @media screen and (min-width: 1000px) {
     margin: calc(30px / 2);
     flex-basis: calc(100% / 3 - 30px);
+  }
+
+  :hover {
+    ${TitlePortfolio} {
+      color: ${({ theme }) => theme.color.second};
+    }
   }
 `;
 
@@ -83,14 +97,6 @@ export const WrapperImg = styled.div`
 
 export const PortfolioImg = styled.img`
   border-radius: 10px;
-`;
-
-export const TitlePortfolio = styled.h4`
-  margin-top: 12px;
-  font-size: 16px;
-  color: ${({ theme }) => theme.color.g2};
-  font-weight: 500;
-  transition: color 350ms ease;
 `;
 
 export const SpanOverLay = styled.span`

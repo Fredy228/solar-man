@@ -25,6 +25,7 @@ const Thanks = () => {
         <Inner>
           <Image src={thankImg} alt={'Solar-panel'} />
           <Text>Дякуємо за звернення</Text>
+          <Text>Найближчим часом з вами зв'яжеться менеджер :)</Text>
           <ButtonOrg type={'button'} onClick={() => navigate('/')}>
             <Icon name={'icon-logo-v2'} /> Перейти на головну
           </ButtonOrg>

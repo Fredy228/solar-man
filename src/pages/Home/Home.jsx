@@ -11,6 +11,7 @@ import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/Goog
 import { useEffect } from 'react';
 import { BigBtnAds } from '../../components/BigBtnAds/BigBtnAds';
 import useWindowWidth from '../../services/widthScreen';
+import { Call } from '../../components/Call/Call';
 
 const Home = () => {
   const widthScreen = useWindowWidth();
@@ -55,6 +56,7 @@ const Home = () => {
         src="https://www.facebook.com/tr?id=727645149364780&ev=PageView&noscript=1"
         alt={''}
       />
+      <Call />
     </GoogleAnalyticsWrapper>
   );
 };

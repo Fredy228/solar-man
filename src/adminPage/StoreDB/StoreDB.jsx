@@ -19,7 +19,7 @@ const initialFilter = {
 };
 
 const StoreDB = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const pageParams = searchParams.get('page');
   const typeParams = searchParams.get('type');
   const subtypeParams = searchParams.get('subtype');
@@ -28,14 +28,6 @@ const StoreDB = () => {
   const width = useWindowWidth();
   const [isLoading, setIsLoading] = useState(true);
   const limit = 12;
-
-  useEffect(() => {
-    setSearchParams(prevSearchParams => {
-      const newSearchParams = new URLSearchParams(prevSearchParams);
-      newSearchParams.set('page', '1');
-      return newSearchParams;
-    });
-  }, [setSearchParams]);
 
   useEffect(() => {
     const fetchProducts = async () => {

@@ -111,14 +111,7 @@ export const CostProduts = styled.button`
   justify-content: center;
   align-items: center;
   background-color: transparent;
-
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-  }
-
-  @media screen and (min-width: 1000px) {
-    font-size: 18px;
-  }
+  font-size: 18px;
 
   svg {
     width: 20px;

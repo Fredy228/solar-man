@@ -5,6 +5,7 @@ import { OptionContacts } from '../../components/Option/OptionContacts';
 import { ListContacts } from '../../components/ListContacts/ListContacts';
 import useWindowWidth from '../../services/widthScreen';
 import { ConsultForm } from '../../components/Сonsult/ConsultForm';
+import { Call } from '../../components/Call/Call';
 
 const Contacts = () => {
   const widthScreen = useWindowWidth();
@@ -24,6 +25,7 @@ const Contacts = () => {
       <Frontier color={'main'}>
         <ConsultForm widthScreen={widthScreen} />
       </Frontier>
+      <Call />
     </GoogleAnalyticsWrapper>
   );
 };

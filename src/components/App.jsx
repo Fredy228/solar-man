@@ -29,6 +29,7 @@ const ProjectByOne = lazy(() => import('pages/Projects/ProjectByOne'));
 const Store = lazy(() => import('pages/Store/Store'));
 const StoreByOne = lazy(() => import('pages/Store/StoreByOne'));
 const Thanks = lazy(() => import('pages/Thanks/Thanks'));
+const Quiz = lazy(() => import('pages/Quiz/Quiz'));
 const NotFound = lazy(() => import('pages/NotFound/NotFound'));
 export const App = () => {
   const { isShowModal } = useShowModal();
@@ -55,6 +56,7 @@ export const App = () => {
         <Route path="/store" element={<Store />} />
         <Route path="/store/:typeProduct" element={<StoreByOne />} />
         <Route path="/thanks" element={<Thanks />} />
+        <Route path="/quiz" element={<Quiz />} />
 
         <Route path="*" element={<NotFound />} />
       </Route>

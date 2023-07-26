@@ -36,6 +36,7 @@ import { Consult } from '../../components/Сonsult/Сonsult';
 import useWindowWidth from '../../services/widthScreen';
 import { GoBackBtn } from '../../components/GoBackBtn/GoBackBtn';
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
+import { Call } from '../../components/Call/Call';
 
 const StoreByOne = () => {
   const widthScreen = useWindowWidth();
@@ -149,7 +150,7 @@ const StoreByOne = () => {
                     }))
                   }
                 >
-                  Розгорнути
+                  Читати повністю
                 </SpanDesrip>
               )}
             </WrapperDescrip>
@@ -209,6 +210,7 @@ const StoreByOne = () => {
       <Frontier color={'main'}>
         <Consult widthScreen={widthScreen} />
       </Frontier>
+      <Call />
     </GoogleAnalyticsWrapper>
   );
 };

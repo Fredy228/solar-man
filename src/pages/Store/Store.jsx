@@ -21,6 +21,7 @@ import { Container, Frontier } from '../Common.styled';
 import { Icon } from '../../components/Icon/Icon';
 import { Consult } from '../../components/Сonsult/Сonsult';
 import useWindowWidth from '../../services/widthScreen';
+import { Call } from '../../components/Call/Call';
 
 const initialFilter = {
   brand: [],
@@ -35,7 +36,7 @@ const initialFilter = {
 
 const Store = () => {
   const widthScreen = useWindowWidth();
-  const limit = 2;
+  const limit = 12;
   const [searchParams, setSearchParams] = useSearchParams();
   const pageParams = searchParams.get('page');
   const typeParams = searchParams.get('type');
@@ -189,6 +190,7 @@ const Store = () => {
       <Frontier color={'main'}>
         <Consult widthScreen={widthScreen} />
       </Frontier>
+      <Call />
     </GoogleAnalyticsWrapper>
   );
 };

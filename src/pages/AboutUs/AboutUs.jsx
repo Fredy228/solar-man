@@ -8,6 +8,7 @@ import { BenefitsAboutUs } from '../../components/Benefits/BenefitsAboutUs';
 import { Team } from '../../components/Team/Team';
 import { Consult } from '../../components/Сonsult/Сonsult';
 import { ItIsSolarMan } from '../../components/ItIsSolarMan/ItIsSolarMan';
+import { Call } from '../../components/Call/Call';
 
 const AboutUs = () => {
   const widthScreen = useWindowWidth();
@@ -44,6 +45,7 @@ const AboutUs = () => {
       <Frontier color={'main'}>
         <Consult widthScreen={widthScreen} />
       </Frontier>
+      <Call />
     </GoogleAnalyticsWrapper>
   );
 };

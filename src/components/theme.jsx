@@ -7,6 +7,7 @@ export const theme = {
     additional: '#F24C4C',
     black: '#000',
     white: '#fff',
+    transparent: 'rgba(255,255,255,0)',
     menuBg: '#dcdcdc',
     g1: '#505F7C',
     g2: '#02244D',

@@ -134,7 +134,30 @@ export const CardIntro = styled.div`
   @media screen and (max-width: 767px) {
     max-width: 300px;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+  }
+`;
+
+export const OverlayIntroIco = styled.div`
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.color.main};
+  transition: background-color 350ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    fill: ${({ theme: { color } }) => color.white};
+    stroke: ${({ theme: { color } }) => color.white};
+
+    width: 35px;
+    height: 35px;
   }
 `;
 
@@ -154,30 +177,8 @@ export const OverlayIntro = styled.div`
     rgba(14, 57, 112, 0.95) 100%
   );
 
-  svg {
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
-    fill: ${({ theme: { color } }) => color.white};
-    stroke: ${({ theme: { color } }) => color.white};
-    padding: 11px;
-    border-radius: 50%;
-    background-color: ${({ theme }) => theme.color.main};
-    transition: background-color 350ms ease;
-
-    @media screen and (max-width: 999px) {
-      width: 40px;
-      height: 40px;
-      top: -20px;
-      padding: 5px;
-    }
-  }
-
   :hover {
-    svg {
+    ${OverlayIntroIco} {
       background-color: ${({ theme }) => theme.color.second};
     }
   }

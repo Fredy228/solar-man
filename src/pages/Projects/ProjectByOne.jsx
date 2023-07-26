@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { getPostsById } from '../../components/API/API';
 import { LoadPage } from '../../components/LoadSpiner/LoadPage';
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
+import { Call } from '../../components/Call/Call';
 
 const ProjectByOne = () => {
   const { idProject } = useParams();
@@ -29,6 +30,7 @@ const ProjectByOne = () => {
           {isLoading ? <LoadPage /> : <ProjectsById post={state} />}
         </div>
       </Container>
+      <Call />
     </GoogleAnalyticsWrapper>
   );
 };
