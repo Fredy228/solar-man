@@ -29,10 +29,12 @@ export const Frontier = styled.div`
   overflow-x: ${({ hiddenX }) => (hiddenX ? 'hidden' : 'initial')};
   overflow-y: ${({ hiddenY }) => (hiddenY ? 'hidden' : 'initial')};
 
-  background-color: ${({ color, theme }) => {
+  background: ${({ color, theme }) => {
     switch (color) {
       case 'main':
         return theme.color.main;
+      case 'grad':
+        return 'radial-gradient(186.93% 102.34% at 81.46% 7.95%, #FFF8DE 0%, #DCEEFF 100%)';
       case 'second':
         return theme.color.second;
       default:

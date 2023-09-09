@@ -50,6 +50,7 @@ export const RenderThumb = styled.div`
 export const QuizOutputSlider = styled.span`
   position: absolute;
   display: block;
+  cursor: pointer;
   left: 50%;
   width: 100px;
   transform: translateX(-50%);
@@ -80,6 +81,7 @@ export const WrapperBrakePoints = styled.ul`
 
 export const BrakePoints = styled.li`
   position: absolute;
+  cursor: pointer;
   top: 50%;
   transform: translateY(-50%);
   left: ${({ leftPos }) => (leftPos ? `calc(${leftPos} - 14px)` : '0')};
