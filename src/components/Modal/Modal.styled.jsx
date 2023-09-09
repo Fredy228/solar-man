@@ -17,16 +17,18 @@ export const ModalWindow = styled.div`
   max-width: calc(100% - 40px);
   max-height: calc(100% - 40px);
   position: relative;
+  overflow-x: scroll;
+  border-radius: 10px;
 `;
 
 export const ButtonClose = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.color.white};
   position: absolute;
-  top: -15px;
-  right: -15px;
+  top: 5px;
+  right: 5px;
   cursor: pointer;
   transition: transform 350ms ease;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
@@ -41,14 +43,14 @@ export const Cross = styled.span`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
-  width: 20px;
+  width: 15px;
   height: 2px;
   border-radius: 3px;
   background-color: ${({ theme }) => theme.color.black};
 
   :after {
     content: '';
-    width: 20px;
+    width: 15px;
     height: 2px;
     position: absolute;
     top: 50%;

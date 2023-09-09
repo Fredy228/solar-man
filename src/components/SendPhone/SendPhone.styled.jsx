@@ -2,13 +2,9 @@ import styled from 'styled-components';
 import { IMaskInput } from 'react-imask';
 
 export const Inner = styled.div`
-  //background: radial-gradient(
-  //  186.93% 102.34% at 81.46% 7.95%,
-  //  #fff8de 0%,
-  //  #dceeff 100%
-  //);
   background-color: ${({ theme }) => theme.color.main};
-
+  overflow-x: scroll;
+  height: auto;
   padding: 20px;
   color: ${({ theme }) => theme.color.white};
   border-radius: 10px;

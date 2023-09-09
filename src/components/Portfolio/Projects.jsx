@@ -18,6 +18,7 @@ import {
 import { getPosts, baseURL } from 'components/API/API';
 import { LoadSpiner } from 'components/LoadSpiner/LoadSpiner';
 import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
+import { LoadPage } from '../LoadSpiner/LoadPage';
 
 export const ProjectsC = () => {
   const limit = 6;
@@ -25,6 +26,7 @@ export const ProjectsC = () => {
   const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingFirst, setIsLoadingFirst] = useState(true);
   const [isDisabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
@@ -53,6 +55,7 @@ export const ProjectsC = () => {
       const { posts, totalPosts } = await getPosts(limit);
       setItems(posts);
       setTotal(totalPosts);
+      setIsLoadingFirst(false);
     }
     gettingPosts();
   }, []);
@@ -65,31 +68,36 @@ export const ProjectsC = () => {
         які демонструють нашу компетентність та досвід у даній галузі.
       </SectionSubtitle>
 
-      <PortfolioList>
-        {items.map(item => (
-          <PortfolioItem key={item.id}>
-            <PortfolioItemLink
-              to={`/projects/${item.id}`}
-              onClick={() => {
-                window.scrollTo(0, 0);
-              }}
-            >
-              <WrapperImg>
-                <PortfolioImg
-                  src={`${baseURL}/${item.urlImg}`}
-                  loading="lazy"
-                  width="450"
-                  height="280"
-                  alt={item.title}
-                />
-                <SpanOverLay>{item.year}</SpanOverLay>
-              </WrapperImg>
+      {isLoadingFirst ? (
+        <LoadPage />
+      ) : (
+        <PortfolioList>
+          {items.map(item => (
+            <PortfolioItem key={item.id}>
+              <PortfolioItemLink
+                to={`/projects/${item.id}`}
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                }}
+              >
+                <WrapperImg>
+                  <PortfolioImg
+                    src={`${baseURL}/${item.urlImg}`}
+                    loading="lazy"
+                    width="450"
+                    height="280"
+                    alt={item.title}
+                  />
+                  <SpanOverLay>{item.year}</SpanOverLay>
+                </WrapperImg>
 
-              <TitlePortfolio>{item.title}</TitlePortfolio>
-            </PortfolioItemLink>
-          </PortfolioItem>
-        ))}
-      </PortfolioList>
+                <TitlePortfolio>{item.title}</TitlePortfolio>
+              </PortfolioItemLink>
+            </PortfolioItem>
+          ))}
+        </PortfolioList>
+      )}
+
       <div
         style={{
           width: '100%',
