@@ -3,8 +3,6 @@ import { IMaskInput } from 'react-imask';
 
 export const Inner = styled.div`
   background-color: ${({ theme }) => theme.color.main};
-  overflow-x: scroll;
-  height: auto;
   padding: 20px;
   color: ${({ theme }) => theme.color.white};
   border-radius: 10px;

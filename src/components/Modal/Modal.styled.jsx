@@ -17,8 +17,15 @@ export const ModalWindow = styled.div`
   max-width: calc(100% - 40px);
   max-height: calc(100% - 40px);
   position: relative;
-  overflow-x: scroll;
+  overflow-y: scroll;
   border-radius: 10px;
+
+  .element::-webkit-scrollbar {
+    width: 0;
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+  }
 `;
 
 export const ButtonClose = styled.div`
