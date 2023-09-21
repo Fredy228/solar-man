@@ -4,21 +4,17 @@ import { NavLink } from 'react-router-dom';
 export const Header = styled.header`
   padding: 10px 5px;
   position: fixed;
-  top: ${p => (p.scroll > 40 && !p.show ? 5 : 0)}px;
-  left: ${p => (p.scroll > 40 && !p.show ? 5 : 0)}px;
   z-index: 100;
   background-color: ${({ theme, scroll, show }) =>
-    show || scroll > 40 ? theme.color.white : 'transparent'};
-  border-radius: ${p => (p.scroll > 40 && !p.show ? 10 : 0)}px;
-  width: calc(100% - ${p => (p.scroll > 40 && !p.show ? 10 : 0)}px);
+    show || scroll > 35 ? theme.color.white : 'transparent'};
+  width: 100%;
   box-shadow: ${p =>
     p.scroll > 40 && !p.show
-      ? ' rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;'
+      ? 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;'
       : 'none'};
   transition-timing-function: ease;
   transition-duration: 350ms;
-  transition-property: top, border-radius, width, left, box-shadow,
-    background-color;
+  transition-property: width, box-shadow, background-color;
 `;
 
 export const HeaderInner = styled.div`

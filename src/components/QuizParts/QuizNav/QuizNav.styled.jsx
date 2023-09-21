@@ -13,7 +13,8 @@ export const QuizNavInner = styled.div`
 `;
 
 export const QuizNavButton = styled(ButtonOrg)`
-  padding: 15px 30px;
+  padding: 14px 28px;
+  font-size: 18px;
   border: 1px solid
     ${({ theme, colorBorder }) =>
       theme.color[colorBorder ? colorBorder : 'second']};

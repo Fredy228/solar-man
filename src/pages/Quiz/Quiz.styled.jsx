@@ -9,8 +9,8 @@ export const InnerQuiz = styled.div`
   );
   width: 100%;
   min-height: calc(100vh - 100px);
-  padding-top: 150px;
-  padding-bottom: 50px;
+  padding-top: 70px;
+  padding-bottom: 80px;
 
   @media screen and (max-width: 767px) {
     background: radial-gradient(
@@ -24,6 +24,7 @@ export const InnerQuiz = styled.div`
 
 export const WrapperQuiz = styled(Container)`
   height: auto;
+  padding-top: 70px;
 `;
 
 export const TitleQuiz = styled.h1`
@@ -31,7 +32,7 @@ export const TitleQuiz = styled.h1`
   font-size: 38px;
   line-height: 1.3;
   color: ${({ theme }) => theme.color.main};
-  text-align: center;
+  text-align: ${({ textAlign }) => (textAlign ? textAlign : 'center')};
   margin-bottom: 32px;
 
   @media screen and (max-width: 999px) {

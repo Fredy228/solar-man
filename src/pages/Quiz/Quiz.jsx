@@ -12,6 +12,7 @@ import { sendQuizToTelegram } from '../../components/API/API';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useNavigate } from 'react-router-dom';
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
+import { QuizStart } from '../../components/QuizParts/QuizStart/QuizStart';
 
 const questions = [
   {
@@ -67,6 +68,7 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [answersQuiz, setAnswersQuiz] = useState(questions);
   const widthScreen = useWindowWidth();
+  const [isReady, setIsReady] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -108,54 +110,58 @@ const Quiz = () => {
   return (
     <GoogleAnalyticsWrapper>
       <InnerQuiz>
-        <WrapperQuiz>
-          <TitleQuiz>Розрахуйте вартість вашої сонячної станції</TitleQuiz>
-          <QuizBar
-            currentQuestion={currentQuestion}
-            nameQuestion={questions[currentQuestion - 1].name}
-            questions={questions}
-          />
+        {!isReady ? (
+          <QuizStart setIsReady={setIsReady} />
+        ) : (
+          <WrapperQuiz>
+            <TitleQuiz>Розрахуйте вартість вашої сонячної станції</TitleQuiz>
+            <QuizBar
+              currentQuestion={currentQuestion}
+              nameQuestion={questions[currentQuestion - 1].name}
+              questions={questions}
+            />
 
-          {currentQuestion === 1 && (
-            <QuizBodyOne
-              answersQuiz={answersQuiz}
-              setAnswersQuiz={setAnswersQuiz}
-            />
-          )}
-          {currentQuestion === 2 && (
-            <QuizBodyTwo
-              answersQuiz={answersQuiz}
-              setAnswersQuiz={setAnswersQuiz}
-            />
-          )}
-          {currentQuestion === 3 && (
-            <QuizBodyTree
-              answersQuiz={answersQuiz}
-              setAnswersQuiz={setAnswersQuiz}
-              widthScreen={widthScreen}
-            />
-          )}
-          {currentQuestion === 4 && (
-            <QuizBodyFour
-              answersQuiz={answersQuiz}
-              setAnswersQuiz={setAnswersQuiz}
-            />
-          )}
-          {currentQuestion === 5 && (
-            <QuizBodyFive
-              answersQuiz={answersQuiz}
-              setAnswersQuiz={setAnswersQuiz}
-            />
-          )}
+            {currentQuestion === 1 && (
+              <QuizBodyOne
+                answersQuiz={answersQuiz}
+                setAnswersQuiz={setAnswersQuiz}
+              />
+            )}
+            {currentQuestion === 2 && (
+              <QuizBodyTwo
+                answersQuiz={answersQuiz}
+                setAnswersQuiz={setAnswersQuiz}
+              />
+            )}
+            {currentQuestion === 3 && (
+              <QuizBodyTree
+                answersQuiz={answersQuiz}
+                setAnswersQuiz={setAnswersQuiz}
+                widthScreen={widthScreen}
+              />
+            )}
+            {currentQuestion === 4 && (
+              <QuizBodyFour
+                answersQuiz={answersQuiz}
+                setAnswersQuiz={setAnswersQuiz}
+              />
+            )}
+            {currentQuestion === 5 && (
+              <QuizBodyFive
+                answersQuiz={answersQuiz}
+                setAnswersQuiz={setAnswersQuiz}
+              />
+            )}
 
-          <QuizNav
-            answersQuiz={answersQuiz}
-            currentQuestion={currentQuestion}
-            setCurrentQuestion={setCurrentQuestion}
-            sendQuiz={sendQuiz}
-            isLoading={isLoading}
-          />
-        </WrapperQuiz>
+            <QuizNav
+              answersQuiz={answersQuiz}
+              currentQuestion={currentQuestion}
+              setCurrentQuestion={setCurrentQuestion}
+              sendQuiz={sendQuiz}
+              isLoading={isLoading}
+            />
+          </WrapperQuiz>
+        )}
       </InnerQuiz>
     </GoogleAnalyticsWrapper>
   );
