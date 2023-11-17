@@ -12,6 +12,10 @@ export const WrapperTab = styled.div`
   display: flex;
   justify-content: space-around;
   margin-bottom: 15px;
+
+  @media screen and (max-width: 767px) {
+    justify-content: space-between;
+  }
 `;
 
 export const WrapperSort = styled.div`
@@ -57,22 +61,26 @@ export const ButtonTab = styled.button`
   margin: 5px 30px;
   cursor: pointer;
   color: ${({ theme, active }) =>
-    active ? theme.color.main : theme.color.g500};
-  border-bottom: 2px solid
-    ${({ theme, active }) => (active ? theme.color.second : 'transparent')};
-  background-color: transparent;
+    active ? theme.color.white : theme.color.main};
+
+  border: 2px solid
+    ${({ theme, active }) => (active ? theme.color.second : theme.color.main)};
+  background-color: ${({ theme, active }) =>
+    active ? theme.color.second : 'transparent'};
+  border-radius: 50px;
 
   transition-duration: 350ms;
   transition-timing-function: ease;
-  transition-property: color, border-bottom-color;
+  transition-property: color, background-color, border-color;
 
   :hover {
-    color: ${({ theme }) => theme.color.main};
-    border-color: ${({ theme }) => theme.color.second};
+    color: ${({ theme }) => theme.color.white};
+    background-color: ${({ theme, active }) =>
+      active ? theme.color.second : theme.color.main};
   }
 
   @media screen and (max-width: 767px) {
-    margin: 5px 7px;
+    margin: 5px;
     font-size: 15px;
   }
 `;

@@ -81,20 +81,24 @@ const Store = () => {
     setSearchParams(prevSearchParams => {
       const newSearchParams = new URLSearchParams(prevSearchParams);
       if (!pageParams) newSearchParams.set('page', '1');
-      if (!typeParams) newSearchParams.set('type', 'Готові рішення');
+      if (!typeParams) newSearchParams.set('type', 'Компоненти');
       return newSearchParams;
     });
   }, [typeParams, pageParams, setSearchParams]);
 
   useEffect(() => {
+    setSelectedValues(initialFilter);
+  }, [typeParams, subtypeParams]);
+
+  useEffect(() => {
+    const type = typeParams || 'Компоненти';
+    const subtype =
+      subtypeParams || (type === 'Готові рішення' ? 'Зелений тариф' : 'Панелі');
+
     const fetchProducts = async () => {
       setIsLoading(true);
-
-      const type = typeParams || 'Готові рішення';
       const page = Number(pageParams) || 1;
-      const subtype =
-        subtypeParams ||
-        (type === 'Готові рішення' ? 'Зелений тариф' : 'Панелі');
+
       const sort = sortParams || 'none';
 
       if (!type || !page || !subtype || !sort) return setIsLoading(false);
@@ -125,12 +129,12 @@ const Store = () => {
     };
 
     const getFilter = async () => {
-      const data = await getFilterStoreComponent(subtypeParams);
+      const data = await getFilterStoreComponent(subtype);
       setFilterList(data);
     };
 
     fetchProducts().catch(err => console.log(err));
-    getFilter().catch();
+    getFilter().catch(err => console.log(err));
   }, [pageParams, typeParams, sortParams, subtypeParams, selectedValues]);
 
   return (
@@ -154,6 +158,7 @@ const Store = () => {
               isLoading={isLoading}
               setCheck={setSelectedValues}
               initialFilter={initialFilter}
+              subtypeParams={subtypeParams}
             />
             {typeParams === 'Компоненти' &&
               Object.keys(filterList).length > 0 && (

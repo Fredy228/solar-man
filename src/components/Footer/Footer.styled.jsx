@@ -48,7 +48,6 @@ export const FooterLink = styled.a`
       transform: translate(-50%, -50%);
       border-radius: 50%;
       border: 2px solid ${({ theme }) => theme.color.second};
-      z-index: 20;
     }
   }
 

@@ -9,6 +9,7 @@ import {
   ListCheckBox,
   ListFilter,
   ResetFilter,
+  TextCheckBox,
   TitleFilter,
   WrapperFilter,
 } from './Filter.styled';
@@ -23,6 +24,7 @@ export const Filter = ({
   isLoading,
   setCheck,
   initialFilter,
+  subtypeParams,
 }) => {
   const formRef = useRef(null);
 
@@ -51,7 +53,7 @@ export const Filter = ({
                         disabled={isLoading}
                       />
                       <CustomCheckBox></CustomCheckBox>
-                      {item}
+                      <TextCheckBox>{item}</TextCheckBox>
                     </LabelCheckBox>
                   </ItemCheckBox>
                 ))}
@@ -72,7 +74,7 @@ export const Filter = ({
                         disabled={isLoading}
                       />
                       <CustomCheckBox></CustomCheckBox>
-                      {item}
+                      <TextCheckBox>{item}</TextCheckBox>
                     </LabelCheckBox>
                   </ItemCheckBox>
                 ))}
@@ -93,70 +95,7 @@ export const Filter = ({
                         disabled={isLoading}
                       />
                       <CustomCheckBox></CustomCheckBox>
-                      {item}
-                    </LabelCheckBox>
-                  </ItemCheckBox>
-                ))}
-              </ListCheckBox>
-            </ItemFilter>
-          )}
-          {filterList.sortPower && filterList.sortPower.length > 0 && (
-            <ItemFilter>
-              <TitleFilter>Потужність:</TitleFilter>
-              <ListCheckBox isShow={isShow}>
-                {filterList.sortPower.map(item => (
-                  <ItemCheckBox key={item}>
-                    <LabelCheckBox>
-                      <InputCheckBox
-                        type={'checkbox'}
-                        value={item}
-                        onClick={e => handleCheckboxChange(e, 'power')}
-                        disabled={isLoading}
-                      />
-                      <CustomCheckBox></CustomCheckBox>
-                      {item}
-                    </LabelCheckBox>
-                  </ItemCheckBox>
-                ))}
-              </ListCheckBox>
-            </ItemFilter>
-          )}
-          {filterList.sortReservoir && filterList.sortReservoir.length > 0 && (
-            <ItemFilter>
-              <TitleFilter>Ємність:</TitleFilter>
-              <ListCheckBox isShow={isShow}>
-                {filterList.sortReservoir.map(item => (
-                  <ItemCheckBox key={item}>
-                    <LabelCheckBox>
-                      <InputCheckBox
-                        type={'checkbox'}
-                        value={item}
-                        onClick={e => handleCheckboxChange(e, 'reservoir')}
-                        disabled={isLoading}
-                      />
-                      <CustomCheckBox></CustomCheckBox>
-                      {item}
-                    </LabelCheckBox>
-                  </ItemCheckBox>
-                ))}
-              </ListCheckBox>
-            </ItemFilter>
-          )}
-          {filterList.sortVoltage && filterList.sortVoltage.length > 0 && (
-            <ItemFilter>
-              <TitleFilter>Потужність:</TitleFilter>
-              <ListCheckBox isShow={isShow}>
-                {filterList.sortVoltage.map(item => (
-                  <ItemCheckBox key={item}>
-                    <LabelCheckBox>
-                      <InputCheckBox
-                        type={'checkbox'}
-                        value={item}
-                        onClick={e => handleCheckboxChange(e, 'voltage')}
-                        disabled={isLoading}
-                      />
-                      <CustomCheckBox></CustomCheckBox>
-                      {item}
+                      <TextCheckBox>{item}</TextCheckBox>
                     </LabelCheckBox>
                   </ItemCheckBox>
                 ))}
@@ -177,7 +116,73 @@ export const Filter = ({
                         disabled={isLoading}
                       />
                       <CustomCheckBox></CustomCheckBox>
-                      {item}
+                      <TextCheckBox>{item}</TextCheckBox>
+                    </LabelCheckBox>
+                  </ItemCheckBox>
+                ))}
+              </ListCheckBox>
+            </ItemFilter>
+          )}
+          {filterList.sortPower && filterList.sortPower.length > 0 && (
+            <ItemFilter>
+              <TitleFilter>Потужність:</TitleFilter>
+              <ListCheckBox isShow={isShow}>
+                {filterList.sortPower.map(item => (
+                  <ItemCheckBox key={item}>
+                    <LabelCheckBox>
+                      <InputCheckBox
+                        type={'checkbox'}
+                        value={item}
+                        onClick={e => handleCheckboxChange(e, 'power')}
+                        disabled={isLoading}
+                      />
+                      <CustomCheckBox></CustomCheckBox>
+                      <TextCheckBox>
+                        {item.split('-')[0]}-
+                        {subtypeParams === 'Панелі' ? 'Вт' : 'кВт'}
+                      </TextCheckBox>
+                    </LabelCheckBox>
+                  </ItemCheckBox>
+                ))}
+              </ListCheckBox>
+            </ItemFilter>
+          )}
+          {filterList.sortReservoir && filterList.sortReservoir.length > 0 && (
+            <ItemFilter>
+              <TitleFilter>Ємність:</TitleFilter>
+              <ListCheckBox isShow={isShow}>
+                {filterList.sortReservoir.map(item => (
+                  <ItemCheckBox key={item}>
+                    <LabelCheckBox>
+                      <InputCheckBox
+                        type={'checkbox'}
+                        value={item}
+                        onClick={e => handleCheckboxChange(e, 'reservoir')}
+                        disabled={isLoading}
+                      />
+                      <CustomCheckBox></CustomCheckBox>
+                      <TextCheckBox>{item.split('-')[0]}-Аг</TextCheckBox>
+                    </LabelCheckBox>
+                  </ItemCheckBox>
+                ))}
+              </ListCheckBox>
+            </ItemFilter>
+          )}
+          {filterList.sortVoltage && filterList.sortVoltage.length > 0 && (
+            <ItemFilter>
+              <TitleFilter>Потужність:</TitleFilter>
+              <ListCheckBox isShow={isShow}>
+                {filterList.sortVoltage.map(item => (
+                  <ItemCheckBox key={item}>
+                    <LabelCheckBox>
+                      <InputCheckBox
+                        type={'checkbox'}
+                        value={item}
+                        onClick={e => handleCheckboxChange(e, 'voltage')}
+                        disabled={isLoading}
+                      />
+                      <CustomCheckBox></CustomCheckBox>
+                      <TextCheckBox>{item}-B</TextCheckBox>
                     </LabelCheckBox>
                   </ItemCheckBox>
                 ))}
@@ -198,7 +203,7 @@ export const Filter = ({
                         disabled={isLoading}
                       />
                       <CustomCheckBox></CustomCheckBox>
-                      {item}
+                      <TextCheckBox>{item}</TextCheckBox>
                     </LabelCheckBox>
                   </ItemCheckBox>
                 ))}

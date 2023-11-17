@@ -313,6 +313,25 @@ export const deleteStoreComponent = async id => {
   return response.data;
 };
 
+export const deletePdfStoreComponent = async id => {
+  checkSetAuth();
+
+  const response = await axios.delete(
+    `/api/admin/store-components/pdf-by-id/${id}`
+  );
+  return response.data;
+};
+
+export const deleteDescripPhotoComponent = async (id, urlDel) => {
+  checkSetAuth();
+
+  const response = await axios.patch(
+    `/api/admin/store-components/delete-descrip-photo/${id}`,
+    { urlDel }
+  );
+  return response.data;
+};
+
 export const getByIdStoreSet = async id => {
   const response = await axios.get(`/api/admin/store-sets/by-id/${id}`);
   return response.data;

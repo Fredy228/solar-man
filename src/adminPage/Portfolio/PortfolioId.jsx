@@ -93,7 +93,7 @@ const PortfolioId = () => {
       await deletePostImage(id, urlMini);
       setGallery(prevState => prevState.filter(item => urlMini !== item.mini));
       setIsLoading(false);
-      Notify.success('Виделено');
+      Notify.success('Видалено');
       toggleModal(false);
     }
     fnDelete().catch(console.error);

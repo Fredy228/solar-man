@@ -90,6 +90,26 @@ export const CostProduct = styled.p`
   }
 `;
 
+export const PdfFileLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+  margin-top: 30px;
+  font-family: inherit;
+  font-weight: inherit;
+  color: ${({ theme }) => theme.color.g2};
+
+  :hover {
+    text-decoration: underline;
+  }
+`;
+
+export const PdfFileIcon = styled.img`
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+`;
+
 export const WrapperDescrip = styled.div`
   margin: 15px auto 30px auto;
   border-radius: 10px;
@@ -237,4 +257,45 @@ export const WrapperOptionEl = styled.div`
       width: 100%;
     }
   }
+`;
+
+export const VideoList = styled.ul`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
+export const VideoItem = styled.li`
+  width: 50%;
+  padding: 10px;
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+`;
+
+export const VideoFrame = styled.iframe`
+  width: 100%;
+  height: 315px;
+  border-radius: 10px;
+
+  @media screen and (max-width: 999px) {
+    height: 215px;
+  }
+`;
+
+export const DescripImgList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+`;
+
+export const DescripImgItem = styled.li`
+  max-width: 1000px;
+  width: 100%;
+`;
+
+export const DescripImg = styled.img`
+  width: 100%;
 `;

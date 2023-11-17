@@ -39,9 +39,12 @@ export const ProjectsById = ({ post }) => {
               <IntroComponentsItem>Встановлене обладнання:</IntroComponentsItem>
             )}
             {components &&
-              components.map(item => (
-                <IntroComponentsItem key={item}>{item}</IntroComponentsItem>
-              ))}
+              components.map(item => {
+                if (item.trim() === '') return '';
+                return (
+                  <IntroComponentsItem key={item}>{item}</IntroComponentsItem>
+                );
+              })}
           </IntroComponentsList>
         </BoxIntroComponents>
       </WrapperIntroProject>

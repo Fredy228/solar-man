@@ -45,8 +45,6 @@ export const ItemCheckBox = styled.li`
 `;
 
 export const LabelCheckBox = styled.label`
-  font-size: 16px;
-  color: ${({ theme }) => theme.color.g2};
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -54,6 +52,17 @@ export const LabelCheckBox = styled.label`
 
 export const InputCheckBox = styled.input`
   display: none;
+`;
+
+export const TextCheckBox = styled.p`
+  font-size: 16px;
+  color: ${({ theme }) => theme.color.g2};
+  flex: 1;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 export const CustomCheckBox = styled.span`

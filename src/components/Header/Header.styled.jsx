@@ -5,6 +5,8 @@ export const Header = styled.header`
   padding: 10px 5px;
   position: fixed;
   z-index: 100;
+  top: 0;
+  left: 0;
   background-color: ${({ theme, scroll, show }) =>
     show || scroll > 35 ? theme.color.white : 'transparent'};
   width: 100%;

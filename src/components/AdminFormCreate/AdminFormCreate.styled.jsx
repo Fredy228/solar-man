@@ -194,3 +194,29 @@ export const Select = styled.select`
 `;
 
 export const Option = styled.option``;
+
+export const WrappFile = styled.div`
+  display: inline-flex;
+  margin: 10px 0;
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+`;
+
+export const LinkFile = styled.a`
+  font-family: inherit;
+  font-weight: inherit;
+  color: ${({ theme }) => theme.color.white};
+  flex: 1;
+  text-align: center;
+
+  :hover {
+    text-decoration: underline;
+  }
+`;
+
+export const DeleteBtnFile = styled(ButtonCircle)`
+  position: initial;
+`;

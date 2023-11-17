@@ -152,16 +152,16 @@ export const StoreNav = () => {
         <ButtonTab
           type={'button'}
           onClick={handleType}
-          active={type === 'Готові рішення'}
+          active={type === 'Компоненти'}
         >
-          Готові рішення
+          Компоненти
         </ButtonTab>
         <ButtonTab
           type={'button'}
           onClick={handleType}
-          active={type === 'Компоненти'}
+          active={type === 'Готові рішення'}
         >
-          Компоненти
+          Готові рішення
         </ButtonTab>
       </WrapperTab>
       <WrapperSort>

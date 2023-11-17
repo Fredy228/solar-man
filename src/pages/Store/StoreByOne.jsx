@@ -9,6 +9,9 @@ import {
 import { LoadPage } from '../../components/LoadSpiner/LoadPage';
 import {
   CostProduct,
+  DescripImg,
+  DescripImgItem,
+  DescripImgList,
   ElementImage,
   ImgProduct,
   ImgShema,
@@ -21,7 +24,12 @@ import {
   OptionItem,
   OptionList,
   OptionText,
+  PdfFileIcon,
+  PdfFileLink,
   SpanDesrip,
+  VideoFrame,
+  VideoItem,
+  VideoList,
   WrapperDescrip,
   WrapperOptionEl,
   WrapperShemaItems,
@@ -29,14 +37,18 @@ import {
 import { numbersFormatCost } from '../../services/numbersFormatCost';
 import { Icon } from '../../components/Icon/Icon';
 import { useBasket, useShowModal } from '../../globalState/globalState';
+
 import { Container, Frontier } from '../Common.styled';
 import { SectionTitle } from '../../CommonStyle/SectionTitle.styled';
 import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
+
 import { Consult } from '../../components/Сonsult/Сonsult';
 import useWindowWidth from '../../services/widthScreen';
 import { GoBackBtn } from '../../components/GoBackBtn/GoBackBtn';
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 import { Call } from '../../components/Call/Call';
+
+import iconPdfFile from '../../img/pdf-icon.webp';
 
 const StoreByOne = () => {
   const widthScreen = useWindowWidth();
@@ -132,6 +144,20 @@ const StoreByOne = () => {
                 >
                   <Icon name={'icon-phone'} /> Замовити
                 </ButtonOrg>
+                {product.pdfUrl && (
+                  <PdfFileLink
+                    href={`${baseURL}/${product.pdfUrl}`}
+                    target={'_blank'}
+                  >
+                    <PdfFileIcon
+                      src={iconPdfFile}
+                      alt={'Icon PDF'}
+                      width={'72'}
+                      height={'72'}
+                    />
+                    {product.pdfUrl.split('/')[3]}
+                  </PdfFileLink>
+                )}
               </NameBox>
             </IntroWrapper>
             <WrapperDescrip
@@ -161,11 +187,14 @@ const StoreByOne = () => {
                     {item.subtitle}
                   </OptionText>
                   <OptionList isWhite={false}>
-                    {item.option.map((iOption, index) => (
-                      <OptionItem key={index}>
-                        <OptionText isWhite={false}>{iOption}</OptionText>
-                      </OptionItem>
-                    ))}
+                    {item.option.map((iOption, index) => {
+                      if (iOption.trim() === '') return '';
+                      return (
+                        <OptionItem key={index}>
+                          <OptionText isWhite={false}>{iOption}</OptionText>
+                        </OptionItem>
+                      );
+                    })}
                   </OptionList>
                 </ItemCharacter>
               ))}
@@ -203,6 +232,40 @@ const StoreByOne = () => {
                   </ListCharacter>
                 </WrapperShemaItems>
               </>
+            )}
+            {product.descripPhotos && (
+              <DescripImgList>
+                {JSON.parse(product.descripPhotos).map(urlPhoto => (
+                  <DescripImgItem key={urlPhoto}>
+                    <DescripImg
+                      src={`${baseURL}/${urlPhoto}`}
+                      alt={'Фото для опису характеристики'}
+                    />
+                  </DescripImgItem>
+                ))}
+              </DescripImgList>
+            )}
+            {product.youtubeUrl && (
+              <VideoList>
+                {JSON.parse(product.youtubeUrl).map((idVideo, index) => {
+                  if (idVideo.trim() === '') return '';
+                  return (
+                    <VideoItem key={index}>
+                      <VideoFrame
+                        width="560"
+                        height="315"
+                        src={`https://www.youtube.com/embed/${
+                          idVideo.trim().split('v=')[1].split('&')[0]
+                        }`}
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+                        allowfullscreen
+                      ></VideoFrame>
+                    </VideoItem>
+                  );
+                })}
+              </VideoList>
             )}
           </InnerProduct>
         </Container>

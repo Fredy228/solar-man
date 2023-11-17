@@ -213,11 +213,14 @@ const Portfolio = () => {
                               <ItemTitle>{item.title}</ItemTitle>
                               <ItemText>Рік: {item.year}</ItemText>
                               <ItemList>
-                                {components.map(i => (
-                                  <ItemItem key={i}>
-                                    <ItemText>- {i}</ItemText>
-                                  </ItemItem>
-                                ))}
+                                {components.map(i => {
+                                  if (i.trim() === '') return '';
+                                  return (
+                                    <ItemItem key={i}>
+                                      <ItemText>- {i}</ItemText>
+                                    </ItemItem>
+                                  );
+                                })}
                               </ItemList>
                             </BoxInfo>
                             {role !== 'user' && (
