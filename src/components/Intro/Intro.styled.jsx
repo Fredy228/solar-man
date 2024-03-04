@@ -5,6 +5,35 @@ export const IntroBox = styled.section`
   position: relative;
 `;
 
+export const IntroBox2 = styled(IntroBox)``;
+
+export const IntroInner = styled.div`
+  padding-bottom: 100px;
+  padding-top: 50px;
+
+  background-image: url(${({ bgImage }) => bgImage});
+  background-repeat: no-repeat;
+  background-size: 700px;
+  background-position: bottom -320px right 0;
+
+  @media screen and (max-width: 1199px) {
+    background-size: 500px;
+    background-position: bottom -180px right 0;
+    padding-bottom: 80px;
+    padding-top: 0;
+  }
+
+  @media screen and (max-width: 999px) {
+    background-size: 400px;
+    background-position: bottom -120px right 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    background-size: 300px;
+    background-position: bottom -120px right 0;
+  }
+`;
+
 export const EllipseBg = styled.div`
   position: absolute;
   width: 2200px;
@@ -54,7 +83,7 @@ export const ImgEllipse = styled.img`
 
 export const IntroTitle = styled.h1`
   text-transform: uppercase;
-  margin-top: 120px;
+  padding-top: 120px;
   font-size: 40px;
   color: ${({ theme }) => theme.color.main};
   line-height: 1.3;
@@ -63,12 +92,16 @@ export const IntroTitle = styled.h1`
 
   @media screen and (max-width: 999px) {
     font-size: 30px;
-    margin-top: 100px;
+    padding-top: 100px;
   }
 
   @media screen and (max-width: 767px) {
     font-size: 25px;
   }
+`;
+
+export const IntroTitleSpan = styled.span`
+  color: ${({ theme }) => theme.color.second};
 `;
 
 export const IntroText = styled.p`
@@ -168,8 +201,9 @@ export const OverlayIntro = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: end;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
   border-radius: 10px;
   background: linear-gradient(
     180deg,
@@ -194,5 +228,19 @@ export const TextOverlay = styled.p`
 
   @media screen and (max-width: 999px) {
     font-size: 16px;
+  }
+`;
+
+export const BtnOverlay = styled.div`
+  background-color: ${({ theme: { color } }) => color.second};
+  color: ${({ theme: { color } }) => color.white};
+  font-size: 16px;
+  padding: 10px 30px;
+  margin: 0 auto 20px auto;
+  border-radius: 30px;
+
+  @media screen and (min-width: 768px) and (max-width: 999px) {
+    font-size: 14px;
+    padding: 7px 20px;
   }
 `;

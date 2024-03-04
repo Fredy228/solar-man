@@ -15,11 +15,12 @@ export const ApplicationForm = ({
   marginValue,
   maxWidth,
   widthValue,
+  isRus,
 }) => {
   const { toggleModal } = useShowModal();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
+  // const [email, setEmail] = useState('');
   const [isBtnDisab, setIsBtnDisab] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const phoneRegex =
@@ -31,13 +32,13 @@ export const ApplicationForm = ({
       setIsBtnDisab(true);
       setIsLoading(true);
 
-      await sendPhoneToTelegram({ name, phone, email, currentGood });
+      await sendPhoneToTelegram({ name, phone, currentGood });
 
       setIsBtnDisab(false);
       setIsLoading(false);
       setName('');
       setPhone('');
-      setEmail('');
+      // setEmail('');
 
       Notify.success('Відправлено успішно');
 
@@ -72,7 +73,7 @@ export const ApplicationForm = ({
     >
       <Input
         type="text"
-        placeholder="Ваше ім’я"
+        placeholder={isRus ? 'Ваше имя' : 'Ваше ім’я'}
         value={name}
         pattern="[a-zA-Zа-яА-ЯёЁґҐіІїЇєЄ'’\-]+( [a-zA-Zа-яА-ЯёЁґҐіІїЇєЄ'’\-]+)*"
         name="name"
@@ -88,22 +89,22 @@ export const ApplicationForm = ({
         definitions={{
           '#': /[0-9]/,
         }}
-        placeholder="Ваш номер телефону"
+        placeholder={isRus ? 'Ваш номер телефона' : 'Ваш номер телефону'}
         name="phone"
         id="phone"
         onAccept={value => setPhone(value)}
         required
       />
-      <Input
-        type="email"
-        placeholder="Ваш email"
-        value={email}
-        name="email"
-        onChange={e => {
-          setEmail(e.target.value);
-        }}
-        required
-      />
+      {/*<Input*/}
+      {/*  type="email"*/}
+      {/*  placeholder="Ваш email"*/}
+      {/*  value={email}*/}
+      {/*  name="email"*/}
+      {/*  onChange={e => {*/}
+      {/*    setEmail(e.target.value);*/}
+      {/*  }}*/}
+      {/*  required*/}
+      {/*/>*/}
       <ButtonOrg
         type={'submit'}
         disabled={isBtnDisab}
@@ -114,7 +115,7 @@ export const ApplicationForm = ({
         ) : (
           <>
             <Icon name="icon-annotation" />
-            Надіслати запит
+            {isRus ? 'Отправить запрос' : 'Надіслати запит'}
           </>
         )}
       </ButtonOrg>

@@ -3,7 +3,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const baseURL =
   process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3001'
+    ? 'https://solarman.pro'
     : 'https://solarman.pro';
 
 // 'http://192.168.31.58:3001'

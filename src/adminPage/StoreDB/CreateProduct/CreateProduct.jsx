@@ -15,7 +15,7 @@ const CreateProduct = () => {
 
   useEffect(() => {
     if (role === 'user') navigate('/admin/goods');
-  }, []);
+  }, [role, navigate]);
 
   return (
     <>

@@ -72,3 +72,40 @@ export const ContactLink = styled.a`
     }
   }
 `;
+
+export const BoxLang = styled.li`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: 20px;
+
+  @media screen and (max-width: 999px) {
+    margin-right: 0;
+    margin-bottom: 15px;
+    flex-direction: row;
+    gap: 10px;
+  }
+`;
+
+export const SpanLang = styled.span`
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: ${({ theme }) => theme.color.second};
+`;
+
+export const BtnLang = styled.button`
+  background: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 350ms ease;
+
+  color: ${({ theme, active }) =>
+    active ? theme.color.second : theme.color.g900};
+
+  &:hover {
+    color: ${({ theme }) => theme.color.second};
+  }
+`;

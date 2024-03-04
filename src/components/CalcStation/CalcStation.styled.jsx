@@ -103,9 +103,9 @@ export const ListResult = styled.ul`
 `;
 
 export const ItemResult = styled.li`
-  padding: 5px 20px;
+  padding: 20px 20px;
   width: 180px;
-  height: 100px;
+  //height: 100px;
   background-color: ${({ theme: { color } }) => color.white};
   color: ${({ theme: { color } }) => color.g500};
   border: 1px solid ${({ theme }) => theme.color.main};
@@ -137,8 +137,8 @@ export const ItemResult = styled.li`
 
   @media screen and (max-width: 1199px) {
     width: 150px;
-    height: 80px;
-    padding: 5px 15px;
+    //height: 80px;
+    padding: 15px 15px;
 
     span {
       font-size: 22px;
@@ -160,6 +160,20 @@ export const TextResult = styled.p`
 
   @media screen and (max-width: 1199px) {
     font-size: 14px;
+  }
+`;
+
+export const CalcInput = styled.input`
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  color: ${({ theme }) => theme.color.main};
+  border: 1px solid ${({ theme }) => theme.color.main};
+  border-radius: 4px;
+  outline: transparent;
+
+  &:focus {
+    border-color: ${({ theme }) => theme.color.second};
   }
 `;
 

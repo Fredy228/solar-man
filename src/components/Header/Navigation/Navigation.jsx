@@ -11,9 +11,16 @@ import {
   LinkToDrop,
 } from './Navigation.styled';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const Navigation = ({ showMenu }) => {
   const [isShowDropNav, setIsShowDropNav] = useState(false);
+
+  const location = useLocation();
+  const currentPath = location.pathname.split('/');
+  const lang = currentPath[currentPath.length - 1];
+
+  const isRus = lang === 'ru';
 
   const toggleMenu = () => {
     window.scrollTo(0, 0);
@@ -29,31 +36,36 @@ export const Navigation = ({ showMenu }) => {
           onMouseOut={() => setIsShowDropNav(false)}
         >
           <LinkToDrop>
-            Послуги <Icon name="icon-downarrow" />
+            {isRus ? 'Услуги' : 'Послуги'}
+            <Icon name="icon-downarrow" />
           </LinkToDrop>
           <DropNav isShow={isShowDropNav}>
             <DropNavList>
               <DropNavItem>
                 <DropNavLink to="/enterprises" onClick={toggleMenu}>
                   <Icon name="icon-company" />
-                  Для підприємств
+                  {isRus ? 'Для предприятий' : 'Для підприємств'}
                 </DropNavLink>
               </DropNavItem>
               <DropNavItem>
                 <DropNavLink to="/home" onClick={toggleMenu}>
                   <Icon name="icon-home" />
-                  Для дому
+                  {isRus ? 'Для дома' : 'Для дому'}
                 </DropNavLink>
               </DropNavItem>
               <DropNavItem>
                 <DropNavLink to="/investment" onClick={toggleMenu}>
-                  <Icon name="icon-store" /> Для інвестицій
+                  <Icon name="icon-store" />
+                  {isRus ? 'Для инвестиций' : 'Для інвестицій'}
                 </DropNavLink>
               </DropNavItem>
               <DropNavItem>
                 <DropNavLink to="/backup-power" onClick={toggleMenu}>
                   <Icon name="icon-battery" />
-                  Резервне електроживлення
+
+                  {isRus
+                    ? 'Резервное электропитание'
+                    : 'Резервне електроживлення'}
                 </DropNavLink>
               </DropNavItem>
             </DropNavList>
@@ -66,17 +78,17 @@ export const Navigation = ({ showMenu }) => {
         </NavItem>
         <NavItem>
           <LinkTo to="/projects" onClick={toggleMenu}>
-            Проекти
+            {isRus ? 'Проекты' : 'Проекти'}
           </LinkTo>
         </NavItem>
         <NavItem>
           <LinkTo to="/about-us" onClick={toggleMenu}>
-            Про нас
+            {isRus ? 'О нас' : 'Про нас'}
           </LinkTo>
         </NavItem>
         <NavItem>
           <LinkTo to="/contacts" onClick={toggleMenu}>
-            Контакти
+            {isRus ? 'Контакты' : 'Контакти'}
           </LinkTo>
         </NavItem>
       </NavList>

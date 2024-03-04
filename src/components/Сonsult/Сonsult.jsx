@@ -14,9 +14,14 @@ import { SectionTitle } from '../../CommonStyle/SectionTitle.styled';
 import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
 import { useShowModal } from '../../globalState/globalState';
 import { Container } from '../../pages/Common.styled';
+import { useLocation } from 'react-router-dom';
 
 export const Consult = ({ widthScreen }) => {
   const { toggleModal } = useShowModal();
+
+  const location = useLocation();
+  const currentPath = location.pathname.split('/');
+  const lang = currentPath[currentPath.length - 1];
 
   return (
     <InnerConsult>
@@ -41,20 +46,19 @@ export const Consult = ({ widthScreen }) => {
                 text={widthScreen < 768 ? 'center' : 'left'}
                 colorText={'white'}
               >
-                Безкоштовно підберемо найкраще рішення{' '}
-                {widthScreen >= 768 && <br />} саме{' '}
-                {widthScreen < 768 && <br />} під ваш запит
+                {lang === 'ru' ? 'Подберем лучший' : 'Підберемо найкращий'}
+                {widthScreen >= 768 && <br />}{' '}
+                {lang === 'ru' ? 'вариант для вас' : 'варіант для вас'}
               </SectionTitle>
-              <ConsultText>
-                Ми зв’яжемось з вами <br /> щоб підібрати рішення саме
-                {widthScreen < 768 && <br />} для вашої мети
-              </ConsultText>
               <ButtonOrg
                 type={'button'}
                 colorBgHover={'secondBlur'}
                 onClick={() => toggleModal(true)}
               >
-                <Icon name={'icon-annotation'} /> Замовити консультацію
+                <Icon name={'icon-annotation'} />{' '}
+                {lang === 'ru'
+                  ? 'Заказать консультацию'
+                  : 'Замовити консультацію'}
               </ButtonOrg>
             </WrapperText>
           </WrapperFlex>

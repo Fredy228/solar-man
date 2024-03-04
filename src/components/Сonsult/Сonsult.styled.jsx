@@ -7,7 +7,7 @@ export const InnerConsult = styled.div`
 `;
 
 export const WrapperOverHidden = styled.div`
-  padding: 70px 0;
+  padding: 100px 0;
   overflow: hidden;
 
   @media screen and (max-width: 767px) {

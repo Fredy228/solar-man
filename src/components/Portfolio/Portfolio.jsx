@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   PortfolioInner,
   PortfolioList,
@@ -21,6 +21,9 @@ export const Portfolio = () => {
   const limit = 6;
   const [items, setItems] = useState([]);
   const history = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname.split('/');
+  const lang = currentPath[currentPath.length - 1];
 
   useEffect(() => {
     async function gettingPosts() {
@@ -32,7 +35,9 @@ export const Portfolio = () => {
 
   return (
     <PortfolioInner>
-      <SectionTitle marginBottom={'40px'}>Проекти</SectionTitle>
+      <SectionTitle marginBottom={'40px'}>
+        {lang === 'ru' ? 'Проекты' : 'Проекти'}
+      </SectionTitle>
 
       <PortfolioList>
         {items.map(item => (
@@ -72,7 +77,8 @@ export const Portfolio = () => {
           colorBg={'main'}
           colorBgHover={'second'}
         >
-          <Icon name={'icon-photograph'} /> Дивитись усі проекти
+          <Icon name={'icon-photograph'} />
+          {lang === 'ru' ? 'Посмотреть все проекты' : 'Дивитись усі проекти'}
         </ButtonOrg>
       </div>
     </PortfolioInner>

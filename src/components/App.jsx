@@ -31,6 +31,22 @@ const StoreByOne = lazy(() => import('pages/Store/StoreByOne'));
 const Thanks = lazy(() => import('pages/Thanks/Thanks'));
 const Quiz = lazy(() => import('pages/Quiz/Quiz'));
 const NotFound = lazy(() => import('pages/NotFound/NotFound'));
+
+const GuideUk = lazy(() => import('pages/Guide/GuideUk'));
+const GuideRu = lazy(() => import('pages/Guide/GuideRu'));
+const PrivateUk = lazy(() => import('pages/Private/PrivateUk'));
+const PrivateRu = lazy(() => import('pages/Private/PrivateRu'));
+const GreenUk = lazy(() => import('pages/Green/GreenUk'));
+const GreenRu = lazy(() => import('pages/Green/GreenRu'));
+const SmallBusinessUk = lazy(() =>
+  import('pages/SmallBusiness/SmallBusinessUk')
+);
+const SmallBusinessRu = lazy(() =>
+  import('pages/SmallBusiness/SmallBusinessRu')
+);
+const BigBusinessUk = lazy(() => import('pages/BigBusiness/BigBusinessUk'));
+const BigBusinessRu = lazy(() => import('pages/BigBusiness/BigBusinessRu'));
+
 export const App = () => {
   const { isShowModal } = useShowModal();
 
@@ -57,6 +73,17 @@ export const App = () => {
         <Route path="/store/:typeProduct" element={<StoreByOne />} />
         <Route path="/thanks" element={<Thanks />} />
         <Route path="/quiz" element={<Quiz />} />
+
+        <Route path="/guide/uk" element={<GuideUk />} />
+        <Route path="/guide/ru" element={<GuideRu />} />
+        <Route path="/private/uk" element={<PrivateUk />} />
+        <Route path="/private/ru" element={<PrivateRu />} />
+        <Route path="/green/uk" element={<GreenUk />} />
+        <Route path="/green/ru" element={<GreenRu />} />
+        <Route path="/smallbusiness/uk" element={<SmallBusinessUk />} />
+        <Route path="/smallbusiness/ru" element={<SmallBusinessRu />} />
+        <Route path="/bigbusiness/uk" element={<BigBusinessUk />} />
+        <Route path="/bigbusiness/ru" element={<BigBusinessRu />} />
 
         <Route path="*" element={<NotFound />} />
       </Route>

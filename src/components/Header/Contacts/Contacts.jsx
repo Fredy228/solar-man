@@ -1,10 +1,34 @@
-import { ContactList, ContactItem, ContactLink } from './Contacts.styled';
+import {
+  ContactList,
+  ContactItem,
+  ContactLink,
+  BoxLang,
+  BtnLang,
+  SpanLang,
+} from './Contacts.styled';
 import { Icon } from 'components/Icon/Icon';
 import { ButtonOrg } from '../../../CommonStyle/ButtonCommon.styled';
 import { useShowModal } from '../../../globalState/globalState';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const Contacts = ({ widthSreen, showBurger }) => {
   const { toggleModal } = useShowModal();
+
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const currentPath = location.pathname.split('/');
+  const lang = currentPath[currentPath.length - 1];
+  const isRus = lang === 'ru';
+
+  const handleLang = langTo => {
+    if (lang === langTo) return;
+    const path = [
+      ...currentPath.splice(0, currentPath.length - 1),
+      langTo === 'ru' ? 'ru' : 'uk',
+    ].join('/');
+    navigate(path);
+  };
 
   return (
     <ContactList>
@@ -24,11 +48,39 @@ export const Contacts = ({ widthSreen, showBurger }) => {
       )}
 
       {((showBurger && widthSreen < 1000) || widthSreen >= 1000) && (
-        <ContactItem showBurger={showBurger}>
-          <ButtonOrg type={'button'} onClick={() => toggleModal(true)}>
-            <Icon name={'icon-annotation'} /> Отримати консультацію
-          </ButtonOrg>
-        </ContactItem>
+        <>
+          {['uk', 'ru'].includes(lang) && (
+            <BoxLang>
+              <BtnLang
+                type={'button'}
+                active={lang === 'uk'}
+                onClick={() => handleLang('uk')}
+              >
+                UK
+              </BtnLang>
+              <SpanLang></SpanLang>
+              <BtnLang
+                type={'button'}
+                active={lang === 'ru'}
+                onClick={() => handleLang('ru')}
+              >
+                RU
+              </BtnLang>
+            </BoxLang>
+          )}
+
+          <ContactItem showBurger={showBurger}>
+            <ButtonOrg type={'button'} onClick={() => toggleModal(true)}>
+              <Icon name={'icon-annotation'} />{' '}
+              {(widthSreen < 1000 || widthSreen >= 1200) && (
+                <>
+                  {' '}
+                  {isRus ? 'Получить консультацию' : 'Отримати консультацію'}
+                </>
+              )}
+            </ButtonOrg>
+          </ContactItem>
+        </>
       )}
     </ContactList>
   );
