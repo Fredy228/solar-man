@@ -7,6 +7,7 @@ export const baseURL =
     : 'https://solarman.pro';
 
 // 'http://192.168.31.58:3001'
+
 //"http://localhost:3001"
 
 axios.defaults.baseURL = baseURL;
