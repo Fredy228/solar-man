@@ -1,0 +1,3 @@
+window.env = {
+  "API_KEY_SRM": "MGY0MWQ2NTQ1M2UzZGRiYTdlNzk5MWVlOWFiNzYwZDhhZGM0MDc1Zg"
+};

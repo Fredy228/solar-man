@@ -73,6 +73,7 @@ export const App = () => {
         <Route path="/store/:typeProduct" element={<StoreByOne />} />
         <Route path="/thanks" element={<Thanks />} />
         <Route path="/quiz" element={<Quiz />} />
+        <Route path="/quiz/social" element={<Quiz />} />
 
         <Route path="/guide/uk" element={<GuideUk />} />
         <Route path="/guide/ru" element={<GuideRu />} />

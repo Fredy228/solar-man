@@ -1,6 +1,5 @@
 import {
   ArrowConsult,
-  ConsultText,
   ImgConsult,
   InnerConsult,
   WrapperFlex,
