@@ -8,6 +8,8 @@ import useWindowWidth from '../../services/widthScreen';
 import { Call } from '../../components/Call/Call';
 import { IntroGuideRu } from '../../components/Intro/IntroGuideRu';
 import { WhatGettingRu } from '../../components/WhatGetting/WhatGettingRu';
+import { IntroCardsRu } from '../../components/Intro/IntroCardsRu';
+import { Vitrina } from '../../components/Solution/Vitrina';
 
 const GuideRu = () => {
   const widthScreen = useWindowWidth();
@@ -18,6 +20,14 @@ const GuideRu = () => {
         <Frontier hiddenX={true}>
           <IntroGuideRu />
         </Frontier>
+
+        <Container>
+          <Vitrina lang={'ru'} />
+        </Container>
+
+        <Container>
+          <IntroCardsRu />
+        </Container>
 
         <Container>
           <WhatGettingRu />

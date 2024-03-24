@@ -244,3 +244,62 @@ export const BtnOverlay = styled.div`
     padding: 7px 20px;
   }
 `;
+
+export const BlockDiscount = styled.div`
+  background-color: #ffffff;
+  padding: 28px 50px;
+  display: inline-block;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 0 0 1px;
+
+  @media screen and (max-width: 1199px) {
+    padding: 25px 35px;
+    margin-top: 20px;
+  }
+
+  @media screen and (max-width: 999px) {
+    font-size: 18px;
+    margin-top: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 15px 25px;
+  }
+`;
+
+export const DiscountSmallText = styled.p`
+  font-size: 24px;
+  color: ${({ theme: { color } }) => color.g2};
+  line-height: 1.5;
+  font-weight: 600;
+
+  @media screen and (max-width: 1199px) {
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: 999px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
+`;
+
+export const DiscountBigText = styled.p`
+  font-size: 38px;
+  line-height: 1.3;
+  color: ${({ theme: { color } }) => color.second};
+  font-weight: 700;
+
+  @media screen and (max-width: 1199px) {
+    font-size: 32px;
+  }
+
+  @media screen and (max-width: 999px) {
+    font-size: 25px;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 20px;
+  }
+`;

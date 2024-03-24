@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { InnerQuiz, TitleQuiz, WrapperQuiz } from './Quiz.styled';
 import { QuizBar } from '../../components/QuizParts/QuizBar/QuizBar';
@@ -14,7 +14,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useNavigate } from 'react-router-dom';
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 import { QuizStart } from '../../components/QuizParts/QuizStart/QuizStart';
-import ReactPixel from 'react-facebook-pixel';
+// import ReactPixel from 'react-facebook-pixel';
 
 const questions = [
   {
@@ -110,12 +110,12 @@ const Quiz = () => {
     }
   };
 
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'development') return;
-
-    ReactPixel.init('303919825606274');
-    ReactPixel.pageView();
-  }, []);
+  // useEffect(() => {
+  //   if (process.env.NODE_ENV === 'development') return;
+  //
+  //   ReactPixel.init('6596133883766755');
+  //   ReactPixel.pageView();
+  // }, []);
 
   return (
     <GoogleAnalyticsWrapper>

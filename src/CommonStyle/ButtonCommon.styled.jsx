@@ -38,3 +38,24 @@ export const ButtonOrg = styled.button`
       colorBgHover ? theme.color[colorBgHover] : theme.color.main};
   }
 `;
+
+export const ButtonVariantTwo = styled.button`
+  padding: 15px 30px;
+  border: 1px solid #16498a;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #16498a;
+  background-color: #eefaff;
+  display: block;
+  cursor: pointer;
+
+  transition-timing-function: ease;
+  transition-duration: 350ms;
+  transition-property: background-color, color;
+
+  :hover {
+    background-color: #16498a;
+    color: #eefaff;
+  }
+`;

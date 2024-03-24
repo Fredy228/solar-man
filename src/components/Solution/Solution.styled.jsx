@@ -107,6 +107,44 @@ export const Title = styled.p`
   }
 `;
 
+export const TitleLink = styled(NavLink)`
+  text-align: center;
+  font-size: 16px;
+  padding: 0 10px;
+  margin: 10px 0 15px 0;
+  color: inherit;
+  transition: color 350ms ease;
+
+  @media screen and (max-width: 1199px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+  }
+`;
+
+export const SolutionList = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  @media screen and (max-width: 999px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+export const SolutionItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: ${({ theme }) => theme.color.g2};
+  height: 100%;
+`;
+
 export const Slide = styled.div`
   background-color: ${({ theme }) => theme.color.white};
   height: 100%;

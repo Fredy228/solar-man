@@ -33,7 +33,7 @@ export const Solution = ({ widthScreen }) => {
     try {
       async function getSetsHome() {
         setIsLoading(true);
-        const { result } = await getSetsHomeOrder();
+        const { result } = await getSetsHomeOrder({});
         setItems(result);
         setIsLoading(false);
       }

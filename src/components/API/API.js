@@ -3,7 +3,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const baseURL =
   process.env.NODE_ENV === 'development'
-    ? 'https://solarman.pro'
+    ? 'http://localhost:3001'
     : 'https://solarman.pro';
 
 // 'http://192.168.31.58:3001'
@@ -265,8 +265,13 @@ export const getStoreSets = async (
   return response.data;
 };
 
-export const getSetsHomeOrder = async () => {
-  const response = await axios.get(`/api/admin/store-sets/home-sets`);
+export const getSetsHomeOrder = async ({ limit, page }) => {
+  const response = await axios.get(`/api/admin/store-sets/home-sets`, {
+    params: {
+      limit,
+      page,
+    },
+  });
   return response.data;
 };
 

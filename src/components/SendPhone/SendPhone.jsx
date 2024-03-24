@@ -31,7 +31,12 @@ export const SendPhone = () => {
           : "Найближчим часом з вами зв'яжеться менеджер."}{' '}
       </TextAdd>
       <ApplicationForm currentGood={currentGood} isRus={isRus} />
-      {currentGood && <TextAdd>Консультація стосовно: {currentGood}</TextAdd>}
+      {currentGood && (
+        <TextAdd>
+          {isRus ? 'Консультация по поводу:' : 'Консультація стосовно:'}{' '}
+          {currentGood}
+        </TextAdd>
+      )}
     </Inner>
   );
 };

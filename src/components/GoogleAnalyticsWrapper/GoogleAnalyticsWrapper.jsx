@@ -1,8 +1,16 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import ReactPixel from 'react-facebook-pixel';
 
 const GoogleAnalyticsWrapper = ({ children }) => {
   const location = useLocation();
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') return;
+
+    ReactPixel.init('6596133883766755');
+    ReactPixel.pageView();
+  }, []);
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') return;
