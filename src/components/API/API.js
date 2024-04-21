@@ -25,8 +25,13 @@ export const sendPhoneToTelegram = async client => {
   return response.data;
 };
 
-export const sendQuizToTelegram = async client => {
-  const response = await axios.post('/api/phone-send/quiz', client);
+export const sendQuizToTelegram = async (client, source) => {
+  console.log('source', source);
+  const response = await axios.post('/api/phone-send/quiz', client, {
+    params: {
+      ...source,
+    },
+  });
   return response.data;
 };
 

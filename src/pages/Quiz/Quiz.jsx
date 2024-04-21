@@ -11,7 +11,7 @@ import { QuizBodyFive } from '../../components/QuizParts/QuizBody/QuizBodyFive/Q
 import useWindowWidth from '../../services/widthScreen';
 import { sendQuizToTelegram } from '../../components/API/API';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
 import { QuizStart } from '../../components/QuizParts/QuizStart/QuizStart';
 // import ReactPixel from 'react-facebook-pixel';
@@ -72,6 +72,12 @@ const Quiz = () => {
   const widthScreen = useWindowWidth();
   const [isReady, setIsReady] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchParams] = useSearchParams();
+  const utmSourceParams = searchParams.get('utm_source');
+  const utmMediumParams = searchParams.get('utm_medium');
+  const utmCampaignParams = searchParams.get('utm_campaign');
+  const utmTermParams = searchParams.get('utm_term');
+  const utmContentParams = searchParams.get('utm_content');
   const navigate = useNavigate();
 
   const sendQuiz = async () => {
@@ -87,16 +93,25 @@ const Quiz = () => {
     try {
       setIsLoading(true);
 
-      await sendQuizToTelegram({
-        forWhat,
-        problem,
-        power,
-        country,
-        whichCountry,
-        name,
-        phone,
-        email,
-      });
+      await sendQuizToTelegram(
+        {
+          forWhat,
+          problem,
+          power,
+          country,
+          whichCountry,
+          name,
+          phone,
+          email,
+        },
+        {
+          utm_source: utmSourceParams,
+          utm_medium: utmMediumParams,
+          utm_campaign: utmCampaignParams,
+          utm_term: utmTermParams,
+          utm_content: utmContentParams,
+        }
+      );
 
       setAnswersQuiz(questions);
       Notify.success('Відправлено успішно');
