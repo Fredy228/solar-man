@@ -2,23 +2,23 @@ import { $api, $apiAdmin } from './base.api';
 
 export const getPosts = async (limit = 20, page = 1) => {
   const response = await $api.get(
-    `/api/admin/portfolio?limit=${limit}&page=${page}`
+    `/admin/portfolio?limit=${limit}&page=${page}`
   );
   return response.data;
 };
 
 export const getPostsById = async id => {
-  const response = await $api.get(`/api/admin/portfolio/${id}`);
+  const response = await $api.get(`/admin/portfolio/${id}`);
   return response.data;
 };
 
 export const deletePosts = async id => {
-  const response = await $apiAdmin.delete(`/api/admin/portfolio/${id}`);
+  const response = await $apiAdmin.delete(`/admin/portfolio/${id}`);
   return response.data;
 };
 
 export const deletePostImage = async (id, urlMini) => {
-  const response = await $apiAdmin.patch(`/api/admin/portfolio/image/${id}`, {
+  const response = await $apiAdmin.patch(`/admin/portfolio/image/${id}`, {
     urlMini,
   });
   return response.data;
@@ -35,7 +35,7 @@ export const createPosts = async (title, year, components, photo, gallery) => {
     return formData.append('gallery', file);
   });
 
-  const response = await $apiAdmin.post(`/api/admin/portfolio`, formData);
+  const response = await $apiAdmin.post(`/admin/portfolio`, formData);
   return response.data;
 };
 
@@ -57,14 +57,11 @@ export const updatePosts = async (
     return formData.append('gallery', file);
   });
 
-  const response = await $apiAdmin.patch(
-    `/api/admin/portfolio/${id}`,
-    formData
-  );
+  const response = await $apiAdmin.patch(`/admin/portfolio/${id}`, formData);
   return response.data;
 };
 
 export const updateOrderPosts = async objects => {
-  const response = await $apiAdmin.post(`/api/admin/portfolio/order`, objects);
+  const response = await $apiAdmin.post(`/admin/portfolio/order`, objects);
   return response.data;
 };

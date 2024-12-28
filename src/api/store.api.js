@@ -1,21 +1,18 @@
 import { $api, $apiAdmin } from './base.api';
 
 export const createStoreSets = async formData => {
-  const response = await $apiAdmin.post(`/api/admin/store-sets`, formData);
+  const response = await $apiAdmin.post(`/admin/store-sets`, formData);
   return response.data;
 };
 
 export const createStoreComponents = async formData => {
-  const response = await $apiAdmin.post(
-    `/api/admin/store-components`,
-    formData
-  );
+  const response = await $apiAdmin.post(`/admin/store-components`, formData);
   return response.data;
 };
 
 export const updateStoreSets = async (formData, id) => {
   const response = await $apiAdmin.patch(
-    `/api/admin/store-sets/by-id/${id}`,
+    `/admin/store-sets/by-id/${id}`,
     formData
   );
   return response.data;
@@ -23,7 +20,7 @@ export const updateStoreSets = async (formData, id) => {
 
 export const updateStoreComponents = async (formData, id) => {
   const response = await $apiAdmin.patch(
-    `/api/admin/store-components/by-id/${id}`,
+    `/admin/store-components/by-id/${id}`,
     formData
   );
   return response.data;
@@ -36,13 +33,13 @@ export const getStoreSets = async (
   sort = 'none'
 ) => {
   const response = await $api.get(
-    `/api/admin/store-sets?page=${page}&limit=${limit}&type=${type}&sort=${sort}`
+    `/admin/store-sets?page=${page}&limit=${limit}&type=${type}&sort=${sort}`
   );
   return response.data;
 };
 
 export const getSetsHomeOrder = async ({ limit, page }) => {
-  const response = await $api.get(`/api/admin/store-sets/home-sets`, {
+  const response = await $api.get(`/admin/store-sets/home-sets`, {
     params: {
       limit,
       page,
@@ -52,17 +49,12 @@ export const getSetsHomeOrder = async ({ limit, page }) => {
 };
 
 export const updateSetsHomeOrder = async objects => {
-  const response = await $apiAdmin.post(
-    `/api/admin/store-sets/home-sets`,
-    objects
-  );
+  const response = await $apiAdmin.post(`/admin/store-sets/home-sets`, objects);
   return response.data;
 };
 
 export const toggleSetsHome = async id => {
-  const response = await $apiAdmin.patch(
-    `/api/admin/store-sets/home-sets/${id}`
-  );
+  const response = await $apiAdmin.patch(`/admin/store-sets/home-sets/${id}`);
   return response.data;
 };
 
@@ -78,7 +70,7 @@ export const getStoreComponents = async (
   );
 
   const response = await $api.get(
-    `/api/admin/store-components?page=${page}&limit=${limit}&type=${type}&sort=${sort}&${optionSort.join(
+    `/admin/store-components?page=${page}&limit=${limit}&type=${type}&sort=${sort}&${optionSort.join(
       '&'
     )}`
   );
@@ -86,43 +78,43 @@ export const getStoreComponents = async (
 };
 
 export const deleteStoreSet = async id => {
-  const response = await $apiAdmin.delete(`/api/admin/store-sets/by-id/${id}`);
+  const response = await $apiAdmin.delete(`/admin/store-sets/by-id/${id}`);
   return response.data;
 };
 export const deleteStoreComponent = async id => {
   const response = await $apiAdmin.delete(
-    `/api/admin/store-components/by-id/${id}`
+    `/admin/store-components/by-id/${id}`
   );
   return response.data;
 };
 
 export const deletePdfStoreComponent = async id => {
   const response = await $apiAdmin.delete(
-    `/api/admin/store-components/pdf-by-id/${id}`
+    `/admin/store-components/pdf-by-id/${id}`
   );
   return response.data;
 };
 
 export const deleteDescripPhotoComponent = async (id, urlDel) => {
   const response = await $apiAdmin.patch(
-    `/api/admin/store-components/delete-descrip-photo/${id}`,
+    `/admin/store-components/delete-descrip-photo/${id}`,
     { urlDel }
   );
   return response.data;
 };
 
 export const getByIdStoreSet = async id => {
-  const response = await $api.get(`/api/admin/store-sets/by-id/${id}`);
+  const response = await $api.get(`/admin/store-sets/by-id/${id}`);
   return response.data;
 };
 export const getByIdStoreComponent = async id => {
-  const response = await $api.get(`/api/admin/store-components/by-id/${id}`);
+  const response = await $api.get(`/admin/store-components/by-id/${id}`);
   return response.data;
 };
 
 export const getFilterStoreComponent = async type => {
   const response = await $api.get(
-    `/api/admin/store-components/option?type=${type}`
+    `/admin/store-components/option?type=${type}`
   );
   return response.data;
 };

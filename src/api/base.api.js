@@ -4,8 +4,8 @@ import { get } from 'local-storage';
 
 export const baseURL =
   process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3001'
-    : 'https://solarman.pro';
+    ? 'http://localhost:3001/api'
+    : 'https://solarman.pro/api';
 
 // 'http://192.168.31.58:3001'
 //"http://localhost:3001"
