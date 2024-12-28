@@ -1,12 +1,12 @@
 import ReactPixel from 'react-facebook-pixel';
-import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
+import GoogleAnalyticsWrapper from '../../components/google-analytics-wrapper/GoogleAnalyticsWrapper';
 import { Container, Image, Inner, Text } from './Thanks.styled';
 import { useEffect } from 'react';
 
 import thankImg from '../../img/thanks.webp';
-import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
+import { ButtonOrg } from '../../common-style/ButtonCommon.styled';
 import { useNavigate } from 'react-router-dom';
-import { SectionTitle } from '../../CommonStyle/SectionTitle.styled';
+import { SectionTitle } from '../../common-style/SectionTitle.styled';
 import { Frontier } from '../Common.styled';
 import useWindowWidth from '../../services/widthScreen';
 

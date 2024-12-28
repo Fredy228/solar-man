@@ -1,8 +1,8 @@
 import { Container } from 'pages/Common.styled';
-import { ProjectsC } from 'components/Portfolio/Projects';
+import { ProjectsC } from 'components/ui/home/portfolio/Projects';
 import { Section } from 'pages/OurServices/OurServices.styled';
-import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
-import { Call } from '../../components/Call/Call';
+import GoogleAnalyticsWrapper from '../../components/google-analytics-wrapper/GoogleAnalyticsWrapper';
+import { Call } from '../../components/reused/call/Call';
 
 const Projects = () => {
   return (

@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 
-import {
-  baseURL,
-  getByIdStoreComponent,
-  getByIdStoreSet,
-} from '../../components/API/API';
-import { LoadPage } from '../../components/LoadSpiner/LoadPage';
+import { baseURL } from '../../api/base.api';
+import { LoadPage } from '../../components/reused/load-spinner/LoadPage';
 import {
   CostProduct,
   DescripImg,
@@ -35,20 +31,21 @@ import {
   WrapperShemaItems,
 } from './StoreByOne.styled';
 import { numbersFormatCost } from '../../services/numbersFormatCost';
-import { Icon } from '../../components/Icon/Icon';
+import { Icon } from '../../components/reused/icon/Icon';
 import { useBasket, useShowModal } from '../../globalState/globalState';
 
 import { Container, Frontier } from '../Common.styled';
-import { SectionTitle } from '../../CommonStyle/SectionTitle.styled';
-import { ButtonOrg } from '../../CommonStyle/ButtonCommon.styled';
+import { SectionTitle } from '../../common-style/SectionTitle.styled';
+import { ButtonOrg } from '../../common-style/ButtonCommon.styled';
 
-import { Consult } from '../../components/Сonsult/Сonsult';
+import { Consult } from '../../components/modals/consult/Сonsult';
 import useWindowWidth from '../../services/widthScreen';
-import { GoBackBtn } from '../../components/GoBackBtn/GoBackBtn';
-import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
-import { Call } from '../../components/Call/Call';
+import { GoBackBtn } from '../../components/reused/go-back-btn/GoBackBtn';
+import GoogleAnalyticsWrapper from '../../components/google-analytics-wrapper/GoogleAnalyticsWrapper';
+import { Call } from '../../components/reused/call/Call';
 
 import iconPdfFile from '../../img/pdf-icon.webp';
+import { getByIdStoreComponent, getByIdStoreSet } from '../../api/store.api';
 
 const StoreByOne = () => {
   const widthScreen = useWindowWidth();
@@ -151,7 +148,7 @@ const StoreByOne = () => {
                   >
                     <PdfFileIcon
                       src={iconPdfFile}
-                      alt={'Icon PDF'}
+                      alt={'icon PDF'}
                       width={'72'}
                       height={'72'}
                     />

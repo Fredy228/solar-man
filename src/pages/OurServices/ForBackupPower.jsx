@@ -1,13 +1,13 @@
 import { Container, Frontier } from 'pages/Common.styled';
 import { Section } from './OurServices.styled';
-import { OptionBackupPower } from 'components/Option/OptionBackupPower';
-import { BenefitsBackupPower } from 'components/Benefits/BenefitsBackupPower';
-import { ElementsStationBackupPower } from 'components/ElementsStation/ElementsStationBackupPower';
-import { StepsWorkBackupPower } from 'components/StepsWork/StepsWorkBackupPower';
-import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
-import { Consult } from '../../components/Сonsult/Сonsult';
+import { OptionBackupPower } from 'components/ui/our-services/option/OptionBackupPower';
+import { BenefitsBackupPower } from 'components/ui/our-services/benefits/BenefitsBackupPower';
+import { ElementsStationBackupPower } from 'components/ui/our-services/elements-station/ElementsStationBackupPower';
+import { StepsWorkBackupPower } from 'components/ui/our-services/steps-work/StepsWorkBackupPower';
+import GoogleAnalyticsWrapper from '../../components/google-analytics-wrapper/GoogleAnalyticsWrapper';
+import { Consult } from '../../components/modals/consult/Сonsult';
 import useWindowWidth from '../../services/widthScreen';
-import { Call } from '../../components/Call/Call';
+import { Call } from '../../components/reused/call/Call';
 
 const ForBackupPower = () => {
   const widthScreen = useWindowWidth();

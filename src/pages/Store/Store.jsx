@@ -5,23 +5,23 @@ import {
   WrapperFilter,
   WrapperStore,
 } from './Store.styled';
-import { Filter } from '../../components/Filter/Filter';
-import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
-import { StoreNav } from '../../components/StoreNav/StoreNav';
-import { ListGoods } from '../../components/ListGoods/ListGoods';
-import Pagination from '../../components/Pagination/Pagination';
+import { Filter } from '../../components/ui/store/filter/Filter';
+import GoogleAnalyticsWrapper from '../../components/google-analytics-wrapper/GoogleAnalyticsWrapper';
+import { StoreNav } from '../../components/ui/store/store-nav/StoreNav';
+import { ListGoods } from '../../components/ui/store/list-goods/ListGoods';
+import Pagination from '../../components/reused/pagination/Pagination';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Container, Frontier } from '../Common.styled';
+import { Icon } from '../../components/reused/icon/Icon';
+import { Consult } from '../../components/modals/consult/Сonsult';
+import useWindowWidth from '../../services/widthScreen';
+import { Call } from '../../components/reused/call/Call';
 import {
   getFilterStoreComponent,
   getStoreComponents,
   getStoreSets,
-} from '../../components/API/API';
-import { Container, Frontier } from '../Common.styled';
-import { Icon } from '../../components/Icon/Icon';
-import { Consult } from '../../components/Сonsult/Сonsult';
-import useWindowWidth from '../../services/widthScreen';
-import { Call } from '../../components/Call/Call';
+} from '../../api/store.api';
 
 const initialFilter = {
   brand: [],

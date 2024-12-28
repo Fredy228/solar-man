@@ -1,7 +1,7 @@
 import { ImgNotFound, InnerNotFound, NameErr } from './NotFound.styled';
 
 import imgPage from '../../img/not-found.png';
-import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
+import GoogleAnalyticsWrapper from '../../components/google-analytics-wrapper/GoogleAnalyticsWrapper';
 
 const NotFound = () => {
   return (

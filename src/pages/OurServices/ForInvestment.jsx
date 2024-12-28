@@ -1,13 +1,13 @@
 import { Container, Frontier } from 'pages/Common.styled';
 import { Section } from './OurServices.styled';
-import { OptionInvestment } from 'components/Option/OptionInvestment';
-import { BenefitsInvestment } from 'components/Benefits/BenefitsInvestment';
-import { ElementsStationInvestment } from 'components/ElementsStation/ElementsStationInvestment';
-import { StepsWorkInvestment } from 'components/StepsWork/StepsWorkInvestment';
-import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
-import { Consult } from '../../components/Сonsult/Сonsult';
+import { OptionInvestment } from 'components/ui/our-services/option/OptionInvestment';
+import { BenefitsInvestment } from 'components/ui/our-services/benefits/BenefitsInvestment';
+import { ElementsStationInvestment } from 'components/ui/our-services/elements-station/ElementsStationInvestment';
+import { StepsWorkInvestment } from 'components/ui/our-services/steps-work/StepsWorkInvestment';
+import GoogleAnalyticsWrapper from '../../components/google-analytics-wrapper/GoogleAnalyticsWrapper';
+import { Consult } from '../../components/modals/consult/Сonsult';
 import useWindowWidth from '../../services/widthScreen';
-import { Call } from '../../components/Call/Call';
+import { Call } from '../../components/reused/call/Call';
 
 const ForInvestment = () => {
   const widthScreen = useWindowWidth();

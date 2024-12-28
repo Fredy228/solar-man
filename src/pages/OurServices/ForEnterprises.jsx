@@ -1,14 +1,14 @@
 import { Container, Frontier } from 'pages/Common.styled';
 import { Section } from './OurServices.styled';
-import { OptionEnterprises } from 'components/Option/OptionEnterprises';
-import { BenefitsEnterprises } from 'components/Benefits/BenefitsEnterprises';
-import { Areas } from 'components/Areas/Areas';
-import { ElementsStationEnterprises } from 'components/ElementsStation/ElementsStationEnterprise';
-import { StepsWorkEnterprises } from 'components/StepsWork/StepsWorkEnterprises';
-import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
-import { Consult } from '../../components/Сonsult/Сonsult';
+import { OptionEnterprises } from 'components/ui/our-services/option/OptionEnterprises';
+import { BenefitsEnterprises } from 'components/ui/our-services/benefits/BenefitsEnterprises';
+import { Areas } from 'components/ui/our-services/areas/Areas';
+import { ElementsStationEnterprises } from 'components/ui/our-services/elements-station/ElementsStationEnterprise';
+import { StepsWorkEnterprises } from 'components/ui/our-services/steps-work/StepsWorkEnterprises';
+import GoogleAnalyticsWrapper from '../../components/google-analytics-wrapper/GoogleAnalyticsWrapper';
+import { Consult } from '../../components/modals/consult/Сonsult';
 import useWindowWidth from '../../services/widthScreen';
-import { Call } from '../../components/Call/Call';
+import { Call } from '../../components/reused/call/Call';
 
 const ForEnterprises = () => {
   const widthScreen = useWindowWidth();

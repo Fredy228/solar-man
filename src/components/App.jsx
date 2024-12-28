@@ -1,20 +1,22 @@
 import { lazy, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Layout from './Layout/Layout';
-import LayoutAdmin from './Layout/LayoutAdmin';
-import PrivateRoute from './Routes/PrivateRoute';
-import RestrictedRoute from './Routes/RestrictedRoute';
+import Layout from './layout/Layout';
+import LayoutAdmin from './layout/LayoutAdmin';
+import PrivateRoute from './routes/PrivateRoute';
+import RestrictedRoute from './routes/RestrictedRoute';
 import { useShowModal } from 'globalState/globalState';
 
 const Home = lazy(() => import('pages/Home/Home'));
-const LoginAdmin = lazy(() => import('adminPage/LoginAdmin/LoginAdmin'));
-const AdminProfile = lazy(() => import('adminPage/AdminProfile/AdminProfile'));
-const StoreDB = lazy(() => import('adminPage/StoreDB/StoreDB'));
-const OrderHome = lazy(() => import('adminPage/StoreDB/OrderHome'));
-const Portfolio = lazy(() => import('adminPage/Portfolio/Portfolio'));
-const PortfolioId = lazy(() => import('adminPage/Portfolio/PortfolioId'));
+const LoginAdmin = lazy(() => import('../admin-page/LoginAdmin/LoginAdmin'));
+const AdminProfile = lazy(() =>
+  import('../admin-page/AdminProfile/AdminProfile')
+);
+const StoreDB = lazy(() => import('../admin-page/StoreDB/StoreDB'));
+const OrderHome = lazy(() => import('../admin-page/StoreDB/OrderHome'));
+const Portfolio = lazy(() => import('../admin-page/Portfolio/Portfolio'));
+const PortfolioId = lazy(() => import('../admin-page/Portfolio/PortfolioId'));
 const CreateProduct = lazy(() =>
-  import('adminPage//StoreDB/CreateProduct/CreateProduct')
+  import('../admin-page/StoreDB/CreateProduct/CreateProduct')
 );
 
 const ForEnterprises = lazy(() => import('pages/OurServices/ForEnterprises'));
@@ -29,7 +31,8 @@ const ProjectByOne = lazy(() => import('pages/Projects/ProjectByOne'));
 const Store = lazy(() => import('pages/Store/Store'));
 const StoreByOne = lazy(() => import('pages/Store/StoreByOne'));
 const Thanks = lazy(() => import('pages/Thanks/Thanks'));
-const Quiz = lazy(() => import('pages/Quiz/Quiz'));
+const QuizGeneral = lazy(() => import('pages/Quiz/QuizGeneral'));
+const QuizCompany = lazy(() => import('pages/Quiz/QuizCompany'));
 const NotFound = lazy(() => import('pages/NotFound/NotFound'));
 
 const GuideUk = lazy(() => import('pages/Guide/GuideUk'));
@@ -72,8 +75,9 @@ export const App = () => {
         <Route path="/store" element={<Store />} />
         <Route path="/store/:typeProduct" element={<StoreByOne />} />
         <Route path="/thanks" element={<Thanks />} />
-        <Route path="/quiz" element={<Quiz />} />
-        <Route path="/quiz/social" element={<Quiz />} />
+        <Route path="/quiz" element={<QuizGeneral />} />
+        <Route path="/quiz/company" element={<QuizCompany />} />
+        <Route path="/quiz/social" element={<QuizGeneral />} />
 
         <Route path="/guide/uk" element={<GuideUk />} />
         <Route path="/guide/ru" element={<GuideRu />} />

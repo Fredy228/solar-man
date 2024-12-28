@@ -1,15 +1,15 @@
 import { Container, Frontier } from 'pages/Common.styled';
 import { Main } from '../Home/Home.styled';
-import { Consult } from '../../components/Сonsult/Сonsult';
-import { Portfolio } from 'components/Portfolio/Portfolio';
+import { Consult } from '../../components/modals/consult/Сonsult';
+import { Portfolio } from 'components/ui/home/portfolio/Portfolio';
 
-import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
+import GoogleAnalyticsWrapper from '../../components/google-analytics-wrapper/GoogleAnalyticsWrapper';
 import useWindowWidth from '../../services/widthScreen';
-import { Call } from '../../components/Call/Call';
-import { IntroGuideUk } from '../../components/Intro/IntroGuideUk';
-import { WhatGettingUk } from '../../components/WhatGetting/WhatGettingUk';
-import { IntroCardsUk } from '../../components/Intro/IntroCardsUk';
-import { Vitrina } from '../../components/Solution/Vitrina';
+import { Call } from '../../components/reused/call/Call';
+import { IntroGuideUk } from '../../components/ui/intro/IntroGuideUk';
+import { WhatGettingUk } from '../../components/ui/our-services/what-getting/WhatGettingUk';
+import { IntroCardsUk } from '../../components/ui/intro/IntroCardsUk';
+import { Vitrina } from '../../components/ui/home/solution/Vitrina';
 
 const GuideUk = () => {
   const widthScreen = useWindowWidth();

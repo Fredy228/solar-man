@@ -1,13 +1,13 @@
 import { Container, Frontier } from 'pages/Common.styled';
 import { Section } from './OurServices.styled';
-import { OptionHome } from 'components/Option/OptionHome';
-import { BenefitsHome } from 'components/Benefits/BenefitsHome';
-import { ElementsStationHome } from 'components/ElementsStation/ElementsStationHome';
-import { StepsWorkHome } from 'components/StepsWork/StepsWorkHome';
-import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
-import { Consult } from '../../components/Сonsult/Сonsult';
+import { OptionHome } from 'components/ui/our-services/option/OptionHome';
+import { BenefitsHome } from 'components/ui/our-services/benefits/BenefitsHome';
+import { ElementsStationHome } from 'components/ui/our-services/elements-station/ElementsStationHome';
+import { StepsWorkHome } from 'components/ui/our-services/steps-work/StepsWorkHome';
+import GoogleAnalyticsWrapper from '../../components/google-analytics-wrapper/GoogleAnalyticsWrapper';
+import { Consult } from '../../components/modals/consult/Сonsult';
 import useWindowWidth from '../../services/widthScreen';
-import { Call } from '../../components/Call/Call';
+import { Call } from '../../components/reused/call/Call';
 
 const ForHome = () => {
   const widthScreen = useWindowWidth();

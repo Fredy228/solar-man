@@ -1,11 +1,11 @@
-import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
+import GoogleAnalyticsWrapper from '../../components/google-analytics-wrapper/GoogleAnalyticsWrapper';
 import { Container, Frontier } from '../Common.styled';
 import { Section } from '../OurServices/OurServices.styled';
-import { OptionContacts } from '../../components/Option/OptionContacts';
-import { ListContacts } from '../../components/ListContacts/ListContacts';
+import { OptionContacts } from '../../components/ui/our-services/option/OptionContacts';
+import { ListContacts } from '../../components/ui/contacts/list-contacts/ListContacts';
 import useWindowWidth from '../../services/widthScreen';
-import { ConsultForm } from '../../components/Сonsult/ConsultForm';
-import { Call } from '../../components/Call/Call';
+import { ConsultForm } from '../../components/modals/consult/ConsultForm';
+import { Call } from '../../components/reused/call/Call';
 
 const Contacts = () => {
   const widthScreen = useWindowWidth();

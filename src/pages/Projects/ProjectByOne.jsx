@@ -1,11 +1,11 @@
 import { Container } from '../Common.styled';
-import { ProjectsById } from '../../components/Portfolio/ProjectsById';
+import { ProjectsById } from '../../components/ui/home/portfolio/ProjectsById';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getPostsById } from '../../components/API/API';
-import { LoadPage } from '../../components/LoadSpiner/LoadPage';
-import GoogleAnalyticsWrapper from '../../components/GoogleAnalyticsWrapper/GoogleAnalyticsWrapper';
-import { Call } from '../../components/Call/Call';
+import { LoadPage } from '../../components/reused/load-spinner/LoadPage';
+import GoogleAnalyticsWrapper from '../../components/google-analytics-wrapper/GoogleAnalyticsWrapper';
+import { Call } from '../../components/reused/call/Call';
+import { getPostsById } from '../../api/post.api';
 
 const ProjectByOne = () => {
   const { idProject } = useParams();
