@@ -4,7 +4,7 @@ import { InnerQuiz } from '../../components/ui/quiz/Quiz.styled';
 import GoogleAnalyticsWrapper from '../../components/google-analytics-wrapper/GoogleAnalyticsWrapper';
 import { QuizBuild } from '../../components/ui/quiz/QuizBuild';
 
-const QuizBase = ({ questions }) => {
+const QuizBase = ({ questions, title }) => {
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [answersQuiz, setAnswersQuiz] = useState(questions);
 
@@ -16,6 +16,7 @@ const QuizBase = ({ questions }) => {
           setCurrentQuestion={setCurrentQuestion}
           questions={answersQuiz}
           setQuestions={setAnswersQuiz}
+          title={title}
         />
       </InnerQuiz>
     </GoogleAnalyticsWrapper>

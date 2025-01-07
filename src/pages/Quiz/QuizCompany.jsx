@@ -23,7 +23,10 @@ const questions = [
   {
     id: 1,
     name: 'Який тип станції потрібен?',
-    answers: ['Без АКБ (Компенсація)', 'З АКБ (Гібридна)'],
+    answers: [
+      'Мережева (Для економії витрат на електроенергію)',
+      'З АКБ (Працює при відключені світла)',
+    ],
     currentIdx: null,
     currentValue: null,
     type: QuestionTypeEnum.IMAGE,
@@ -45,12 +48,18 @@ const questions = [
     name: 'Яка потужність вас цікавить?',
     answers: [],
     currentIdx: [100],
-    currentValue: '100 кВт',
+    currentValue: '100 кВт/год',
     from: 30,
     before: 500,
     step: 5,
+    metrics: 'кВт/год',
     calc: value => {
-      return [['Річна економія', `${value * 1100 * 7} грн`]];
+      return [
+        [
+          'Річна економія',
+          `${Intl.NumberFormat('ru-RU').format(value * 1100 * 7)} грн`,
+        ],
+      ];
     },
     type: QuestionTypeEnum.SLIDER_WITH_RESULT,
   },
@@ -77,7 +86,7 @@ const questions = [
   {
     id: 4,
     name: 'Вкажіть ваше місто',
-    answers: ['Одеса', 'Миколаїв', 'Область', 'Інше'],
+    answers: ['Одеса', 'Київ', 'Інше'],
     currentIdx: null,
     currentValue: null,
     type: QuestionTypeEnum.TEXT_WITH_ADD,
@@ -94,6 +103,11 @@ const questions = [
 ];
 
 const QuizCompany = () => {
-  return <QuizBase questions={questions} />;
+  return (
+    <QuizBase
+      title={'Отримайте кошторис для підприємств'}
+      questions={questions}
+    />
+  );
 };
 export default QuizCompany;

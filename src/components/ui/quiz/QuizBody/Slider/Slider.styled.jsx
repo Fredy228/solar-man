@@ -158,7 +158,7 @@ export const ResultList = styled.ul`
 
 export const ResultItem = styled.li`
   padding: 20px 20px;
-  width: 220px;
+  width: 230px;
   //background-color: ${({ theme: { color } }) => color.white};
   background-color: transparent;
   color: ${({ theme: { color } }) => color.g500};
@@ -177,7 +177,7 @@ export const ResultItem = styled.li`
   }
 
   @media screen and (max-width: 1199px) {
-    width: 190px;
+    width: 210px;
     padding: 15px 15px;
 
     span {

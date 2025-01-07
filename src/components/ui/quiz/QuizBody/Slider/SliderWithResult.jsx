@@ -1,32 +1,20 @@
 import { QuizBodyInner } from '../QuizBody.styled';
 import { getTrackBackground, Range } from 'react-range';
 import { Icon } from '../../../../reused/icon/Icon';
+import { QuizSliderBox, ResultItem, ResultList } from './Slider.styled';
 import {
-  BrakePoints,
-  CustomRange,
-  QuizOutputSlider,
-  QuizSliderBox,
-  RenderThumb,
-  RenderTrack,
-  ResultItem,
-  ResultList,
-  WrapperBrakePoints,
-  WrapperRenderTrack,
-} from './Slider.styled';
-import {
-  ItemResult,
   OutputSlider,
   TextResult,
 } from '../../../home/calc-station/CalcStation.styled';
 
 export const SliderWithResult = ({
   setAnswersQuiz,
-  widthScreen,
   answersQuiz,
   currentQuestion,
 }) => {
   const currentTarget = answersQuiz[currentQuestion - 1];
   const rangeValue = currentTarget.currentIdx;
+  const metrics = currentTarget.metrics || 'кВт';
   const maxRange =
     rangeValue[0] > currentTarget.before ? rangeValue[0] : currentTarget.before;
 
@@ -49,8 +37,9 @@ export const SliderWithResult = ({
       return state;
     });
 
-    let result = `${values[0]} кВт`;
-    if (values[0] >= currentTarget.before) result = `більше ${values[0]} кВт`;
+    let result = `${values[0]} ${metrics}`;
+    if (values[0] >= currentTarget.before)
+      result = `більше ${values[0]} ${metrics}`;
     // if (values[0] <= currentTarget.from) result = `до ${values[0]} кВт`;
 
     choseAnswer(result);

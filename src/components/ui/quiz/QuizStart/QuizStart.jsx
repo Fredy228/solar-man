@@ -17,7 +17,7 @@ import quiz_diagram_img from 'img/quiz/quiz-diagrama.webp';
 import { QuizNavButton } from '../QuizNav/QuizNav.styled';
 import { Icon } from '../../../reused/icon/Icon';
 
-export const QuizStart = ({ setIsReady }) => {
+export const QuizStart = ({ setIsReady, title }) => {
   return (
     <QuizStartInner>
       <Container>
@@ -31,8 +31,13 @@ export const QuizStart = ({ setIsReady }) => {
           </QuizStartImgWrapper>
           <QuizStartIntroWrapper>
             <QuizStartIntroTitle>
-              Отримайте <QuizStartTitleSpan>безкоштовний</QuizStartTitleSpan>{' '}
-              проект і кошторис <br /> вашої станції
+              {title || (
+                <>
+                  Отримайте{' '}
+                  <QuizStartTitleSpan>безкоштовний</QuizStartTitleSpan> проект і
+                  кошторис <br /> вашої станції
+                </>
+              )}
             </QuizStartIntroTitle>
             <QuizStartIntroText>
               Для цього дайте відповідь <br /> лише на 5 питаннь

@@ -16,6 +16,7 @@ export const QuizBuild = ({
   setCurrentQuestion,
   questions,
   setQuestions,
+  title,
 }) => {
   const [isReady, setIsReady] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -60,7 +61,7 @@ export const QuizBuild = ({
   return (
     <>
       {!isReady ? (
-        <QuizStart setIsReady={setIsReady} />
+        <QuizStart title={title} setIsReady={setIsReady} />
       ) : (
         <WrapperQuiz>
           <TitleQuiz>Розрахуйте вартість вашої сонячної станції</TitleQuiz>
