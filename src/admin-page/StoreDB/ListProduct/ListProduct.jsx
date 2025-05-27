@@ -159,7 +159,7 @@ export const ListProduct = ({ products, setProducts, type }) => {
                 <TitleProduts>{item.title}</TitleProduts>
                 <CostProduts>
                   <Icon name="icon-cart-buy" />
-                  {numbersFormatCost(item.cost)}$
+                  {numbersFormatCost(item.cost)} {' грн'}
                 </CostProduts>
               </ItemProdutsLink>
             </ItemProduts>

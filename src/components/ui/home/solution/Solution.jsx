@@ -59,12 +59,12 @@ export const Solution = ({ widthScreen }) => {
 
   return (
     <SolutionInner>
-      <SectionTitle marginBottom={'40px'}>Готові рішення</SectionTitle>
-
       {isLoading ? (
         <LoadPage />
       ) : (
         <>
+          <SectionTitle marginBottom={'40px'}>Готові рішення</SectionTitle>
+
           <Swiper
             navigation={{
               prevEl: '.swiper-button-prev',

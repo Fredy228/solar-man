@@ -133,7 +133,7 @@ const StoreByOne = () => {
                 )}
                 <CostProduct>
                   <Icon name="icon-cart-buy" />
-                  {numbersFormatCost(product.cost)}$
+                  {numbersFormatCost(product.cost)} {' грн'}
                 </CostProduct>
                 <ButtonOrg
                   type={'button'}
