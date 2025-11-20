@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { SwiperSlide } from 'swiper/react';
-import { NavLink } from 'react-router-dom';
+import { NavLinkWithUtm } from 'components/nav-link-with-utm/NavLinkWithUtm';
 
 export const SwiperSlideS = styled(SwiperSlide)`
   height: auto !important;
@@ -107,7 +107,7 @@ export const Title = styled.p`
   }
 `;
 
-export const TitleLink = styled(NavLink)`
+export const TitleLink = styled(NavLinkWithUtm)`
   text-align: center;
   font-size: 16px;
   padding: 0 10px;
@@ -157,7 +157,7 @@ export const Slide = styled.div`
   }
 `;
 
-export const SlideLink = styled(NavLink)`
+export const SlideLink = styled(NavLinkWithUtm)`
   display: flex;
   flex-direction: column;
   align-items: center;

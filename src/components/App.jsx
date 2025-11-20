@@ -5,6 +5,7 @@ import LayoutAdmin from './layout/LayoutAdmin';
 import PrivateRoute from './routes/PrivateRoute';
 import RestrictedRoute from './routes/RestrictedRoute';
 import { useShowModal } from 'globalState/globalState';
+import { UtmTracker } from './utm-tracker/UtmTracker';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const LoginAdmin = lazy(() => import('../admin-page/LoginAdmin/LoginAdmin'));
@@ -59,78 +60,83 @@ export const App = () => {
   }, [isShowModal]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
+    <>
+      <UtmTracker />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
 
-        <Route path="/enterprises" element={<ForEnterprises />} />
-        <Route path="/home" element={<ForHome />} />
-        <Route path="/investment" element={<ForInvestment />} />
-        <Route path="/backup-power" element={<ForBackupPower />} />
+          <Route path="/enterprises" element={<ForEnterprises />} />
+          <Route path="/home" element={<ForHome />} />
+          <Route path="/investment" element={<ForInvestment />} />
+          <Route path="/backup-power" element={<ForBackupPower />} />
 
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/contacts" element={<Contacts />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/:idProject" element={<ProjectByOne />} />
-        <Route path="/store" element={<Store />} />
-        <Route path="/store/:typeProduct" element={<StoreByOne />} />
-        <Route path="/thanks" element={<Thanks />} />
-        <Route path="/quiz" element={<QuizGeneral />} />
-        <Route path="/quiz/company" element={<QuizCompany />} />
-        <Route path="/quiz/social" element={<QuizGeneral />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:idProject" element={<ProjectByOne />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/store/:typeProduct" element={<StoreByOne />} />
+          <Route path="/thanks" element={<Thanks />} />
+          <Route path="/quiz" element={<QuizGeneral />} />
+          <Route path="/quiz/company" element={<QuizCompany />} />
+          <Route path="/quiz/social" element={<QuizGeneral />} />
 
-        <Route path="/guide/uk" element={<GuideUk />} />
-        <Route path="/guide/ru" element={<GuideRu />} />
-        <Route path="/private/uk" element={<PrivateUk />} />
-        <Route path="/private/ru" element={<PrivateRu />} />
-        <Route path="/green/uk" element={<GreenUk />} />
-        <Route path="/green/ru" element={<GreenRu />} />
-        <Route path="/smallbusiness/uk" element={<SmallBusinessUk />} />
-        <Route path="/smallbusiness/ru" element={<SmallBusinessRu />} />
-        <Route path="/bigbusiness/uk" element={<BigBusinessUk />} />
-        <Route path="/bigbusiness/ru" element={<BigBusinessRu />} />
+          <Route path="/guide/uk" element={<GuideUk />} />
+          <Route path="/guide/ru" element={<GuideRu />} />
+          <Route path="/private/uk" element={<PrivateUk />} />
+          <Route path="/private/ru" element={<PrivateRu />} />
+          <Route path="/green/uk" element={<GreenUk />} />
+          <Route path="/green/ru" element={<GreenRu />} />
+          <Route path="/smallbusiness/uk" element={<SmallBusinessUk />} />
+          <Route path="/smallbusiness/ru" element={<SmallBusinessRu />} />
+          <Route path="/bigbusiness/uk" element={<BigBusinessUk />} />
+          <Route path="/bigbusiness/ru" element={<BigBusinessRu />} />
 
-        <Route path="*" element={<NotFound />} />
-      </Route>
-      <Route path="/admin" element={<LayoutAdmin />}>
-        <Route
-          index
-          element={
-            <RestrictedRoute
-              redirectTo="/admin/profile"
-              component={LoginAdmin}
-            />
-          }
-        />
-        <Route
-          path="profile"
-          element={
-            <PrivateRoute redirectTo="/admin" component={AdminProfile} />
-          }
-        />
-        <Route
-          path="goods"
-          element={<PrivateRoute redirectTo="/admin" component={StoreDB} />}
-        />
-        <Route
-          path="portfolio"
-          element={<PrivateRoute redirectTo="/admin" component={Portfolio} />}
-        />
-        <Route
-          path="portfolio/:postId"
-          element={<PrivateRoute redirectTo="/admin" component={PortfolioId} />}
-        />
-        <Route
-          path="goods/:goodCreate"
-          element={
-            <PrivateRoute redirectTo="/admin" component={CreateProduct} />
-          }
-        />
-        <Route
-          path="goods/home/order"
-          element={<PrivateRoute redirectTo="/admin" component={OrderHome} />}
-        />
-      </Route>
-    </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Route>
+        <Route path="/admin" element={<LayoutAdmin />}>
+          <Route
+            index
+            element={
+              <RestrictedRoute
+                redirectTo="/admin/profile"
+                component={LoginAdmin}
+              />
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <PrivateRoute redirectTo="/admin" component={AdminProfile} />
+            }
+          />
+          <Route
+            path="goods"
+            element={<PrivateRoute redirectTo="/admin" component={StoreDB} />}
+          />
+          <Route
+            path="portfolio"
+            element={<PrivateRoute redirectTo="/admin" component={Portfolio} />}
+          />
+          <Route
+            path="portfolio/:postId"
+            element={
+              <PrivateRoute redirectTo="/admin" component={PortfolioId} />
+            }
+          />
+          <Route
+            path="goods/:goodCreate"
+            element={
+              <PrivateRoute redirectTo="/admin" component={CreateProduct} />
+            }
+          />
+          <Route
+            path="goods/home/order"
+            element={<PrivateRoute redirectTo="/admin" component={OrderHome} />}
+          />
+        </Route>
+      </Routes>
+    </>
   );
 };

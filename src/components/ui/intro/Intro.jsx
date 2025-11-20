@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLinkWithUtm } from 'components/nav-link-with-utm/NavLinkWithUtm';
 import {
   IntroBox,
   CardsIntro,
@@ -44,7 +44,7 @@ export const Intro = () => {
         </IntroText>
         <CardsIntro>
           <CardIntro srcImg={intro1_webp}>
-            <NavLink to="/enterprises">
+            <NavLinkWithUtm to="/enterprises">
               <OverlayIntro>
                 <OverlayIntroIco>
                   <Icon name="icon-company" />
@@ -53,11 +53,11 @@ export const Intro = () => {
                   Сонячні станції <br /> для підприємств
                 </TextOverlay>
               </OverlayIntro>
-            </NavLink>
+            </NavLinkWithUtm>
           </CardIntro>
 
           <CardIntro srcImg={intro2_webp}>
-            <NavLink to="/home">
+            <NavLinkWithUtm to="/home">
               <OverlayIntro>
                 <OverlayIntroIco>
                   <Icon name="icon-home" />
@@ -66,11 +66,11 @@ export const Intro = () => {
                   Сонячні станції <br /> для дому
                 </TextOverlay>
               </OverlayIntro>
-            </NavLink>
+            </NavLinkWithUtm>
           </CardIntro>
 
           <CardIntro srcImg={intro3_webp}>
-            <NavLink to="/store">
+            <NavLinkWithUtm to="/store">
               <OverlayIntro>
                 <OverlayIntroIco>
                   <Icon name="icon-store" />
@@ -79,7 +79,7 @@ export const Intro = () => {
                   Обладнання <br /> та сервіс
                 </TextOverlay>
               </OverlayIntro>
-            </NavLink>
+            </NavLinkWithUtm>
           </CardIntro>
         </CardsIntro>
       </Container>

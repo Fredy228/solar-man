@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLinkWithUtm } from 'components/nav-link-with-utm/NavLinkWithUtm';
 
 export const ListProduts = styled.ul`
   display: flex;
@@ -61,7 +61,7 @@ export const ItemProduts = styled.li`
   }
 `;
 
-export const ItemProdutsLink = styled(NavLink)`
+export const ItemProdutsLink = styled(NavLinkWithUtm)`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -7,7 +7,7 @@ import {
   TitlePortfolio,
   SpanOverLay,
   WrapperImg,
-  PortfolioItemLink,
+  ButtonAll,
 } from './Portfolio.styled';
 
 import {
@@ -75,7 +75,7 @@ export const ProjectsC = () => {
         <PortfolioList>
           {items.map(item => (
             <PortfolioItem key={item.id}>
-              <PortfolioItemLink
+              <ButtonAll
                 to={`/projects/${item.id}`}
                 onClick={() => {
                   window.scrollTo(0, 0);
@@ -93,7 +93,7 @@ export const ProjectsC = () => {
                 </WrapperImg>
 
                 <TitlePortfolio>{item.title}</TitlePortfolio>
-              </PortfolioItemLink>
+              </ButtonAll>
             </PortfolioItem>
           ))}
         </PortfolioList>

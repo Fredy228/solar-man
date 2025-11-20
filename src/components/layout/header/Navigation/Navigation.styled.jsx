@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLinkWithUtm } from 'components/nav-link-with-utm/NavLinkWithUtm';
 
 export const Nav = styled.nav`
   display: flex;
@@ -49,7 +49,7 @@ export const NavItem = styled.li`
   }
 `;
 
-export const LinkTo = styled(NavLink)`
+export const Link = styled(NavLinkWithUtm)`
   font-size: 16px;
   padding: 15px 0;
   text-decoration: none;
@@ -152,7 +152,7 @@ export const DropNavItem = styled.li`
   }
 `;
 
-export const DropNavLink = styled(NavLink)`
+export const DropNavLink = styled(NavLinkWithUtm)`
   display: flex;
   align-items: center;
   font-size: 16px;

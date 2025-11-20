@@ -3,7 +3,7 @@ import {
   Nav,
   NavList,
   NavItem,
-  LinkTo,
+  Link,
   DropNav,
   DropNavList,
   DropNavItem,
@@ -72,24 +72,24 @@ export const Navigation = ({ showMenu }) => {
           </DropNav>
         </NavItem>
         <NavItem>
-          <LinkTo to="/store" onClick={toggleMenu}>
+          <Link to="/store" onClick={toggleMenu}>
             Магазин
-          </LinkTo>
+          </Link>
         </NavItem>
         <NavItem>
-          <LinkTo to="/projects" onClick={toggleMenu}>
+          <Link to="/projects" onClick={toggleMenu}>
             {isRus ? 'Проекты' : 'Проекти'}
-          </LinkTo>
+          </Link>
         </NavItem>
         <NavItem>
-          <LinkTo to="/about-us" onClick={toggleMenu}>
+          <Link to="/about-us" onClick={toggleMenu}>
             {isRus ? 'О нас' : 'Про нас'}
-          </LinkTo>
+          </Link>
         </NavItem>
         <NavItem>
-          <LinkTo to="/contacts" onClick={toggleMenu}>
+          <Link to="/contacts" onClick={toggleMenu}>
             {isRus ? 'Контакты' : 'Контакти'}
-          </LinkTo>
+          </Link>
         </NavItem>
       </NavList>
     </Nav>

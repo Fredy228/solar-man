@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLinkWithUtm } from 'components/nav-link-with-utm/NavLinkWithUtm';
 import ImageGallery from 'react-image-gallery';
 
 export const PortfolioInner = styled.section`
@@ -54,7 +54,7 @@ export const PortfolioItem = styled.li`
   }
 `;
 
-export const PortfolioItemLink = styled(NavLink)`
+export const ButtonAll = styled(NavLinkWithUtm)`
   height: 100%;
   width: 100%;
   cursor: pointer;

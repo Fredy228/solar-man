@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLinkWithUtm } from 'components/nav-link-with-utm/NavLinkWithUtm';
 
 export const Header = styled.header`
   padding: 10px 5px;
@@ -29,7 +29,7 @@ export const HeaderInner = styled.div`
     justify-content: space-between;
   }
 `;
-export const Logo = styled.div`
+export const Logo = styled(NavLinkWithUtm)`
   cursor: pointer;
 
   svg {
@@ -203,7 +203,7 @@ export const AdminTab = styled.li`
   }
 `;
 
-export const LinkNav = styled(NavLink)`
+export const LinkNav = styled(NavLinkWithUtm)`
   padding: 10px 20px;
   border-radius: 15px;
   font-family: inherit;

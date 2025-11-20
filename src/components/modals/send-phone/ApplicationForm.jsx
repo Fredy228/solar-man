@@ -1,13 +1,14 @@
-import { useState } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { useState } from 'react';
 
-import { Form, Input, PhoneInput } from './SendPhone.styled';
-import { LoadSpiner } from 'components/reused/load-spinner/LoadSpiner';
 import { Icon } from 'components/reused/icon/Icon';
-import { useNavigate } from 'react-router-dom';
+import { LoadSpiner } from 'components/reused/load-spinner/LoadSpiner';
 import { useShowModal } from 'globalState/globalState';
-import { ButtonOrg } from '../../../common-style/ButtonCommon.styled';
+import { useNavigate } from 'react-router-dom';
 import { sendPhoneToTelegram } from '../../../api/quiz.api';
+import { ButtonOrg } from '../../../common-style/ButtonCommon.styled';
+import { Form, Input, PhoneInput } from './SendPhone.styled';
+import { useUtmTags } from 'hooks/use-utm-tags';
 
 export const ApplicationForm = ({
   currentGood,
@@ -26,13 +27,14 @@ export const ApplicationForm = ({
   const phoneRegex =
     /^(\+38)?\s?(\(0\d{2}\)|0\d{2})[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/;
   const navigate = useNavigate();
+  const utems = useUtmTags();
 
   const sendAPI = async () => {
     try {
       setIsBtnDisab(true);
       setIsLoading(true);
 
-      await sendPhoneToTelegram({ name, phone, currentGood });
+      await sendPhoneToTelegram({ name, phone, currentGood }, utems);
 
       setIsBtnDisab(false);
       setIsLoading(false);

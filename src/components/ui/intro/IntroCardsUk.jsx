@@ -7,7 +7,7 @@ import {
   OverlayIntroIco,
   TextOverlay,
 } from './Intro.styled';
-import { NavLink } from 'react-router-dom';
+import { NavLinkWithUtm } from 'components/nav-link-with-utm/NavLinkWithUtm';
 import { Icon } from '../../reused/icon/Icon';
 
 import intro2_webp from '../../../img/intro/intro-2.webp';
@@ -20,7 +20,7 @@ export const IntroCardsUk = () => {
     <IntroBox style={{ paddingTop: '20px' }}>
       <CardsIntro>
         <CardIntro srcImg={intro2_webp}>
-          <NavLink to="/private/uk">
+          <NavLinkWithUtm to="/private/uk">
             <OverlayIntro>
               <OverlayIntroIco>
                 <Icon name="icon-home" />
@@ -30,11 +30,11 @@ export const IntroCardsUk = () => {
               </TextOverlay>
               <BtnOverlay>Детальніше</BtnOverlay>
             </OverlayIntro>
-          </NavLink>
+          </NavLinkWithUtm>
         </CardIntro>
 
         <CardIntro srcImg={intro3_webp}>
-          <NavLink to="/green/uk">
+          <NavLinkWithUtm to="/green/uk">
             <OverlayIntro>
               <OverlayIntroIco>
                 <Icon name="icon-green-tarif" />
@@ -42,11 +42,11 @@ export const IntroCardsUk = () => {
               <TextOverlay>Зелений тариф</TextOverlay>
               <BtnOverlay>Детальніше</BtnOverlay>
             </OverlayIntro>
-          </NavLink>
+          </NavLinkWithUtm>
         </CardIntro>
 
         <CardIntro srcImg={intro4_webp}>
-          <NavLink to="/smallbusiness/uk">
+          <NavLinkWithUtm to="/smallbusiness/uk">
             <OverlayIntro>
               <OverlayIntroIco>
                 <Icon name="icon-small-bisnes" />
@@ -56,11 +56,11 @@ export const IntroCardsUk = () => {
               </TextOverlay>
               <BtnOverlay>Детальніше</BtnOverlay>
             </OverlayIntro>
-          </NavLink>
+          </NavLinkWithUtm>
         </CardIntro>
 
         <CardIntro srcImg={intro1_webp}>
-          <NavLink to="/bigbusiness/uk">
+          <NavLinkWithUtm to="/bigbusiness/uk">
             <OverlayIntro>
               <OverlayIntroIco>
                 <Icon name="icon-company" />
@@ -70,7 +70,7 @@ export const IntroCardsUk = () => {
               </TextOverlay>
               <BtnOverlay>Детальніше</BtnOverlay>
             </OverlayIntro>
-          </NavLink>
+          </NavLinkWithUtm>
         </CardIntro>
       </CardsIntro>
     </IntroBox>
