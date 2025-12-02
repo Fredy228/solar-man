@@ -4,11 +4,11 @@ import {
   CostProduts,
   ImgProduts,
   ItemProduts,
+  ItemProdutsLink,
   ListProduts,
   NotFoundText,
-  TitleProduts,
   PowerSpan,
-  ItemProdutsLink,
+  TitleProduts,
   WrapperImgProducts,
 } from './ListTableProduct.styled';
 import { LoadPage } from '../../../reused/load-spinner/LoadPage';
@@ -28,7 +28,7 @@ export const ListGoods = ({ products, type, isLoading }) => {
                   flex={type ? ['2', '3', '4'] : ['2', '3', '3']}
                 >
                   <ItemProdutsLink
-                    to={`${type ? 'set' : 'component'}?id=${item.id}`}
+                    to={`/store/${type ? 'set' : 'component'}?id=${item.id}`}
                     onClick={() => {
                       window.scrollTo(0, 0);
                     }}
