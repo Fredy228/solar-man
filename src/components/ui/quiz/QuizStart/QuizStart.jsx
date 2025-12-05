@@ -10,6 +10,7 @@ import {
   QuizStartWrapper,
 } from './QuizStart.styled';
 import { Container } from '../../../../pages/Common.styled';
+import { TelegramQuizEvents } from '../telegram-events';
 
 import quiz_start_img from 'img/quiz/quiz-start.webp';
 import quiz_diagram_img from 'img/quiz/quiz-diagrama.webp';
@@ -51,7 +52,11 @@ export const QuizStart = ({ setIsReady, title }) => {
               type={'button'}
               colorBgHover={'second'}
               marginLeft={'10px'}
-              onClick={() => setIsReady(true)}
+              onClick={() => {
+                setIsReady(true);
+                if (process.env.NODE_ENV === 'development') return;
+                TelegramQuizEvents.start();
+              }}
             >
               Почати розрахунок <Icon name={'icon-arrow-right-long'} />
             </QuizNavButton>

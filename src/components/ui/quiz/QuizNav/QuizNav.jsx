@@ -1,5 +1,6 @@
 import { QuizNavButton, QuizNavInner } from './QuizNav.styled';
 import { Icon } from '../../../reused/icon/Icon';
+import { TelegramQuizEvents } from '../telegram-events';
 
 export const QuizNav = ({
   answersQuiz,
@@ -19,6 +20,9 @@ export const QuizNav = ({
       });
     }
     sendQuiz();
+
+    if (process.env.NODE_ENV === 'development') return;
+    TelegramQuizEvents[`${currentQuestion}_step`]();
   };
 
   return (
