@@ -34,6 +34,9 @@ const StoreByOne = lazy(() => import('pages/Store/StoreByOne'));
 const Thanks = lazy(() => import('pages/Thanks/Thanks'));
 const QuizGeneral = lazy(() => import('pages/Quiz/QuizGeneral'));
 const QuizCompany = lazy(() => import('pages/Quiz/QuizCompany'));
+const ProvideContact = lazy(() =>
+  import('pages/ProvideContact/ProvideContact')
+);
 const NotFound = lazy(() => import('pages/NotFound/NotFound'));
 
 const GuideUk = lazy(() => import('pages/Guide/GuideUk'));
@@ -78,6 +81,7 @@ export const App = () => {
           <Route path="/store" element={<Store />} />
           <Route path="/store/:typeProduct" element={<StoreByOne />} />
           <Route path="/thanks" element={<Thanks />} />
+          <Route path="/provide-contact" element={<ProvideContact />} />
           <Route path="/quiz" element={<QuizGeneral />} />
           <Route path="/quiz/company" element={<QuizCompany />} />
           <Route path="/quiz/social" element={<QuizGeneral />} />

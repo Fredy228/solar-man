@@ -13,14 +13,14 @@ export const QuizNav = ({
 
   const handleButton = () => {
     window.scrollTo(0, 0);
+
     if (currentQuestion !== answersQuiz.length) {
-      return setCurrentQuestion(prev => {
-        if (prev === answersQuiz.length) return prev;
+      setCurrentQuestion(prev => {
         return prev + 1;
       });
+    } else {
+      sendQuiz();
     }
-    sendQuiz();
-
     if (process.env.NODE_ENV === 'development') return;
     TelegramQuizEvents[`${currentQuestion}_step`]();
   };
@@ -44,7 +44,7 @@ export const QuizNav = ({
       <QuizNavButton
         type={'button'}
         colorBgHover={'second'}
-        disabled={!isFillCurrent && !isLoading}
+        disabled={!isFillCurrent || isLoading}
         onClick={handleButton}
         marginLeft={'10px'}
       >
