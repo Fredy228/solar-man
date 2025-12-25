@@ -16,7 +16,10 @@ const GoogleAnalyticsWrapper = ({ children }) => {
     if (process.env.NODE_ENV === 'development') return;
 
     // Отправка события отслеживания страницы Google Analytics при каждом переходе на новую страницу
-    window.gtag('config', 'G-XFN527HLQ5', {
+    // window.gtag('config', 'G-XFN527HLQ5', {
+    //   page_path: location.pathname,
+    // });
+    window.gtag('config', 'AW-17810219088', {
       page_path: location.pathname,
     });
   }, [location]);

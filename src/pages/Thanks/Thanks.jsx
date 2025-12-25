@@ -20,6 +20,10 @@ const Thanks = () => {
     ReactPixel.init('727645149364780');
     ReactPixel.pageView();
     ReactPixel.track('Lead');
+
+    window.gtag('event', 'conversion', {
+      send_to: 'AW-17810219088/_QMvCKDS7dIbENDAyaxC',
+    });
   }, []);
 
   return (
